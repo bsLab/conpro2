@@ -1,2 +1,2 @@
 # conpro2
-Concurrent Process Programming of Digital Logic with High-level Synthesis
+Concurrent Processing and Programming of Digital Logic with High-level Synthesis
