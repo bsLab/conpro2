@@ -2,6 +2,8 @@
 
 *Concurrent Processing and  Programming of Digital Logic with High-level Synthesis*
 
+*Author: Dr. Stefan Bosse*
+
 # Concurrent Programming and Processes
 
 ## Overview
