@@ -1,0 +1,3761 @@
+   0  $accept : %entry% $end
+
+   1  main : section
+
+   2  section : S_PARAMETER SEP1 BEGIN env_params END
+   3          | S_MODULES SEP1 BEGIN uc_objects END
+   4          | S_EXPORT SEP1 BEGIN uc_objects END
+   5          | S_IMPORT SEP1 BEGIN uc_objects END
+   6          | S_TYPES SEP1 BEGIN uc_objects END
+   7          | S_DATA SEP1 BEGIN uc_objects END
+   8          | S_TEMP SEP1 BEGIN uc_objects END
+   9          | S_CODE SEP1 BEGIN instructions END
+
+  10  uc_objects : uc_object
+  11             | uc_object uc_objects
+
+  12  env_params : env_param
+  13             | env_param env_params
+
+  14  env_param : env_param_name EQ env_param_value
+
+  15  env_param_name : VAR IDENT
+
+  16  env_param_value : VALUE
+
+  17  uc_object : REG name SEP1 data_type
+  18            | REG name SEP1 data_type WITH params
+  19            | SIG name SEP1 data_type
+  20            | VAR name SEP1 data_type
+  21            | VAR name SEP1 data_type IN name
+  22            | VAR name SEP1 data_type IN name DOT LBRAK VALUE RBRAK
+  23            | VAR name SEP1 data_type IN name WITH params
+  24            | VAR name SEP1 data_type IN name DOT LBRAK VALUE RBRAK WITH params
+  25            | OBJ name SEP1 data_type
+  26            | OBJ name SEP1 data_type WITH params
+  27            | QUE name SEP1 data_type
+  28            | QUE name SEP1 data_type WITH params
+  29            | CHA name SEP1 data_type
+  30            | CHA name SEP1 data_type WITH params
+  31            | FUNC name LPAREN data_type_list RPAREN
+  32            | BLK name SEP1 data_type OF data_type
+  33            | ARR name SEP1 data_type OF data_type
+  34            | CON name SEP1 data_type ASS operand
+  35            | VAL name SEP1 operand
+  36            | MODULE name SEP1 data_type
+  37            | TYPE name SEP1 LCURL symbol_list RCURL
+  38            | TYPE name SEP1 LCURL struct_list RCURL
+  39            | TYPE selector SEP1 LCURL method_list RCURL
+
+  40  symbol_list : symbol_el
+  41              | symbol_el symbol_list
+
+  42  struct_list : struct_el
+  43              | struct_el struct_list
+
+  44  method_list : method_el
+  45              | method_el method_list
+
+  46  symbol_el : name
+
+  47  struct_el : name SEP1 data_type
+
+  48  method_el : METHOD name LPAREN data_type_list RPAREN
+  49            | METHOD name LPAREN RPAREN
+
+  50  data_type_list : data_type
+  51                 | data_type SEP2 data_type_list
+
+  52  data_type : TYPE_SPEC
+  53            | TYPE_SPEC LBRAK VALUE RBRAK
+  54            | REG LBRAK diml RBRAK
+  55            | VAR LBRAK diml RBRAK
+  56            | SIG LBRAK diml RBRAK
+  57            | CELLS LBRAK VALUE RBRAK
+  58            | QUE LBRAK VALUE RBRAK
+  59            | CHA LBRAK VALUE RBRAK
+  60            | PARAM
+  61            | IDENT
+  62            | IDENT DOT IDENT
+  63            | data_type SEP1 PARAM
+
+  64  diml : dim
+  65       | dim SEP2 diml
+
+  66  dim : VALUE
+
+  67  params : param
+  68         | param AND params
+
+  69  param : param_name EQ param_value
+
+  70  param_name : PARAM
+  71             | VAR IDENT
+
+  72  param_value : IDENT
+  73              | VALUE
+  74              | STRING
+  75              | CHAR
+  76              | TYPE_SPEC
+  77              | TYPE_SPEC LBRAK VALUE RBRAK
+  78              | data_type
+
+  79  operand_list : operand
+  80               | operand SEP2 operand_list
+
+  81  operand : VALUE
+  82          | VALUE SEP1 params
+  83          | IDENT
+  84          | IDENT SEP1 params
+  85          | VAR IMMED DOT LBRAK VALUE RBRAK
+  86          | VAR TEMP DOT LBRAK name RBRAK
+  87          | VAR TEMP DOT LBRAK selector RBRAK
+  88          | VAR IMMED DOT LBRAK VALUE RBRAK SEP1 params
+  89          | VAR TEMP DOT LBRAK name RBRAK SEP1 params
+  90          | VAR TEMP DOT LBRAK selector RBRAK SEP1 params
+  91          | VAR ALU DOT LBRAK VALUE RBRAK
+  92          | VAR ALU DOT LBRAK VALUE RBRAK SEP1 params
+  93          | selector
+  94          | selector SEP1 params
+
+  95  range : VALUE TO VALUE
+  96        | VALUE DOWNTO VALUE
+
+  97  value_list : range
+  98             | operand
+  99             | VALUE
+ 100             | VALUE SEP2 value_list
+ 101             | operand SEP2 value_list
+
+ 102  selector : selector_list
+
+ 103  selector_type : name
+ 104                | LBRAK value_list RBRAK
+
+ 105  selector_list : selector_type
+ 106                | selector_type DOT selector_list
+
+ 107  instructions : instruction
+ 108               | instruction instructions
+
+ 109  instruction : NOP
+ 110              | label SEP1
+ 111              | BIND LPAREN VALUE RPAREN
+ 112              | JUMP LPAREN label RPAREN
+ 113              | FALSEJUMP LPAREN operand SEP2 label RPAREN
+ 114              | MOVE LPAREN operand SEP2 operand RPAREN
+ 115              | MOVE LPAREN operand SEP2 operand RPAREN WITH params
+ 116              | EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 operand RPAREN
+ 117              | EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 operand RPAREN WITH params
+ 118              | FUN selector LPAREN operand_list RPAREN
+
+ 119  name : IDENT
+
+ 120  label : IDENT
+
+ 121  operation : PLUS
+ 122            | MINUS
+ 123            | TIMES
+ 124            | DIVI
+ 125            | AND
+ 126            | OR
+ 127            | XOR
+ 128            | NOT
+ 129            | EQ
+ 130            | NEQ
+ 131            | LT
+ 132            | GT
+ 133            | LEQ
+ 134            | GEQ
+
+ 135  %entry% : '\001' main
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . main  (135)
+
+	S_PARAMETER  shift 3
+	S_MODULES  shift 4
+	S_EXPORT  shift 5
+	S_IMPORT  shift 6
+	S_TYPES  shift 7
+	S_DATA  shift 8
+	S_CODE  shift 9
+	S_TEMP  shift 10
+	.  error
+
+	main  goto 11
+	section  goto 12
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	section : S_PARAMETER . SEP1 BEGIN env_params END  (2)
+
+	SEP1  shift 13
+	.  error
+
+
+state 4
+	section : S_MODULES . SEP1 BEGIN uc_objects END  (3)
+
+	SEP1  shift 14
+	.  error
+
+
+state 5
+	section : S_EXPORT . SEP1 BEGIN uc_objects END  (4)
+
+	SEP1  shift 15
+	.  error
+
+
+state 6
+	section : S_IMPORT . SEP1 BEGIN uc_objects END  (5)
+
+	SEP1  shift 16
+	.  error
+
+
+state 7
+	section : S_TYPES . SEP1 BEGIN uc_objects END  (6)
+
+	SEP1  shift 17
+	.  error
+
+
+state 8
+	section : S_DATA . SEP1 BEGIN uc_objects END  (7)
+
+	SEP1  shift 18
+	.  error
+
+
+state 9
+	section : S_CODE . SEP1 BEGIN instructions END  (9)
+
+	SEP1  shift 19
+	.  error
+
+
+state 10
+	section : S_TEMP . SEP1 BEGIN uc_objects END  (8)
+
+	SEP1  shift 20
+	.  error
+
+
+state 11
+	%entry% : '\001' main .  (135)
+
+	.  reduce 135
+
+
+state 12
+	main : section .  (1)
+
+	.  reduce 1
+
+
+state 13
+	section : S_PARAMETER SEP1 . BEGIN env_params END  (2)
+
+	BEGIN  shift 21
+	.  error
+
+
+state 14
+	section : S_MODULES SEP1 . BEGIN uc_objects END  (3)
+
+	BEGIN  shift 22
+	.  error
+
+
+state 15
+	section : S_EXPORT SEP1 . BEGIN uc_objects END  (4)
+
+	BEGIN  shift 23
+	.  error
+
+
+state 16
+	section : S_IMPORT SEP1 . BEGIN uc_objects END  (5)
+
+	BEGIN  shift 24
+	.  error
+
+
+state 17
+	section : S_TYPES SEP1 . BEGIN uc_objects END  (6)
+
+	BEGIN  shift 25
+	.  error
+
+
+state 18
+	section : S_DATA SEP1 . BEGIN uc_objects END  (7)
+
+	BEGIN  shift 26
+	.  error
+
+
+state 19
+	section : S_CODE SEP1 . BEGIN instructions END  (9)
+
+	BEGIN  shift 27
+	.  error
+
+
+state 20
+	section : S_TEMP SEP1 . BEGIN uc_objects END  (8)
+
+	BEGIN  shift 28
+	.  error
+
+
+state 21
+	section : S_PARAMETER SEP1 BEGIN . env_params END  (2)
+
+	VAR  shift 29
+	.  error
+
+	env_params  goto 30
+	env_param  goto 31
+	env_param_name  goto 32
+
+
+state 22
+	section : S_MODULES SEP1 BEGIN . uc_objects END  (3)
+
+	VAR  shift 33
+	REG  shift 34
+	SIG  shift 35
+	OBJ  shift 36
+	QUE  shift 37
+	CHA  shift 38
+	BLK  shift 39
+	FUNC  shift 40
+	CON  shift 41
+	VAL  shift 42
+	ARR  shift 43
+	MODULE  shift 44
+	TYPE  shift 45
+	.  error
+
+	uc_objects  goto 46
+	uc_object  goto 47
+
+
+state 23
+	section : S_EXPORT SEP1 BEGIN . uc_objects END  (4)
+
+	VAR  shift 33
+	REG  shift 34
+	SIG  shift 35
+	OBJ  shift 36
+	QUE  shift 37
+	CHA  shift 38
+	BLK  shift 39
+	FUNC  shift 40
+	CON  shift 41
+	VAL  shift 42
+	ARR  shift 43
+	MODULE  shift 44
+	TYPE  shift 45
+	.  error
+
+	uc_objects  goto 48
+	uc_object  goto 47
+
+
+state 24
+	section : S_IMPORT SEP1 BEGIN . uc_objects END  (5)
+
+	VAR  shift 33
+	REG  shift 34
+	SIG  shift 35
+	OBJ  shift 36
+	QUE  shift 37
+	CHA  shift 38
+	BLK  shift 39
+	FUNC  shift 40
+	CON  shift 41
+	VAL  shift 42
+	ARR  shift 43
+	MODULE  shift 44
+	TYPE  shift 45
+	.  error
+
+	uc_objects  goto 49
+	uc_object  goto 47
+
+
+state 25
+	section : S_TYPES SEP1 BEGIN . uc_objects END  (6)
+
+	VAR  shift 33
+	REG  shift 34
+	SIG  shift 35
+	OBJ  shift 36
+	QUE  shift 37
+	CHA  shift 38
+	BLK  shift 39
+	FUNC  shift 40
+	CON  shift 41
+	VAL  shift 42
+	ARR  shift 43
+	MODULE  shift 44
+	TYPE  shift 45
+	.  error
+
+	uc_objects  goto 50
+	uc_object  goto 47
+
+
+state 26
+	section : S_DATA SEP1 BEGIN . uc_objects END  (7)
+
+	VAR  shift 33
+	REG  shift 34
+	SIG  shift 35
+	OBJ  shift 36
+	QUE  shift 37
+	CHA  shift 38
+	BLK  shift 39
+	FUNC  shift 40
+	CON  shift 41
+	VAL  shift 42
+	ARR  shift 43
+	MODULE  shift 44
+	TYPE  shift 45
+	.  error
+
+	uc_objects  goto 51
+	uc_object  goto 47
+
+
+state 27
+	section : S_CODE SEP1 BEGIN . instructions END  (9)
+
+	IDENT  shift 52
+	MOVE  shift 53
+	EXPR  shift 54
+	FUN  shift 55
+	BIND  shift 56
+	JUMP  shift 57
+	FALSEJUMP  shift 58
+	NOP  shift 59
+	.  error
+
+	instructions  goto 60
+	instruction  goto 61
+	label  goto 62
+
+
+state 28
+	section : S_TEMP SEP1 BEGIN . uc_objects END  (8)
+
+	VAR  shift 33
+	REG  shift 34
+	SIG  shift 35
+	OBJ  shift 36
+	QUE  shift 37
+	CHA  shift 38
+	BLK  shift 39
+	FUNC  shift 40
+	CON  shift 41
+	VAL  shift 42
+	ARR  shift 43
+	MODULE  shift 44
+	TYPE  shift 45
+	.  error
+
+	uc_objects  goto 63
+	uc_object  goto 47
+
+
+state 29
+	env_param_name : VAR . IDENT  (15)
+
+	IDENT  shift 64
+	.  error
+
+
+state 30
+	section : S_PARAMETER SEP1 BEGIN env_params . END  (2)
+
+	END  shift 65
+	.  error
+
+
+state 31
+	env_params : env_param .  (12)
+	env_params : env_param . env_params  (13)
+
+	VAR  shift 29
+	END  reduce 12
+
+	env_params  goto 66
+	env_param  goto 31
+	env_param_name  goto 32
+
+
+state 32
+	env_param : env_param_name . EQ env_param_value  (14)
+
+	EQ  shift 67
+	.  error
+
+
+state 33
+	uc_object : VAR . name SEP1 data_type  (20)
+	uc_object : VAR . name SEP1 data_type IN name  (21)
+	uc_object : VAR . name SEP1 data_type IN name DOT LBRAK VALUE RBRAK  (22)
+	uc_object : VAR . name SEP1 data_type IN name WITH params  (23)
+	uc_object : VAR . name SEP1 data_type IN name DOT LBRAK VALUE RBRAK WITH params  (24)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 69
+
+
+state 34
+	uc_object : REG . name SEP1 data_type  (17)
+	uc_object : REG . name SEP1 data_type WITH params  (18)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 70
+
+
+state 35
+	uc_object : SIG . name SEP1 data_type  (19)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 71
+
+
+state 36
+	uc_object : OBJ . name SEP1 data_type  (25)
+	uc_object : OBJ . name SEP1 data_type WITH params  (26)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 72
+
+
+state 37
+	uc_object : QUE . name SEP1 data_type  (27)
+	uc_object : QUE . name SEP1 data_type WITH params  (28)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 73
+
+
+state 38
+	uc_object : CHA . name SEP1 data_type  (29)
+	uc_object : CHA . name SEP1 data_type WITH params  (30)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 74
+
+
+state 39
+	uc_object : BLK . name SEP1 data_type OF data_type  (32)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 75
+
+
+state 40
+	uc_object : FUNC . name LPAREN data_type_list RPAREN  (31)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 76
+
+
+state 41
+	uc_object : CON . name SEP1 data_type ASS operand  (34)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 77
+
+
+state 42
+	uc_object : VAL . name SEP1 operand  (35)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 78
+
+
+state 43
+	uc_object : ARR . name SEP1 data_type OF data_type  (33)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 79
+
+
+state 44
+	uc_object : MODULE . name SEP1 data_type  (36)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 80
+
+
+state 45
+	uc_object : TYPE . name SEP1 LCURL symbol_list RCURL  (37)
+	uc_object : TYPE . name SEP1 LCURL struct_list RCURL  (38)
+	uc_object : TYPE . selector SEP1 LCURL method_list RCURL  (39)
+
+	IDENT  shift 68
+	LBRAK  shift 81
+	.  error
+
+	name  goto 82
+	selector  goto 83
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 46
+	section : S_MODULES SEP1 BEGIN uc_objects . END  (3)
+
+	END  shift 86
+	.  error
+
+
+state 47
+	uc_objects : uc_object .  (10)
+	uc_objects : uc_object . uc_objects  (11)
+
+	VAR  shift 33
+	REG  shift 34
+	SIG  shift 35
+	OBJ  shift 36
+	QUE  shift 37
+	CHA  shift 38
+	BLK  shift 39
+	FUNC  shift 40
+	CON  shift 41
+	VAL  shift 42
+	ARR  shift 43
+	MODULE  shift 44
+	TYPE  shift 45
+	END  reduce 10
+
+	uc_objects  goto 87
+	uc_object  goto 47
+
+
+state 48
+	section : S_EXPORT SEP1 BEGIN uc_objects . END  (4)
+
+	END  shift 88
+	.  error
+
+
+state 49
+	section : S_IMPORT SEP1 BEGIN uc_objects . END  (5)
+
+	END  shift 89
+	.  error
+
+
+state 50
+	section : S_TYPES SEP1 BEGIN uc_objects . END  (6)
+
+	END  shift 90
+	.  error
+
+
+state 51
+	section : S_DATA SEP1 BEGIN uc_objects . END  (7)
+
+	END  shift 91
+	.  error
+
+
+state 52
+	label : IDENT .  (120)
+
+	.  reduce 120
+
+
+state 53
+	instruction : MOVE . LPAREN operand SEP2 operand RPAREN  (114)
+	instruction : MOVE . LPAREN operand SEP2 operand RPAREN WITH params  (115)
+
+	LPAREN  shift 92
+	.  error
+
+
+state 54
+	instruction : EXPR . LPAREN operand SEP2 operand SEP2 operation SEP2 operand RPAREN  (116)
+	instruction : EXPR . LPAREN operand SEP2 operand SEP2 operation SEP2 operand RPAREN WITH params  (117)
+
+	LPAREN  shift 93
+	.  error
+
+
+state 55
+	instruction : FUN . selector LPAREN operand_list RPAREN  (118)
+
+	IDENT  shift 68
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	selector  goto 95
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 56
+	instruction : BIND . LPAREN VALUE RPAREN  (111)
+
+	LPAREN  shift 96
+	.  error
+
+
+state 57
+	instruction : JUMP . LPAREN label RPAREN  (112)
+
+	LPAREN  shift 97
+	.  error
+
+
+state 58
+	instruction : FALSEJUMP . LPAREN operand SEP2 label RPAREN  (113)
+
+	LPAREN  shift 98
+	.  error
+
+
+state 59
+	instruction : NOP .  (109)
+
+	.  reduce 109
+
+
+state 60
+	section : S_CODE SEP1 BEGIN instructions . END  (9)
+
+	END  shift 99
+	.  error
+
+
+state 61
+	instructions : instruction .  (107)
+	instructions : instruction . instructions  (108)
+
+	IDENT  shift 52
+	MOVE  shift 53
+	EXPR  shift 54
+	FUN  shift 55
+	BIND  shift 56
+	JUMP  shift 57
+	FALSEJUMP  shift 58
+	NOP  shift 59
+	END  reduce 107
+
+	instructions  goto 100
+	instruction  goto 61
+	label  goto 62
+
+
+state 62
+	instruction : label . SEP1  (110)
+
+	SEP1  shift 101
+	.  error
+
+
+state 63
+	section : S_TEMP SEP1 BEGIN uc_objects . END  (8)
+
+	END  shift 102
+	.  error
+
+
+state 64
+	env_param_name : VAR IDENT .  (15)
+
+	.  reduce 15
+
+
+state 65
+	section : S_PARAMETER SEP1 BEGIN env_params END .  (2)
+
+	.  reduce 2
+
+
+state 66
+	env_params : env_param env_params .  (13)
+
+	.  reduce 13
+
+
+state 67
+	env_param : env_param_name EQ . env_param_value  (14)
+
+	VALUE  shift 103
+	.  error
+
+	env_param_value  goto 104
+
+
+state 68
+	name : IDENT .  (119)
+
+	.  reduce 119
+
+
+state 69
+	uc_object : VAR name . SEP1 data_type  (20)
+	uc_object : VAR name . SEP1 data_type IN name  (21)
+	uc_object : VAR name . SEP1 data_type IN name DOT LBRAK VALUE RBRAK  (22)
+	uc_object : VAR name . SEP1 data_type IN name WITH params  (23)
+	uc_object : VAR name . SEP1 data_type IN name DOT LBRAK VALUE RBRAK WITH params  (24)
+
+	SEP1  shift 105
+	.  error
+
+
+state 70
+	uc_object : REG name . SEP1 data_type  (17)
+	uc_object : REG name . SEP1 data_type WITH params  (18)
+
+	SEP1  shift 106
+	.  error
+
+
+state 71
+	uc_object : SIG name . SEP1 data_type  (19)
+
+	SEP1  shift 107
+	.  error
+
+
+state 72
+	uc_object : OBJ name . SEP1 data_type  (25)
+	uc_object : OBJ name . SEP1 data_type WITH params  (26)
+
+	SEP1  shift 108
+	.  error
+
+
+state 73
+	uc_object : QUE name . SEP1 data_type  (27)
+	uc_object : QUE name . SEP1 data_type WITH params  (28)
+
+	SEP1  shift 109
+	.  error
+
+
+state 74
+	uc_object : CHA name . SEP1 data_type  (29)
+	uc_object : CHA name . SEP1 data_type WITH params  (30)
+
+	SEP1  shift 110
+	.  error
+
+
+state 75
+	uc_object : BLK name . SEP1 data_type OF data_type  (32)
+
+	SEP1  shift 111
+	.  error
+
+
+state 76
+	uc_object : FUNC name . LPAREN data_type_list RPAREN  (31)
+
+	LPAREN  shift 112
+	.  error
+
+
+state 77
+	uc_object : CON name . SEP1 data_type ASS operand  (34)
+
+	SEP1  shift 113
+	.  error
+
+
+state 78
+	uc_object : VAL name . SEP1 operand  (35)
+
+	SEP1  shift 114
+	.  error
+
+
+state 79
+	uc_object : ARR name . SEP1 data_type OF data_type  (33)
+
+	SEP1  shift 115
+	.  error
+
+
+state 80
+	uc_object : MODULE name . SEP1 data_type  (36)
+
+	SEP1  shift 116
+	.  error
+
+
+state 81
+	selector_type : LBRAK . value_list RBRAK  (104)
+
+	IDENT  shift 117
+	VALUE  shift 118
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 120
+	selector  goto 121
+	range  goto 122
+	value_list  goto 123
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+82: shift/reduce conflict (shift 124, reduce 103) on SEP1
+state 82
+	uc_object : TYPE name . SEP1 LCURL symbol_list RCURL  (37)
+	uc_object : TYPE name . SEP1 LCURL struct_list RCURL  (38)
+	selector_type : name .  (103)
+
+	SEP1  shift 124
+	DOT  reduce 103
+
+
+state 83
+	uc_object : TYPE selector . SEP1 LCURL method_list RCURL  (39)
+
+	SEP1  shift 125
+	.  error
+
+
+state 84
+	selector : selector_list .  (102)
+
+	.  reduce 102
+
+
+state 85
+	selector_list : selector_type .  (105)
+	selector_list : selector_type . DOT selector_list  (106)
+
+	DOT  shift 126
+	VAR  reduce 105
+	REG  reduce 105
+	SIG  reduce 105
+	OBJ  reduce 105
+	QUE  reduce 105
+	CHA  reduce 105
+	BLK  reduce 105
+	FUNC  reduce 105
+	CON  reduce 105
+	VAL  reduce 105
+	ARR  reduce 105
+	MODULE  reduce 105
+	TYPE  reduce 105
+	RBRAK  reduce 105
+	LPAREN  reduce 105
+	RPAREN  reduce 105
+	SEP1  reduce 105
+	SEP2  reduce 105
+	END  reduce 105
+
+
+state 86
+	section : S_MODULES SEP1 BEGIN uc_objects END .  (3)
+
+	.  reduce 3
+
+
+state 87
+	uc_objects : uc_object uc_objects .  (11)
+
+	.  reduce 11
+
+
+state 88
+	section : S_EXPORT SEP1 BEGIN uc_objects END .  (4)
+
+	.  reduce 4
+
+
+state 89
+	section : S_IMPORT SEP1 BEGIN uc_objects END .  (5)
+
+	.  reduce 5
+
+
+state 90
+	section : S_TYPES SEP1 BEGIN uc_objects END .  (6)
+
+	.  reduce 6
+
+
+state 91
+	section : S_DATA SEP1 BEGIN uc_objects END .  (7)
+
+	.  reduce 7
+
+
+state 92
+	instruction : MOVE LPAREN . operand SEP2 operand RPAREN  (114)
+	instruction : MOVE LPAREN . operand SEP2 operand RPAREN WITH params  (115)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 128
+	selector  goto 121
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 93
+	instruction : EXPR LPAREN . operand SEP2 operand SEP2 operation SEP2 operand RPAREN  (116)
+	instruction : EXPR LPAREN . operand SEP2 operand SEP2 operation SEP2 operand RPAREN WITH params  (117)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 129
+	selector  goto 121
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 94
+	selector_type : name .  (103)
+
+	.  reduce 103
+
+
+state 95
+	instruction : FUN selector . LPAREN operand_list RPAREN  (118)
+
+	LPAREN  shift 130
+	.  error
+
+
+state 96
+	instruction : BIND LPAREN . VALUE RPAREN  (111)
+
+	VALUE  shift 131
+	.  error
+
+
+state 97
+	instruction : JUMP LPAREN . label RPAREN  (112)
+
+	IDENT  shift 52
+	.  error
+
+	label  goto 132
+
+
+state 98
+	instruction : FALSEJUMP LPAREN . operand SEP2 label RPAREN  (113)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 133
+	selector  goto 121
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 99
+	section : S_CODE SEP1 BEGIN instructions END .  (9)
+
+	.  reduce 9
+
+
+state 100
+	instructions : instruction instructions .  (108)
+
+	.  reduce 108
+
+
+state 101
+	instruction : label SEP1 .  (110)
+
+	.  reduce 110
+
+
+state 102
+	section : S_TEMP SEP1 BEGIN uc_objects END .  (8)
+
+	.  reduce 8
+
+
+state 103
+	env_param_value : VALUE .  (16)
+
+	.  reduce 16
+
+
+state 104
+	env_param : env_param_name EQ env_param_value .  (14)
+
+	.  reduce 14
+
+
+state 105
+	uc_object : VAR name SEP1 . data_type  (20)
+	uc_object : VAR name SEP1 . data_type IN name  (21)
+	uc_object : VAR name SEP1 . data_type IN name DOT LBRAK VALUE RBRAK  (22)
+	uc_object : VAR name SEP1 . data_type IN name WITH params  (23)
+	uc_object : VAR name SEP1 . data_type IN name DOT LBRAK VALUE RBRAK WITH params  (24)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 143
+
+
+state 106
+	uc_object : REG name SEP1 . data_type  (17)
+	uc_object : REG name SEP1 . data_type WITH params  (18)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 144
+
+
+state 107
+	uc_object : SIG name SEP1 . data_type  (19)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 145
+
+
+state 108
+	uc_object : OBJ name SEP1 . data_type  (25)
+	uc_object : OBJ name SEP1 . data_type WITH params  (26)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 146
+
+
+state 109
+	uc_object : QUE name SEP1 . data_type  (27)
+	uc_object : QUE name SEP1 . data_type WITH params  (28)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 147
+
+
+state 110
+	uc_object : CHA name SEP1 . data_type  (29)
+	uc_object : CHA name SEP1 . data_type WITH params  (30)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 148
+
+
+state 111
+	uc_object : BLK name SEP1 . data_type OF data_type  (32)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 149
+
+
+state 112
+	uc_object : FUNC name LPAREN . data_type_list RPAREN  (31)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 150
+	data_type_list  goto 151
+
+
+state 113
+	uc_object : CON name SEP1 . data_type ASS operand  (34)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 152
+
+
+state 114
+	uc_object : VAL name SEP1 . operand  (35)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 153
+	selector  goto 121
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 115
+	uc_object : ARR name SEP1 . data_type OF data_type  (33)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 154
+
+
+state 116
+	uc_object : MODULE name SEP1 . data_type  (36)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 155
+
+
+117: reduce/reduce conflict (reduce 83, reduce 119) on VAR
+117: reduce/reduce conflict (reduce 83, reduce 119) on REG
+117: reduce/reduce conflict (reduce 83, reduce 119) on SIG
+117: reduce/reduce conflict (reduce 83, reduce 119) on OBJ
+117: reduce/reduce conflict (reduce 83, reduce 119) on QUE
+117: reduce/reduce conflict (reduce 83, reduce 119) on CHA
+117: reduce/reduce conflict (reduce 83, reduce 119) on BLK
+117: reduce/reduce conflict (reduce 83, reduce 119) on FUNC
+117: reduce/reduce conflict (reduce 83, reduce 119) on CON
+117: reduce/reduce conflict (reduce 83, reduce 119) on VAL
+117: reduce/reduce conflict (reduce 83, reduce 119) on ARR
+117: reduce/reduce conflict (reduce 83, reduce 119) on MODULE
+117: reduce/reduce conflict (reduce 83, reduce 119) on TYPE
+117: reduce/reduce conflict (reduce 83, reduce 119) on RBRAK
+117: reduce/reduce conflict (reduce 83, reduce 119) on RPAREN
+117: shift/reduce conflict (shift 156, reduce 119) on SEP1
+117: reduce/reduce conflict (reduce 83, reduce 119) on SEP2
+117: reduce/reduce conflict (reduce 83, reduce 119) on END
+state 117
+	operand : IDENT .  (83)
+	operand : IDENT . SEP1 params  (84)
+	name : IDENT .  (119)
+
+	SEP1  shift 156
+	VAR  reduce 83
+	REG  reduce 83
+	SIG  reduce 83
+	OBJ  reduce 83
+	QUE  reduce 83
+	CHA  reduce 83
+	BLK  reduce 83
+	FUNC  reduce 83
+	CON  reduce 83
+	VAL  reduce 83
+	ARR  reduce 83
+	MODULE  reduce 83
+	TYPE  reduce 83
+	RBRAK  reduce 83
+	RPAREN  reduce 83
+	SEP2  reduce 83
+	DOT  reduce 119
+	END  reduce 83
+
+
+118: reduce/reduce conflict (reduce 81, reduce 99) on RBRAK
+118: shift/reduce conflict (shift 158, reduce 81) on SEP2
+state 118
+	operand : VALUE .  (81)
+	operand : VALUE . SEP1 params  (82)
+	range : VALUE . TO VALUE  (95)
+	range : VALUE . DOWNTO VALUE  (96)
+	value_list : VALUE .  (99)
+	value_list : VALUE . SEP2 value_list  (100)
+
+	SEP1  shift 157
+	SEP2  shift 158
+	TO  shift 159
+	DOWNTO  shift 160
+	RBRAK  reduce 81
+
+
+state 119
+	operand : VAR . IMMED DOT LBRAK VALUE RBRAK  (85)
+	operand : VAR . TEMP DOT LBRAK name RBRAK  (86)
+	operand : VAR . TEMP DOT LBRAK selector RBRAK  (87)
+	operand : VAR . IMMED DOT LBRAK VALUE RBRAK SEP1 params  (88)
+	operand : VAR . TEMP DOT LBRAK name RBRAK SEP1 params  (89)
+	operand : VAR . TEMP DOT LBRAK selector RBRAK SEP1 params  (90)
+	operand : VAR . ALU DOT LBRAK VALUE RBRAK  (91)
+	operand : VAR . ALU DOT LBRAK VALUE RBRAK SEP1 params  (92)
+
+	IMMED  shift 161
+	ALU  shift 162
+	TEMP  shift 163
+	.  error
+
+
+state 120
+	value_list : operand .  (98)
+	value_list : operand . SEP2 value_list  (101)
+
+	SEP2  shift 164
+	RBRAK  reduce 98
+
+
+state 121
+	operand : selector .  (93)
+	operand : selector . SEP1 params  (94)
+
+	SEP1  shift 165
+	VAR  reduce 93
+	REG  reduce 93
+	SIG  reduce 93
+	OBJ  reduce 93
+	QUE  reduce 93
+	CHA  reduce 93
+	BLK  reduce 93
+	FUNC  reduce 93
+	CON  reduce 93
+	VAL  reduce 93
+	ARR  reduce 93
+	MODULE  reduce 93
+	TYPE  reduce 93
+	RBRAK  reduce 93
+	RPAREN  reduce 93
+	SEP2  reduce 93
+	END  reduce 93
+
+
+state 122
+	value_list : range .  (97)
+
+	.  reduce 97
+
+
+state 123
+	selector_type : LBRAK value_list . RBRAK  (104)
+
+	RBRAK  shift 166
+	.  error
+
+
+state 124
+	uc_object : TYPE name SEP1 . LCURL symbol_list RCURL  (37)
+	uc_object : TYPE name SEP1 . LCURL struct_list RCURL  (38)
+
+	LCURL  shift 167
+	.  error
+
+
+state 125
+	uc_object : TYPE selector SEP1 . LCURL method_list RCURL  (39)
+
+	LCURL  shift 168
+	.  error
+
+
+state 126
+	selector_list : selector_type DOT . selector_list  (106)
+
+	IDENT  shift 68
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	selector_list  goto 169
+	selector_type  goto 85
+
+
+state 127
+	operand : VALUE .  (81)
+	operand : VALUE . SEP1 params  (82)
+
+	SEP1  shift 157
+	VAR  reduce 81
+	REG  reduce 81
+	SIG  reduce 81
+	OBJ  reduce 81
+	QUE  reduce 81
+	CHA  reduce 81
+	BLK  reduce 81
+	FUNC  reduce 81
+	CON  reduce 81
+	VAL  reduce 81
+	ARR  reduce 81
+	MODULE  reduce 81
+	TYPE  reduce 81
+	RPAREN  reduce 81
+	SEP2  reduce 81
+	END  reduce 81
+
+
+state 128
+	instruction : MOVE LPAREN operand . SEP2 operand RPAREN  (114)
+	instruction : MOVE LPAREN operand . SEP2 operand RPAREN WITH params  (115)
+
+	SEP2  shift 170
+	.  error
+
+
+state 129
+	instruction : EXPR LPAREN operand . SEP2 operand SEP2 operation SEP2 operand RPAREN  (116)
+	instruction : EXPR LPAREN operand . SEP2 operand SEP2 operation SEP2 operand RPAREN WITH params  (117)
+
+	SEP2  shift 171
+	.  error
+
+
+state 130
+	instruction : FUN selector LPAREN . operand_list RPAREN  (118)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 172
+	selector  goto 121
+	operand_list  goto 173
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 131
+	instruction : BIND LPAREN VALUE . RPAREN  (111)
+
+	RPAREN  shift 174
+	.  error
+
+
+state 132
+	instruction : JUMP LPAREN label . RPAREN  (112)
+
+	RPAREN  shift 175
+	.  error
+
+
+state 133
+	instruction : FALSEJUMP LPAREN operand . SEP2 label RPAREN  (113)
+
+	SEP2  shift 176
+	.  error
+
+
+state 134
+	data_type : PARAM .  (60)
+
+	.  reduce 60
+
+
+state 135
+	data_type : TYPE_SPEC .  (52)
+	data_type : TYPE_SPEC . LBRAK VALUE RBRAK  (53)
+
+	LBRAK  shift 177
+	IDENT  reduce 52
+	VAR  reduce 52
+	REG  reduce 52
+	SIG  reduce 52
+	OBJ  reduce 52
+	QUE  reduce 52
+	CHA  reduce 52
+	BLK  reduce 52
+	FUNC  reduce 52
+	CON  reduce 52
+	VAL  reduce 52
+	ARR  reduce 52
+	MODULE  reduce 52
+	TYPE  reduce 52
+	RPAREN  reduce 52
+	RCURL  reduce 52
+	SEP1  reduce 52
+	SEP2  reduce 52
+	IN  reduce 52
+	WITH  reduce 52
+	OF  reduce 52
+	ASS  reduce 52
+	END  reduce 52
+
+
+state 136
+	data_type : IDENT .  (61)
+	data_type : IDENT . DOT IDENT  (62)
+
+	DOT  shift 178
+	IDENT  reduce 61
+	VAR  reduce 61
+	REG  reduce 61
+	SIG  reduce 61
+	OBJ  reduce 61
+	QUE  reduce 61
+	CHA  reduce 61
+	BLK  reduce 61
+	FUNC  reduce 61
+	CON  reduce 61
+	VAL  reduce 61
+	ARR  reduce 61
+	MODULE  reduce 61
+	TYPE  reduce 61
+	RPAREN  reduce 61
+	RCURL  reduce 61
+	SEP1  reduce 61
+	SEP2  reduce 61
+	IN  reduce 61
+	WITH  reduce 61
+	OF  reduce 61
+	ASS  reduce 61
+	END  reduce 61
+
+
+state 137
+	data_type : VAR . LBRAK diml RBRAK  (55)
+
+	LBRAK  shift 179
+	.  error
+
+
+state 138
+	data_type : REG . LBRAK diml RBRAK  (54)
+
+	LBRAK  shift 180
+	.  error
+
+
+state 139
+	data_type : SIG . LBRAK diml RBRAK  (56)
+
+	LBRAK  shift 181
+	.  error
+
+
+state 140
+	data_type : QUE . LBRAK VALUE RBRAK  (58)
+
+	LBRAK  shift 182
+	.  error
+
+
+state 141
+	data_type : CHA . LBRAK VALUE RBRAK  (59)
+
+	LBRAK  shift 183
+	.  error
+
+
+state 142
+	data_type : CELLS . LBRAK VALUE RBRAK  (57)
+
+	LBRAK  shift 184
+	.  error
+
+
+state 143
+	uc_object : VAR name SEP1 data_type .  (20)
+	uc_object : VAR name SEP1 data_type . IN name  (21)
+	uc_object : VAR name SEP1 data_type . IN name DOT LBRAK VALUE RBRAK  (22)
+	uc_object : VAR name SEP1 data_type . IN name WITH params  (23)
+	uc_object : VAR name SEP1 data_type . IN name DOT LBRAK VALUE RBRAK WITH params  (24)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	IN  shift 186
+	VAR  reduce 20
+	REG  reduce 20
+	SIG  reduce 20
+	OBJ  reduce 20
+	QUE  reduce 20
+	CHA  reduce 20
+	BLK  reduce 20
+	FUNC  reduce 20
+	CON  reduce 20
+	VAL  reduce 20
+	ARR  reduce 20
+	MODULE  reduce 20
+	TYPE  reduce 20
+	END  reduce 20
+
+
+state 144
+	uc_object : REG name SEP1 data_type .  (17)
+	uc_object : REG name SEP1 data_type . WITH params  (18)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	WITH  shift 187
+	VAR  reduce 17
+	REG  reduce 17
+	SIG  reduce 17
+	OBJ  reduce 17
+	QUE  reduce 17
+	CHA  reduce 17
+	BLK  reduce 17
+	FUNC  reduce 17
+	CON  reduce 17
+	VAL  reduce 17
+	ARR  reduce 17
+	MODULE  reduce 17
+	TYPE  reduce 17
+	END  reduce 17
+
+
+state 145
+	uc_object : SIG name SEP1 data_type .  (19)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	VAR  reduce 19
+	REG  reduce 19
+	SIG  reduce 19
+	OBJ  reduce 19
+	QUE  reduce 19
+	CHA  reduce 19
+	BLK  reduce 19
+	FUNC  reduce 19
+	CON  reduce 19
+	VAL  reduce 19
+	ARR  reduce 19
+	MODULE  reduce 19
+	TYPE  reduce 19
+	END  reduce 19
+
+
+state 146
+	uc_object : OBJ name SEP1 data_type .  (25)
+	uc_object : OBJ name SEP1 data_type . WITH params  (26)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	WITH  shift 188
+	VAR  reduce 25
+	REG  reduce 25
+	SIG  reduce 25
+	OBJ  reduce 25
+	QUE  reduce 25
+	CHA  reduce 25
+	BLK  reduce 25
+	FUNC  reduce 25
+	CON  reduce 25
+	VAL  reduce 25
+	ARR  reduce 25
+	MODULE  reduce 25
+	TYPE  reduce 25
+	END  reduce 25
+
+
+state 147
+	uc_object : QUE name SEP1 data_type .  (27)
+	uc_object : QUE name SEP1 data_type . WITH params  (28)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	WITH  shift 189
+	VAR  reduce 27
+	REG  reduce 27
+	SIG  reduce 27
+	OBJ  reduce 27
+	QUE  reduce 27
+	CHA  reduce 27
+	BLK  reduce 27
+	FUNC  reduce 27
+	CON  reduce 27
+	VAL  reduce 27
+	ARR  reduce 27
+	MODULE  reduce 27
+	TYPE  reduce 27
+	END  reduce 27
+
+
+state 148
+	uc_object : CHA name SEP1 data_type .  (29)
+	uc_object : CHA name SEP1 data_type . WITH params  (30)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	WITH  shift 190
+	VAR  reduce 29
+	REG  reduce 29
+	SIG  reduce 29
+	OBJ  reduce 29
+	QUE  reduce 29
+	CHA  reduce 29
+	BLK  reduce 29
+	FUNC  reduce 29
+	CON  reduce 29
+	VAL  reduce 29
+	ARR  reduce 29
+	MODULE  reduce 29
+	TYPE  reduce 29
+	END  reduce 29
+
+
+state 149
+	uc_object : BLK name SEP1 data_type . OF data_type  (32)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	OF  shift 191
+	.  error
+
+
+state 150
+	data_type_list : data_type .  (50)
+	data_type_list : data_type . SEP2 data_type_list  (51)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	SEP2  shift 192
+	RPAREN  reduce 50
+
+
+state 151
+	uc_object : FUNC name LPAREN data_type_list . RPAREN  (31)
+
+	RPAREN  shift 193
+	.  error
+
+
+state 152
+	uc_object : CON name SEP1 data_type . ASS operand  (34)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	ASS  shift 194
+	.  error
+
+
+state 153
+	uc_object : VAL name SEP1 operand .  (35)
+
+	.  reduce 35
+
+
+state 154
+	uc_object : ARR name SEP1 data_type . OF data_type  (33)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	OF  shift 195
+	.  error
+
+
+state 155
+	uc_object : MODULE name SEP1 data_type .  (36)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	VAR  reduce 36
+	REG  reduce 36
+	SIG  reduce 36
+	OBJ  reduce 36
+	QUE  reduce 36
+	CHA  reduce 36
+	BLK  reduce 36
+	FUNC  reduce 36
+	CON  reduce 36
+	VAL  reduce 36
+	ARR  reduce 36
+	MODULE  reduce 36
+	TYPE  reduce 36
+	END  reduce 36
+
+
+state 156
+	operand : IDENT SEP1 . params  (84)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 198
+	param  goto 199
+	param_name  goto 200
+
+
+state 157
+	operand : VALUE SEP1 . params  (82)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 201
+	param  goto 199
+	param_name  goto 200
+
+
+state 158
+	value_list : VALUE SEP2 . value_list  (100)
+
+	IDENT  shift 117
+	VALUE  shift 118
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 120
+	selector  goto 121
+	range  goto 122
+	value_list  goto 202
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 159
+	range : VALUE TO . VALUE  (95)
+
+	VALUE  shift 203
+	.  error
+
+
+state 160
+	range : VALUE DOWNTO . VALUE  (96)
+
+	VALUE  shift 204
+	.  error
+
+
+state 161
+	operand : VAR IMMED . DOT LBRAK VALUE RBRAK  (85)
+	operand : VAR IMMED . DOT LBRAK VALUE RBRAK SEP1 params  (88)
+
+	DOT  shift 205
+	.  error
+
+
+state 162
+	operand : VAR ALU . DOT LBRAK VALUE RBRAK  (91)
+	operand : VAR ALU . DOT LBRAK VALUE RBRAK SEP1 params  (92)
+
+	DOT  shift 206
+	.  error
+
+
+state 163
+	operand : VAR TEMP . DOT LBRAK name RBRAK  (86)
+	operand : VAR TEMP . DOT LBRAK selector RBRAK  (87)
+	operand : VAR TEMP . DOT LBRAK name RBRAK SEP1 params  (89)
+	operand : VAR TEMP . DOT LBRAK selector RBRAK SEP1 params  (90)
+
+	DOT  shift 207
+	.  error
+
+
+state 164
+	value_list : operand SEP2 . value_list  (101)
+
+	IDENT  shift 117
+	VALUE  shift 118
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 120
+	selector  goto 121
+	range  goto 122
+	value_list  goto 208
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 165
+	operand : selector SEP1 . params  (94)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 209
+	param  goto 199
+	param_name  goto 200
+
+
+state 166
+	selector_type : LBRAK value_list RBRAK .  (104)
+
+	.  reduce 104
+
+
+state 167
+	uc_object : TYPE name SEP1 LCURL . symbol_list RCURL  (37)
+	uc_object : TYPE name SEP1 LCURL . struct_list RCURL  (38)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 210
+	symbol_list  goto 211
+	struct_list  goto 212
+	symbol_el  goto 213
+	struct_el  goto 214
+
+
+state 168
+	uc_object : TYPE selector SEP1 LCURL . method_list RCURL  (39)
+
+	METHOD  shift 215
+	.  error
+
+	method_list  goto 216
+	method_el  goto 217
+
+
+state 169
+	selector_list : selector_type DOT selector_list .  (106)
+
+	.  reduce 106
+
+
+state 170
+	instruction : MOVE LPAREN operand SEP2 . operand RPAREN  (114)
+	instruction : MOVE LPAREN operand SEP2 . operand RPAREN WITH params  (115)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 218
+	selector  goto 121
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 171
+	instruction : EXPR LPAREN operand SEP2 . operand SEP2 operation SEP2 operand RPAREN  (116)
+	instruction : EXPR LPAREN operand SEP2 . operand SEP2 operation SEP2 operand RPAREN WITH params  (117)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 219
+	selector  goto 121
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 172
+	operand_list : operand .  (79)
+	operand_list : operand . SEP2 operand_list  (80)
+
+	SEP2  shift 220
+	RPAREN  reduce 79
+
+
+state 173
+	instruction : FUN selector LPAREN operand_list . RPAREN  (118)
+
+	RPAREN  shift 221
+	.  error
+
+
+state 174
+	instruction : BIND LPAREN VALUE RPAREN .  (111)
+
+	.  reduce 111
+
+
+state 175
+	instruction : JUMP LPAREN label RPAREN .  (112)
+
+	.  reduce 112
+
+
+state 176
+	instruction : FALSEJUMP LPAREN operand SEP2 . label RPAREN  (113)
+
+	IDENT  shift 52
+	.  error
+
+	label  goto 222
+
+
+state 177
+	data_type : TYPE_SPEC LBRAK . VALUE RBRAK  (53)
+
+	VALUE  shift 223
+	.  error
+
+
+state 178
+	data_type : IDENT DOT . IDENT  (62)
+
+	IDENT  shift 224
+	.  error
+
+
+state 179
+	data_type : VAR LBRAK . diml RBRAK  (55)
+
+	VALUE  shift 225
+	.  error
+
+	diml  goto 226
+	dim  goto 227
+
+
+state 180
+	data_type : REG LBRAK . diml RBRAK  (54)
+
+	VALUE  shift 225
+	.  error
+
+	diml  goto 228
+	dim  goto 227
+
+
+state 181
+	data_type : SIG LBRAK . diml RBRAK  (56)
+
+	VALUE  shift 225
+	.  error
+
+	diml  goto 229
+	dim  goto 227
+
+
+state 182
+	data_type : QUE LBRAK . VALUE RBRAK  (58)
+
+	VALUE  shift 230
+	.  error
+
+
+state 183
+	data_type : CHA LBRAK . VALUE RBRAK  (59)
+
+	VALUE  shift 231
+	.  error
+
+
+state 184
+	data_type : CELLS LBRAK . VALUE RBRAK  (57)
+
+	VALUE  shift 232
+	.  error
+
+
+state 185
+	data_type : data_type SEP1 . PARAM  (63)
+
+	PARAM  shift 233
+	.  error
+
+
+state 186
+	uc_object : VAR name SEP1 data_type IN . name  (21)
+	uc_object : VAR name SEP1 data_type IN . name DOT LBRAK VALUE RBRAK  (22)
+	uc_object : VAR name SEP1 data_type IN . name WITH params  (23)
+	uc_object : VAR name SEP1 data_type IN . name DOT LBRAK VALUE RBRAK WITH params  (24)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 234
+
+
+state 187
+	uc_object : REG name SEP1 data_type WITH . params  (18)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 235
+	param  goto 199
+	param_name  goto 200
+
+
+state 188
+	uc_object : OBJ name SEP1 data_type WITH . params  (26)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 236
+	param  goto 199
+	param_name  goto 200
+
+
+state 189
+	uc_object : QUE name SEP1 data_type WITH . params  (28)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 237
+	param  goto 199
+	param_name  goto 200
+
+
+state 190
+	uc_object : CHA name SEP1 data_type WITH . params  (30)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 238
+	param  goto 199
+	param_name  goto 200
+
+
+state 191
+	uc_object : BLK name SEP1 data_type OF . data_type  (32)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 239
+
+
+state 192
+	data_type_list : data_type SEP2 . data_type_list  (51)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 150
+	data_type_list  goto 240
+
+
+state 193
+	uc_object : FUNC name LPAREN data_type_list RPAREN .  (31)
+
+	.  reduce 31
+
+
+state 194
+	uc_object : CON name SEP1 data_type ASS . operand  (34)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 241
+	selector  goto 121
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 195
+	uc_object : ARR name SEP1 data_type OF . data_type  (33)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 242
+
+
+state 196
+	param_name : PARAM .  (70)
+
+	.  reduce 70
+
+
+state 197
+	param_name : VAR . IDENT  (71)
+
+	IDENT  shift 243
+	.  error
+
+
+state 198
+	operand : IDENT SEP1 params .  (84)
+
+	.  reduce 84
+
+
+state 199
+	params : param .  (67)
+	params : param . AND params  (68)
+
+	AND  shift 244
+	IDENT  reduce 67
+	VAR  reduce 67
+	REG  reduce 67
+	SIG  reduce 67
+	OBJ  reduce 67
+	QUE  reduce 67
+	CHA  reduce 67
+	BLK  reduce 67
+	FUNC  reduce 67
+	CON  reduce 67
+	VAL  reduce 67
+	ARR  reduce 67
+	MODULE  reduce 67
+	TYPE  reduce 67
+	RBRAK  reduce 67
+	RPAREN  reduce 67
+	SEP2  reduce 67
+	END  reduce 67
+	MOVE  reduce 67
+	EXPR  reduce 67
+	FUN  reduce 67
+	BIND  reduce 67
+	JUMP  reduce 67
+	FALSEJUMP  reduce 67
+	NOP  reduce 67
+
+
+state 200
+	param : param_name . EQ param_value  (69)
+
+	EQ  shift 245
+	.  error
+
+
+state 201
+	operand : VALUE SEP1 params .  (82)
+
+	.  reduce 82
+
+
+state 202
+	value_list : VALUE SEP2 value_list .  (100)
+
+	.  reduce 100
+
+
+state 203
+	range : VALUE TO VALUE .  (95)
+
+	.  reduce 95
+
+
+state 204
+	range : VALUE DOWNTO VALUE .  (96)
+
+	.  reduce 96
+
+
+state 205
+	operand : VAR IMMED DOT . LBRAK VALUE RBRAK  (85)
+	operand : VAR IMMED DOT . LBRAK VALUE RBRAK SEP1 params  (88)
+
+	LBRAK  shift 246
+	.  error
+
+
+state 206
+	operand : VAR ALU DOT . LBRAK VALUE RBRAK  (91)
+	operand : VAR ALU DOT . LBRAK VALUE RBRAK SEP1 params  (92)
+
+	LBRAK  shift 247
+	.  error
+
+
+state 207
+	operand : VAR TEMP DOT . LBRAK name RBRAK  (86)
+	operand : VAR TEMP DOT . LBRAK selector RBRAK  (87)
+	operand : VAR TEMP DOT . LBRAK name RBRAK SEP1 params  (89)
+	operand : VAR TEMP DOT . LBRAK selector RBRAK SEP1 params  (90)
+
+	LBRAK  shift 248
+	.  error
+
+
+state 208
+	value_list : operand SEP2 value_list .  (101)
+
+	.  reduce 101
+
+
+state 209
+	operand : selector SEP1 params .  (94)
+
+	.  reduce 94
+
+
+state 210
+	symbol_el : name .  (46)
+	struct_el : name . SEP1 data_type  (47)
+
+	SEP1  shift 249
+	IDENT  reduce 46
+	RCURL  reduce 46
+
+
+state 211
+	uc_object : TYPE name SEP1 LCURL symbol_list . RCURL  (37)
+
+	RCURL  shift 250
+	.  error
+
+
+state 212
+	uc_object : TYPE name SEP1 LCURL struct_list . RCURL  (38)
+
+	RCURL  shift 251
+	.  error
+
+
+state 213
+	symbol_list : symbol_el .  (40)
+	symbol_list : symbol_el . symbol_list  (41)
+
+	IDENT  shift 68
+	RCURL  reduce 40
+
+	name  goto 252
+	symbol_list  goto 253
+	symbol_el  goto 213
+
+
+state 214
+	struct_list : struct_el .  (42)
+	struct_list : struct_el . struct_list  (43)
+
+	IDENT  shift 68
+	RCURL  reduce 42
+
+	name  goto 254
+	struct_list  goto 255
+	struct_el  goto 214
+
+
+state 215
+	method_el : METHOD . name LPAREN data_type_list RPAREN  (48)
+	method_el : METHOD . name LPAREN RPAREN  (49)
+
+	IDENT  shift 68
+	.  error
+
+	name  goto 256
+
+
+state 216
+	uc_object : TYPE selector SEP1 LCURL method_list . RCURL  (39)
+
+	RCURL  shift 257
+	.  error
+
+
+state 217
+	method_list : method_el .  (44)
+	method_list : method_el . method_list  (45)
+
+	METHOD  shift 215
+	RCURL  reduce 44
+
+	method_list  goto 258
+	method_el  goto 217
+
+
+state 218
+	instruction : MOVE LPAREN operand SEP2 operand . RPAREN  (114)
+	instruction : MOVE LPAREN operand SEP2 operand . RPAREN WITH params  (115)
+
+	RPAREN  shift 259
+	.  error
+
+
+state 219
+	instruction : EXPR LPAREN operand SEP2 operand . SEP2 operation SEP2 operand RPAREN  (116)
+	instruction : EXPR LPAREN operand SEP2 operand . SEP2 operation SEP2 operand RPAREN WITH params  (117)
+
+	SEP2  shift 260
+	.  error
+
+
+state 220
+	operand_list : operand SEP2 . operand_list  (80)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 172
+	selector  goto 121
+	operand_list  goto 261
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 221
+	instruction : FUN selector LPAREN operand_list RPAREN .  (118)
+
+	.  reduce 118
+
+
+state 222
+	instruction : FALSEJUMP LPAREN operand SEP2 label . RPAREN  (113)
+
+	RPAREN  shift 262
+	.  error
+
+
+state 223
+	data_type : TYPE_SPEC LBRAK VALUE . RBRAK  (53)
+
+	RBRAK  shift 263
+	.  error
+
+
+state 224
+	data_type : IDENT DOT IDENT .  (62)
+
+	.  reduce 62
+
+
+state 225
+	dim : VALUE .  (66)
+
+	.  reduce 66
+
+
+state 226
+	data_type : VAR LBRAK diml . RBRAK  (55)
+
+	RBRAK  shift 264
+	.  error
+
+
+state 227
+	diml : dim .  (64)
+	diml : dim . SEP2 diml  (65)
+
+	SEP2  shift 265
+	RBRAK  reduce 64
+
+
+state 228
+	data_type : REG LBRAK diml . RBRAK  (54)
+
+	RBRAK  shift 266
+	.  error
+
+
+state 229
+	data_type : SIG LBRAK diml . RBRAK  (56)
+
+	RBRAK  shift 267
+	.  error
+
+
+state 230
+	data_type : QUE LBRAK VALUE . RBRAK  (58)
+
+	RBRAK  shift 268
+	.  error
+
+
+state 231
+	data_type : CHA LBRAK VALUE . RBRAK  (59)
+
+	RBRAK  shift 269
+	.  error
+
+
+state 232
+	data_type : CELLS LBRAK VALUE . RBRAK  (57)
+
+	RBRAK  shift 270
+	.  error
+
+
+state 233
+	data_type : data_type SEP1 PARAM .  (63)
+
+	.  reduce 63
+
+
+state 234
+	uc_object : VAR name SEP1 data_type IN name .  (21)
+	uc_object : VAR name SEP1 data_type IN name . DOT LBRAK VALUE RBRAK  (22)
+	uc_object : VAR name SEP1 data_type IN name . WITH params  (23)
+	uc_object : VAR name SEP1 data_type IN name . DOT LBRAK VALUE RBRAK WITH params  (24)
+
+	WITH  shift 271
+	DOT  shift 272
+	VAR  reduce 21
+	REG  reduce 21
+	SIG  reduce 21
+	OBJ  reduce 21
+	QUE  reduce 21
+	CHA  reduce 21
+	BLK  reduce 21
+	FUNC  reduce 21
+	CON  reduce 21
+	VAL  reduce 21
+	ARR  reduce 21
+	MODULE  reduce 21
+	TYPE  reduce 21
+	END  reduce 21
+
+
+state 235
+	uc_object : REG name SEP1 data_type WITH params .  (18)
+
+	.  reduce 18
+
+
+state 236
+	uc_object : OBJ name SEP1 data_type WITH params .  (26)
+
+	.  reduce 26
+
+
+state 237
+	uc_object : QUE name SEP1 data_type WITH params .  (28)
+
+	.  reduce 28
+
+
+state 238
+	uc_object : CHA name SEP1 data_type WITH params .  (30)
+
+	.  reduce 30
+
+
+state 239
+	uc_object : BLK name SEP1 data_type OF data_type .  (32)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	VAR  reduce 32
+	REG  reduce 32
+	SIG  reduce 32
+	OBJ  reduce 32
+	QUE  reduce 32
+	CHA  reduce 32
+	BLK  reduce 32
+	FUNC  reduce 32
+	CON  reduce 32
+	VAL  reduce 32
+	ARR  reduce 32
+	MODULE  reduce 32
+	TYPE  reduce 32
+	END  reduce 32
+
+
+state 240
+	data_type_list : data_type SEP2 data_type_list .  (51)
+
+	.  reduce 51
+
+
+state 241
+	uc_object : CON name SEP1 data_type ASS operand .  (34)
+
+	.  reduce 34
+
+
+state 242
+	uc_object : ARR name SEP1 data_type OF data_type .  (33)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	VAR  reduce 33
+	REG  reduce 33
+	SIG  reduce 33
+	OBJ  reduce 33
+	QUE  reduce 33
+	CHA  reduce 33
+	BLK  reduce 33
+	FUNC  reduce 33
+	CON  reduce 33
+	VAL  reduce 33
+	ARR  reduce 33
+	MODULE  reduce 33
+	TYPE  reduce 33
+	END  reduce 33
+
+
+state 243
+	param_name : VAR IDENT .  (71)
+
+	.  reduce 71
+
+
+state 244
+	params : param AND . params  (68)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 273
+	param  goto 199
+	param_name  goto 200
+
+
+state 245
+	param : param_name EQ . param_value  (69)
+
+	STRING  shift 274
+	CHAR  shift 275
+	PARAM  shift 134
+	TYPE_SPEC  shift 276
+	IDENT  shift 277
+	VALUE  shift 278
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 279
+	param_value  goto 280
+
+
+state 246
+	operand : VAR IMMED DOT LBRAK . VALUE RBRAK  (85)
+	operand : VAR IMMED DOT LBRAK . VALUE RBRAK SEP1 params  (88)
+
+	VALUE  shift 281
+	.  error
+
+
+state 247
+	operand : VAR ALU DOT LBRAK . VALUE RBRAK  (91)
+	operand : VAR ALU DOT LBRAK . VALUE RBRAK SEP1 params  (92)
+
+	VALUE  shift 282
+	.  error
+
+
+state 248
+	operand : VAR TEMP DOT LBRAK . name RBRAK  (86)
+	operand : VAR TEMP DOT LBRAK . selector RBRAK  (87)
+	operand : VAR TEMP DOT LBRAK . name RBRAK SEP1 params  (89)
+	operand : VAR TEMP DOT LBRAK . selector RBRAK SEP1 params  (90)
+
+	IDENT  shift 68
+	LBRAK  shift 81
+	.  error
+
+	name  goto 283
+	selector  goto 284
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 249
+	struct_el : name SEP1 . data_type  (47)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	.  error
+
+	data_type  goto 285
+
+
+state 250
+	uc_object : TYPE name SEP1 LCURL symbol_list RCURL .  (37)
+
+	.  reduce 37
+
+
+state 251
+	uc_object : TYPE name SEP1 LCURL struct_list RCURL .  (38)
+
+	.  reduce 38
+
+
+state 252
+	symbol_el : name .  (46)
+
+	.  reduce 46
+
+
+state 253
+	symbol_list : symbol_el symbol_list .  (41)
+
+	.  reduce 41
+
+
+state 254
+	struct_el : name . SEP1 data_type  (47)
+
+	SEP1  shift 249
+	.  error
+
+
+state 255
+	struct_list : struct_el struct_list .  (43)
+
+	.  reduce 43
+
+
+state 256
+	method_el : METHOD name . LPAREN data_type_list RPAREN  (48)
+	method_el : METHOD name . LPAREN RPAREN  (49)
+
+	LPAREN  shift 286
+	.  error
+
+
+state 257
+	uc_object : TYPE selector SEP1 LCURL method_list RCURL .  (39)
+
+	.  reduce 39
+
+
+state 258
+	method_list : method_el method_list .  (45)
+
+	.  reduce 45
+
+
+state 259
+	instruction : MOVE LPAREN operand SEP2 operand RPAREN .  (114)
+	instruction : MOVE LPAREN operand SEP2 operand RPAREN . WITH params  (115)
+
+	WITH  shift 287
+	IDENT  reduce 114
+	END  reduce 114
+	MOVE  reduce 114
+	EXPR  reduce 114
+	FUN  reduce 114
+	BIND  reduce 114
+	JUMP  reduce 114
+	FALSEJUMP  reduce 114
+	NOP  reduce 114
+
+
+state 260
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 . operation SEP2 operand RPAREN  (116)
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 . operation SEP2 operand RPAREN WITH params  (117)
+
+	EQ  shift 288
+	NEQ  shift 289
+	LT  shift 290
+	GT  shift 291
+	LEQ  shift 292
+	GEQ  shift 293
+	PLUS  shift 294
+	MINUS  shift 295
+	TIMES  shift 296
+	DIVI  shift 297
+	AND  shift 298
+	OR  shift 299
+	XOR  shift 300
+	NOT  shift 301
+	.  error
+
+	operation  goto 302
+
+
+state 261
+	operand_list : operand SEP2 operand_list .  (80)
+
+	.  reduce 80
+
+
+state 262
+	instruction : FALSEJUMP LPAREN operand SEP2 label RPAREN .  (113)
+
+	.  reduce 113
+
+
+state 263
+	data_type : TYPE_SPEC LBRAK VALUE RBRAK .  (53)
+
+	.  reduce 53
+
+
+state 264
+	data_type : VAR LBRAK diml RBRAK .  (55)
+
+	.  reduce 55
+
+
+state 265
+	diml : dim SEP2 . diml  (65)
+
+	VALUE  shift 225
+	.  error
+
+	diml  goto 303
+	dim  goto 227
+
+
+state 266
+	data_type : REG LBRAK diml RBRAK .  (54)
+
+	.  reduce 54
+
+
+state 267
+	data_type : SIG LBRAK diml RBRAK .  (56)
+
+	.  reduce 56
+
+
+state 268
+	data_type : QUE LBRAK VALUE RBRAK .  (58)
+
+	.  reduce 58
+
+
+state 269
+	data_type : CHA LBRAK VALUE RBRAK .  (59)
+
+	.  reduce 59
+
+
+state 270
+	data_type : CELLS LBRAK VALUE RBRAK .  (57)
+
+	.  reduce 57
+
+
+state 271
+	uc_object : VAR name SEP1 data_type IN name WITH . params  (23)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 304
+	param  goto 199
+	param_name  goto 200
+
+
+state 272
+	uc_object : VAR name SEP1 data_type IN name DOT . LBRAK VALUE RBRAK  (22)
+	uc_object : VAR name SEP1 data_type IN name DOT . LBRAK VALUE RBRAK WITH params  (24)
+
+	LBRAK  shift 305
+	.  error
+
+
+state 273
+	params : param AND params .  (68)
+
+	.  reduce 68
+
+
+state 274
+	param_value : STRING .  (74)
+
+	.  reduce 74
+
+
+state 275
+	param_value : CHAR .  (75)
+
+	.  reduce 75
+
+
+276: reduce/reduce conflict (reduce 52, reduce 76) on IDENT
+276: reduce/reduce conflict (reduce 52, reduce 76) on VAR
+276: reduce/reduce conflict (reduce 52, reduce 76) on REG
+276: reduce/reduce conflict (reduce 52, reduce 76) on SIG
+276: reduce/reduce conflict (reduce 52, reduce 76) on OBJ
+276: reduce/reduce conflict (reduce 52, reduce 76) on QUE
+276: reduce/reduce conflict (reduce 52, reduce 76) on CHA
+276: reduce/reduce conflict (reduce 52, reduce 76) on BLK
+276: reduce/reduce conflict (reduce 52, reduce 76) on FUNC
+276: reduce/reduce conflict (reduce 52, reduce 76) on CON
+276: reduce/reduce conflict (reduce 52, reduce 76) on VAL
+276: reduce/reduce conflict (reduce 52, reduce 76) on ARR
+276: reduce/reduce conflict (reduce 52, reduce 76) on MODULE
+276: reduce/reduce conflict (reduce 52, reduce 76) on TYPE
+276: reduce/reduce conflict (reduce 52, reduce 76) on AND
+276: reduce/reduce conflict (reduce 52, reduce 76) on RBRAK
+276: reduce/reduce conflict (reduce 52, reduce 76) on RPAREN
+276: reduce/reduce conflict (reduce 52, reduce 76) on SEP2
+276: reduce/reduce conflict (reduce 52, reduce 76) on END
+276: reduce/reduce conflict (reduce 52, reduce 76) on MOVE
+276: reduce/reduce conflict (reduce 52, reduce 76) on EXPR
+276: reduce/reduce conflict (reduce 52, reduce 76) on FUN
+276: reduce/reduce conflict (reduce 52, reduce 76) on BIND
+276: reduce/reduce conflict (reduce 52, reduce 76) on JUMP
+276: reduce/reduce conflict (reduce 52, reduce 76) on FALSEJUMP
+276: reduce/reduce conflict (reduce 52, reduce 76) on NOP
+state 276
+	data_type : TYPE_SPEC .  (52)
+	data_type : TYPE_SPEC . LBRAK VALUE RBRAK  (53)
+	param_value : TYPE_SPEC .  (76)
+	param_value : TYPE_SPEC . LBRAK VALUE RBRAK  (77)
+
+	LBRAK  shift 306
+	IDENT  reduce 52
+	VAR  reduce 52
+	REG  reduce 52
+	SIG  reduce 52
+	OBJ  reduce 52
+	QUE  reduce 52
+	CHA  reduce 52
+	BLK  reduce 52
+	FUNC  reduce 52
+	CON  reduce 52
+	VAL  reduce 52
+	ARR  reduce 52
+	MODULE  reduce 52
+	TYPE  reduce 52
+	AND  reduce 52
+	RBRAK  reduce 52
+	RPAREN  reduce 52
+	SEP1  reduce 52
+	SEP2  reduce 52
+	END  reduce 52
+	MOVE  reduce 52
+	EXPR  reduce 52
+	FUN  reduce 52
+	BIND  reduce 52
+	JUMP  reduce 52
+	FALSEJUMP  reduce 52
+	NOP  reduce 52
+
+
+277: reduce/reduce conflict (reduce 61, reduce 72) on IDENT
+277: reduce/reduce conflict (reduce 61, reduce 72) on VAR
+277: reduce/reduce conflict (reduce 61, reduce 72) on REG
+277: reduce/reduce conflict (reduce 61, reduce 72) on SIG
+277: reduce/reduce conflict (reduce 61, reduce 72) on OBJ
+277: reduce/reduce conflict (reduce 61, reduce 72) on QUE
+277: reduce/reduce conflict (reduce 61, reduce 72) on CHA
+277: reduce/reduce conflict (reduce 61, reduce 72) on BLK
+277: reduce/reduce conflict (reduce 61, reduce 72) on FUNC
+277: reduce/reduce conflict (reduce 61, reduce 72) on CON
+277: reduce/reduce conflict (reduce 61, reduce 72) on VAL
+277: reduce/reduce conflict (reduce 61, reduce 72) on ARR
+277: reduce/reduce conflict (reduce 61, reduce 72) on MODULE
+277: reduce/reduce conflict (reduce 61, reduce 72) on TYPE
+277: reduce/reduce conflict (reduce 61, reduce 72) on AND
+277: reduce/reduce conflict (reduce 61, reduce 72) on RBRAK
+277: reduce/reduce conflict (reduce 61, reduce 72) on RPAREN
+277: reduce/reduce conflict (reduce 61, reduce 72) on SEP2
+277: reduce/reduce conflict (reduce 61, reduce 72) on END
+277: reduce/reduce conflict (reduce 61, reduce 72) on MOVE
+277: reduce/reduce conflict (reduce 61, reduce 72) on EXPR
+277: reduce/reduce conflict (reduce 61, reduce 72) on FUN
+277: reduce/reduce conflict (reduce 61, reduce 72) on BIND
+277: reduce/reduce conflict (reduce 61, reduce 72) on JUMP
+277: reduce/reduce conflict (reduce 61, reduce 72) on FALSEJUMP
+277: reduce/reduce conflict (reduce 61, reduce 72) on NOP
+state 277
+	data_type : IDENT .  (61)
+	data_type : IDENT . DOT IDENT  (62)
+	param_value : IDENT .  (72)
+
+	DOT  shift 178
+	IDENT  reduce 61
+	VAR  reduce 61
+	REG  reduce 61
+	SIG  reduce 61
+	OBJ  reduce 61
+	QUE  reduce 61
+	CHA  reduce 61
+	BLK  reduce 61
+	FUNC  reduce 61
+	CON  reduce 61
+	VAL  reduce 61
+	ARR  reduce 61
+	MODULE  reduce 61
+	TYPE  reduce 61
+	AND  reduce 61
+	RBRAK  reduce 61
+	RPAREN  reduce 61
+	SEP1  reduce 61
+	SEP2  reduce 61
+	END  reduce 61
+	MOVE  reduce 61
+	EXPR  reduce 61
+	FUN  reduce 61
+	BIND  reduce 61
+	JUMP  reduce 61
+	FALSEJUMP  reduce 61
+	NOP  reduce 61
+
+
+state 278
+	param_value : VALUE .  (73)
+
+	.  reduce 73
+
+
+state 279
+	data_type : data_type . SEP1 PARAM  (63)
+	param_value : data_type .  (78)
+
+	SEP1  shift 185
+	IDENT  reduce 78
+	VAR  reduce 78
+	REG  reduce 78
+	SIG  reduce 78
+	OBJ  reduce 78
+	QUE  reduce 78
+	CHA  reduce 78
+	BLK  reduce 78
+	FUNC  reduce 78
+	CON  reduce 78
+	VAL  reduce 78
+	ARR  reduce 78
+	MODULE  reduce 78
+	TYPE  reduce 78
+	AND  reduce 78
+	RBRAK  reduce 78
+	RPAREN  reduce 78
+	SEP2  reduce 78
+	END  reduce 78
+	MOVE  reduce 78
+	EXPR  reduce 78
+	FUN  reduce 78
+	BIND  reduce 78
+	JUMP  reduce 78
+	FALSEJUMP  reduce 78
+	NOP  reduce 78
+
+
+state 280
+	param : param_name EQ param_value .  (69)
+
+	.  reduce 69
+
+
+state 281
+	operand : VAR IMMED DOT LBRAK VALUE . RBRAK  (85)
+	operand : VAR IMMED DOT LBRAK VALUE . RBRAK SEP1 params  (88)
+
+	RBRAK  shift 307
+	.  error
+
+
+state 282
+	operand : VAR ALU DOT LBRAK VALUE . RBRAK  (91)
+	operand : VAR ALU DOT LBRAK VALUE . RBRAK SEP1 params  (92)
+
+	RBRAK  shift 308
+	.  error
+
+
+283: shift/reduce conflict (shift 309, reduce 103) on RBRAK
+state 283
+	operand : VAR TEMP DOT LBRAK name . RBRAK  (86)
+	operand : VAR TEMP DOT LBRAK name . RBRAK SEP1 params  (89)
+	selector_type : name .  (103)
+
+	RBRAK  shift 309
+	DOT  reduce 103
+
+
+state 284
+	operand : VAR TEMP DOT LBRAK selector . RBRAK  (87)
+	operand : VAR TEMP DOT LBRAK selector . RBRAK SEP1 params  (90)
+
+	RBRAK  shift 310
+	.  error
+
+
+state 285
+	struct_el : name SEP1 data_type .  (47)
+	data_type : data_type . SEP1 PARAM  (63)
+
+	SEP1  shift 185
+	IDENT  reduce 47
+	RCURL  reduce 47
+
+
+state 286
+	method_el : METHOD name LPAREN . data_type_list RPAREN  (48)
+	method_el : METHOD name LPAREN . RPAREN  (49)
+
+	PARAM  shift 134
+	TYPE_SPEC  shift 135
+	IDENT  shift 136
+	VAR  shift 137
+	REG  shift 138
+	SIG  shift 139
+	QUE  shift 140
+	CHA  shift 141
+	CELLS  shift 142
+	RPAREN  shift 311
+	.  error
+
+	data_type  goto 150
+	data_type_list  goto 312
+
+
+state 287
+	instruction : MOVE LPAREN operand SEP2 operand RPAREN WITH . params  (115)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 313
+	param  goto 199
+	param_name  goto 200
+
+
+state 288
+	operation : EQ .  (129)
+
+	.  reduce 129
+
+
+state 289
+	operation : NEQ .  (130)
+
+	.  reduce 130
+
+
+state 290
+	operation : LT .  (131)
+
+	.  reduce 131
+
+
+state 291
+	operation : GT .  (132)
+
+	.  reduce 132
+
+
+state 292
+	operation : LEQ .  (133)
+
+	.  reduce 133
+
+
+state 293
+	operation : GEQ .  (134)
+
+	.  reduce 134
+
+
+state 294
+	operation : PLUS .  (121)
+
+	.  reduce 121
+
+
+state 295
+	operation : MINUS .  (122)
+
+	.  reduce 122
+
+
+state 296
+	operation : TIMES .  (123)
+
+	.  reduce 123
+
+
+state 297
+	operation : DIVI .  (124)
+
+	.  reduce 124
+
+
+state 298
+	operation : AND .  (125)
+
+	.  reduce 125
+
+
+state 299
+	operation : OR .  (126)
+
+	.  reduce 126
+
+
+state 300
+	operation : XOR .  (127)
+
+	.  reduce 127
+
+
+state 301
+	operation : NOT .  (128)
+
+	.  reduce 128
+
+
+state 302
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation . SEP2 operand RPAREN  (116)
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation . SEP2 operand RPAREN WITH params  (117)
+
+	SEP2  shift 314
+	.  error
+
+
+state 303
+	diml : dim SEP2 diml .  (65)
+
+	.  reduce 65
+
+
+state 304
+	uc_object : VAR name SEP1 data_type IN name WITH params .  (23)
+
+	.  reduce 23
+
+
+state 305
+	uc_object : VAR name SEP1 data_type IN name DOT LBRAK . VALUE RBRAK  (22)
+	uc_object : VAR name SEP1 data_type IN name DOT LBRAK . VALUE RBRAK WITH params  (24)
+
+	VALUE  shift 315
+	.  error
+
+
+state 306
+	data_type : TYPE_SPEC LBRAK . VALUE RBRAK  (53)
+	param_value : TYPE_SPEC LBRAK . VALUE RBRAK  (77)
+
+	VALUE  shift 316
+	.  error
+
+
+state 307
+	operand : VAR IMMED DOT LBRAK VALUE RBRAK .  (85)
+	operand : VAR IMMED DOT LBRAK VALUE RBRAK . SEP1 params  (88)
+
+	SEP1  shift 317
+	VAR  reduce 85
+	REG  reduce 85
+	SIG  reduce 85
+	OBJ  reduce 85
+	QUE  reduce 85
+	CHA  reduce 85
+	BLK  reduce 85
+	FUNC  reduce 85
+	CON  reduce 85
+	VAL  reduce 85
+	ARR  reduce 85
+	MODULE  reduce 85
+	TYPE  reduce 85
+	RBRAK  reduce 85
+	RPAREN  reduce 85
+	SEP2  reduce 85
+	END  reduce 85
+
+
+state 308
+	operand : VAR ALU DOT LBRAK VALUE RBRAK .  (91)
+	operand : VAR ALU DOT LBRAK VALUE RBRAK . SEP1 params  (92)
+
+	SEP1  shift 318
+	VAR  reduce 91
+	REG  reduce 91
+	SIG  reduce 91
+	OBJ  reduce 91
+	QUE  reduce 91
+	CHA  reduce 91
+	BLK  reduce 91
+	FUNC  reduce 91
+	CON  reduce 91
+	VAL  reduce 91
+	ARR  reduce 91
+	MODULE  reduce 91
+	TYPE  reduce 91
+	RBRAK  reduce 91
+	RPAREN  reduce 91
+	SEP2  reduce 91
+	END  reduce 91
+
+
+state 309
+	operand : VAR TEMP DOT LBRAK name RBRAK .  (86)
+	operand : VAR TEMP DOT LBRAK name RBRAK . SEP1 params  (89)
+
+	SEP1  shift 319
+	VAR  reduce 86
+	REG  reduce 86
+	SIG  reduce 86
+	OBJ  reduce 86
+	QUE  reduce 86
+	CHA  reduce 86
+	BLK  reduce 86
+	FUNC  reduce 86
+	CON  reduce 86
+	VAL  reduce 86
+	ARR  reduce 86
+	MODULE  reduce 86
+	TYPE  reduce 86
+	RBRAK  reduce 86
+	RPAREN  reduce 86
+	SEP2  reduce 86
+	END  reduce 86
+
+
+state 310
+	operand : VAR TEMP DOT LBRAK selector RBRAK .  (87)
+	operand : VAR TEMP DOT LBRAK selector RBRAK . SEP1 params  (90)
+
+	SEP1  shift 320
+	VAR  reduce 87
+	REG  reduce 87
+	SIG  reduce 87
+	OBJ  reduce 87
+	QUE  reduce 87
+	CHA  reduce 87
+	BLK  reduce 87
+	FUNC  reduce 87
+	CON  reduce 87
+	VAL  reduce 87
+	ARR  reduce 87
+	MODULE  reduce 87
+	TYPE  reduce 87
+	RBRAK  reduce 87
+	RPAREN  reduce 87
+	SEP2  reduce 87
+	END  reduce 87
+
+
+state 311
+	method_el : METHOD name LPAREN RPAREN .  (49)
+
+	.  reduce 49
+
+
+state 312
+	method_el : METHOD name LPAREN data_type_list . RPAREN  (48)
+
+	RPAREN  shift 321
+	.  error
+
+
+state 313
+	instruction : MOVE LPAREN operand SEP2 operand RPAREN WITH params .  (115)
+
+	.  reduce 115
+
+
+state 314
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 . operand RPAREN  (116)
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 . operand RPAREN WITH params  (117)
+
+	IDENT  shift 117
+	VALUE  shift 127
+	VAR  shift 119
+	LBRAK  shift 81
+	.  error
+
+	name  goto 94
+	operand  goto 322
+	selector  goto 121
+	selector_list  goto 84
+	selector_type  goto 85
+
+
+state 315
+	uc_object : VAR name SEP1 data_type IN name DOT LBRAK VALUE . RBRAK  (22)
+	uc_object : VAR name SEP1 data_type IN name DOT LBRAK VALUE . RBRAK WITH params  (24)
+
+	RBRAK  shift 323
+	.  error
+
+
+state 316
+	data_type : TYPE_SPEC LBRAK VALUE . RBRAK  (53)
+	param_value : TYPE_SPEC LBRAK VALUE . RBRAK  (77)
+
+	RBRAK  shift 324
+	.  error
+
+
+state 317
+	operand : VAR IMMED DOT LBRAK VALUE RBRAK SEP1 . params  (88)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 325
+	param  goto 199
+	param_name  goto 200
+
+
+state 318
+	operand : VAR ALU DOT LBRAK VALUE RBRAK SEP1 . params  (92)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 326
+	param  goto 199
+	param_name  goto 200
+
+
+state 319
+	operand : VAR TEMP DOT LBRAK name RBRAK SEP1 . params  (89)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 327
+	param  goto 199
+	param_name  goto 200
+
+
+state 320
+	operand : VAR TEMP DOT LBRAK selector RBRAK SEP1 . params  (90)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 328
+	param  goto 199
+	param_name  goto 200
+
+
+state 321
+	method_el : METHOD name LPAREN data_type_list RPAREN .  (48)
+
+	.  reduce 48
+
+
+state 322
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 operand . RPAREN  (116)
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 operand . RPAREN WITH params  (117)
+
+	RPAREN  shift 329
+	.  error
+
+
+state 323
+	uc_object : VAR name SEP1 data_type IN name DOT LBRAK VALUE RBRAK .  (22)
+	uc_object : VAR name SEP1 data_type IN name DOT LBRAK VALUE RBRAK . WITH params  (24)
+
+	WITH  shift 330
+	VAR  reduce 22
+	REG  reduce 22
+	SIG  reduce 22
+	OBJ  reduce 22
+	QUE  reduce 22
+	CHA  reduce 22
+	BLK  reduce 22
+	FUNC  reduce 22
+	CON  reduce 22
+	VAL  reduce 22
+	ARR  reduce 22
+	MODULE  reduce 22
+	TYPE  reduce 22
+	END  reduce 22
+
+
+324: reduce/reduce conflict (reduce 53, reduce 77) on IDENT
+324: reduce/reduce conflict (reduce 53, reduce 77) on VAR
+324: reduce/reduce conflict (reduce 53, reduce 77) on REG
+324: reduce/reduce conflict (reduce 53, reduce 77) on SIG
+324: reduce/reduce conflict (reduce 53, reduce 77) on OBJ
+324: reduce/reduce conflict (reduce 53, reduce 77) on QUE
+324: reduce/reduce conflict (reduce 53, reduce 77) on CHA
+324: reduce/reduce conflict (reduce 53, reduce 77) on BLK
+324: reduce/reduce conflict (reduce 53, reduce 77) on FUNC
+324: reduce/reduce conflict (reduce 53, reduce 77) on CON
+324: reduce/reduce conflict (reduce 53, reduce 77) on VAL
+324: reduce/reduce conflict (reduce 53, reduce 77) on ARR
+324: reduce/reduce conflict (reduce 53, reduce 77) on MODULE
+324: reduce/reduce conflict (reduce 53, reduce 77) on TYPE
+324: reduce/reduce conflict (reduce 53, reduce 77) on AND
+324: reduce/reduce conflict (reduce 53, reduce 77) on RBRAK
+324: reduce/reduce conflict (reduce 53, reduce 77) on RPAREN
+324: reduce/reduce conflict (reduce 53, reduce 77) on SEP2
+324: reduce/reduce conflict (reduce 53, reduce 77) on END
+324: reduce/reduce conflict (reduce 53, reduce 77) on MOVE
+324: reduce/reduce conflict (reduce 53, reduce 77) on EXPR
+324: reduce/reduce conflict (reduce 53, reduce 77) on FUN
+324: reduce/reduce conflict (reduce 53, reduce 77) on BIND
+324: reduce/reduce conflict (reduce 53, reduce 77) on JUMP
+324: reduce/reduce conflict (reduce 53, reduce 77) on FALSEJUMP
+324: reduce/reduce conflict (reduce 53, reduce 77) on NOP
+state 324
+	data_type : TYPE_SPEC LBRAK VALUE RBRAK .  (53)
+	param_value : TYPE_SPEC LBRAK VALUE RBRAK .  (77)
+
+	.  reduce 53
+
+
+state 325
+	operand : VAR IMMED DOT LBRAK VALUE RBRAK SEP1 params .  (88)
+
+	.  reduce 88
+
+
+state 326
+	operand : VAR ALU DOT LBRAK VALUE RBRAK SEP1 params .  (92)
+
+	.  reduce 92
+
+
+state 327
+	operand : VAR TEMP DOT LBRAK name RBRAK SEP1 params .  (89)
+
+	.  reduce 89
+
+
+state 328
+	operand : VAR TEMP DOT LBRAK selector RBRAK SEP1 params .  (90)
+
+	.  reduce 90
+
+
+state 329
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 operand RPAREN .  (116)
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 operand RPAREN . WITH params  (117)
+
+	WITH  shift 331
+	IDENT  reduce 116
+	END  reduce 116
+	MOVE  reduce 116
+	EXPR  reduce 116
+	FUN  reduce 116
+	BIND  reduce 116
+	JUMP  reduce 116
+	FALSEJUMP  reduce 116
+	NOP  reduce 116
+
+
+state 330
+	uc_object : VAR name SEP1 data_type IN name DOT LBRAK VALUE RBRAK WITH . params  (24)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 332
+	param  goto 199
+	param_name  goto 200
+
+
+state 331
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 operand RPAREN WITH . params  (117)
+
+	PARAM  shift 196
+	VAR  shift 197
+	.  error
+
+	params  goto 333
+	param  goto 199
+	param_name  goto 200
+
+
+state 332
+	uc_object : VAR name SEP1 data_type IN name DOT LBRAK VALUE RBRAK WITH params .  (24)
+
+	.  reduce 24
+
+
+state 333
+	instruction : EXPR LPAREN operand SEP2 operand SEP2 operation SEP2 operand RPAREN WITH params .  (117)
+
+	.  reduce 117
+
+
+Rules never reduced:
+	param_value : IDENT  (72)
+	param_value : TYPE_SPEC  (76)
+	param_value : TYPE_SPEC LBRAK VALUE RBRAK  (77)
+	value_list : VALUE  (99)
+
+
+State 82 contains 1 shift/reduce conflict.
+State 117 contains 1 shift/reduce conflict, 17 reduce/reduce conflicts.
+State 118 contains 1 shift/reduce conflict, 1 reduce/reduce conflict.
+State 276 contains 26 reduce/reduce conflicts.
+State 277 contains 26 reduce/reduce conflicts.
+State 283 contains 1 shift/reduce conflict.
+State 324 contains 26 reduce/reduce conflicts.
+
+
+81 terminals, 36 nonterminals
+136 grammar rules, 334 states

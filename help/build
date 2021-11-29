@@ -1,0 +1,32 @@
+#!/bin/bash
+source /opt/Vum-2.4/toolset/build.env
+INSTALLDIR=/opt/Conpro2
+TOP=`pwd`
+FM=/export/home/FrameMaker
+
+SYNDK=${TOP%/scripts}
+
+for TARGET in $@
+do
+    echo "Building target [$TARGET] ..."
+    case $TARGET in
+      all)
+        for file in *.mif
+        do
+          if [ "X$file" != "X*.mif" ]
+          then
+            echo "Converting $file .."
+            $FM/bin/dcl -f Word $file       
+          fi
+        done
+        ;;
+      install) 
+        $INSTALL -d $INSTALLDIR/help
+        for file in *.rtf 
+        do
+          $FM/bin/rtf2help $file
+        done
+        $INSTALL -C *.rtf  $INSTALLDIR/help
+        ;;
+    esac
+done

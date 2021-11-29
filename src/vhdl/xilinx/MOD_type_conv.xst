@@ -1,0 +1,4 @@
+set -tmpdir "./xst/projnav.tmp"
+elaborate
+-ifn MOD_type_conv.prj
+-ifmt mixed

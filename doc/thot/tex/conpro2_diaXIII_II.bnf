@@ -1,0 +1,1 @@
+type-abstract ::= 'TYPE' name .

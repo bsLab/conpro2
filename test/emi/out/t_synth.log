@@ -1,0 +1,213 @@
+/export/home/leonardo/bin/SunOS5/spectrum -f t.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/conpro/test/module/out/obj'
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/leonardo/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/leonardo/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/conpro/test/module/out/obj/../t_main.vhdl into library work
+-- Reading file /export/home/leonardo/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/leonardo/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/leonardo/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/leonardo/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading entity t_main into library work
+"/home/sbosse/conpro/test/module/out/obj/../t_main.vhdl",line 34: Info, Enumerated type pro_states with 4 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[1-0]
+================================
+   S_main_start  00
+       S_i1_fun  01
+       S_i2_fun  10
+     S_main_end  11
+
+-- Loading architecture main of t_main into library work
+"/home/sbosse/conpro/test/module/out/obj/../t_main.vhdl",line 23: Warning, input F_f1_GD is never used.
+-- Reading vhdl file /home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl into library work
+-- Loading entity t_p1 into library work
+"/home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl",line 39: Info, Enumerated type pro_states with 7 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+     S_p1_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  -11
+ S_i3_bind_to_4  100
+S_i1_for_loop_incr  101
+       S_p1_end  110
+
+-- Loading architecture main of t_p1 into library work
+-- Reading vhdl file /home/sbosse/conpro/test/module/out/obj/../t.vhdl into library work
+-- Loading entity MOD_t into library work
+-- Loading architecture main of MOD_t into library work
+"/home/sbosse/conpro/test/module/out/obj/../t.vhdl",line 66: Warning, signal PRO_main_END is never used.
+"/home/sbosse/conpro/test/module/out/obj/../t.vhdl",line 68: Warning, signal PRO_p1_END is never used.
+-- Reading vhdl file /home/sbosse/conpro/test/module/out/obj/../t_main.vhdl into library work
+-- Loading entity t_main into library work
+"/home/sbosse/conpro/test/module/out/obj/../t_main.vhdl",line 17: Warning, replacing t_main in HDL library work.
+"/home/sbosse/conpro/test/module/out/obj/../t_main.vhdl",line 34: Info, Enumerated type pro_states with 4 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[1-0]
+================================
+   S_main_start  00
+       S_i1_fun  01
+       S_i2_fun  10
+     S_main_end  11
+
+-- Loading architecture main of t_main into library work
+"/home/sbosse/conpro/test/module/out/obj/../t_main.vhdl",line 23: Warning, input F_f1_GD is never used.
+"/home/sbosse/conpro/test/module/out/obj/../t_main.vhdl",line 30: Warning, replacing main of entity t_main.
+-- Reading vhdl file /home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl into library work
+-- Loading entity t_p1 into library work
+"/home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl",line 17: Warning, replacing t_p1 in HDL library work.
+"/home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl",line 39: Info, Enumerated type pro_states with 7 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+     S_p1_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  -11
+ S_i3_bind_to_4  100
+S_i1_for_loop_incr  101
+       S_p1_end  110
+
+-- Loading architecture main of t_p1 into library work
+"/home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl",line 34: Warning, replacing main of entity t_p1.
+-- Reading vhdl file /home/sbosse/conpro/test/module/out/obj/../t.vhdl into library work
+-- Loading entity MOD_t into library work
+"/home/sbosse/conpro/test/module/out/obj/../t.vhdl",line 17: Warning, replacing MOD_t in HDL library work.
+-- Loading architecture main of MOD_t into library work
+"/home/sbosse/conpro/test/module/out/obj/../t.vhdl",line 66: Warning, signal PRO_main_END is never used.
+"/home/sbosse/conpro/test/module/out/obj/../t.vhdl",line 68: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/conpro/test/module/out/obj/../t.vhdl",line 26: Warning, replacing main of entity MOD_t.
+-- Compiling root entity MOD_t(main)
+-- Compiling entity t_p1(main)
+"/home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl",line 48: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl",line 49: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl",line 131: Warning, F_f1_GD should be declared on the sensitivity list of the process.
+-- Compiling entity t_main(main)
+"/home/sbosse/conpro/test/module/out/obj/../t_main.vhdl",line 40: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/conpro/test/module/out/obj/../t_main.vhdl",line 41: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.t_p1.main_unfold_1188
+"/home/sbosse/conpro/test/module/out/obj/../t_p1.vhdl", line 165:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sload_sclear_clock_clk_en_5'
+-- Start pre-optimization for design .work.t_main.main_unfold_1384
+-- Start pre-optimization for design .work.MOD_t.main
+"/home/sbosse/conpro/test/module/out/obj/../t.vhdl", line 195:Info, Inferred counter instance 'F_f1_count' of type 'counter_up_cnt_en_sclear_clock_4'
+-- Start pre-optimization for design .work.t_p1.main_unfold_1188
+-- Start pre-optimization for design .work.t_main.main_unfold_1384
+-- Start pre-optimization for design .work.MOD_t.main
+-- Optimizing netlist .work.MOD_t.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_t.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_t    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib    10 x      2     17 gates
+a4_x2           sxlib     2 x      2      5 gates
+an12_x1         sxlib    32 x      2     54 gates
+ao22_x2         sxlib     1 x      2      2 gates
+inv_x1          sxlib    21 x      1     21 gates
+inv_x2          sxlib     1 x      1      1 gates
+inv_x4          sxlib     2 x      1      3 gates
+na2_x1          sxlib     5 x      1      6 gates
+na2_x4          sxlib     2 x      2      5 gates
+na3_x1          sxlib     5 x      2      8 gates
+na4_x1          sxlib     1 x      2      2 gates
+nao2o22_x1      sxlib     1 x      2      2 gates
+nmx2_x1         sxlib     3 x      2      7 gates
+no2_x1          sxlib     6 x      1      8 gates
+no2_x4          sxlib     1 x      2      2 gates
+no3_x1          sxlib     6 x      2     10 gates
+no3_x4          sxlib     1 x      3      3 gates
+no4_x1          sxlib     1 x      2      2 gates
+noa22_x1        sxlib     5 x      2     10 gates
+noa2ao222_x1    sxlib     1 x      2      2 gates
+nxr2_x1         sxlib     2 x      3      6 gates
+o2_x2           sxlib     2 x      2      3 gates
+o3_x4           sxlib     1 x      2      2 gates
+on12_x1         sxlib    16 x      2     27 gates
+on12_x4         sxlib     1 x      3      3 gates
+sff1_x4         sxlib    11 x      6     66 gates
+sff2_x4         sxlib    50 x      8    400 gates
+xr2_x1          sxlib     1 x      3      3 gates
+
+ Number of ports :                      22
+ Number of nets :                      193
+ Number of instances :                 191
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     681
+ Number of accumulated instances :     191
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK                  : 264.1 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                         GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                       0.00 (ideal)
+
+
+PRO_MAP_main_reg_pro_state(1)/q              sff1_x4     0.00  0.62 up             0.14
+ix121/q                                      on12_x1     0.42  1.04 up             0.03
+ix125/q                                      a4_x2       0.56  1.60 up             0.03
+ix2271/nq                                    no2_x1      0.31  1.91 dn             0.05
+ix2332/nq                                    no3_x4      1.04  2.95 up             0.33
+ix217/nq                                     inv_x1      0.25  3.20 dn             0.02
+reg_F_f1_p1_GD/i                             sff1_x4     0.00  3.20 dn             0.00
+data arrival time                                              3.20
+
+
+data required time                                          not specified
+----------------------------------------------------------------------------------------
+data required time                                          not specified
+data arrival time                                              3.20
+                                                            ----------
+                                                         unconstrained path
+----------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD t.vhd
+-- Writing file t.vhd

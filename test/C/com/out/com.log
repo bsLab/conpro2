@@ -1,0 +1,2629 @@
+Opened message file <out/com.log>. Detailed informations can be found in this file.
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<83f2ea7a> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  ./
+    Source:  ./
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+Initializing synthesis tools...
+TDI: Opening tools file <tools>...
+  Searching tools file <tools.def>...
+  Opening tools file </opt/Conpro2/toolset/tools.def>...
+  Opening tool library file </opt/Conpro2/toolset/generic.lib>...
+  Info [file <tools.def>, line 7]: Added synthesis tool defintion <generic>, version 1.07.
+  Opening tool library file </opt/Conpro2/toolset/xilinx6.lib>...
+  Info [file <tools.def>, line 27]: Added synthesis tool defintion <xilinx6>, version 1.07.
+  Opening tool library file </opt/Conpro2/toolset/xilinx9.lib>...
+  Info [file <tools.def>, line 173]: Added synthesis tool defintion <xilinx9>, version 1.07.
+  Opening tool library file </opt/Conpro2/toolset/alliance.lib>...
+  Info [file <tools.def>, line 319]: Added synthesis tool defintion <alliance>, version 1.07.
+  Opening tool library file </opt/Conpro2/toolset/leonardo.lib>...
+  Info [file <tools.def>, line 342]: Added synthesis tool defintion <leonardo>, version 1.07.
+  Opening tool library file </opt/Conpro2/toolset/dc.lib>...
+  Info [file <tools.def>, line 366]: Added synthesis tool defintion <dc>, version 1.07.
+  Opening tool library file </opt/Conpro2/toolset/actel.lib>...
+  Info [file <tools.def>, line 390]: Added synthesis tool defintion <actel>, version 1.07.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89.lib>...
+  Info [file <tools.def>, line 413]: Added synthesis tool defintion <synplicity89>, version 1.07.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89_xilinx6.lib>...
+  Info [file <tools.def>, line 436]: Added synthesis tool defintion <synplicity89_xilinx6>, version 1.07.
+Initializing tool <xilinx6>...
+TDI: Opening tool <xilinx6>...
+  Searching tool file <xilinx6.tool>...
+  Opening tool file </opt/Conpro2/toolset/xilinx6.tool>...
+Analyzing ConPro source <com.cp>...
+Searching Conpro file <com.cp>...
+Opening file <com.cp>...
+Compiling ConPro source <com.cp>...
+Compiling module <com>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+    Opening module <Uart>...
+    Opening module <Uart>...
+      Searching module file <uart.mod>...
+      Opening module file </opt/Conpro2/lib/uart.mod>...
+      EMI [Object Uart.uart.root]#init: Initializing module ...
+      EMI <Object Uart.uart.root>: creating rules for module...
+      Added module <Uart>.
+        EMI <Uart>: adding object type <uart>...
+    Added module <System>.
+    Opening module <Event>...
+    Opening module <Event>...
+      Searching module file <event.mod>...
+      Opening module file </opt/Conpro2/lib/event.mod>...
+      EMI [Object Event.event.root]#init: Initializing module ...
+      EMI <Object Event.event.root>: creating rules for module...
+      Added module <Event>.
+        EMI <Event>: adding object type <event>...
+    Opening module <Timer>...
+    Opening module <Timer>...
+      Searching module file <timer.mod>...
+      Opening module file </opt/Conpro2/lib/timer.mod>...
+      EMI [Object Timer.timer.root]#init: Initializing module ...
+      EMI <Object Timer.timer.root>: creating rules for module...
+      Added module <Timer>.
+        EMI <Timer>: adding object type <timer>...
+    EMI <Object Sys.sys.root>: creating object <sys>...
+      EMI [Object Sys.sys.sys]: added method <clock>.
+      EMI [Object Sys.sys.sys]: added method <clock_level>.
+      EMI [Object Sys.sys.sys]: added method <reset_level>.
+      EMI [Object Sys.sys.sys]: added method <reset_internal>.
+      EMI [Object Sys.sys.sys]: added method <simu_cycles>.
+      EMI [Object Sys.sys.sys]: added method <simu_res>.
+      EMI [Object Sys.sys.sys]: added method <target>.
+      EMI [Object Sys.sys.sys]: added method <expr_type>.
+      EMI [Object Sys.sys.sys]: added method <schedule>.
+    EMI <Object Sys.sys.sys>: creating rules for module...
+    Info [file <com.cp>, line 14]: Expanding toplevel conditional branch: false
+    Info [file <com.cp>, line 18]: Expanding toplevel conditional branch: true
+    EMI <Object Timer.timer.root>: creating object <watch_timer>...
+      EMI [Object Timer.timer.watch_timer]: added method <init>.
+      EMI [Object Timer.timer.watch_timer]: added method <time>.
+      EMI [Object Timer.timer.watch_timer]: added method <await>.
+      EMI [Object Timer.timer.watch_timer]: added method <wakeup>.
+      EMI [Object Timer.timer.watch_timer]: added method <start>.
+      EMI [Object Timer.timer.watch_timer]: added method <stop>.
+      EMI [Object Timer.timer.watch_timer]: added method <mode>.
+      EMI [Object Timer.timer.watch_timer]: added method <sig_action>.
+    EMI <Object Timer.timer.watch_timer>: creating rules for module...
+    EMI <Object Uart.uart.root>: creating object <com>...
+      EMI [Object Uart.uart.com]: added method <init>.
+      EMI [Object Uart.uart.com]: added method <start>.
+      EMI [Object Uart.uart.com]: added method <stop>.
+      EMI [Object Uart.uart.com]: added method <baud>.
+      EMI [Object Uart.uart.com]: added method <write>.
+      EMI [Object Uart.uart.com]: added method <read>.
+      EMI [Object Uart.uart.com]: added method <interface>.
+      EMI [Object Uart.uart.com]: added method <level>.
+    EMI <Object Uart.uart.com>: creating rules for module...
+    EMI <Object Event.event.root>: creating object <rep>...
+      EMI [Object Event.event.rep]: added method <init>.
+      EMI [Object Event.event.rep]: added method <await>.
+      EMI [Object Event.event.rep]: added method <wakeup>.
+    EMI <Object Event.event.rep>: creating rules for module...
+    Found shared function block <request> with 1 parameter(s).
+    Opening module <Mutex>...
+    Opening module <Mutex>...
+      Searching module file <mutex.mod>...
+      Opening module file </opt/Conpro2/lib/mutex.mod>...
+      EMI [Object Mutex.mutex.root]#init: Initializing module ...
+      EMI <Object Mutex.mutex.root>: creating rules for module...
+      Added module <Mutex>.
+        EMI <Mutex>: adding object type <mutex>...
+    EMI <Object Mutex.mutex.root>: creating object <LOCK_FUN_request>...
+      EMI [Object Mutex.mutex.LOCK_FUN_request]: added method <init>.
+      EMI [Object Mutex.mutex.LOCK_FUN_request]: added method <lock>.
+      EMI [Object Mutex.mutex.LOCK_FUN_request]: added method <unlock>.
+    EMI <Object Mutex.mutex.LOCK_FUN_request>: creating rules for module...
+  Analyzing toplevel method calls...
+  Compiling system setting method <clock>.
+  Compiling system setting method <target>.
+  Compiling system setting method <target>.
+  Compiling system setting method <reset_level>.
+  EMI [Object Uart.uart.com]: Achieved baud rate accuracy [bit/s]: [actual = 115625] [requested = 115200] [error = 0.3 %]
+  Info [file <com.cp>, line 145]: EMI#fun_compile <Object Uart.uart.com>: importing signal <dev_io_RX> and assigning it to parameter <rxsig>.
+  Info [file <com.cp>, line 145]: EMI#fun_compile <Object Uart.uart.com>: importing signal <dev_io_TX> and assigning it to parameter <txsig>.
+  Analyzing function blocks...
+    function <request>...
+    Info [file <com.cp>, line 240]: Analyzing process <FUN_request>...
+      Analyzing process <FUN_request>...
+  Analyzing processes...
+    Info [file <com.cp>, line 54]: Analyzing process <sys_status_proc>...
+      Analyzing process <sys_status_proc>...
+    Info [file <com.cp>, line 154]: Analyzing process <com_tmo>...
+      Analyzing process <com_tmo>...
+    Info [file <com.cp>, line 163]: Analyzing process <com_rx>...
+      Analyzing process <com_rx>...
+    Info [file <com.cp>, line 177]: Analyzing process <com_tx>...
+      Analyzing process <com_tx>...
+    Info [file <com.cp>, line 191]: Analyzing process <interpreter>...
+      Analyzing process <interpreter>...
+    Info [file <com.cp>, line 248]: Analyzing process <main>...
+      Analyzing process <main>...
+  Performing program graph transformations and optimization for module <Com>...
+    in process <FUN_request>...
+      Performing program transformations for process <FUN_request>...
+      Performing program transformations for process <FUN_request>...
+      Resolving object dependencies for process <FUN_request>...
+    in process <sys_status_proc>...
+      Performing program transformations for process <sys_status_proc>...
+      Performing program transformations for process <sys_status_proc>...
+      Resolving object dependencies for process <sys_status_proc>...
+    in process <com_tmo>...
+      Performing program transformations for process <com_tmo>...
+      Performing program transformations for process <com_tmo>...
+      Resolving object dependencies for process <com_tmo>...
+    in process <com_rx>...
+      Performing program transformations for process <com_rx>...
+      Performing program transformations for process <com_rx>...
+      Resolving object dependencies for process <com_rx>...
+    in process <com_tx>...
+      Performing program transformations for process <com_tx>...
+      Performing program transformations for process <com_tx>...
+      Resolving object dependencies for process <com_tx>...
+    in process <interpreter>...
+      Performing program transformations for process <interpreter>...
+      Performing program transformations for process <interpreter>...
+      Resolving object dependencies for process <interpreter>...
+    in process <main>...
+      Performing program transformations for process <main>...
+      Performing program transformations for process <main>...
+      Resolving object dependencies for process <main>...
+  Analyzing toplevel instructions...
+  Resolving object dependencies for process <MOD_Com>...
+  Default block parameters:  [EXPR=FLAT] [ALU_MIN_N=8] [TEMP=shared]
+  Toplevel symbols: 55
+  Processes: 7
+  Functions: 1
+  Process order: 
+  : sys_status_proc
+  : com_tmo
+  : com_rx
+  : com_tx
+  : interpreter
+  : FUN_request
+  : main
+  
+  +------------------------------- ANALYSIS SUMMARY -------------------------------+
+  +--------------------------------------------------------------------------------+
+  | DESCRIPTION                   MESSAGE                                          |
+  +--------------------------------------------------------------------------------+
+  | Default block parameters       [EXPR=FLAT] [ALU_MIN_N=8] [TEMP=shared]         |
+  | Toplevel symbols              55                                               |
+  | Processes                     7                                                |
+  | Functions                     1                                                |
+  | Process order                                                                  |
+  |                               sys_status_proc                                  |
+  |                               com_tmo                                          |
+  |                               com_rx                                           |
+  |                               com_tx                                           |
+  |                               interpreter                                      |
+  |                               FUN_request                                      |
+  |                               main                                             |
+  +--------------------------------------------------------------------------------+
+  
+Performing controll graph analysis for module <Com>...
+call_graph_build: process 'sys_status_proc': start={} stop={} call={} raise={} catch={}
+call_graph_build: process 'com_tmo': start={} stop={} call={} raise={} catch={}
+call_graph_build: process 'com_rx': start={} stop={} call={} raise={} catch={}
+call_graph_build: process 'com_tx': start={} stop={} call={} raise={} catch={}
+call_graph_build: process 'interpreter': start={com_rx com_tx com_tmo} stop={com_tmo} call={} raise={} catch={}
+call_graph_build: process 'FUN_request': start={} stop={} call={} raise={} catch={}
+call_graph_build: process 'main': start={sys_status_proc interpreter} stop={} call={FUN_request} raise={} catch={}
+call_graph_build: exception register'PRO_sys_status_proc_EXCEPTION': read={} write={}
+call_graph_build: exception register'PRO_com_tmo_EXCEPTION': read={} write={}
+call_graph_build: exception register'PRO_com_rx_EXCEPTION': read={} write={}
+call_graph_build: exception register'PRO_com_tx_EXCEPTION': read={} write={}
+call_graph_build: exception register'PRO_interpreter_EXCEPTION': read={} write={}
+call_graph_build: exception register'PRO_FUN_request_EXCEPTION': read={} write={}
+call_graph_build: exception register'PRO_main_EXCEPTION': read={} write={}
+  
+  +------------------------------ CALL GRAPH SUMMARY ------------------------------+
+  +--------------------------------------------------------------------------------+
+  | PROCESS                                                                        |
+  +--------------------------------------------------------------------------------+
+  | sys_status_proc                                                                |
+  | .. start                                                                       |
+  | .. stop                                                                        |
+  | .. call                                                                        |
+  | .. raise                                                                       |
+  | .. catch                                                                       |
+  | com_tmo                                                                        |
+  | .. start                                                                       |
+  | .. stop                                                                        |
+  | .. call                                                                        |
+  | .. raise                                                                       |
+  | .. catch                                                                       |
+  | com_rx                                                                         |
+  | .. start                                                                       |
+  | .. stop                                                                        |
+  | .. call                                                                        |
+  | .. raise                                                                       |
+  | .. catch                                                                       |
+  | com_tx                                                                         |
+  | .. start                                                                       |
+  | .. stop                                                                        |
+  | .. call                                                                        |
+  | .. raise                                                                       |
+  | .. catch                                                                       |
+  | interpreter                                                                    |
+  | .. start                      com_rx com_tx com_tmo                            |
+  | .. stop                       com_tmo                                          |
+  | .. call                                                                        |
+  | .. raise                                                                       |
+  | .. catch                                                                       |
+  | FUN_request                                                                    |
+  | .. start                                                                       |
+  | .. stop                                                                        |
+  | .. call                                                                        |
+  | .. raise                                                                       |
+  | .. catch                                                                       |
+  | main                                                                           |
+  | .. start                      sys_status_proc interpreter                      |
+  | .. stop                                                                        |
+  | .. call                       FUN_request                                      |
+  | .. raise                                                                       |
+  | .. catch                                                                       |
+  |                                                                                |
+  | PRO_sys_status_proc_EXCEPTION                              |
+  | .. read                                                                        |
+  | .. write                                                                       |
+  | PRO_com_tmo_EXCEPTION                                                          |
+  | .. read                                                                        |
+  | .. write                                                                       |
+  | PRO_com_rx_EXCEPTION                                                           |
+  | .. read                                                                        |
+  | .. write                                                                       |
+  | PRO_com_tx_EXCEPTION                                                           |
+  | .. read                                                                        |
+  | .. write                                                                       |
+  | PRO_interpreter_EXCEPTION                                                      |
+  | .. read                                                                        |
+  | .. write                                                                       |
+  | PRO_FUN_request_EXCEPTION                                                      |
+  | .. read                                                                        |
+  | .. write                                                                       |
+  | PRO_main_EXCEPTION                                                             |
+  | .. read                                                                        |
+  | .. write                                                                       |
+  +--------------------------------------------------------------------------------+
+  
+Synthesizing module <Com>...
+Synthesizing main module <Com>...
+  Optimization: [Expression Constant Folder]  [Dead Object Remover]
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <Com.sys_status_proc>
+        Removed 0 instructions(s).
+      in process <Com.com_tmo>
+        Removed 0 instructions(s).
+      in process <Com.com_rx>
+        Removed 0 instructions(s).
+      in process <Com.com_tx>
+        Removed 0 instructions(s).
+      in process <Com.interpreter>
+        Removed 0 instructions(s).
+      in process <Com.FUN_request>
+        Removed 0 instructions(s).
+      in process <Com.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <sys_status_proc> ...
+      [Com.MOD_Com]: Removing Register <Com.PRO_com_rx_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <com_tx> ...
+      [Com.MOD_Com]: Removing Register <Com.PRO_FUN_request_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      [Com.MOD_Com]: Removing Register <Com.PRO_sys_status_proc_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <interpreter> ...
+      [Com.MOD_Com]: Removing Register <Com.PRO_com_tx_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <com_tmo> ...
+      [Com.MOD_Com]: Removing Register <Com.PRO_interpreter_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <main> ...
+      [Com.main]: Removing Register <Com.d> with 0 reader(s) and 1 writer(s).
+      [Com.main]: Removing instruction [file com.cp, line 253].
+      ... in process <FUN_request> ...
+      [Com.MOD_Com]: Removing Register <Com.PRO_main_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <com_rx> ...
+      [Com.com_rx]: Removing Register <Com.d2> with 0 reader(s) and 0 writer(s).
+      [Com.MOD_Com]: Removing Register <Com.PRO_com_tmo_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      Removed 9 object(s).
+    Optimizer: folding constants in expressions...
+      in process <Com.sys_status_proc>
+        Removed 0 operand(s).
+      in process <Com.com_tmo>
+        Removed 0 operand(s).
+      in process <Com.com_rx>
+        Removed 0 operand(s).
+      in process <Com.com_tx>
+        Removed 0 operand(s).
+      in process <Com.interpreter>
+        Removed 0 operand(s).
+      in process <Com.FUN_request>
+        Removed 0 operand(s).
+      in process <Com.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 9.
+  Optimizing and pre-scheduling, pass 2...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <Com.sys_status_proc>
+        Removed 0 instructions(s).
+      in process <Com.com_tmo>
+        Removed 0 instructions(s).
+      in process <Com.com_rx>
+        Removed 0 instructions(s).
+      in process <Com.com_tx>
+        Removed 0 instructions(s).
+      in process <Com.interpreter>
+        Removed 0 instructions(s).
+      in process <Com.FUN_request>
+        Removed 0 instructions(s).
+      in process <Com.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <sys_status_proc> ...
+      ... in process <com_tx> ...
+      ... in process <interpreter> ...
+      ... in process <com_tmo> ...
+      ... in process <main> ...
+      ... in process <FUN_request> ...
+      ... in process <com_rx> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <Com.sys_status_proc>
+        Removed 0 operand(s).
+      in process <Com.com_tmo>
+        Removed 0 operand(s).
+      in process <Com.com_rx>
+        Removed 0 operand(s).
+      in process <Com.com_tx>
+        Removed 0 operand(s).
+      in process <Com.interpreter>
+        Removed 0 operand(s).
+      in process <Com.FUN_request>
+        Removed 0 operand(s).
+      in process <Com.main>
+        Removed 0 operand(s).
+    ... Progress of pass 2: 0.
+  
+  +----------------------------- OPTIMIZATION SUMMARY -----------------------------+
+  +--------------------------------------------------------------------------------+
+  | LOCATION                      MESSAGE                                          |
+  +--------------------------------------------------------------------------------+
+  | [Com.MOD_Com]                 Removing Register <Com.PRO_com_rx_EXCEPTION>     |
+  |                               with 0 reader(s) and 0 writer(s).                |
+  | [Com.MOD_Com]                 Removing Register                                |
+  |                               <Com.PRO_FUN_request_EXCEPTION> with 0 reader(s) |
+  |                               and 0 writer(s).                                 |
+  | [Com.MOD_Com]                 Removing Register                                |
+  |                               <Com.PRO_sys_status_proc_EXCEPTION> with 0       |
+  |                               reader(s) and 0 writer(s).                       |
+  | [Com.MOD_Com]                 Removing Register <Com.PRO_com_tx_EXCEPTION>     |
+  |                               with 0 reader(s) and 0 writer(s).                |
+  | [Com.MOD_Com]                 Removing Register                                |
+  |                               <Com.PRO_interpreter_EXCEPTION> with 0 reader(s) |
+  |                               and 0 writer(s).                                 |
+  | [Com.main]                    Removing Register <Com.d> with 0 reader(s) and 1 |
+  |                               writer(s).                                       |
+  | [Com.main]                    Removing instruction [file com.cp, line 253].    |
+  | [Com.MOD_Com]                 Removing Register <Com.PRO_main_EXCEPTION> with  |
+  |                               0 reader(s) and 0 writer(s).                     |
+  | [Com.com_rx]                  Removing Register <Com.d2> with 0 reader(s) and  |
+  |                               0 writer(s).                                     |
+  | [Com.MOD_Com]                 Removing Register <Com.PRO_com_tmo_EXCEPTION>    |
+  |                               with 0 reader(s) and 0 writer(s).                |
+  +--------------------------------------------------------------------------------+
+  
+  Extracting features and resources...
+  Resolving object guards...
+    Found 4 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+    Performing post-analysis transformations for process <sys_status_proc>...
+    Performing post-analysis transformations for process <sys_status_proc>...
+    Performing post-analysis transformations for process <com_tmo>...
+    Performing post-analysis transformations for process <com_tmo>...
+    Performing post-analysis transformations for process <com_rx>...
+    Performing post-analysis transformations for process <com_rx>...
+    Performing post-analysis transformations for process <com_tx>...
+    Performing post-analysis transformations for process <com_tx>...
+    Performing post-analysis transformations for process <interpreter>...
+    Performing post-analysis transformations for process <interpreter>...
+    Performing post-analysis transformations for process <FUN_request>...
+    Performing post-analysis transformations for process <FUN_request>...
+    Performing post-analysis transformations for process <main>...
+    Performing post-analysis transformations for process <main>...
+  EMI [Object Timer.timer.watch_timer]: compiling external module interface...
+  EMI [Object Timer.timer.watch_timer]: Environment is:
+    arch001(i)=[1],
+    arch002(i)=[2],
+    latch(i)=[0],
+    time(i)=[50000000],
+    sig(?)=[],
+    sig_action_level(?)=[],
+    sig_def_level(?)=[],
+    mode(i)=[0],
+    ARRAY(i)=[0],
+    O(s)=["watch_timer"],
+    P(s)=["sys_status_proc";"MOD_Com"],
+    P.init(s)=["sys_status_proc"],
+    P.time(s)=["MOD_Com"],
+    P.await(s)=["sys_status_proc"],
+    P.wakeup(s)=[],
+    P.start(s)=["sys_status_proc"],
+    P.stop(s)=[],
+    P.mode(s)=[],
+    P.sig_action(s)=[],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[5],
+    expr_type(s)=["flat"],
+    scheduler_type(s)=["default"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  EMI [Object Uart.uart.com]: compiling external module interface...
+  EMI [Object Uart.uart.com]: Environment is:
+    baud(i)=[115200],
+    datawidth(i)=[8],
+    rxsig(U)=["dev_io_RX"],
+    txsig(U)=["dev_io_TX"],
+    rxact(i)=[1],
+    txact(i)=[1],
+    wrmode(s)=["sync"],
+    ARRAY(i)=[0],
+    O(s)=["com"],
+    P(s)=["interpreter";"com_tx";"com_rx";"MOD_Com"],
+    P.init(s)=["interpreter"],
+    P.start(s)=["interpreter"],
+    P.stop(s)=[],
+    P.baud(s)=["MOD_Com"],
+    P.write(s)=["com_tx"],
+    P.read(s)=["com_rx"],
+    P.interface(s)=["MOD_Com"],
+    P.level(s)=[],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[5],
+    expr_type(s)=["flat"],
+    scheduler_type(s)=["default"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  EMI [Object Mutex.mutex.LOCK_FUN_request]: compiling external module interface...
+  EMI [Object Mutex.mutex.LOCK_FUN_request]: Environment is:
+    scheduler(s)=["static"],
+    arch001(i)=[1],
+    model(s)=["owner"],
+    fsm(s)=["moore"],
+    ARRAY(i)=[0],
+    O(s)=["LOCK_FUN_request"],
+    P(s)=["main"],
+    P.init(s)=["main"],
+    P.lock(s)=["main"],
+    P.unlock(s)=["main"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[5],
+    expr_type(s)=["flat"],
+    scheduler_type(s)=["default"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  EMI [Object Event.event.rep]: compiling external module interface...
+  EMI [Object Event.event.rep]: Environment is:
+    NAME(s)=["EVENT"],
+    arch001(i)=[1],
+    latch(i)=[0],
+    ARRAY(i)=[0],
+    O(s)=["rep"],
+    P(s)=["interpreter";"FUN_request"],
+    P.init(s)=["interpreter"],
+    P.await(s)=["FUN_request"],
+    P.wakeup(s)=["interpreter"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[5],
+    expr_type(s)=["flat"],
+    scheduler_type(s)=["default"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  Synthesizing process instructions...
+    Synthesizing uCode for process <sys_status_proc>...
+    in process <Com.sys_status_proc>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <sys_status_proc>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <sys_status_proc>...
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <sys_status_proc>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <sys_status_proc>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <sys_status_proc>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 19 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <sys_status_proc>...
+        35 states created.
+      Calculating block frame time estimations for process <sys_status_proc>...
+    Synthesizing uCode for process <com_tmo>...
+    in process <Com.com_tmo>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <com_tmo>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <com_tmo>...
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <com_tmo>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <com_tmo>...
+        Created 1 register(s):
+          TEMP_0: logic[19]
+      Block Scheduler: Exploring concurrency in basic blocks for process <com_tmo>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <com_tmo>...
+        7 states created.
+      Calculating block frame time estimations for process <com_tmo>...
+    Synthesizing uCode for process <com_rx>...
+    in process <Com.com_rx>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <com_rx>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <com_rx>...
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <com_rx>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <com_rx>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <com_rx>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <com_rx>...
+        8 states created.
+      Calculating block frame time estimations for process <com_rx>...
+    Synthesizing uCode for process <com_tx>...
+    in process <Com.com_tx>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <com_tx>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <com_tx>...
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <com_tx>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <com_tx>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <com_tx>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <com_tx>...
+        6 states created.
+      Calculating block frame time estimations for process <com_tx>...
+    Synthesizing uCode for process <interpreter>...
+    in process <Com.interpreter>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <interpreter>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <interpreter>...
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <interpreter>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <interpreter>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <interpreter>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 8 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <interpreter>...
+        26 states created.
+      Calculating block frame time estimations for process <interpreter>...
+    Synthesizing uCode for process <FUN_request>...
+    in process <Com.FUN_request>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <FUN_request>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <FUN_request>...
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <FUN_request>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <FUN_request>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <FUN_request>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <FUN_request>...
+        6 states created.
+      Calculating block frame time estimations for process <FUN_request>...
+    Synthesizing uCode for process <main>...
+    in process <Com.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        9 states created.
+      Calculating block frame time estimations for process <main>...
+  
+  +--------------------------- UCODE SYNTHESIS SUMMARY ----------------------------+
+  +--------------------------------------------------------------------------------+
+  | LOCATION                      MESSAGE                                          |
+  +--------------------------------------------------------------------------------+
+  +--------------------------------------------------------------------------------+
+  
+  Synthesizing VHDL-RTL for module <Com>...
+  Creating entity <com_sys_status_proc>...
+    Synthesizing VHDL-RTL for process <sys_status_proc>...
+    Emitting state list for process <sys_status_proc>...
+    Emitting state machine for process <sys_status_proc>...
+    Port width: 25 bits
+  Creating entity <com_com_tmo>...
+    Synthesizing VHDL-RTL for process <com_tmo>...
+    Emitting state list for process <com_tmo>...
+    Emitting state machine for process <com_tmo>...
+    Port width: 7 bits
+  Creating entity <com_com_rx>...
+    Synthesizing VHDL-RTL for process <com_rx>...
+    Emitting state list for process <com_rx>...
+    Emitting state machine for process <com_rx>...
+    Port width: 29 bits
+  Creating entity <com_com_tx>...
+    Synthesizing VHDL-RTL for process <com_tx>...
+    Emitting state list for process <com_tx>...
+    Emitting state machine for process <com_tx>...
+    Port width: 24 bits
+  Creating entity <com_interpreter>...
+    Synthesizing VHDL-RTL for process <interpreter>...
+    Emitting state list for process <interpreter>...
+    Emitting state machine for process <interpreter>...
+    Port width: 56 bits
+  Creating entity <com_FUN_request>...
+    Synthesizing VHDL-RTL for process <FUN_request>...
+    Emitting state list for process <FUN_request>...
+    Emitting state machine for process <FUN_request>...
+    Port width: 40 bits
+  Creating entity <com_main>...
+    Synthesizing VHDL-RTL for process <main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 30 bits
+  Creating library <conpro.vhdl>...
+  Creating entity <com.vhdl>...
+    Synthesizing VHDL-RTL for toplevel <Com> ...
+    Creating global register <sys_status> [DT_logic 3, scheduler=PRIOstat #rd=1 #wr=3]...
+    Creating global register <stat_led> [DT_logic 1, scheduler=PRIOstat #rd=0 #wr=1]...
+    Creating global register <sys_status_next> [DT_logic 3, scheduler=PRIOstat #rd=1 #wr=2]...
+    EMI [Object Timer.timer.watch_timer]: compiling process <TIMER_watch_timer_SCHED> ...
+    EMI [Object Timer.timer.watch_timer]: compiling #assert section [arch001(i)=[1],
+    arch002(i)=[2],
+    latch(i)=[0],
+    time(i)=[50000000],
+    sig(?)=[],
+    sig_action_level(?)=[],
+    sig_def_level(?)=[],
+    mode(i)=[0],
+    ARRAY(i)=[0],
+    O(s)=["watch_timer"],
+    P(s)=["sys_status_proc";"MOD_Com"],
+    P.init(s)=["sys_status_proc"],
+    P.time(s)=["MOD_Com"],
+    P.await(s)=["sys_status_proc"],
+    P.wakeup(s)=[],
+    P.start(s)=["sys_status_proc"],
+    P.stop(s)=[],
+    P.mode(s)=[],
+    P.sig_action(s)=[],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[5],
+    expr_type(s)=["flat"],
+    scheduler_type(s)=["default"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 4 conditions...
+    Creating global register <RET_FUN_request_d2> [DT_logic 8, scheduler=PRIOstat #rd=1 #wr=1]...
+    Creating global register <ARG_FUN_request_d1> [DT_logic 8, scheduler=PRIOstat #rd=1 #wr=1]...
+    Creating global register <com_timeout> [DT_bool, scheduler=PRIOstat #rd=1 #wr=1]...
+    EMI [Object Uart.uart.com]: compiling process <UART_com_BAUD_GEN> ...
+    EMI [Object Uart.uart.com]: compiling process <UART_com_RX_SAMPLER> ...
+    EMI [Object Uart.uart.com]: compiling process <UART_com_RX_CONTROLLER> ...
+    EMI [Object Uart.uart.com]: compiling process <UART_com_TX_SAMPLER> ...
+    EMI [Object Uart.uart.com]: compiling process <UART_com_TX_CONTROLLER> ...
+    EMI [Object Uart.uart.com]: compiling process <UART_com_SCHED> ...
+    EMI [Object Uart.uart.com]: compiling #assert section [baud(i)=[115200],
+    datawidth(i)=[8],
+    rxsig(U)=["dev_io_RX"],
+    txsig(U)=["dev_io_TX"],
+    rxact(i)=[1],
+    txact(i)=[1],
+    wrmode(s)=["sync"],
+    ARRAY(i)=[0],
+    O(s)=["com"],
+    P(s)=["interpreter";"com_tx";"com_rx";"MOD_Com"],
+    P.init(s)=["interpreter"],
+    P.start(s)=["interpreter"],
+    P.stop(s)=[],
+    P.baud(s)=["MOD_Com"],
+    P.write(s)=["com_tx"],
+    P.read(s)=["com_rx"],
+    P.interface(s)=["MOD_Com"],
+    P.level(s)=[],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[5],
+    expr_type(s)=["flat"],
+    scheduler_type(s)=["default"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 3 conditions...
+    Creating queue <rx_q> [DT_logic 8, depth=16 width=8 #rd=1 #wr=1]...
+    EMI [Object Mutex.mutex.LOCK_FUN_request]: compiling process <MUTEX_LOCK_FUN_request_SCHED> ...
+    EMI [Object Mutex.mutex.LOCK_FUN_request]: compiling #assert section [scheduler(s)=["static"],
+    arch001(i)=[1],
+    model(s)=["owner"],
+    fsm(s)=["moore"],
+    ARRAY(i)=[0],
+    O(s)=["LOCK_FUN_request"],
+    P(s)=["main"],
+    P.init(s)=["main"],
+    P.lock(s)=["main"],
+    P.unlock(s)=["main"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[5],
+    expr_type(s)=["flat"],
+    scheduler_type(s)=["default"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 3 conditions...
+    Creating queue <tx_q> [DT_logic 8, depth=16 width=8 #rd=1 #wr=2]...
+    EMI [Object Event.event.rep]: compiling process <EVENT_rep_SCHED> ...
+    EMI [Object Event.event.rep]: compiling #assert section [NAME(s)=["EVENT"],
+    arch001(i)=[1],
+    latch(i)=[0],
+    ARRAY(i)=[0],
+    O(s)=["rep"],
+    P(s)=["interpreter";"FUN_request"],
+    P.init(s)=["interpreter"],
+    P.await(s)=["FUN_request"],
+    P.wakeup(s)=["interpreter"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[5],
+    expr_type(s)=["flat"],
+    scheduler_type(s)=["default"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 3 conditions...
+    Creating global register <rep_d> [DT_logic 8, scheduler=PRIOstat #rd=1 #wr=1]...
+  Emitting MicroCode for module Com...
+  Emitting object file for module Com...
+  Emitting MicroCode for process sys_status_proc...
+  Emitting MicroCode for process com_tmo...
+  Emitting MicroCode for process com_rx...
+  Emitting MicroCode for process com_tx...
+  Emitting MicroCode for process interpreter...
+  Emitting MicroCode for process FUN_request...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.sys_status_proc>: emitting MicroCode for process <sys_status_proc>.
+  UCI <ucode.uci_out.com_tmo>: emitting MicroCode for process <com_tmo>.
+  UCI <ucode.uci_out.com_rx>: emitting MicroCode for process <com_rx>.
+  UCI <ucode.uci_out.com_tx>: emitting MicroCode for process <com_tx>.
+  UCI <ucode.uci_out.interpreter>: emitting MicroCode for process <interpreter>.
+  UCI <ucode.uci_out.FUN_request>: emitting MicroCode for process <FUN_request>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+  
+  +---------------------------- RTL SYNTHESIS SUMMARY -----------------------------+
+  +--------------------------------------------------------------------------------+
+  | LOCATION                      MESSAGE                                          |
+  +--------------------------------------------------------------------------------+
+  +--------------------------------------------------------------------------------+
+  
+Emitting frame time calculations for module <Com>...
+Info : Emitting block frame informations in file <com.ft>...
+Emitting toolset <xilinx6>...
+TDI [Tool xilinx6.root]#new_obj: creating object <com>...
+TDI [Tool xilinx6.com]#compile_all: Initializing tool ...
+  TDI [Tool xilinx6.com]: found #version 2.05...
+  TDI [Tool xilinx6.com]: compiling #parameter section...
+  TDI [Tool xilinx6.com]: compiling #parameter section...
+  TDI [Tool xilinx6.com]: compiling #parameter section...
+  TDI [Tool xilinx6.com]: compiling function <check>...
+  TDI [Tool xilinx6.com]: compiling function <init>...
+  TDI [Tool xilinx6.com]: compiling function <finish>...
+  TDI [Tool xilinx6.com]: compiling function <make_xst_runscript>...
+  TDI [Tool xilinx6.com]: compiling function <make_proj>...
+  TDI [Tool xilinx6.com]: compiling function <do_synth>...
+  TDI [Tool xilinx6.com]: compiling function <do_scram>...
+  TDI [Tool xilinx6.com]: compiling function <do_trans>...
+  TDI [Tool xilinx6.com]: compiling function <do_map>...
+  TDI [Tool xilinx6.com]: compiling function <do_place>...
+  TDI [Tool xilinx6.com]: compiling function <do_bitgen>...
+  TDI [Tool xilinx6.com]: compiling function <do_ucf>...
+  TDI [Tool xilinx6.com]: compiling function <do_prom>...
+  TDI [Tool xilinx6.com]: compiling function <do_fpga>...
+  TDI [Tool xilinx6.com]: compiling target <init>...
+  TDI [Tool xilinx6.com]: compiling target <vhdl>...
+  TDI [Tool xilinx6.com]: compiling target <synth>...
+  TDI [Tool xilinx6.com]: compiling target <tech>...
+  TDI [Tool xilinx6.com]: compiling target <svf>...
+  TDI [Tool xilinx6.com]: compiling target <ucf>...
+TDI [Tool xilinx6.com]#compiler_all: Compiling tool ...
+  TDI [Tool xilinx6.com]#emit: Creating build script <com.xilinx6.tool.sh>...
+    TDI [Tool xilinx6.com]: Environment is:
+      PROM=[get_opt()],
+      target_device=[|"xc3s1000",
+                      "xc18v04"|],
+      target_class=[|"xc3s",
+                     "unknown"|],
+      TOP=[("MOD_") + ($proj)],
+      LOG=[($proj) + (".log")],
+      SRCDIR=["."],
+      SCRAM=[$],
+      clock=["18500000"],
+      vhdl=[|"com",
+             "com_sys_status_proc",
+             "com_com_tmo",
+             "com_com_rx",
+             "com_com_tx",
+             "com_interpreter",
+             "com_FUN_request",
+             "com_main",
+             "conpro"|],
+      syn_synth_set=[|"fsm_extract YES",
+                      "fsm_encoding Sequential",
+                      "fsm_style lut",
+                      "mux_extract YES",
+                      "mux_style Auto",
+                      "ram_extract Yes",
+                      "ram_style Block",
+                      "rom_extract Yes",
+                      "rom_style Auto",
+                      "mult_style lut",
+                      "priority_extract Yes",
+                      "shreg_extract Yes",
+                      "decoder_extract Yes",
+                      "shift_extract Yes",
+                      "opt_mode speed",
+                      "opt_level 1",
+                      "iobuf YES",
+                      "iob Auto",
+                      "max_fanout 100",
+                      "xor_collapse Yes",
+                      "resource_sharing Yes",
+                      "slice_packing Yes",
+                      "slice_utilization_ratio 100",
+                      "slice_utilization_ratio_maxmargin 5",
+                      "bufg 4",
+                      "register_duplication Yes",
+                      "register_balancing No",
+                      "equivalent_register_removal Yes",
+                      "optimize_primitives No",
+                      "tristate2logic No",
+                      "glob_opt AllClockNets",
+                      "iuc NO"|],
+      clock_level=["1"],
+      simu_res=["5"],
+      VHDL=[|$|],
+      target_speed=[|"5"|],
+      syn_tech_set_par=[|"t 1"|],
+      BITGEN_CONF=[get_opt()],
+      target_library=[|"xis3",
+                       "unknown"|],
+      DUP=["tee"],
+      RECLEN=[get_opt()],
+      SYNSET=[$],
+      period=["54"],
+      DEVICE=[get_opt()],
+      SPEED=[get_opt()],
+      XILINX=[$],
+      target_package=[|"ft256"|],
+      syn_tech_set_map=[|"pr b",
+                         "k 4",
+                         "c 100",
+                         "tx off"|],
+      DESIGN=[$proj],
+      port=[|"stat_led_RD:out:std_logic",
+             "dev_io_RX:in:std_logic",
+             "dev_io_TX:out:std_logic",
+             "CLK:in:std_logic",
+             "RESET:in:std_logic"|],
+      reclen=["1024"],
+      target=[|"xc3s1000-ft256-5",
+               "xc18v04"|],
+      MAPSET=[$],
+      target_family=[|"spartan3",
+                      "unknown"|],
+      reset_level=["0"],
+      proj=["com"],
+      PARSET=[$],
+      res=[$],
+      OBJDIR=["obj"],
+      bitgen_conf=["-g DebugBitstream:No -g Binary:no -g CclkPin:PullUp -g M0Pin:PullUp -g M1Pin:PullUp -g M2Pin:PullUp -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g StartUpClk:CClk -g DONE_cycle:4"],
+      simu_cycles=["50"]
+Total CPU time consumed: 3.0 seconds.
+Total time elapsed: 3.0 seconds.
+  
+  +------------------------ SYNTHESIS RESULT SUMMARY -------------------------+
+  +---------------------------------------------------------------------------+
+  | DESCRIPTION                                  VALUE                        |
+  +---------------------------------------------------------------------------+
+  | arithmetic unit                              35                           |
+  |  -> adder                                    (5)                          |
+  |  -> comparator                               (24)                         |
+  |  -> subtractor                               (6)                          |
+  | object                                       4                            |
+  |  -> event                                    (1)                          |
+  |  -> mutex                                    (1)                          |
+  |  -> timer                                    (1)                          |
+  |  -> uart                                     (1)                          |
+  | process                                      7                            |
+  | process.FUN_request                                                       |
+  |  -> port-width [bit]                         40                           |
+  |  -> states                                   6                            |
+  | process.com_rx                                                            |
+  |  -> port-width [bit]                         29                           |
+  |  -> register                                 2                            |
+  |  -> states                                   8                            |
+  | process.com_tmo                                                           |
+  |  -> port-width [bit]                         7                            |
+  |  -> register                                 1                            |
+  |  -> states                                   7                            |
+  | process.com_tx                                                            |
+  |  -> port-width [bit]                         24                           |
+  |  -> register                                 2                            |
+  |  -> states                                   6                            |
+  | process.interpreter                                                       |
+  |  -> port-width [bit]                         56                           |
+  |  -> register                                 1                            |
+  |  -> states                                   26                           |
+  | process.main                                                              |
+  |  -> port-width [bit]                         30                           |
+  |  -> states                                   9                            |
+  | process.sys_status_proc                                                   |
+  |  -> port-width [bit]                         25                           |
+  |  -> register                                 3                            |
+  |  -> states                                   35                           |
+  | queue                                        2                            |
+  |  -> std_logic_vector(7 downto 0)             (2)                          |
+  | register-local                               9                            |
+  |  -> signed(5 downto 0)                       (1)                          |
+  |  -> std_logic                                (3)                          |
+  |  -> std_logic_vector(18 downto 0)            (1)                          |
+  |  -> std_logic_vector(2 downto 0)             (1)                          |
+  |  -> std_logic_vector(7 downto 0)             (3)                          |
+  | register-shared                              7                            |
+  |  -> std_logic                                (2)                          |
+  |  -> std_logic_vector(2 downto 0)             (2)                          |
+  |  -> std_logic_vector(7 downto 0)             (3)                          |
+  | synthesis time [sec]                         3                            |
+  +---------------------------------------------------------------------------+
+  
+Release 6.3.03i - xst G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+  5) Advanced HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+     7.1) Device utilization summary
+     7.2) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : com.prj
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : com
+Output Format                      : NGC
+Target Device                      : xc3s1000-ft256-5
+
+---- Source Options
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Sequential
+FSM Style                          : lut
+Mux Extraction                     : YES
+Mux Style                          : Auto
+RAM Extraction                     : Yes
+RAM Style                          : Block
+ROM Extraction                     : Yes
+ROM Style                          : Auto
+Multiplier Style                   : lut
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : Yes
+Decoder Extraction                 : Yes
+Logical Shifter Extraction         : Yes
+XOR Collapsing                     : Yes
+Resource Sharing                   : Yes
+Automatic Register Balancing       : No
+Top Module Name                    : MOD_com
+
+---- Target Options
+Add IO Buffers                     : YES
+Pack IO Registers into IOBs        : Auto
+Global Maximum Fanout              : 100
+Slice Packing                      : Yes
+Add Generic Clock Buffer(BUFG)     : 4
+Register Duplication               : Yes
+Equivalent register Removal        : Yes
+
+---- General Options
+Optimization Goal                  : speed
+Optimization Effort                : 1
+Slice Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+Global Optimization                : AllClockNets
+
+---- Other Options
+Optimize Instantiated Primitives   : No
+tristate2logic                     : No
+
+=========================================================================
+
+Setting FSM Encoding Algorithm to : SEQ
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../conpro.vhdl in Library work.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_sys_status_proc.vhdl in Library work.
+Entity <com_sys_status_proc> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_com_tmo.vhdl in Library work.
+Entity <com_com_tmo> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_com_rx.vhdl in Library work.
+Entity <com_com_rx> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_com_tx.vhdl in Library work.
+Entity <com_com_tx> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_interpreter.vhdl in Library work.
+Entity <com_interpreter> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_FUN_request.vhdl in Library work.
+Entity <com_FUN_request> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_main.vhdl in Library work.
+Entity <com_main> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/C/com/out/obj/../com.vhdl in Library work.
+Entity <mod_com> (Architecture <main>) compiled.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <MOD_com> (Architecture <main>).
+INFO:Xst:1304 - Contents of register <TIMER_watch_timer_MODE> in unit <MOD_com> never changes during circuit operation. The register is replaced by logic.
+INFO:Xst:1304 - Contents of register <TIMER_watch_timer_COUNT> in unit <MOD_com> never changes during circuit operation. The register is replaced by logic.
+INFO:Xst:1304 - Contents of register <PRO_main_ENABLE> in unit <MOD_com> never changes during circuit operation. The register is replaced by logic.
+INFO:Xst:1304 - Contents of register <UART_com_TX_SHIFT<8>> in unit <MOD_com> never changes during circuit operation. The register is replaced by logic.
+INFO:Xst:1304 - Contents of register <UART_com_interpreter_LOCKed> in unit <MOD_com> never changes during circuit operation. The register is replaced by logic.
+INFO:Xst:1304 - Contents of register <UART_com_BAUD_COUNT> in unit <MOD_com> never changes during circuit operation. The register is replaced by logic.
+Entity <MOD_com> analyzed. Unit <MOD_com> generated.
+
+Analyzing Entity <com_sys_status_proc> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_sys_status_proc.vhdl line 257: The following signals are missing in the process sensitivity list:
+   TIMER_watch_timer_GD.
+Entity <com_sys_status_proc> analyzed. Unit <com_sys_status_proc> generated.
+
+Analyzing Entity <com_com_tmo> (Architecture <main>).
+Entity <com_com_tmo> analyzed. Unit <com_com_tmo> generated.
+
+Analyzing Entity <com_com_rx> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_com_rx.vhdl line 125: The following signals are missing in the process sensitivity list:
+   UART_com_GD.
+Entity <com_com_rx> analyzed. Unit <com_com_rx> generated.
+
+Analyzing Entity <com_com_tx> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_com_tx.vhdl line 107: The following signals are missing in the process sensitivity list:
+   QUEUE_tx_q_GD, UART_com_GD.
+Entity <com_com_tx> analyzed. Unit <com_com_tx> generated.
+
+Analyzing Entity <com_interpreter> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_interpreter.vhdl line 275: The following signals are missing in the process sensitivity list:
+   UART_com_GD, EVENT_rep_GD, QUEUE_rx_q_GD.
+Entity <com_interpreter> analyzed. Unit <com_interpreter> generated.
+
+Analyzing Entity <com_FUN_request> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_FUN_request.vhdl line 106: The following signals are missing in the process sensitivity list:
+   EVENT_rep_GD.
+Entity <com_FUN_request> analyzed. Unit <com_FUN_request> generated.
+
+Analyzing Entity <com_main> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_main.vhdl line 133: The following signals are missing in the process sensitivity list:
+   MUTEX_LOCK_FUN_request_GD.
+Entity <com_main> analyzed. Unit <com_main> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <com_main>.
+    Related source file is /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_main.vhdl.
+WARNING:Xst:647 - Input <REG_RET_FUN_request_d2_RD> is never used.
+    Found finite state machine <FSM_0> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 9                                              |
+    | Transitions        | 15                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 13                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | conpro_system_reset (negative)                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_main_start                                   |
+    | Power Up State     | s_main_start                                   |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
+Unit <com_main> synthesized.
+
+
+Synthesizing Unit <com_FUN_request>.
+    Related source file is /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_FUN_request.vhdl.
+    Found finite state machine <FSM_1> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 6                                              |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0004 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_fun_request_start                            |
+    | Power Up State     | s_fun_request_start                            |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
+Unit <com_FUN_request> synthesized.
+
+
+Synthesizing Unit <com_interpreter>.
+    Related source file is /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_interpreter.vhdl.
+INFO:Xst:1799 - State s_interpreter_end is never reached in FSM <pro_state>.
+    Found finite state machine <FSM_2> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 25                                             |
+    | Transitions        | 49                                             |
+    | Inputs             | 12                                             |
+    | Outputs            | 25                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0024 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_interpreter_start                            |
+    | Power Up State     | s_interpreter_start                            |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <d>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   8 D-type flip-flop(s).
+Unit <com_interpreter> synthesized.
+
+
+Synthesizing Unit <com_com_tx>.
+    Related source file is /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_com_tx.vhdl.
+    Found finite state machine <FSM_3> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 6                                              |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0004 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_com_tx_start                                 |
+    | Power Up State     | s_com_tx_start                                 |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <d>.
+    Found 1-bit register for signal <err>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   9 D-type flip-flop(s).
+Unit <com_com_tx> synthesized.
+
+
+Synthesizing Unit <com_com_rx>.
+    Related source file is /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_com_rx.vhdl.
+    Found finite state machine <FSM_4> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 13                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 10                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0006 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_com_rx_start                                 |
+    | Power Up State     | s_com_rx_start                                 |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <d>.
+    Found 1-bit register for signal <err>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   9 D-type flip-flop(s).
+Unit <com_com_rx> synthesized.
+
+
+Synthesizing Unit <com_com_tmo>.
+    Related source file is /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_com_tmo.vhdl.
+    Found finite state machine <FSM_5> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 8                                              |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0003 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_com_tmo_start                                |
+    | Power Up State     | s_com_tmo_start                                |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 19-bit subtractor for signal <$n0017> created at line 149.
+    Found 19-bit register for signal <TEMP_0>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  19 D-type flip-flop(s).
+	inferred   1 Adder/Subtracter(s).
+Unit <com_com_tmo> synthesized.
+
+
+Synthesizing Unit <com_sys_status_proc>.
+    Related source file is /home/sbosse/proj/conpro2/test/C/com/out/obj/../com_sys_status_proc.vhdl.
+INFO:Xst:1799 - State s_sys_status_proc_end is never reached in FSM <pro_state>.
+    Found finite state machine <FSM_6> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 34                                             |
+    | Transitions        | 56                                             |
+    | Inputs             | 11                                             |
+    | Outputs            | 34                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0015 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_sys_status_proc_start                        |
+    | Power Up State     | s_sys_status_proc_start                        |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 6-bit subtractor for signal <$n0062>.
+    Found 6-bit register for signal <counter>.
+    Found 3-bit register for signal <last_status>.
+    Found 1-bit register for signal <onl>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  10 D-type flip-flop(s).
+	inferred   1 Adder/Subtracter(s).
+Unit <com_sys_status_proc> synthesized.
+
+
+Synthesizing Unit <MOD_com>.
+    Related source file is /home/sbosse/proj/conpro2/test/C/com/out/obj/../com.vhdl.
+WARNING:Xst:646 - Signal <PRO_com_tx_END> is assigned but never used.
+WARNING:Xst:646 - Signal <UART_com_interpreter_LOCKed> is assigned but never used.
+WARNING:Xst:646 - Signal <PRO_interpreter_END> is assigned but never used.
+WARNING:Xst:646 - Signal <PRO_main_END> is assigned but never used.
+WARNING:Xst:653 - Signal <QUEUE_rx_q_com_tmo_GD> is used but never assigned. Tied to value 0.
+WARNING:Xst:1780 - Signal <UART_com_com_tx_TX_AWAIT> is never used or assigned.
+WARNING:Xst:646 - Signal <PRO_sys_status_proc_END> is assigned but never used.
+WARNING:Xst:646 - Signal <PRO_com_rx_END> is assigned but never used.
+WARNING:Xst:646 - Signal <PRO_com_tmo_END> is assigned but never used.
+    Found 16x8-bit single-port block RAM for signal <QRAM_rx_q>.
+    -----------------------------------------------------------------------
+    | mode               | write-first                         |          |
+    | aspect ratio       | 16-word x 8-bit                     |          |
+    | clock              | connected to signal <conpro_system_clk> | rise     |
+    | write enable       | connected to signal <QRAM_rx_q_WE_AUX> | high     |
+    | address            | connected to signal <QRAM_rx_q_ADDR_AUX> |          |
+    | data in            | connected to signal <QRAM_rx_q_DIN_AUX> |          |
+    | data out           | connected to signal <QRAM_rx_q_DOUT_AUX> |          |
+    | ram_style          | Block                               |          |
+    -----------------------------------------------------------------------
+    Found 16x8-bit single-port block RAM for signal <QRAM_tx_q>.
+    -----------------------------------------------------------------------
+    | mode               | write-first                         |          |
+    | aspect ratio       | 16-word x 8-bit                     |          |
+    | clock              | connected to signal <conpro_system_clk> | rise     |
+    | write enable       | connected to signal <QRAM_tx_q_WE_AUX> | high     |
+    | address            | connected to signal <QRAM_tx_q_ADDR_AUX> |          |
+    | data in            | connected to signal <QRAM_tx_q_DIN_AUX> |          |
+    | data out           | connected to signal <QRAM_tx_q_DOUT_AUX> |          |
+    | ram_style          | Block                               |          |
+    -----------------------------------------------------------------------
+    Register <UART_com_TX_EN> equivalent to <UART_com_RX_EN> has been removed
+    Found 20-bit subtractor for signal <$n0184>.
+    Found 5-bit adder for signal <$n0251> created at line 771.
+    Found 5-bit adder for signal <$n0261> created at line 853.
+    Found 4-bit adder for signal <$n0266> created at line 999.
+    Found 4-bit comparator not equal for signal <$n0267> created at line 1025.
+    Found 4-bit adder for signal <$n0268> created at line 998.
+    Found 4-bit comparator not equal for signal <$n0269> created at line 1016.
+    Found 4-bit adder for signal <$n0270> created at line 1144.
+    Found 4-bit comparator not equal for signal <$n0271> created at line 1180.
+    Found 4-bit adder for signal <$n0272> created at line 1143.
+    Found 4-bit comparator not equal for signal <$n0273> created at line 1162.
+    Found 4-bit adder for signal <$n0274> created at line 764.
+    Found 4-bit down counter for signal <baud_cnt>.
+    Found 1-bit register for signal <EVENT_rep_FUN_request_GD>.
+    Found 1-bit register for signal <EVENT_rep_FUN_request_LOCKed>.
+    Found 1-bit register for signal <EVENT_rep_interpreter_GD>.
+    Found 1-bit register for signal <MUTEX_LOCK_FUN_request_LOCKed>.
+    Found 1-bit register for signal <MUTEX_LOCK_FUN_request_main_GD>.
+    Found 1-bit register for signal <MUTEX_LOCK_FUN_request_main_LOCKed>.
+    Found 1-bit register for signal <PRO_com_rx_ENABLE>.
+    Found 1-bit register for signal <PRO_com_rx_interpreter_GD>.
+    Found 1-bit register for signal <PRO_com_tmo_ENABLE>.
+    Found 1-bit register for signal <PRO_com_tmo_interpreter_GD>.
+    Found 1-bit register for signal <PRO_com_tx_ENABLE>.
+    Found 1-bit register for signal <PRO_com_tx_interpreter_GD>.
+    Found 1-bit register for signal <PRO_FUN_request_ENABLE>.
+    Found 1-bit register for signal <PRO_FUN_request_main_GD>.
+    Found 1-bit register for signal <PRO_interpreter_ENABLE>.
+    Found 1-bit register for signal <PRO_interpreter_main_GD>.
+    Found 1-bit register for signal <PRO_sys_status_proc_ENABLE>.
+    Found 1-bit register for signal <PRO_sys_status_proc_main_GD>.
+    Found 4-bit register for signal <QRAM_rx_q_ADDR_AUX>.
+    Found 8-bit register for signal <QRAM_rx_q_DIN_AUX>.
+    Found 1-bit register for signal <QRAM_rx_q_WE_AUX>.
+    Found 4-bit register for signal <QRAM_tx_q_ADDR_AUX>.
+    Found 8-bit register for signal <QRAM_tx_q_DIN_AUX>.
+    Found 1-bit register for signal <QRAM_tx_q_WE_AUX>.
+    Found 4-bit up counter for signal <QUEUE_rx_q_ADDR_RD>.
+    Found 4-bit up counter for signal <QUEUE_rx_q_ADDR_WR>.
+    Found 1-bit register for signal <QUEUE_rx_q_com_rx_GD>.
+    Found 1-bit register for signal <QUEUE_rx_q_EMPTY>.
+    Found 1-bit register for signal <QUEUE_rx_q_FULL>.
+    Found 1-bit register for signal <QUEUE_rx_q_interpreter_GD>.
+    Found 1-bit register for signal <QUEUE_rx_q_LOCKED>.
+    Found 4-bit up counter for signal <QUEUE_tx_q_ADDR_RD>.
+    Found 4-bit up counter for signal <QUEUE_tx_q_ADDR_WR>.
+    Found 1-bit register for signal <QUEUE_tx_q_com_tx_GD>.
+    Found 1-bit register for signal <QUEUE_tx_q_EMPTY>.
+    Found 1-bit register for signal <QUEUE_tx_q_FULL>.
+    Found 1-bit register for signal <QUEUE_tx_q_FUN_request_GD>.
+    Found 1-bit register for signal <QUEUE_tx_q_interpreter_GD>.
+    Found 1-bit register for signal <QUEUE_tx_q_LOCKED>.
+    Found 8-bit register for signal <REG_ARG_FUN_request_d1>.
+    Found 1-bit register for signal <REG_com_timeout>.
+    Found 8-bit register for signal <REG_rep_d>.
+    Found 8-bit register for signal <REG_RET_FUN_request_d2>.
+    Found 1-bit register for signal <REG_stat_led>.
+    Found 3-bit register for signal <REG_sys_status>.
+    Found 1-bit register for signal <REG_sys_status_com_rx_GD>.
+    Found 1-bit register for signal <REG_sys_status_interpreter_GD>.
+    Found 1-bit register for signal <REG_sys_status_LOCKED>.
+    Found 3-bit register for signal <REG_sys_status_next>.
+    Found 1-bit register for signal <REG_sys_status_next_interpreter_GD>.
+    Found 1-bit register for signal <REG_sys_status_next_LOCKED>.
+    Found 1-bit register for signal <REG_sys_status_next_sys_status_proc_GD>.
+    Found 1-bit register for signal <REG_sys_status_sys_status_proc_GD>.
+    Found 2-bit register for signal <samples>.
+    Found 20-bit register for signal <TIMER_watch_timer_COUNTER>.
+    Found 1-bit register for signal <TIMER_watch_timer_ENABLED>.
+    Found 1-bit register for signal <TIMER_watch_timer_sys_status_proc_GD>.
+    Found 1-bit register for signal <TIMER_watch_timer_sys_status_proc_LOCKed>.
+    Found 4-bit up counter for signal <tx_cnt>.
+    Found 1-bit register for signal <UART_com_BAUD16>.
+    Found 1-bit register for signal <UART_com_BUSY>.
+    Found 1-bit register for signal <UART_com_com_rx_GD>.
+    Found 1-bit register for signal <UART_com_com_rx_LOCKed>.
+    Found 8-bit register for signal <UART_com_com_rx_RD>.
+    Found 1-bit register for signal <UART_com_com_rx_RD_ERR>.
+    Found 1-bit register for signal <UART_com_com_tx_GD>.
+    Found 1-bit register for signal <UART_com_com_tx_LOCKed>.
+    Found 1-bit register for signal <UART_com_com_tx_WR_ERR>.
+    Found 1-bit register for signal <UART_com_interpreter_GD>.
+    Found 5-bit register for signal <UART_com_RX_BIT_COUNT>.
+    Found 4-bit register for signal <UART_com_RX_BIT_PHASE>.
+    Found 1-bit register for signal <UART_com_RX_COMPL>.
+    Found 8-bit register for signal <UART_com_RX_DATA>.
+    Found 1-bit register for signal <UART_com_RX_EN>.
+    Found 1-bit register for signal <UART_com_RX_ERR>.
+    Found 1-bit register for signal <UART_com_RX_RE>.
+    Found 1-bit register for signal <UART_com_RX_SAMPLED>.
+    Found 8-bit register for signal <UART_com_RX_SHIFT>.
+    Found 5-bit register for signal <UART_com_TX_BIT_COUNT>.
+    Found 1-bit register for signal <UART_com_TX_COMPL>.
+    Found 8-bit register for signal <UART_com_TX_DATA>.
+    Found 1-bit register for signal <UART_com_TX_DRE>.
+    Found 1-bit register for signal <UART_com_TX_ERR>.
+    Found 8-bit register for signal <UART_com_TX_SHIFT<7:0>>.
+    Found 1-bit register for signal <UART_com_TX_TICK>.
+    Found 1-bit register for signal <UART_com_TX_WE>.
+    Found 1-bit register for signal <UART_com_TXD>.
+    Found 20 1-bit 2-to-1 multiplexers.
+    Summary:
+	inferred   2 RAM(s).
+	inferred   6 Counter(s).
+	inferred 193 D-type flip-flop(s).
+	inferred   8 Adder/Subtracter(s).
+	inferred   4 Comparator(s).
+	inferred  20 Multiplexer(s).
+Unit <MOD_com> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Advanced RAM inference ...
+Advanced multiplier inference ...
+Advanced Registered AddSub inference ...
+Optimizing FSM <FSM_6> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_5> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_4> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_3> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_2> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_1> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_0> on signal <pro_state> with sequential encoding.
+Dynamic shift register inference ...
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# FSMs                             : 7
+# Block RAMs                       : 2
+ 16x8-bit single-port block RAM    : 2
+# Adders/Subtractors               : 10
+ 20-bit subtractor                 : 1
+ 6-bit subtractor                  : 1
+ 19-bit subtractor                 : 1
+ 4-bit adder                       : 5
+ 5-bit adder                       : 2
+# Counters                         : 6
+ 4-bit up counter                  : 5
+ 4-bit down counter                : 1
+# Registers                        : 132
+ 4-bit register                    : 3
+ 1-bit register                    : 110
+ 8-bit register                    : 11
+ 5-bit register                    : 2
+ 20-bit register                   : 1
+ 3-bit register                    : 3
+ 6-bit register                    : 1
+ 19-bit register                   : 1
+# Comparators                      : 4
+ 4-bit comparator not equal        : 4
+# Multiplexers                     : 5
+ 4-bit 2-to-1 multiplexer          : 2
+ 1-bit 2-to-1 multiplexer          : 1
+ 8-bit 2-to-1 multiplexer          : 1
+ 3-bit 2-to-1 multiplexer          : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch  <REG_ARG_FUN_request_d1_7> (without init value) is constant in block <MOD_com>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <REG_ARG_FUN_request_d1_0> (without init value) is constant in block <MOD_com>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <REG_ARG_FUN_request_d1_1> (without init value) is constant in block <MOD_com>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <REG_ARG_FUN_request_d1_2> (without init value) is constant in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_RET_FUN_request_d2_7> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_RET_FUN_request_d2_0> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_RET_FUN_request_d2_1> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_RET_FUN_request_d2_2> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_RET_FUN_request_d2_3> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_RET_FUN_request_d2_4> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_RET_FUN_request_d2_5> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_RET_FUN_request_d2_6> is unconnected in block <MOD_com>.
+
+Optimizing unit <MOD_com> ...
+
+Optimizing unit <com_sys_status_proc> ...
+
+Optimizing unit <com_com_tmo> ...
+
+Optimizing unit <com_com_rx> ...
+
+Optimizing unit <com_com_tx> ...
+
+Optimizing unit <com_interpreter> ...
+
+Optimizing unit <com_FUN_request> ...
+Loading device for application Xst from file '3s1000.nph' in environment /export/home/Xilinx63.
+
+Mapping all equations...
+WARNING:Xst:1291 - FF/Latch <REG_rep_d_7> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_rep_d_6> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_rep_d_4> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_rep_d_5> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_rep_d_3> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_rep_d_2> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_rep_d_0> is unconnected in block <MOD_com>.
+WARNING:Xst:1291 - FF/Latch <REG_rep_d_1> is unconnected in block <MOD_com>.
+Building and optimizing final netlist ...
+Register REG_ARG_FUN_request_d1_6 equivalent to REG_ARG_FUN_request_d1_5 has been removed
+Register REG_ARG_FUN_request_d1_5 equivalent to REG_ARG_FUN_request_d1_4 has been removed
+Register REG_ARG_FUN_request_d1_4 equivalent to REG_ARG_FUN_request_d1_3 has been removed
+Found area constraint ratio of 100 (+ 5) on block MOD_com, actual ratio is 5.
+FlipFlop PRO_MAP_com_rx_pro_state_FFd2 has been replicated 1 time(s)
+FlipFlop PRO_MAP_com_rx_pro_state_FFd3 has been replicated 1 time(s)
+FlipFlop PRO_MAP_com_rx_pro_state_FFd1 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd4 has been replicated 1 time(s)
+FlipFlop PRO_MAP_interpreter_pro_state_FFd5 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd1 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd6 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd5 has been replicated 1 time(s)
+FlipFlop PRO_MAP_interpreter_pro_state_FFd3 has been replicated 1 time(s)
+FlipFlop PRO_MAP_interpreter_pro_state_FFd2 has been replicated 1 time(s)
+FlipFlop PRO_MAP_interpreter_pro_state_FFd4 has been replicated 1 time(s)
+FlipFlop PRO_MAP_interpreter_pro_state_FFd1 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd3 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd2 has been replicated 2 time(s)
+FlipFlop PRO_MAP_com_tx_pro_state_FFd2 has been replicated 1 time(s)
+FlipFlop PRO_MAP_com_tx_pro_state_FFd3 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd3 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd5 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd6 has been replicated 1 time(s)
+FlipFlop PRO_MAP_sys_status_proc_pro_state_FFd4 has been replicated 1 time(s)
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+Top Level Output File Name         : com
+Output Format                      : NGC
+Optimization Goal                  : speed
+Keep Hierarchy                     : no
+
+Design Statistics
+# IOs                              : 5
+
+Macro Statistics :
+# RAM                              : 2
+#      16x8-bit single-port block RAM: 2
+# Registers                        : 114
+#      1-bit register              : 87
+#      19-bit register             : 1
+#      20-bit register             : 1
+#      3-bit register              : 3
+#      4-bit register              : 8
+#      5-bit register              : 2
+#      6-bit register              : 1
+#      8-bit register              : 11
+# Multiplexers                     : 5
+#      2-to-1 multiplexer          : 5
+# Adders/Subtractors               : 3
+#      19-bit subtractor           : 1
+#      20-bit subtractor           : 1
+#      6-bit subtractor            : 1
+# Comparators                      : 4
+#      4-bit comparator not equal  : 4
+
+Cell Usage :
+# BELS                             : 823
+#      GND                         : 1
+#      LUT1                        : 53
+#      LUT2                        : 77
+#      LUT2_D                      : 4
+#      LUT2_L                      : 35
+#      LUT3                        : 111
+#      LUT3_D                      : 13
+#      LUT3_L                      : 10
+#      LUT4                        : 356
+#      LUT4_D                      : 24
+#      LUT4_L                      : 30
+#      MUXCY                       : 42
+#      MUXF5                       : 21
+#      VCC                         : 1
+#      XORCY                       : 45
+# FlipFlops/Latches                : 296
+#      FD                          : 1
+#      FDE                         : 61
+#      FDR                         : 56
+#      FDRE                        : 82
+#      FDRS                        : 60
+#      FDRSE                       : 9
+#      FDS                         : 14
+#      FDSE                        : 13
+# RAMS                             : 2
+#      RAMB16_S36                  : 2
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 4
+#      IBUF                        : 2
+#      OBUF                        : 2
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1000ft256-5 
+
+ Number of Slices:                     390  out of   7680     5%  
+ Number of Slice Flip Flops:           296  out of  15360     1%  
+ Number of 4 input LUTs:               713  out of  15360     4%  
+ Number of bonded IOBs:                  4  out of    173     2%  
+ Number of BRAMs:                        2  out of     24     8%  
+ Number of GCLKs:                        1  out of      8    12%  
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 298   |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 6.185ns (Maximum Frequency: 161.681MHz)
+   Minimum input arrival time before clock: 6.677ns
+   Maximum output required time after clock: 5.106ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+-------------------------------------------------------------------------
+Timing constraint: Default period analysis for Clock 'CLK'
+Delay:               6.185ns (Levels of Logic = 4)
+  Source:            PRO_MAP_interpreter_pro_state_FFd1 (FF)
+  Destination:       QUEUE_tx_q_ADDR_RD_0 (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: PRO_MAP_interpreter_pro_state_FFd1 to QUEUE_tx_q_ADDR_RD_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q             9   0.626   0.777  PRO_MAP_interpreter_pro_state_FFd1 (PRO_MAP_interpreter_pro_state_FFd1)
+     LUT2_D:I0->LO         1   0.479   0.100  PRO_MAP_interpreter_Ker93851 (N45767)
+     LUT4:I2->O           11   0.479   0.836  PRO_MAP_interpreter_pro_state_Out151 (PRO_MAP_interpreter__n0042)
+     LUT4_D:I1->O          9   0.479   0.777  _n02111 (_n0211)
+     LUT4:I3->O            4   0.479   0.629  _n05011 (_n0501)
+     FDRE:CE                   0.524          QUEUE_tx_q_ADDR_RD_0
+    ----------------------------------------
+    Total                      6.185ns (3.066ns logic, 3.119ns route)
+                                       (49.6% logic, 50.4% route)
+
+-------------------------------------------------------------------------
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+Offset:              6.677ns (Levels of Logic = 4)
+  Source:            RESET (PAD)
+  Destination:       UART_com_TX_DATA_2 (FF)
+  Destination Clock: CLK rising
+
+  Data Path: RESET to UART_com_TX_DATA_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            44   1.679   1.333  RESET_IBUF (RESET_IBUF)
+     LUT2:I0->O            7   0.479   0.717  _n01271 (_n0127)
+     LUT4:I3->O            1   0.479   0.240  _n048713 (CHOICE4620)
+     LUT4:I0->O            8   0.479   0.747  _n048737 (_n0487)
+     FDE:CE                    0.524          UART_com_TX_DATA_0
+    ----------------------------------------
+    Total                      6.677ns (3.640ns logic, 3.037ns route)
+                                       (54.5% logic, 45.5% route)
+
+-------------------------------------------------------------------------
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+Offset:              5.106ns (Levels of Logic = 1)
+  Source:            UART_com_TXD (FF)
+  Destination:       dev_io_TX (PAD)
+  Source Clock:      CLK rising
+
+  Data Path: UART_com_TXD to dev_io_TX
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.626   0.240  UART_com_TXD (UART_com_TXD)
+     OBUF:I->O                 4.240          dev_io_TX_OBUF (dev_io_TX)
+    ----------------------------------------
+    Total                      5.106ns (4.866ns logic, 0.240ns route)
+                                       (95.3% logic, 4.7% route)
+
+=========================================================================
+CPU : 18.82 / 20.06 s | Elapsed : 21.00 / 23.00 s
+ 
+--> 
+
+
+Total memory usage is 100688 kilobytes
+
+
+Release 6.3.03i - ngdbuild G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+
+Command Line: ngdbuild -p xc3s1000-ft256-5 -uc ../com.ucf -dd . com.ngc com.ngd 
+
+Reading NGO file "/home/sbosse/proj/conpro2/test/C/com/out/obj/com.ngc" ...
+Reading component libraries for design expansion...
+
+Annotating constraints to design from file "../com.ucf" ...
+
+Checking timing specifications ...
+Checking expanded design ...
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 34216 kilobytes
+
+Writing NGD file "com.ngd" ...
+
+Writing NGDBUILD log file "com.bld"...
+
+NGDBUILD done.
+Release 6.3.03i - Map G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+Using target part "3s1000ft256-5".
+Removing unused or disabled logic...
+Running cover...
+Writing file com_map.ngm...
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+Writing design file "com_map.ncd"...
+
+Design Summary:
+Number of errors:      0
+Number of warnings:   48
+Logic Utilization:
+  Number of Slice Flip Flops:         293 out of  15,360    1%
+  Number of 4 input LUTs:             702 out of  15,360    4%
+Logic Distribution:
+  Number of occupied Slices:                          421 out of   7,680    5%
+    Number of Slices containing only related logic:     421 out of     421  100%
+    Number of Slices containing unrelated logic:          0 out of     421    0%
+      *See NOTES below for an explanation of the effects of unrelated logic
+Total Number 4 input LUTs:            705 out of  15,360    4%
+  Number used as logic:                702
+  Number used as a route-thru:           3
+  Number of bonded IOBs:                5 out of     173    2%
+    IOB Flip Flops:                     3
+  Number of Block RAMs:                2 out of      24    8%
+  Number of GCLKs:                     1 out of       8   12%
+
+Total equivalent gate count for design:  137,979
+Additional JTAG gate count for IOBs:  240
+Peak Memory Usage:  77 MB
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity -
+   e.g. two LUTs are "related" if they share common inputs.
+   When assembling slices, Map gives priority to combine logic that
+   is related.  Doing so results in the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin
+   packing unrelated logic into a slice once 99% of the slices are
+   occupied through related logic packing.
+
+   Note that once logic distribution reaches the 99% level through
+   related logic packing, this does not mean the device is completely
+   utilized.  Unrelated logic packing will then begin, continuing until
+   all usable LUTs and FFs are occupied.  Depending on your timing
+   budget, increased levels of unrelated logic packing may adversely
+   affect the overall timing performance of your design.
+
+
+Mapping completed.
+See MAP report file "com_map.mrp" for details.
+Release 6.3.03i Map G.38
+Xilinx Mapping Report File for Design 'MOD_com'
+
+Design Information
+------------------
+Command Line   : map -p xc3s1000-ft256-5 -pr b -k 4 -c 100 -tx off -o
+com_map.ncd com.ngd com.pcf 
+Target Device  : x3s1000
+Target Package : ft256
+Target Speed   : -5
+Mapper Version : spartan3 -- $Revision: 1.16.8.2 $
+Mapped Date    : Thu Apr 29 12:56:54 2010
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:   48
+Logic Utilization:
+  Number of Slice Flip Flops:         293 out of  15,360    1%
+  Number of 4 input LUTs:             702 out of  15,360    4%
+Logic Distribution:
+  Number of occupied Slices:                          421 out of   7,680    5%
+    Number of Slices containing only related logic:     421 out of     421  100%
+    Number of Slices containing unrelated logic:          0 out of     421    0%
+      *See NOTES below for an explanation of the effects of unrelated logic
+Total Number 4 input LUTs:            705 out of  15,360    4%
+  Number used as logic:                702
+  Number used as a route-thru:           3
+  Number of bonded IOBs:                5 out of     173    2%
+    IOB Flip Flops:                     3
+  Number of Block RAMs:                2 out of      24    8%
+  Number of GCLKs:                     1 out of       8   12%
+
+Total equivalent gate count for design:  137,979
+Additional JTAG gate count for IOBs:  240
+Peak Memory Usage:  77 MB
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity -
+   e.g. two LUTs are "related" if they share common inputs.
+   When assembling slices, Map gives priority to combine logic that
+   is related.  Doing so results in the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin
+   packing unrelated logic into a slice once 99% of the slices are
+   occupied through related logic packing.
+
+   Note that once logic distribution reaches the 99% level through
+   related logic packing, this does not mean the device is completely
+   utilized.  Unrelated logic packing will then begin, continuing until
+   all usable LUTs and FFs are occupied.  Depending on your timing
+   budget, increased levels of unrelated logic packing may adversely
+   affect the overall timing performance of your design.
+
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group Summary
+Section 10 - Modular Design Summary
+Section 11 - Timing Report
+Section 12 - Configuration String Information
+Section 13 - Additional Device Resource Counts
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA8 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA9 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA10 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA11 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA12 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA13 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA14 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA15 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA16 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA17 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA18 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA19 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA20 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA21 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA22 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA23 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA24 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA25 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA26 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA27 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA28 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA29 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA30 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA31 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA8 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA9 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA10 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA11 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA12 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA13 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA14 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA15 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA16 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA17 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA18 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA19 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA20 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA21 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA22 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA23 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA24 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA25 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA26 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA27 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA28 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA29 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA30 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA31 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+
+Section 3 - Informational
+-------------------------
+INFO:LIT:95 - All of the external outputs in this design are using slew rate
+   limited output drivers. The delay on speed critical outputs can be
+   dramatically reduced by designating them as fast outputs in the schematic.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:MapLib:535 - The following Virtex BUFG(s) is/are being retargetted to
+   Virtex2 BUFGMUX(s) with input tied to I0 and Select pin tied to constant 0:
+   BUFGP symbol "CLK_BUFGP" (output signal=CLK_BUFGP)
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   2 block(s) optimized away
+
+Section 5 - Removed Logic
+-------------------------
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type    | Direction | IO Standard | Drive    | Slew | Reg (s)  | Resistor | IOB   |
+|                                    |         |           |             | Strength | Rate |          |          | Delay |
++------------------------------------------------------------------------------------------------------------------------+
+| CLK                                | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| RESET                              | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| dev_io_RX                          | IOB     | INPUT     | LVCMOS25    |          |      | INFF1    |          | IFD   |
+| dev_io_TX                          | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| stat_led_RD                        | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
++------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group Summary
+------------------------------
+No area groups were found in this design.
+
+Section 10 - Modular Design Summary
+-----------------------------------
+Modular Design not used for this design.
+
+Section 11 - Timing Report
+--------------------------
+This design was not run using timing mode.
+
+Section 12 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 13 - Additional Device Resource Counts
+----------------------------------------------
+Number of JTAG Gates for IOBs = 5
+Number of Equivalent Gates for Design = 137,979
+Number of RPM Macros = 0
+Number of Hard Macros = 0
+DCIRESETs = 0
+CAPTUREs = 0
+BSCANs = 0
+STARTUPs = 0
+DCMs = 0
+GCLKs = 1
+ICAPs = 0
+18X18 Multipliers = 0
+Block RAMs = 2
+Total Registers (Flops & Latches in Slices & IOBs) not driven by LUTs = 34
+IOB Dual-Rate Flops not driven by LUTs = 0
+IOB Dual-Rate Flops = 0
+IOB Slave Pads = 0
+IOB Master Pads = 0
+IOB Latches not driven by LUTs = 0
+IOB Latches = 0
+IOB Flip Flops not driven by LUTs = 1
+IOB Flip Flops = 3
+Unbonded IOBs = 0
+Bonded IOBs = 5
+Shift Registers = 0
+Static Shift Registers = 0
+Dynamic Shift Registers = 0
+16x1 ROMs = 0
+16x1 RAMs = 0
+32x1 RAMs = 0
+Dual Port RAMs = 0
+MUXFXs = 21
+MULTANDs = 0
+4 input LUTs used as Route-Thrus = 3
+4 input LUTs = 702
+Slice Latches not driven by LUTs = 0
+Slice Latches = 0
+Slice Flip Flops not driven by LUTs = 33
+Slice Flip Flops = 293
+SliceMs = 0
+SliceLs = 421
+Slices = 421
+Number of LUT signals with 4 loads = 18
+Number of LUT signals with 3 loads = 30
+Number of LUT signals with 2 loads = 96
+Number of LUT signals with 1 load = 507
+NGM Average fanout of LUT = 1.85
+NGM Maximum fanout of LUT = 20
+NGM Average fanin for LUT = 3.2991
+Number of LUT symbols = 702
+Number of IPAD symbols = 3
+Number of IBUF symbols = 3
+Release 6.3.03i - Par G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+
+
+
+
+Constraints file: com.pcf
+
+Loading device database for application Par from file "com_map.ncd".
+   "MOD_com" is an NCD, version 2.38, device xc3s1000, package ft256, speed -5
+Loading device for application Par from file '3s1000.nph' in environment
+/export/home/Xilinx63.
+Device speed data version:  ADVANCED 1.35 2004-11-11.
+
+
+Resolving physical constraints.
+Finished resolving physical constraints.
+
+Device utilization summary:
+
+   Number of External IOBs             5 out of 173     2%
+      Number of LOCed External IOBs    5 out of 5     100%
+
+   Number of RAMB16s                   2 out of 24      8%
+   Number of Slices                  421 out of 7680    5%
+
+   Number of BUFGMUXs                  1 out of 8      12%
+
+
+
+Overall effort level (-ol):   Standard (default)
+Placer effort level (-pl):    Standard (default)
+Placer cost table entry (-t): 1
+Router effort level (-rl):    Standard (default)
+
+
+Phase 1.1
+Phase 1.1 (Checksum:98a015) REAL time: 2 secs 
+
+.
+Phase 3.8
+................................................................................................
+Phase 3.8 (Checksum:9cbe71) REAL time: 4 secs 
+
+Phase 4.5
+Phase 4.5 (Checksum:26259fc) REAL time: 4 secs 
+
+Phase 5.18
+Phase 5.18 (Checksum:2faf07b) REAL time: 5 secs 
+
+Writing design to file com.ncd.
+
+Total REAL time to Placer completion: 5 secs 
+Total CPU time to Placer completion: 4 secs 
+
+
+Phase 1: 3096 unrouted;       REAL time: 5 secs 
+
+Phase 2: 2773 unrouted;       REAL time: 8 secs 
+
+Phase 3: 699 unrouted;       REAL time: 9 secs 
+
+Phase 4: 0 unrouted;       REAL time: 9 secs 
+
+Total REAL time to Router completion: 10 secs 
+Total CPU time to Router completion: 9 secs 
+
+Generating "par" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++-------------------------+----------+------+------+------------+-------------+
+|        Clock Net        | Resource |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++-------------------------+----------+------+------+------------+-------------+
+|         CLK_BUFGP       |  BUFGMUX0| No   |  215 |  0.364     |  0.976      |
++-------------------------+----------+------+------+------------+-------------+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 10 secs 
+Total CPU time to PAR completion: 9 secs 
+
+Peak Memory Usage:  107 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Writing design to file com.ncd.
+
+
+PAR done.
+Release 6.3.03i Par G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+
+sunsil::  Thu Apr 29 12:57:01 2010
+
+
+par -w -t 1 com_map.ncd com.ncd com.pcf 
+
+
+Constraints file: com.pcf
+
+Loading device database for application Par from file "com_map.ncd".
+   "MOD_com" is an NCD, version 2.38, device xc3s1000, package ft256, speed -5
+Loading device for application Par from file '3s1000.nph' in environment
+/export/home/Xilinx63.
+Device speed data version:  ADVANCED 1.35 2004-11-11.
+
+
+Resolved that IOB <stat_led_RD> must be placed at site G16.
+Resolved that IOB <RESET> must be placed at site J16.
+Resolved that IOB <CLK> must be placed at site T9.
+Resolved that IOB <dev_io_RX> must be placed at site E14.
+Resolved that IOB <dev_io_TX> must be placed at site E15.
+
+
+Device utilization summary:
+
+   Number of External IOBs             5 out of 173     2%
+      Number of LOCed External IOBs    5 out of 5     100%
+
+   Number of RAMB16s                   2 out of 24      8%
+   Number of Slices                  421 out of 7680    5%
+
+   Number of BUFGMUXs                  1 out of 8      12%
+
+
+
+Overall effort level (-ol):   Standard (default)
+Placer effort level (-pl):    Standard (default)
+Placer cost table entry (-t): 1
+Router effort level (-rl):    Standard (default)
+
+
+Phase 1.1
+Phase 1.1 (Checksum:98a015) REAL time: 2 secs 
+
+.
+Phase 3.8
+................................................................................................
+Phase 3.8 (Checksum:9cbe71) REAL time: 4 secs 
+
+Phase 4.5
+Phase 4.5 (Checksum:26259fc) REAL time: 4 secs 
+
+Phase 5.18
+Phase 5.18 (Checksum:2faf07b) REAL time: 5 secs 
+
+Writing design to file com.ncd.
+
+Total REAL time to Placer completion: 5 secs 
+Total CPU time to Placer completion: 4 secs 
+
+
+Phase 1: 3096 unrouted;       REAL time: 5 secs 
+
+Phase 2: 2773 unrouted;       REAL time: 8 secs 
+
+Phase 3: 699 unrouted;       REAL time: 9 secs 
+
+Phase 4: 0 unrouted;       REAL time: 9 secs 
+
+Total REAL time to Router completion: 10 secs 
+Total CPU time to Router completion: 9 secs 
+
+Generating "par" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++-------------------------+----------+------+------+------------+-------------+
+|        Clock Net        | Resource |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++-------------------------+----------+------+------+------------+-------------+
+|         CLK_BUFGP       |  BUFGMUX0| No   |  215 |  0.364     |  0.976      |
++-------------------------+----------+------+------+------------+-------------+
+
+
+   The Delay Summary Report
+
+   The SCORE FOR THIS DESIGN is: 147
+
+
+The NUMBER OF SIGNALS NOT COMPLETELY ROUTED for this design is: 0
+
+   The AVERAGE CONNECTION DELAY for this design is:        0.918
+   The MAXIMUM PIN DELAY IS:                               5.658
+   The AVERAGE CONNECTION DELAY on the 10 WORST NETS is:   2.747
+
+   Listing Pin Delays by value: (nsec)
+
+    d < 1.00   < d < 2.00  < d < 3.00  < d < 4.00  < d < 6.00  d >= 6.00
+   ---------   ---------   ---------   ---------   ---------   ---------
+        2176         767          59          48          46           0
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 10 secs 
+Total CPU time to PAR completion: 9 secs 
+
+Peak Memory Usage:  107 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Writing design to file com.ncd.
+
+
+PAR done.
+Release 6.3.03i - Bitgen G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+
+Loading device database for application Bitgen from file "com.ncd".
+   "MOD_com" is an NCD, version 2.38, device xc3s1000, package ft256, speed -5
+Loading device for application Bitgen from file '3s1000.nph' in environment
+/export/home/Xilinx63.
+Opened constraints file com.pcf.
+
+Thu Apr 29 12:57:14 2010
+
+Running DRC.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA8 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA9 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA10 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA11 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA12 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA13 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA14 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA15 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA16 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA17 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA18 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA19 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA20 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA21 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA22 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA23 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA24 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA25 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA26 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA27 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA28 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA29 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA30 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA31 of comp
+   Mram_QRAM_tx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA8 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA9 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA10 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA11 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA12 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA13 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA14 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA15 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA16 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA17 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA18 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA19 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA20 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA21 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA22 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA23 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA24 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA25 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA26 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA27 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA28 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA29 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA30 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+WARNING:DesignRules:332 - Blockcheck: Dangling RAMB16A output. Pin DOA31 of comp
+   Mram_QRAM_rx_q_inst_ramb_0 is not connected.
+DRC detected 0 errors and 48 warnings.
+Creating bit map...
+Saving bit stream in "com.bit".
+Bitstream generation is complete.
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setSubmode -pffserial
+// *** BATCH CMD : addPromDevice -position 1 -size -1 -name "xc18v04"
+'1': Added Device xc18v04 successfully.
+----------------------------------------------------------------------
+// *** BATCH CMD : addCollection -name "com"
+// *** BATCH CMD : addDesign -version 0 -name "0000"
+// *** BATCH CMD : addDeviceChain -index 0
+// *** BATCH CMD : addDevice -position 1 -file "com.bit"
+'1': Loading file 'com.bit' ...
+INFO:iMPACT - Elapsed time =      0 sec.
+done.
+INFO:iMPACT:501 - '1': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : generate
+0x625f8 (402936) bytes loaded up from 0x0
+Using user-specified prom size of 512K
+Writing file "/home/sbosse/proj/conpro2/test/C/com/out/obj/com.mcs".
+Writing file "/home/sbosse/proj/conpro2/test/C/com/out/obj/com.prm".
+Writing file "/home/sbosse/proj/conpro2/test/C/com/out/obj/com.sig".
+// *** BATCH CMD : setMode -bsfile
+// *** BATCH CMD : setCable -port svf -file "com_xc18v04.svf"
+// *** BATCH CMD : addDevice -position 1 -part "xc18v04"
+INFO:iMPACT:1777 - 
+   Reading /export/home/Xilinx63/xc18v00/data/xc18v04.bsd...
+INFO:iMPACT:501 - '1': Added Device xc18v04 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : setAttribute -position 1 -attr configFileName -value
+"com.mcs"
+'1': Loading file 'com.mcs' ...
+done.
+// *** BATCH CMD : identify
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM
+Elapsed time =      0 sec.
+// *** BATCH CMD : program -e -p 1 -v 
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Putting device in ISP mode...done.
+'1': Erasing device...done.
+'1': Erasure completed successfully.
+'1': Putting device in ISP mode...done.
+'1': Programming device...done.
+'1': Putting device in ISP mode...done.
+'1': Putting device in ISP mode...done.
+'1': Verifying device...done.
+'1': Verification completed successfully.
+'1': Calculated checksum matches expected checksum, 001e3a22b
+'1': Putting device in ISP mode...done.
+'1': Setting user-programmable bits...
+done.
+'1': Putting device in ISP mode...done.
+'1': Programming completed successfully.
+Elapsed time =      3 sec.
+// *** BATCH CMD : setMode -bsfile
+// *** BATCH CMD : setCable -port svf -file "com_xc3s1000-ft256-5.svf"
+// *** BATCH CMD : addDevice -position 1 -file "com.bit"
+'1': Loading file 'com.bit' ...
+done.
+INFO:iMPACT:1777 - 
+   Reading /export/home/Xilinx63/spartan3/data/xc3s1000.bsd...
+WARNING:iMPACT:1049 - Startup Clock has been changed to 'JtagClk' in the
+   bitstream stored in memory,
+   but the original bitstream file remains unchanged.
+INFO:iMPACT:501 - '1': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : identify
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM
+Elapsed time =      0 sec.
+// *** BATCH CMD : program -e -p 1 
+Validating chain...
+Boundary-scan chain validated successfully.
+'1':Programming  device...
+done.
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:580 - '1':Checking done pin ....done.
+'1': Programmed successfully.
+Elapsed time =      1 sec.

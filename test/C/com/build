@@ -1,0 +1,121 @@
+#!/bin/bash
+
+#########################
+# Project configuration #
+#########################
+
+TOP=com
+TOOL=xilinx6
+CONPRO=/opt/Conpro2/bin/conpro
+CPSRC=./
+VHDLSRC=./
+INCL="-I $CPSRC"
+INCL="$INCL -I $VHDLSRC"
+FLAGS="-O out -tool xilinx6"
+RM=/bin/rm
+
+FLAGS="$FLAGS $OPT"
+
+if [ $# = 0 ]
+then
+    echo "Usage: build <targets>"
+    echo "Targets: all clean conpro uc synth tech vhdl"
+    exit 1
+fi
+
+check ()
+{
+    if [ $? != 0 ]
+    then
+        echo "Abort due to errors building target."
+        exit 1
+    fi
+}
+
+do_conpro()
+{
+    echo "Starting highlevel synthesis..."
+    echo "conpro $INCL $FLAGS $TOP.cp"
+    $CONPRO $OPT $INCL $FLAGS $TOP.cp
+}
+
+do_C()
+{
+    echo "Starting highlevel synthesis..."
+    echo "conpro -O in -C $TOP.cp"
+    $CONPRO $OPT -O in -C $TOP.cp
+}
+
+do_uc()
+{
+    echo "Starting highlevel synthesis..."
+    echo "conpro $INCL $FLAGS $TOP.cp"
+    $CONPRO $OPT $INCL $FLAGS $TOP.cp
+}
+
+
+
+do_synth()
+{
+    echo "Starting lowlevel synthesis..."
+    cd out
+    bash $TOP.$TOOL.tool.sh synth
+    cd -
+    check
+}
+
+do_tech()
+{
+    echo "Starting technology mapping..."
+    cd out
+    bash $TOP.$TOOL.tool.sh tech
+    cd -
+    check
+}
+
+
+for TARGET in $@
+do
+    echo "Building target [$TARGET] ..."
+    case $TARGET in
+        all)
+            do_conpro
+            check
+            do_synth
+            check
+            do_tech
+            check
+            ;;
+        synth)
+            do_synth
+            check
+            ;;
+        tech)
+            do_tech
+            check
+            ;;
+        vhdl)
+            do_vhdl
+            check
+            ;;
+        uc)
+            do_uc
+            check
+            ;;
+        conpro)
+            do_conpro
+            check
+            ;;
+        C)
+            do_C
+            check
+            ;;
+        clean)  
+            cd out
+       	    $RM -rf obj/*
+            $RM -f *.ft *.obj *.uc *.ui *.ast *.pi *.st *.vhdl *.c *.pat *.bit *.svf *.xsvf xilinx_ise_$TOP.sh *.mcs
+            cd -
+            ;;
+		
+    esac
+done

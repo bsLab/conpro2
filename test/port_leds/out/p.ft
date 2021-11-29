@@ -1,0 +1,182 @@
+Block frame trees
+-----------------
+For process <p1>:
+  MAIN#7669 {
+    SOURCE: p.cp lines 29..37
+    PARENT: NONE
+    TIME: (>=1*(1+(8*(4+(18518519*1))))) 
+          = >=148148185 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      FUN#87757
+      LOOP#16603
+      ]
+      FUN#87757 {
+        SOURCE: p.cp line 29
+        PARENT: MAIN#7669
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#95378 {
+          SOURCE: p.cp line 29
+          PARENT: FUN#87757
+          TIME: ? TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#71698 {
+            SOURCE: p.cp line 29
+            PARENT: FUN#95378
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+      LOOP#16603 {
+        SOURCE: p.cp line 37
+        PARENT: MAIN#7669
+        TIME: (>=1*(1+(8*(4+(18518519*1))))) 
+              = >=148148185 TU
+        TYPE: LOOP
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#8650
+          ]
+          LOOP_BODY#8650 {
+            SOURCE: p.cp line 33
+            PARENT: LOOP#16603
+            TIME: (1+(8*(4+(18518519*1)))) 
+                  = 148148185 TU
+            TYPE: COMPOUND
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              COUNT_LOOP#44358
+              ]
+              COUNT_LOOP#44358 {
+                SOURCE: p.cp line 33
+                PARENT: LOOP_BODY#8650
+                TIME: (1+(8*(4+(18518519*1)))) 
+                      = 148148185 TU
+                TYPE: LOOP
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                CHILDS [
+                  LOOP_BODY#59662
+                  ]
+                  LOOP_BODY#59662 {
+                    SOURCE: p.cp lines 35..38
+                    PARENT: COUNT_LOOP#44358
+                    TIME: (3+(18518519*1)) 
+                          = 18518522 TU
+                    TYPE: COMPOUND
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#65705
+                      ASSIGN#17429
+                      FUN#39314
+                      COND_LOOP#2877
+                      ]
+                      ASSIGN#65705 {
+                        SOURCE: p.cp line 35
+                        PARENT: LOOP_BODY#59662
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#17429 {
+                        SOURCE: p.cp line 36
+                        PARENT: LOOP_BODY#59662
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      FUN#39314 {
+                        SOURCE: p.cp line 37
+                        PARENT: LOOP_BODY#59662
+                        TIME: ? TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                        FUN#46811 {
+                          SOURCE: p.cp line 37
+                          PARENT: FUN#39314
+                          TIME: ? TU
+                          TYPE: BASIC BLOCK
+                          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                          FUN#47800 {
+                            SOURCE: p.cp line 37
+                            PARENT: FUN#46811
+                            TIME: ? TU
+                            TYPE: BASIC BLOCK
+                            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                          }
+                        }
+                      }
+                      COND_LOOP#2877 {
+                        SOURCE: p.cp line 38
+                        PARENT: LOOP_BODY#59662
+                        TIME: (1+(18518519*1)) 
+                              = 18518520 TU
+                        TYPE: LOOP
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                        CHILDS [
+                          ]
+                      }
+                  }
+              }
+          }
+      }
+  }
+For process <main>:
+  MAIN#37171 {
+    SOURCE: p.cp lines 45..46
+    PARENT: NONE
+    TIME: >=1 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      FUN#83560
+      FUN#48484
+      ]
+      FUN#83560 {
+        SOURCE: p.cp line 45
+        PARENT: MAIN#37171
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#38352 {
+          SOURCE: p.cp line 45
+          PARENT: FUN#83560
+          TIME: ? TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#72721 {
+            SOURCE: p.cp line 45
+            PARENT: FUN#38352
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+      FUN#48484 {
+        SOURCE: p.cp line 46
+        PARENT: MAIN#37171
+        TIME: >=1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#46721 {
+          SOURCE: p.cp line 46
+          PARENT: FUN#48484
+          TIME: >=1 TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#98648 {
+            SOURCE: p.cp line 46
+            PARENT: FUN#46721
+            TIME: >=1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+  }

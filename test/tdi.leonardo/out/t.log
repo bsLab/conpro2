@@ -1,0 +1,601 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<840fd9a4> and feature <CONPRO2>...
+TDI: Opening tool <leonardo>...
+  Parsing tool file <leonardo.tool>...
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+Parsing file <t.cp>...
+Compiling module <t>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+    Opening module <Timer>...
+      Parsing module file <timer.mod>...
+      EMI [Object Timer.timer.root]#init: Initializing module ...
+      EMI <Object Timer.timer.root>: creating rules for module...
+      Added module <Timer>.
+        EMI <Timer>: adding object type <timer>...
+    Added module <System>.
+    EMI <Object Timer.timer.root>: creating object <t>...
+      EMI [Object Timer.timer.t]#read_methods: added method <init>.
+      EMI [Object Timer.timer.t]#read_methods: added method <time>.
+      EMI [Object Timer.timer.t]#read_methods: added method <await>.
+      EMI [Object Timer.timer.t]#read_methods: added method <wakeup>.
+      EMI [Object Timer.timer.t]#read_methods: added method <start>.
+      EMI [Object Timer.timer.t]#read_methods: added method <stop>.
+      EMI [Object Timer.timer.t]#read_methods: added method <mode>.
+    EMI <Object Timer.timer.t>: creating rules for module...
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [line 7]: Analyzing process <p_0>...
+      Analyzing process <p_0>...
+    Info [line 20]: Analyzing process <p_1>...
+      Analyzing process <p_1>...
+    Info [line 20]: Analyzing process <p_2>...
+      Analyzing process <p_2>...
+    Info [line 20]: Analyzing process <p_3>...
+      Analyzing process <p_3>...
+    System sys.sim_cycles: setting simulation cycles to 300.
+    Info [line 26]: Analyzing process <main>...
+      Analyzing process <main>...
+        Warning [line 32]: Changing non block array <p> to dynamic selection mode.
+  Performing program graph transformations and optimization for module <T>...
+    in process <p_0>...
+      Resolving object dependencies for process <p_0>...
+    in process <p_1>...
+      Resolving object dependencies for process <p_1>...
+    in process <p_2>...
+      Resolving object dependencies for process <p_2>...
+    in process <p_3>...
+      Resolving object dependencies for process <p_3>...
+    in process <main>...
+      Resolving object dependencies for process <main>...
+  Resolving object dependencies for process <MOD_T>...
+  Found 13 primary toplevel symbols.
+  Found 5 processes.
+  Found 0 shared function blocks.
+Synthesizing main module <T>...
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <T.p_0>
+        Removed 0 instructions(s).
+      in process <T.p_1>
+        Removed 0 instructions(s).
+      in process <T.p_2>
+        Removed 0 instructions(s).
+      in process <T.p_3>
+        Removed 0 instructions(s).
+      in process <T.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      ... in process <p_0> ...
+      ... in process <p_1> ...
+      ... in process <p_2> ...
+      ... in process <p_3> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <T.p_0>
+        Removed 0 operand(s).
+      in process <T.p_1>
+        Removed 0 operand(s).
+      in process <T.p_2>
+        Removed 0 operand(s).
+      in process <T.p_3>
+        Removed 0 operand(s).
+      in process <T.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 0.
+  Resolving object guards...
+    Found 0 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+  Synthesizing process instructions...
+    in process <T.p_0>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p_0>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p_0>...
+      Post type alignment of expressions for process <p_0>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p_0>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p_0>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p_0>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p_0>...
+        8 states created.
+      Calculating block frame time estimations for process <p_0>...
+    in process <T.p_1>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p_1>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p_1>...
+      Post type alignment of expressions for process <p_1>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p_1>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p_1>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p_1>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p_1>...
+        8 states created.
+      Calculating block frame time estimations for process <p_1>...
+    in process <T.p_2>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p_2>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p_2>...
+      Post type alignment of expressions for process <p_2>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p_2>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p_2>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p_2>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p_2>...
+        8 states created.
+      Calculating block frame time estimations for process <p_2>...
+    in process <T.p_3>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p_3>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p_3>...
+      Post type alignment of expressions for process <p_3>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p_3>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p_3>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p_3>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p_3>...
+        8 states created.
+      Calculating block frame time estimations for process <p_3>...
+    in process <T.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Post type alignment of expressions for process <main>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        10 states created.
+      Calculating block frame time estimations for process <main>...
+  EMI [Object Timer.timer.t]#compiler: Compiling external module interface...
+  Creating entity <t_p_0>...
+    Emitting state list for process <p_0>...
+    Emitting state machine for process <p_0>...
+    Port width: 14 bits
+  Creating entity <t_p_1>...
+    Emitting state list for process <p_1>...
+    Emitting state machine for process <p_1>...
+    Port width: 14 bits
+  Creating entity <t_p_2>...
+    Emitting state list for process <p_2>...
+    Emitting state machine for process <p_2>...
+    Port width: 14 bits
+  Creating entity <t_p_3>...
+    Emitting state list for process <p_3>...
+    Emitting state machine for process <p_3>...
+    Port width: 14 bits
+  Creating entity <t_main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 14 bits
+  Creating entity <t>...
+    Creating global register <d_0> [DT_int 8, scheduler=PRIOstat #rd=0 #wr=1]...
+    Creating global register <d_1> [DT_int 8, scheduler=PRIOstat #rd=0 #wr=1]...
+    Creating global register <d_2> [DT_int 8, scheduler=PRIOstat #rd=0 #wr=1]...
+    Creating global register <d_3> [DT_int 8, scheduler=PRIOstat #rd=0 #wr=1]...
+    EMI [Object Timer.timer.t]#read_process: compiling #process.TIMER_t_SCHED section [$arch001=[1],$arch002=[2],$time=[2000,1000],$clock=[10000000],$P=[main,MOD_T,p_3,p_2,p_1,p_0],$P.init=[main],$P.time=[main,MOD_T],$P.await=[p_3,p_2,p_1,p_0],$P.wakeup=[],$P.start=[main],$P.stop=[],$P.mode=[main]]...
+  Emitting MicroCode for module T...
+  Emitting object file for module T...
+  Emitting MicroCode for process p_0...
+  Emitting MicroCode for process p_1...
+  Emitting MicroCode for process p_2...
+  Emitting MicroCode for process p_3...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.p_0>: emitting MicroCode for process <p_0>.
+  UCI <ucode.uci_out.p_1>: emitting MicroCode for process <p_1>.
+  UCI <ucode.uci_out.p_2>: emitting MicroCode for process <p_2>.
+  UCI <ucode.uci_out.p_3>: emitting MicroCode for process <p_3>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+Info : Emitting block frame informations in file <t.ft>...
+TDI [Tool leonardo.root]#new_obj: creating object <t>...
+TDI [Tool leonardo.t]#compile_all: Initializing tool ...
+TDI [Tool leonardo.t]#emit: Creating build script <t.leonardo.tool.sh>...
+TDI [Tool leonardo.t]#compiler_all: Compiling tool ...
+[/export/home/leonardo//bin/spectrum -f t.tcl]
+/export/home/leonardo/bin/SunOS5/spectrum -f t.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/conpro2/test/tdi.leonardo/out/obj'
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/leonardo/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/leonardo/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl into library work
+-- Reading file /export/home/leonardo/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/leonardo/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/leonardo/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/leonardo/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading entity t_main into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl",line 41: Info, Enumerated type pro_states with 10 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+   S_main_start  0000
+       S_i1_fun  0001
+       S_i2_fun  -010
+  S_i3_for_loop  -011
+S_i3_for_loop_cond  -100
+       S_i4_fun  -101
+S_i3_for_loop_incr  -110
+       S_i5_fun  -111
+       S_i6_fun  1000
+     S_main_end  1001
+
+-- Loading architecture main of t_main into library work
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl into library work
+-- Loading entity t_p_3 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl",line 35: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+    S_p_3_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  011
+    S_i3_assign  100
+    S_i4_assign  101
+S_i1_for_loop_incr  110
+      S_p_3_end  111
+
+-- Loading architecture main of t_p_3 into library work
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl into library work
+-- Loading entity t_p_2 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl",line 35: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+    S_p_2_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  011
+    S_i3_assign  100
+    S_i4_assign  101
+S_i1_for_loop_incr  110
+      S_p_2_end  111
+
+-- Loading architecture main of t_p_2 into library work
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl into library work
+-- Loading entity t_p_1 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl",line 35: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+    S_p_1_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  011
+    S_i3_assign  100
+    S_i4_assign  101
+S_i1_for_loop_incr  110
+      S_p_1_end  111
+
+-- Loading architecture main of t_p_1 into library work
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl into library work
+-- Loading entity t_p_0 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl",line 35: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+    S_p_0_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  011
+    S_i3_assign  100
+    S_i4_assign  101
+S_i1_for_loop_incr  110
+      S_p_0_end  111
+
+-- Loading architecture main of t_p_0 into library work
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl into library work
+-- Loading entity MOD_t into library work
+-- Loading architecture main of MOD_t into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 138: Warning, signal PRO_main_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 143: Warning, signal PRO_p_0_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 147: Warning, signal PRO_p_1_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 151: Warning, signal PRO_p_2_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 155: Warning, signal PRO_p_3_END is never used.
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl into library work
+-- Loading entity t_main into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl",line 17: Warning, replacing t_main in HDL library work.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl",line 41: Info, Enumerated type pro_states with 10 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+   S_main_start  0000
+       S_i1_fun  0001
+       S_i2_fun  -010
+  S_i3_for_loop  -011
+S_i3_for_loop_cond  -100
+       S_i4_fun  -101
+S_i3_for_loop_incr  -110
+       S_i5_fun  -111
+       S_i6_fun  1000
+     S_main_end  1001
+
+-- Loading architecture main of t_main into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl",line 36: Warning, replacing main of entity t_main.
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl into library work
+-- Loading entity t_p_3 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl",line 17: Warning, replacing t_p_3 in HDL library work.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl",line 35: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+    S_p_3_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  011
+    S_i3_assign  100
+    S_i4_assign  101
+S_i1_for_loop_incr  110
+      S_p_3_end  111
+
+-- Loading architecture main of t_p_3 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl",line 30: Warning, replacing main of entity t_p_3.
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl into library work
+-- Loading entity t_p_2 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl",line 17: Warning, replacing t_p_2 in HDL library work.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl",line 35: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+    S_p_2_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  011
+    S_i3_assign  100
+    S_i4_assign  101
+S_i1_for_loop_incr  110
+      S_p_2_end  111
+
+-- Loading architecture main of t_p_2 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl",line 30: Warning, replacing main of entity t_p_2.
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl into library work
+-- Loading entity t_p_1 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl",line 17: Warning, replacing t_p_1 in HDL library work.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl",line 35: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+    S_p_1_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  011
+    S_i3_assign  100
+    S_i4_assign  101
+S_i1_for_loop_incr  110
+      S_p_1_end  111
+
+-- Loading architecture main of t_p_1 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl",line 30: Warning, replacing main of entity t_p_1.
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl into library work
+-- Loading entity t_p_0 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl",line 17: Warning, replacing t_p_0 in HDL library work.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl",line 35: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+    S_p_0_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  011
+    S_i3_assign  100
+    S_i4_assign  101
+S_i1_for_loop_incr  110
+      S_p_0_end  111
+
+-- Loading architecture main of t_p_0 into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl",line 30: Warning, replacing main of entity t_p_0.
+-- Reading vhdl file /home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl into library work
+-- Loading entity MOD_t into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 17: Warning, replacing MOD_t in HDL library work.
+-- Loading architecture main of MOD_t into library work
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 138: Warning, signal PRO_main_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 143: Warning, signal PRO_p_0_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 147: Warning, signal PRO_p_1_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 151: Warning, signal PRO_p_2_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 155: Warning, signal PRO_p_3_END is never used.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t.vhdl",line 28: Warning, replacing main of entity MOD_t.
+-- Compiling root entity MOD_t(main)
+-- Compiling entity t_p_0(main)
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl",line 45: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl",line 46: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Compiling entity t_p_1(main)
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl",line 45: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl",line 46: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Compiling entity t_p_2(main)
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl",line 45: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl",line 46: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Compiling entity t_p_3(main)
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl",line 45: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl",line 46: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Compiling entity t_main(main)
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl",line 53: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl",line 54: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Boundary optimization.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.t_p_0.main_unfold_1250
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_0.vhdl", line 163:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.t_p_1.main_unfold_1251
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_1.vhdl", line 163:Info, Inferred counter instance 'LOOP_i_1' of type 'counter_up_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.t_p_2.main_unfold_1252
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_2.vhdl", line 163:Info, Inferred counter instance 'LOOP_i_2' of type 'counter_up_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.t_p_3.main_unfold_1253
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_p_3.vhdl", line 163:Info, Inferred counter instance 'LOOP_i_3' of type 'counter_up_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.t_main.main_unfold_1384
+"/home/sbosse/conpro2/test/tdi.leonardo/out/obj/../t_main.vhdl", line 203:Info, Inferred counter instance 'LOOP_i_4' of type 'counter_up_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.MOD_t.main
+-- Start pre-optimization for design .work.t_p_0.main_unfold_1250
+-- Start pre-optimization for design .work.t_p_1.main_unfold_1251
+-- Start pre-optimization for design .work.t_p_2.main_unfold_1252
+-- Start pre-optimization for design .work.t_p_3.main_unfold_1253
+-- Start pre-optimization for design .work.t_main.main_unfold_1384
+-- Start pre-optimization for design .work.MOD_t.main
+-- Optimizing netlist .work.MOD_t.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_t.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_t    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib     2 x      2      3 gates
+a3_x2           sxlib     6 x      2     12 gates
+a4_x2           sxlib     6 x      2     14 gates
+an12_x1         sxlib    12 x      2     20 gates
+ao22_x2         sxlib     4 x      2      8 gates
+inv_x1          sxlib    54 x      1     54 gates
+inv_x2          sxlib     1 x      1      1 gates
+inv_x8          sxlib     1 x      2      2 gates
+na2_x1          sxlib    11 x      1     14 gates
+na3_x1          sxlib    17 x      2     29 gates
+na3_x4          sxlib     1 x      3      3 gates
+na4_x1          sxlib     6 x      2     12 gates
+nao22_x1        sxlib    15 x      2     30 gates
+nao2o22_x1      sxlib     7 x      2     16 gates
+nmx2_x1         sxlib    11 x      2     25 gates
+no2_x1          sxlib    26 x      1     34 gates
+no3_x1          sxlib    19 x      2     32 gates
+no4_x1          sxlib    11 x      2     22 gates
+no4_x4          sxlib     1 x      3      3 gates
+noa22_x1        sxlib    13 x      2     26 gates
+noa2a22_x1      sxlib     1 x      2      2 gates
+noa2ao222_x1    sxlib     8 x      2     18 gates
+nxr2_x1         sxlib     1 x      3      3 gates
+o2_x2           sxlib     1 x      2      2 gates
+o3_x2           sxlib     1 x      2      2 gates
+o4_x2           sxlib     1 x      2      2 gates
+oa22_x2         sxlib    11 x      2     22 gates
+on12_x1         sxlib    24 x      2     41 gates
+on12_x4         sxlib     1 x      3      3 gates
+sff1_x4         sxlib    36 x      6    216 gates
+sff2_x4         sxlib    31 x      8    248 gates
+xr2_x1          sxlib     5 x      3     15 gates
+zero_x0         sxlib     1 x      1      1 gates
+
+ Number of ports :                      34
+ Number of nets :                      348
+ Number of instances :                 346
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     937
+ Number of accumulated instances :     346
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK                  : 139.8 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                         GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                       0.00 (ideal)
+
+
+PRO_MAP_main_reg_pro_state(0)/q              sff1_x4     0.00  0.74 up             0.27
+ix3060/nq                                    inv_x1      0.45  1.19 dn             0.08
+ix3078/nq                                    no4_x4      0.88  2.07 up             0.22
+ix3154/nq                                    no2_x1      0.36  2.43 dn             0.05
+ix3282/q                                     an12_x1     0.70  3.13 dn             0.07
+ix733/nq                                     inv_x1      0.23  3.36 up             0.03
+ix3034/nq                                    no3_x1      0.53  3.89 dn             0.08
+ix3032/q                                     on12_x1     0.45  4.34 up             0.08
+ix1205/q                                     on12_x1     0.58  4.92 dn             0.11
+ix3094/nq                                    no2_x1      0.49  5.41 up             0.05
+ix241/q                                      on12_x4     0.67  6.08 dn             0.20
+ix2638/q                                     a2_x2       0.49  6.57 dn             0.02
+reg_TIMER_t_ENABLED/i                        sff1_x4     0.00  6.57 dn             0.00
+data arrival time                                              6.57
+
+
+data required time                                          not specified
+----------------------------------------------------------------------------------------
+data required time                                          not specified
+data arrival time                                              6.57
+                                                            ----------
+                                                         unconstrained path
+----------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD t.vhd
+-- Writing file t.vhd

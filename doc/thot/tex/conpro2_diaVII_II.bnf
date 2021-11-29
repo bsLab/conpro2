@@ -1,0 +1,1 @@
+bounded-assignment ::= (( data-obj '<-' expression ) // ',' ) ';' .

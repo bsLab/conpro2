@@ -1,0 +1,344 @@
+Block frame trees
+-----------------
+For process <p2>:
+  MAIN#26142 {
+    SOURCE: a.cp lines 35..41
+    PARENT: NONE
+    TIME: 50 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCK#59455
+      BLOCK#63052
+      ASSIGN#31439
+      ]
+      BLOCK#59455 {
+        SOURCE: a.cp line 35
+        PARENT: MAIN#26142
+        TIME: 1 TU
+        TYPE: COMPOUND
+        PARAMS=<BIND><EXPR=alu><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          ASSIGN#58310
+          ASSIGN#81371
+          ]
+          ASSIGN#58310 {
+            SOURCE: a.cp line 35
+            PARENT: BLOCK#59455
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<BIND><EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#81371 {
+            SOURCE: a.cp line 35
+            PARENT: BLOCK#59455
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<BIND><EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+      }
+      BLOCK#63052 {
+        SOURCE: a.cp lines 38..39
+        PARENT: MAIN#26142
+        TIME: 48 TU
+        TYPE: COMPOUND
+        PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          ASSIGN#83891
+          ASSIGN#19442
+          ASSIGN#78627
+          ASSIGN#22215
+          ASSIGN#10492
+          ASSIGN#7089
+          ASSIGN#2398
+          ASSIGN#45421
+          ASSIGN#75600
+          ASSIGN#11089
+          ASSIGN#86320
+          ASSIGN#33708
+          ASSIGN#28093
+          ASSIGN#81698
+          ASSIGN#21229
+          ASSIGN#49386
+          ASSIGN#45725
+          ASSIGN#66809
+          ASSIGN#13048
+          ASSIGN#7507
+          ASSIGN#43691
+          ASSIGN#70779
+          ASSIGN#77351
+          ASSIGN#33362
+          ASSIGN#61683
+          ASSIGN#55762
+          ASSIGN#23606
+          ASSIGN#69501
+          ASSIGN#58009
+          ASSIGN#33018
+          ASSIGN#92729
+          ASSIGN#67938
+          ]
+          ASSIGN#83891 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#19442 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#78627 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#22215 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#10492 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#7089 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#2398 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#45421 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#75600 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#11089 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#86320 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#33708 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#28093 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#81698 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#21229 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#49386 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#45725 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#66809 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#13048 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#7507 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#43691 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#70779 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#77351 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#33362 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#61683 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#55762 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#23606 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#69501 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#58009 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#33018 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#92729 {
+            SOURCE: a.cp line 38
+            PARENT: BLOCK#63052
+            TIME: 2 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#67938 {
+            SOURCE: a.cp line 39
+            PARENT: BLOCK#63052
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+          }
+      }
+      ASSIGN#31439 {
+        SOURCE: a.cp line 41
+        PARENT: MAIN#26142
+        TIME: 1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=alu><ALUMIN=8><TEMP=shared>.
+      }
+  }
+For process <main>:
+  MAIN#69947 {
+    SOURCE: a.cp line 46
+    PARENT: NONE
+    TIME: >=1 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      FUN#19363
+      ]
+      FUN#19363 {
+        SOURCE: a.cp line 46
+        PARENT: MAIN#69947
+        TIME: >=1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#41945 {
+          SOURCE: a.cp line 46
+          PARENT: FUN#19363
+          TIME: >=1 TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#23398 {
+            SOURCE: a.cp line 46
+            PARENT: FUN#41945
+            TIME: >=1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+  }

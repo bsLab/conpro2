@@ -1,0 +1,238 @@
+RCV9 0 1 1168 664
+font 65 32 33
+Times 0 10
+Times 2 10
+Times 1 10
+Times 3 10
+Times 0 12
+Times 2 12
+Times 1 12
+Times 3 12
+Times 0 14
+Times 2 14
+Times 1 14
+Times 3 14
+Times 0 18
+Times 2 18
+Times 1 18
+Times 3 18
+Times 0 24
+Times 2 24
+Times 1 24
+Times 3 24
+Courier 0 10
+Courier 2 10
+Courier 1 10
+Courier 3 10
+Courier 0 12
+Courier 2 12
+Courier 1 12
+Courier 3 12
+Courier 0 14
+Courier 2 14
+Courier 1 14
+Courier 3 14
+Courier 0 18
+Courier 2 18
+Courier 1 18
+Courier 3 18
+Courier 0 24
+Courier 2 24
+Courier 1 24
+Courier 3 24
+Helvetica 0 10
+Helvetica 2 10
+Helvetica 1 10
+Helvetica 3 10
+Helvetica 0 12
+Helvetica 2 12
+Helvetica 1 12
+Helvetica 3 12
+Helvetica 0 14
+Helvetica 2 14
+Helvetica 1 14
+Helvetica 3 14
+Helvetica 0 18
+Helvetica 2 18
+Helvetica 1 18
+Helvetica 3 18
+Helvetica 0 24
+Helvetica 2 24
+Helvetica 1 24
+Helvetica 3 24
+Symbol 0 10
+Symbol 0 12
+Symbol 0 14
+Symbol 0 18
+Symbol 0 24
+pmap 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+shape 242 v a 50 16  
+000000000000FFFF03800580098011801180098005800380FFFF000000000000
+0,64 64,16 64,112 
+P 0,16 128,16 128,112 0,112 M 0,16 L 16,64 L 0,112 
+P 0,16 128,16 128,112 0,112 
+color fill 0 white 0
+color fill 1 yellow 5
+color fill 2 PaleGreen 4
+color fill 3 LightBlue 3
+color fill 4 #DADADA 1
+color fill 5 red 2
+color fill 6 blue 3
+color fill 7 black 1
+color line 0 gray 1
+color line 1 cyan 6
+color line 2 violet 6
+color line 3 green 4
+color line 4 red 2
+color line 5 blue 3
+color line 6 SlateGray 1
+color line 7 black 1
+color text 0 white 0
+color text 1 LightGray 1
+color text 2 yellow 5
+color text 3 orange 6
+color text 4 red 2
+color text 5 SlateGray 1
+color text 6 MediumBlue 3
+color text 7 black 1
+pool 55 53 8 8
+page 1
+3 54 52 7 0
+n 52 51 54 1670 350 1770 500 0 0
+n 51 50 53 2230 724 2330 756 0 0
+n 50 49 52 2230 619 2330 651 0 0
+n 49 48 51 1605 500 1855 720 0 0
+n 48 47 50 1855 500 1985 820 0 0
+n 47 46 49 1986 602 2036 698 0 0
+n 46 45 48 2072 770 2152 802 0 0
+n 45 44 47 2081 656 2129 704 0 0
+n 44 43 46 2081 591 2129 639 0 0
+n 43 42 45 2081 521 2129 569 0 0
+n 42 41 44 2235 684 2325 716 0 0
+n 41 40 43 2232 770 2312 802 0 0
+n 40 39 42 2232 554 2322 586 0 0
+n 39 38 41 2256 657 2304 673 0 0
+n 38 37 40 2256 597 2304 613 0 0
+n 37 36 39 2228 510 2328 542 0 0
+n 36 35 38 2212 498 2342 818 0 0
+n 35 1 37 2042 498 2172 818 0 0
+n 1 2 4 2230 354 2330 386 0 0
+n 2 3 5 2230 249 2330 281 0 0
+n 3 4 6 1605 130 1855 350 0 0
+n 4 5 7 1855 130 1985 450 0 0
+n 5 6 8 1986 232 2036 328 0 0
+n 6 7 9 2072 400 2152 432 0 0
+n 7 8 10 2081 286 2129 334 0 0
+n 8 9 11 2081 221 2129 269 0 0
+n 9 10 12 2081 151 2129 199 0 0
+n 10 11 14 2235 314 2325 346 0 0
+n 11 12 15 2232 400 2312 432 0 0
+n 12 13 16 2232 184 2322 216 0 0
+n 13 14 17 2256 287 2304 303 0 0
+n 14 15 18 2256 227 2304 243 0 0
+n 15 16 19 2228 140 2328 172 0 0
+n 16 17 20 2212 128 2342 448 0 0
+n 17 0 13 2042 128 2172 448 0 0
+F 7 1 1 39 128 32 80 1
+\e
+f 7 6 7 17 35 0 40 8 0 0
+F 6 0 1 39 128 8 80 1
+\e
+f 6 5 6 43 44 0 4 0 0 0
+F 5 1 1 39 128 8 80 1
+\e
+f 5 1 5 35 36 0 24 56 0 0
+F 1 0 1 39 128 8 80 1
+\e
+f 1 2 1 9 8 0 4 0 0 0
+F 2 1 1 39 128 8 80 1
+\e
+f 2 0 2 17 16 0 24 56 0 0
+N 54 53 36 37 189 32 80 1 3 0 0 0 0 0
+\e
+N 53 52 242 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 52 51 242 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 51 50 3 53 181 33 160 1 3 0 0 0 0 0
+process b:
+begin
+  reg y: int;
+  y <- 0;
+  for i = 1 to 10
+  do
+    q <- y+i;
+    y <- y*2;
+  done;
+end;\e
+N 50 49 2 53 147 57 80 1 3 0 0 0 0 0
+Process\e
+N 49 48 100 39 189 8 80 1 3 0 0 0 0 0
+\e
+N 48 47 3 53 176 57 80 1 3 0 0 0 0 0
+FSM\e
+N 47 46 178 63 176 8 80 1 3 0 0 0 0 0
+\e
+N 46 45 51 63 176 57 80 1 3 0 0 0 0 0
+2\e
+N 45 44 51 63 176 57 80 1 3 0 0 0 0 0
+1\e
+N 44 43 78 63 178 57 80 1 3 0 0 0 0 0
+F\e
+N 43 42 3 53 176 57 80 1 3 0 0 0 0 0
+RTL\e
+N 42 41 78 63 178 57 80 1 3 0 0 0 0 0
+F\e
+N 41 40 146 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 40 39 146 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 39 38 242 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 38 37 2 63 147 8 80 1 3 0 0 0 0 0
+\e
+N 37 4 2 63 147 8 80 1 3 0 0 0 0 0
+\e
+N 4 5 242 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 5 6 242 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 6 7 3 53 181 33 160 1 3 0 0 0 0 0
+queue q: int;
+process a:
+begin
+  reg x: int;
+  x <- 0;
+  for i = 1 to 10
+  do
+    x <- x + q;
+  done;
+end;\e
+N 7 8 2 53 147 57 80 1 3 0 0 0 0 0
+Process\e
+N 8 9 100 39 189 8 80 1 3 0 0 0 0 0
+\e
+N 9 10 3 53 176 57 80 1 3 0 0 0 0 0
+FSM\e
+N 10 11 178 63 176 8 80 1 3 0 0 0 0 0
+\e
+N 11 12 51 63 176 57 80 1 3 0 0 0 0 0
+2\e
+N 12 13 51 63 176 57 80 1 3 0 0 0 0 0
+1\e
+N 13 14 2 63 147 8 80 1 3 0 0 0 0 0
+\e
+N 14 15 78 63 178 57 80 1 3 0 0 0 0 0
+F\e
+N 15 16 3 53 176 57 80 1 3 0 0 0 0 0
+RTL\e
+N 16 17 78 63 178 57 80 1 3 0 0 0 0 0
+F\e
+N 17 18 146 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 18 19 146 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 19 20 242 63 144 8 80 1 3 0 0 0 0 0
+\e
+N 20 0 2 63 147 8 80 1 3 0 0 0 0 0
+\e

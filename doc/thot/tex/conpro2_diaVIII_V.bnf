@@ -1,0 +1,1 @@
+object-type ::= 'sig' | 'reg' | 'var' | 'queue' | 'channel' | 'component' .

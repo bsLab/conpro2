@@ -1,0 +1,155 @@
+Release 9.2i - xst J.36
+Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.27 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+Parameter xsthdpdir set to ./xst
+CPU : 0.00 / 0.27 s | Elapsed : 0.00 / 1.00 s
+ 
+--> 
+Reading design: MOD_type_conv.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "MOD_type_conv.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "MOD_type_conv"
+Output Format                      : NGC
+Target Device                      : xc3s1000-5-ft256
+
+---- Source Options
+Top Module Name                    : MOD_type_conv
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : MOD_type_conv.lso
+Keep Hierarchy                     : NO
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" in Library work.
+ERROR:HDLParsers:808 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 44. resize can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 50. resize can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 62. resize can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 68. resize can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 80. resize can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 86. resize can not have such operands in this context.
+ERROR:HDLParsers:3010 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 92. Entity MOD_type_conv does not exist.
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 93. Undefined symbol 'std_logic_vector'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 93. std_logic_vector: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 95. Undefined symbol 'signed'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 95. signed: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 98. Undefined symbol 'L9'.
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 98. Undefined symbol 'conv_Lm_Ln'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 98. conv_Lm_Ln: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 98. Undefined symbol 'L12'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 98. L12: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 99. Undefined symbol 'conv_Ln_Lm'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 99. conv_Ln_Lm: Undefined symbol (last report in this block)
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 99. L9: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 99. Undefined symbol 'conv_In_Lm'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 99. conv_In_Lm: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 99. Undefined symbol 'I8'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 99. I8: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 100. Undefined symbol 'to_signed'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 100. to_signed: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 100. Undefined symbol 'conv_In_Im'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 100. conv_In_Im: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 100. Undefined symbol 'I4'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 100. I4: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 101. Undefined symbol 'TEST1'.
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 102. Undefined symbol 'TEST2'.
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 103. Undefined symbol 'TEST3'.
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 103. Undefined symbol 'conv_I_L'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 103. conv_I_L: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 104. Undefined symbol 'clk'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 104. clk: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 104. Undefined symbol 'reset'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 104. reset: Undefined symbol (last report in this block)
+ERROR:HDLParsers:3312 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 110. Undefined symbol 'conv_Im_In'.
+ERROR:HDLParsers:1209 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 110. conv_Im_In: Undefined symbol (last report in this block)
+WARNING:HDLParsers:1406 - "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv.vhdl" Line 104. No sensitivity list and no wait in the process
+WARNING:HDLParsers:3481 - Library work has no units. Did not save reference file "xst/work/hdllib.ref" for it.
+--> 
+
+
+Total memory usage is 97960 kilobytes
+
+Number of errors   :   40 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

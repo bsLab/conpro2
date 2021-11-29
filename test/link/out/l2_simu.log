@@ -1,0 +1,1550 @@
+[/export/home/leonardo/bin/spectrum -f l2_simu.tcl]
+/export/home/Mentor/LeonardoSpectrum_2009a/bin/SunOS5/spectrum -f l2_simu.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2009a.6 (Release Production Release, compiled Aug 17 2009 at 18:28:27)
+Copyright 1990-2009 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2009 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/test/link/out/obj'
+Info: setting novendor_constraint_file to FALSE
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/Mentor/LeonardoSpectrum_2009a/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading package ConPRO into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_RESET  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 118: Warning, signal PRO_p1_END is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+-- Loading architecture main of MOD_l2_simu into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Loading package ConPRO into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 23: Warning, replacing ConPRO in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 58: Warning, replacing package body ConPRO.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 18: Warning, replacing l2_main in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 32: Warning, replacing main of entity l2_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 18: Warning, replacing l2_p1 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 42: Warning, replacing main of entity l2_p1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 18: Warning, replacing MOD_l2 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_RESET  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 118: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 31: Warning, replacing main of entity MOD_l2.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 17: Warning, replacing l_connect in HDL library work.
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 31: Warning, replacing main of entity l_connect.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 17: Warning, replacing MOD_l2_simu in HDL library work.
+-- Loading architecture main of MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 29: Warning, replacing main of entity MOD_l2_simu.
+-- Compiling root entity MOD_l2_simu(main)
+-- Compiling entity MOD_l2(main)
+-- Compiling entity l2_p1(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 70: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 71: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 209: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l2_main(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 43: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 44: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 111: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l_connect(main)
+-- Boundary optimization.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl", line 293:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sload_sclear_clock_clk_en_5'
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+
+Info, Merging parallel DFF, Lc1_xa_RD(1) and Lc1_xa_RD(5).
+Info, Merging parallel DFF, Lc1_xa_RD(4) and Lc1_xa_RD(6).
+Info, Merging parallel DFF, Lc2_xa_RD(1) and Lc2_xa_RD(5).
+Info, Merging parallel DFF, Lc2_xa_RD(4) and Lc2_xa_RD(6).-- Optimizing netlist .work.MOD_l2_simu.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:01 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_l2_simu.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_l2_simu    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib    12 x      2     20 gates
+a3_x2           sxlib     2 x      2      4 gates
+a4_x2           sxlib     2 x      2      5 gates
+an12_x1         sxlib    80 x      2    136 gates
+an12_x4         sxlib     6 x      3     16 gates
+ao22_x2         sxlib     8 x      2     16 gates
+inv_x1          sxlib   110 x      1    110 gates
+inv_x2          sxlib     2 x      1      2 gates
+inv_x4          sxlib     4 x      1      5 gates
+inv_x8          sxlib     1 x      2      2 gates
+na2_x1          sxlib    32 x      1     42 gates
+na2_x4          sxlib     2 x      2      5 gates
+na3_x1          sxlib    42 x      2     71 gates
+na3_x4          sxlib     4 x      3     11 gates
+na4_x1          sxlib    12 x      2     24 gates
+nao22_x1        sxlib    18 x      2     36 gates
+nao2o22_x1      sxlib     6 x      2     14 gates
+nmx2_x1         sxlib    34 x      2     78 gates
+no2_x1          sxlib    56 x      1     73 gates
+no2_x4          sxlib     6 x      2     14 gates
+no3_x1          sxlib    16 x      2     27 gates
+no4_x1          sxlib    10 x      2     20 gates
+noa22_x1        sxlib    14 x      2     28 gates
+noa2a22_x1      sxlib     2 x      2      5 gates
+noa2a2a23_x1    sxlib     2 x      3      7 gates
+noa2ao222_x1    sxlib    30 x      2     69 gates
+nxr2_x1         sxlib     4 x      3     12 gates
+o2_x2           sxlib     4 x      2      7 gates
+o3_x2           sxlib     6 x      2     12 gates
+oa22_x2         sxlib     4 x      2      8 gates
+oa2a2a23_x2     sxlib     2 x      4      8 gates
+on12_x1         sxlib    50 x      2     85 gates
+on12_x4         sxlib     6 x      3     16 gates
+sff1_x4         sxlib    62 x      6    372 gates
+sff2_x4         sxlib   132 x      8   1056 gates
+xr2_x1          sxlib     2 x      3      6 gates
+zero_x0         sxlib     1 x      1      1 gates
+
+ Number of ports :                      43
+ Number of nets :                      789
+ Number of instances :                 786
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    2422
+ Number of accumulated instances :     786
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK1                 : 129.7 MHz
+	CLK2                 : 129.7 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                             GATE              ARRIVAL              LOAD
+--------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                           0.00 (ideal)
+
+
+Lc2_PRO_MAP_p1_reg_pro_state(1)/q                sff1_x4     0.00  0.77 dn             0.31
+ix65/nq                                          na2_x1      0.72  1.50 up             0.16
+ix4233/nq                                        inv_x1      0.39  1.88 dn             0.05
+ix4025/nq                                        na4_x1      0.40  2.28 up             0.03
+ix3187/nq                                        na3_x1      0.91  3.19 dn             0.13
+ix85/nq                                          no3_x1      0.92  4.11 up             0.12
+ix4092/nq                                        no4_x1      0.61  4.73 dn             0.08
+ix3293/nq                                        nmx2_x1     0.33  5.06 up             0.03
+ix4205/nq                                        na2_x1      0.31  5.36 dn             0.02
+ix3295/nq                                        inv_x1      0.28  5.65 up             0.05
+ix2931/q                                         ao22_x2     0.48  6.13 up             0.03
+ix4082/nq                                        na4_x1      0.45  6.58 dn             0.03
+ix2937/nq                                        na2_x1      0.18  6.76 up             0.03
+ix3378/nq                                        nao22_x1    0.36  7.12 dn             0.02
+Lc2_reg_LINK_ln_p1_GD/i                          sff1_x4     0.00  7.12 dn             0.00
+data arrival time                                                  7.12
+
+
+data required time                                              not specified
+--------------------------------------------------------------------------------------------
+data required time                                              not specified
+data arrival time                                                  7.12
+                                                                ----------
+                                                             unconstrained path
+--------------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD l2_simu.vhd
+-- Writing file l2_simu.vhd
+[/export/home/leonardo/bin/spectrum -f l2_simu.tcl]
+/export/home/Mentor/LeonardoSpectrum_2009a/bin/SunOS5/spectrum -f l2_simu.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2009a.6 (Release Production Release, compiled Aug 17 2009 at 18:28:27)
+Copyright 1990-2009 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2009 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/test/link/out/obj'
+Info: setting novendor_constraint_file to FALSE
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/Mentor/LeonardoSpectrum_2009a/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading package ConPRO into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_EMPTY  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 122: Warning, signal PRO_p1_END is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+-- Loading architecture main of MOD_l2_simu into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Loading package ConPRO into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 23: Warning, replacing ConPRO in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 58: Warning, replacing package body ConPRO.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 18: Warning, replacing l2_main in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 32: Warning, replacing main of entity l2_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 18: Warning, replacing l2_p1 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 42: Warning, replacing main of entity l2_p1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 18: Warning, replacing MOD_l2 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_EMPTY  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 122: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 31: Warning, replacing main of entity MOD_l2.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 17: Warning, replacing l_connect in HDL library work.
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 31: Warning, replacing main of entity l_connect.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 17: Warning, replacing MOD_l2_simu in HDL library work.
+-- Loading architecture main of MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 29: Warning, replacing main of entity MOD_l2_simu.
+-- Compiling root entity MOD_l2_simu(main)
+-- Compiling entity MOD_l2(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 325: Info, others clause is never selected for synthesis.
+-- Compiling entity l2_p1(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 70: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 71: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 209: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l2_main(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 43: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 44: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 111: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l_connect(main)
+-- Boundary optimization.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl", line 293:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sload_sclear_clock_clk_en_5'
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+
+Info, Merging parallel DFF, Lc1_xa_RD(1) and Lc1_xa_RD(5).
+Info, Merging parallel DFF, Lc1_xa_RD(4) and Lc1_xa_RD(6).
+Info, Merging parallel DFF, Lc2_xa_RD(1) and Lc2_xa_RD(5).
+Info, Merging parallel DFF, Lc2_xa_RD(4) and Lc2_xa_RD(6).-- Optimizing netlist .work.MOD_l2_simu.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:01 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_l2_simu.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_l2_simu    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib    11 x      2     19 gates
+a3_x2           sxlib     5 x      2     10 gates
+a4_x2           sxlib     2 x      2      5 gates
+an12_x1         sxlib    94 x      2    160 gates
+an12_x4         sxlib     6 x      3     16 gates
+ao22_x2         sxlib     7 x      2     14 gates
+buf_x8          sxlib     4 x      3     11 gates
+inv_x1          sxlib   215 x      1    215 gates
+inv_x2          sxlib     3 x      1      3 gates
+inv_x4          sxlib     1 x      1      1 gates
+inv_x8          sxlib     2 x      2      5 gates
+na2_x1          sxlib    34 x      1     44 gates
+na2_x4          sxlib     2 x      2      5 gates
+na3_x1          sxlib    51 x      2     87 gates
+na3_x4          sxlib     7 x      3     19 gates
+na4_x1          sxlib    21 x      2     42 gates
+nao22_x1        sxlib    19 x      2     38 gates
+nao2o22_x1      sxlib    66 x      2    152 gates
+nmx2_x1         sxlib    33 x      2     76 gates
+no2_x1          sxlib    57 x      1     74 gates
+no2_x4          sxlib     5 x      2     12 gates
+no3_x1          sxlib    24 x      2     41 gates
+no4_x1          sxlib    24 x      2     48 gates
+noa22_x1        sxlib    10 x      2     20 gates
+noa2a22_x1      sxlib     3 x      2      7 gates
+noa2a2a23_x1    sxlib     2 x      3      7 gates
+noa2ao222_x1    sxlib    28 x      2     64 gates
+noa3ao322_x4    sxlib     1 x      4      4 gates
+nxr2_x1         sxlib    32 x      3     96 gates
+o2_x2           sxlib     4 x      2      7 gates
+o3_x2           sxlib    12 x      2     24 gates
+oa22_x2         sxlib     6 x      2     12 gates
+oa2a2a23_x2     sxlib     2 x      4      8 gates
+on12_x1         sxlib   100 x      2    170 gates
+on12_x4         sxlib     7 x      3     19 gates
+sff1_x4         sxlib   171 x      6   1026 gates
+sff2_x4         sxlib   117 x      8    936 gates
+xr2_x1          sxlib    44 x      3    132 gates
+zero_x0         sxlib     1 x      1      1 gates
+
+ Number of ports :                      43
+ Number of nets :                     1236
+ Number of instances :                1233
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    3627
+ Number of accumulated instances :    1233
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK1                 : 129.7 MHz
+	CLK2                 : 129.9 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                             GATE              ARRIVAL              LOAD
+--------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                           0.00 (ideal)
+
+
+Lc1_PRO_MAP_p1_reg_pro_state(1)/q                sff1_x4     0.00  0.78 dn             0.31
+ix539/nq                                         na2_x1      0.72  1.50 up             0.16
+ix4849/nq                                        inv_x1      0.39  1.88 dn             0.05
+ix4778/nq                                        na4_x1      0.40  2.28 up             0.03
+ix4023/nq                                        na3_x1      0.91  3.19 dn             0.13
+ix929/nq                                         no3_x1      0.92  4.11 up             0.12
+ix4868/nq                                        no4_x1      0.61  4.73 dn             0.08
+ix3903/nq                                        nmx2_x1     0.33  5.06 up             0.03
+ix6336/nq                                        na2_x1      0.31  5.37 dn             0.02
+ix3905/nq                                        inv_x1      0.28  5.65 up             0.05
+ix567/q                                          ao22_x2     0.48  6.13 up             0.03
+ix4858/nq                                        na4_x1      0.45  6.58 dn             0.03
+ix573/nq                                         na2_x1      0.18  6.76 up             0.03
+ix2690/nq                                        nao22_x1    0.36  7.12 dn             0.02
+Lc1_reg_LINK_ln_p1_GD/i                          sff1_x4     0.00  7.12 dn             0.00
+data arrival time                                                  7.12
+
+
+data required time                                              not specified
+--------------------------------------------------------------------------------------------
+data required time                                              not specified
+data arrival time                                                  7.12
+                                                                ----------
+                                                             unconstrained path
+--------------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD l2_simu.vhd
+-- Writing file l2_simu.vhd
+[/export/home/leonardo/bin/spectrum -f l2_simu.tcl]
+/export/home/Mentor/LeonardoSpectrum_2009a/bin/SunOS5/spectrum -f l2_simu.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2009a.6 (Release Production Release, compiled Aug 17 2009 at 18:28:27)
+Copyright 1990-2009 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2009 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/test/link/out/obj'
+Info: setting novendor_constraint_file to FALSE
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/Mentor/LeonardoSpectrum_2009a/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading package ConPRO into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_EMPTY  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 122: Warning, signal PRO_p1_END is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+-- Loading architecture main of MOD_l2_simu into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Loading package ConPRO into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 23: Warning, replacing ConPRO in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 58: Warning, replacing package body ConPRO.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 18: Warning, replacing l2_main in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 32: Warning, replacing main of entity l2_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 18: Warning, replacing l2_p1 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 42: Warning, replacing main of entity l2_p1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 18: Warning, replacing MOD_l2 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_EMPTY  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 122: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 31: Warning, replacing main of entity MOD_l2.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 17: Warning, replacing l_connect in HDL library work.
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 31: Warning, replacing main of entity l_connect.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 17: Warning, replacing MOD_l2_simu in HDL library work.
+-- Loading architecture main of MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 29: Warning, replacing main of entity MOD_l2_simu.
+-- Compiling root entity MOD_l2_simu(main)
+-- Compiling entity MOD_l2(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 325: Info, others clause is never selected for synthesis.
+-- Compiling entity l2_p1(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 70: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 71: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 209: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l2_main(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 43: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 44: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 111: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l_connect(main)
+-- Boundary optimization.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl", line 293:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sload_sclear_clock_clk_en_5'
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+
+Info, Merging parallel DFF, Lc1_xa_RD(1) and Lc1_xa_RD(5).
+Info, Merging parallel DFF, Lc1_xa_RD(4) and Lc1_xa_RD(6).
+Info, Merging parallel DFF, Lc2_xa_RD(1) and Lc2_xa_RD(5).
+Info, Merging parallel DFF, Lc2_xa_RD(4) and Lc2_xa_RD(6).-- Optimizing netlist .work.MOD_l2_simu.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:02 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_l2_simu.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_l2_simu    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib    12 x      2     20 gates
+a3_x2           sxlib     4 x      2      8 gates
+a4_x2           sxlib     2 x      2      5 gates
+an12_x1         sxlib   106 x      2    180 gates
+an12_x4         sxlib     6 x      3     16 gates
+ao22_x2         sxlib     6 x      2     12 gates
+buf_x8          sxlib     4 x      3     11 gates
+inv_x1          sxlib   198 x      1    198 gates
+inv_x2          sxlib     2 x      1      2 gates
+inv_x4          sxlib     2 x      1      3 gates
+inv_x8          sxlib     2 x      2      5 gates
+na2_x1          sxlib    32 x      1     42 gates
+na2_x4          sxlib     2 x      2      5 gates
+na3_x1          sxlib    52 x      2     88 gates
+na3_x4          sxlib     6 x      3     16 gates
+na4_x1          sxlib    20 x      2     40 gates
+nao22_x1        sxlib    18 x      2     36 gates
+nao2o22_x1      sxlib    54 x      2    124 gates
+nmx2_x1         sxlib    32 x      2     74 gates
+no2_x1          sxlib    56 x      1     73 gates
+no2_x4          sxlib     6 x      2     14 gates
+no3_x1          sxlib    23 x      2     39 gates
+no4_x1          sxlib    24 x      2     48 gates
+noa22_x1        sxlib    14 x      2     28 gates
+noa2a22_x1      sxlib     2 x      2      5 gates
+noa2a2a23_x1    sxlib     2 x      3      7 gates
+noa2ao222_x1    sxlib    30 x      2     69 gates
+nxr2_x1         sxlib    32 x      3     96 gates
+o2_x2           sxlib     4 x      2      7 gates
+o3_x2           sxlib    12 x      2     24 gates
+oa22_x2         sxlib     8 x      2     16 gates
+oa2a2a23_x2     sxlib     2 x      4      8 gates
+on12_x1         sxlib   102 x      2    173 gates
+on12_x4         sxlib     6 x      3     16 gates
+sff1_x4         sxlib   162 x      6    972 gates
+sff2_x4         sxlib   126 x      8   1008 gates
+xr2_x1          sxlib    44 x      3    132 gates
+zero_x0         sxlib     1 x      1      1 gates
+
+ Number of ports :                      43
+ Number of nets :                     1219
+ Number of instances :                1216
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    3619
+ Number of accumulated instances :    1216
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK1                 : 129.7 MHz
+	CLK2                 : 129.7 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                             GATE              ARRIVAL              LOAD
+--------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                           0.00 (ideal)
+
+
+Lc2_PRO_MAP_p1_reg_pro_state(1)/q                sff1_x4     0.00  0.77 dn             0.31
+ix65/nq                                          na2_x1      0.72  1.50 up             0.16
+ix6087/nq                                        inv_x1      0.39  1.88 dn             0.05
+ix4924/nq                                        na4_x1      0.40  2.28 up             0.03
+ix4281/nq                                        na3_x1      0.91  3.19 dn             0.13
+ix85/nq                                          no3_x1      0.92  4.11 up             0.12
+ix4960/nq                                        no4_x1      0.61  4.73 dn             0.08
+ix4349/nq                                        nmx2_x1     0.33  5.06 up             0.03
+ix6040/nq                                        na2_x1      0.31  5.36 dn             0.02
+ix4351/nq                                        inv_x1      0.28  5.65 up             0.05
+ix4025/q                                         ao22_x2     0.48  6.13 up             0.03
+ix4950/nq                                        na4_x1      0.45  6.58 dn             0.03
+ix4031/nq                                        na2_x1      0.18  6.76 up             0.03
+ix4266/nq                                        nao22_x1    0.36  7.12 dn             0.02
+Lc2_reg_LINK_ln_p1_GD/i                          sff1_x4     0.00  7.12 dn             0.00
+data arrival time                                                  7.12
+
+
+data required time                                              not specified
+--------------------------------------------------------------------------------------------
+data required time                                              not specified
+data arrival time                                                  7.12
+                                                                ----------
+                                                             unconstrained path
+--------------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD l2_simu.vhd
+-- Writing file l2_simu.vhd
+[/export/home/leonardo/bin/spectrum -f l2_simu.tcl]
+/export/home/Mentor/LeonardoSpectrum_2009a/bin/SunOS5/spectrum -f l2_simu.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2009a.6 (Release Production Release, compiled Aug 17 2009 at 18:28:27)
+Copyright 1990-2009 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2009 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/test/link/out/obj'
+Info: setting novendor_constraint_file to FALSE
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/Mentor/LeonardoSpectrum_2009a/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading package ConPRO into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_EMPTY  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 122: Warning, signal PRO_p1_END is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+-- Loading architecture main of MOD_l2_simu into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Loading package ConPRO into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 23: Warning, replacing ConPRO in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 58: Warning, replacing package body ConPRO.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 18: Warning, replacing l2_main in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 32: Warning, replacing main of entity l2_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 18: Warning, replacing l2_p1 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 42: Warning, replacing main of entity l2_p1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 18: Warning, replacing MOD_l2 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_EMPTY  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 122: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 31: Warning, replacing main of entity MOD_l2.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 17: Warning, replacing l_connect in HDL library work.
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 31: Warning, replacing main of entity l_connect.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 17: Warning, replacing MOD_l2_simu in HDL library work.
+-- Loading architecture main of MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 29: Warning, replacing main of entity MOD_l2_simu.
+-- Compiling root entity MOD_l2_simu(main)
+-- Compiling entity MOD_l2(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 326: Info, others clause is never selected for synthesis.
+-- Compiling entity l2_p1(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 70: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 71: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 209: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l2_main(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 43: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 44: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 111: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l_connect(main)
+-- Boundary optimization.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl", line 293:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sload_sclear_clock_clk_en_5'
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+
+Info, Merging parallel DFF, Lc1_xa_RD(1) and Lc1_xa_RD(5).
+Info, Merging parallel DFF, Lc1_xa_RD(4) and Lc1_xa_RD(6).
+Info, Merging parallel DFF, Lc2_xa_RD(1) and Lc2_xa_RD(5).
+Info, Merging parallel DFF, Lc2_xa_RD(4) and Lc2_xa_RD(6).-- Optimizing netlist .work.MOD_l2_simu.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:02 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_l2_simu.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_l2_simu    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib    12 x      2     20 gates
+a3_x2           sxlib     4 x      2      8 gates
+a4_x2           sxlib     2 x      2      5 gates
+an12_x1         sxlib   106 x      2    180 gates
+an12_x4         sxlib     6 x      3     16 gates
+ao22_x2         sxlib     6 x      2     12 gates
+buf_x8          sxlib     4 x      3     11 gates
+inv_x1          sxlib   198 x      1    198 gates
+inv_x2          sxlib     2 x      1      2 gates
+inv_x4          sxlib     2 x      1      3 gates
+inv_x8          sxlib     2 x      2      5 gates
+na2_x1          sxlib    32 x      1     42 gates
+na2_x4          sxlib     2 x      2      5 gates
+na3_x1          sxlib    52 x      2     88 gates
+na3_x4          sxlib     6 x      3     16 gates
+na4_x1          sxlib    20 x      2     40 gates
+nao22_x1        sxlib    18 x      2     36 gates
+nao2o22_x1      sxlib    54 x      2    124 gates
+nmx2_x1         sxlib    34 x      2     78 gates
+no2_x1          sxlib    56 x      1     73 gates
+no2_x4          sxlib     6 x      2     14 gates
+no3_x1          sxlib    21 x      2     36 gates
+no4_x1          sxlib    24 x      2     48 gates
+noa22_x1        sxlib    14 x      2     28 gates
+noa2a22_x1      sxlib     2 x      2      5 gates
+noa2a2a23_x1    sxlib     2 x      3      7 gates
+noa2ao222_x1    sxlib    30 x      2     69 gates
+nxr2_x1         sxlib    32 x      3     96 gates
+o2_x2           sxlib     4 x      2      7 gates
+o3_x2           sxlib    12 x      2     24 gates
+oa22_x2         sxlib     8 x      2     16 gates
+oa2a2a23_x2     sxlib     2 x      4      8 gates
+on12_x1         sxlib   102 x      2    173 gates
+on12_x4         sxlib     6 x      3     16 gates
+sff1_x4         sxlib   162 x      6    972 gates
+sff2_x4         sxlib   126 x      8   1008 gates
+xr2_x1          sxlib    44 x      3    132 gates
+zero_x0         sxlib     1 x      1      1 gates
+
+ Number of ports :                      43
+ Number of nets :                     1219
+ Number of instances :                1216
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    3620
+ Number of accumulated instances :    1216
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK1                 : 129.7 MHz
+	CLK2                 : 129.7 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                             GATE              ARRIVAL              LOAD
+--------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                           0.00 (ideal)
+
+
+Lc2_PRO_MAP_p1_reg_pro_state(1)/q                sff1_x4     0.00  0.77 dn             0.31
+ix65/nq                                          na2_x1      0.72  1.50 up             0.16
+ix6065/nq                                        inv_x1      0.39  1.88 dn             0.05
+ix4916/nq                                        na4_x1      0.40  2.28 up             0.03
+ix4285/nq                                        na3_x1      0.91  3.19 dn             0.13
+ix85/nq                                          no3_x1      0.92  4.11 up             0.12
+ix4952/nq                                        no4_x1      0.61  4.73 dn             0.08
+ix4353/nq                                        nmx2_x1     0.33  5.06 up             0.03
+ix6018/nq                                        na2_x1      0.31  5.36 dn             0.02
+ix4355/nq                                        inv_x1      0.28  5.65 up             0.05
+ix4029/q                                         ao22_x2     0.48  6.13 up             0.03
+ix4942/nq                                        na4_x1      0.45  6.58 dn             0.03
+ix4035/nq                                        na2_x1      0.18  6.76 up             0.03
+ix4258/nq                                        nao22_x1    0.36  7.12 dn             0.02
+Lc2_reg_LINK_ln_p1_GD/i                          sff1_x4     0.00  7.12 dn             0.00
+data arrival time                                                  7.12
+
+
+data required time                                              not specified
+--------------------------------------------------------------------------------------------
+data required time                                              not specified
+data arrival time                                                  7.12
+                                                                ----------
+                                                             unconstrained path
+--------------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD l2_simu.vhd
+-- Writing file l2_simu.vhd
+[/export/home/leonardo/bin/spectrum -f l2_simu.tcl]
+/export/home/Mentor/LeonardoSpectrum_2009a/bin/SunOS5/spectrum -f l2_simu.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2009a.6 (Release Production Release, compiled Aug 17 2009 at 18:28:27)
+Copyright 1990-2009 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2009 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/test/link/out/obj'
+Info: setting novendor_constraint_file to FALSE
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/Mentor/LeonardoSpectrum_2009a/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/Mentor/LeonardoSpectrum_2009a/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading package ConPRO into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_EMPTY  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 122: Warning, signal PRO_p1_END is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+-- Loading architecture main of MOD_l2_simu into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl into library work
+-- Loading package ConPRO into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 23: Warning, replacing ConPRO in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/obj/../conpro.vhdl",line 58: Warning, replacing package body ConPRO.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl into library work
+-- Loading entity l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 18: Warning, replacing l2_main in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 36: Info, Enumerated type pro_states with 5 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  -01
+       S_i2_fun  -10
+       S_i3_fun  -11
+     S_main_end  100
+
+-- Loading architecture main of l2_main into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 32: Warning, replacing main of entity l2_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl into library work
+-- Loading entity l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 18: Warning, replacing l2_p1 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 49: Info, Enumerated type pro_states with 19 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+    S_i1_assign  00001
+  S_i6_for_loop  00010
+S_i6_for_loop_cond  -0011
+ S_i7_bind_to_8  -0100
+       S_i9_fun  -0101
+   S_i10_branch  -0110
+    S_i11_raise  -0111
+   S_i13_assign  -1000
+      S_i14_fun  -1001
+   S_i15_branch  -1010
+    S_i16_raise  -1011
+S_i18_bind_to_19  -1100
+S_i6_for_loop_incr  -1101
+    S_i3_select  -1110
+       S_i4_fun  -1111
+    S_i5_assign  10000
+   S_i20_assign  10001
+       S_p1_end  10010
+
+-- Loading architecture main of l2_p1 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 42: Warning, replacing main of entity l2_p1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l2.vhdl into library work
+-- Loading entity MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 18: Warning, replacing MOD_l2 in HDL library work.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 83: Info, Enumerated type LINK_ln_STATES with 3 elements encoded as binary.
+Encodings for LINK_ln_STATES values
+        value    LINK_ln_STATES[1-0]
+====================================
+LINK_ln_S_EMPTY  00
+  LINK_ln_S_REQ  -1
+  LINK_ln_S_SET  10
+
+-- Loading architecture main of MOD_l2 into library work
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 81: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 122: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 31: Warning, replacing main of entity MOD_l2.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl into library work
+-- Loading entity l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 17: Warning, replacing l_connect in HDL library work.
+-- Loading architecture main of l_connect into library work
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 27: Warning, input CLK is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 28: Warning, input RESET is never used.
+"/home/sbosse/proj/conpro2/test/link/out/l_connect.vhdl",line 31: Warning, replacing main of entity l_connect.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl into library work
+-- Loading entity MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 17: Warning, replacing MOD_l2_simu in HDL library work.
+-- Loading architecture main of MOD_l2_simu into library work
+"/home/sbosse/proj/conpro2/test/link/out/obj/../l2_simu.vhdl",line 29: Warning, replacing main of entity MOD_l2_simu.
+-- Compiling root entity MOD_l2_simu(main)
+-- Compiling entity MOD_l2(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2.vhdl",line 336: Info, others clause is never selected for synthesis.
+-- Compiling entity l2_p1(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 70: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 71: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl",line 209: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l2_main(main)
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 43: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 44: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/link/out/l2_main.vhdl",line 111: Warning, LINK_ln_GD should be declared on the sensitivity list of the process.
+-- Compiling entity l_connect(main)
+-- Boundary optimization.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+"/home/sbosse/proj/conpro2/test/link/out/l2_p1.vhdl", line 293:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sload_sclear_clock_clk_en_5'
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+-- Start pre-optimization for design .work.l2_p1.main_unfold_1198
+-- Start pre-optimization for design .work.l2_main.main_unfold_1394
+-- Start pre-optimization for design .work.MOD_l2.main_unfold_1213
+-- Start pre-optimization for design .work.MOD_l2_simu.main
+
+Info, Merging parallel DFF, Lc1_xa_RD(1) and Lc1_xa_RD(5).
+Info, Merging parallel DFF, Lc1_xa_RD(4) and Lc1_xa_RD(6).
+Info, Merging parallel DFF, Lc2_xa_RD(1) and Lc2_xa_RD(5).
+Info, Merging parallel DFF, Lc2_xa_RD(4) and Lc2_xa_RD(6).-- Optimizing netlist .work.MOD_l2_simu.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:02 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_l2_simu.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_l2_simu    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib    11 x      2     19 gates
+a3_x2           sxlib     5 x      2     10 gates
+a4_x2           sxlib     2 x      2      5 gates
+an12_x1         sxlib    92 x      2    156 gates
+an12_x4         sxlib     6 x      3     16 gates
+ao22_x2         sxlib     5 x      2     10 gates
+buf_x8          sxlib     4 x      3     11 gates
+inv_x1          sxlib   221 x      1    221 gates
+inv_x2          sxlib     3 x      1      3 gates
+inv_x4          sxlib     1 x      1      1 gates
+inv_x8          sxlib     2 x      2      5 gates
+na2_x1          sxlib    34 x      1     44 gates
+na2_x4          sxlib     2 x      2      5 gates
+na3_x1          sxlib    51 x      2     87 gates
+na3_x4          sxlib     7 x      3     19 gates
+na4_x1          sxlib    21 x      2     42 gates
+nao22_x1        sxlib    19 x      2     38 gates
+nao2o22_x1      sxlib    66 x      2    152 gates
+nmx2_x1         sxlib    33 x      2     76 gates
+no2_x1          sxlib    59 x      1     77 gates
+no2_x4          sxlib     5 x      2     12 gates
+no3_x1          sxlib    24 x      2     41 gates
+no4_x1          sxlib    26 x      2     52 gates
+noa22_x1        sxlib    10 x      2     20 gates
+noa2a22_x1      sxlib     5 x      2     12 gates
+noa2a2a23_x1    sxlib     2 x      3      7 gates
+noa2ao222_x1    sxlib    28 x      2     64 gates
+noa3ao322_x4    sxlib     1 x      4      4 gates
+nxr2_x1         sxlib    32 x      3     96 gates
+o2_x2           sxlib     4 x      2      7 gates
+o3_x2           sxlib    12 x      2     24 gates
+oa22_x2         sxlib     8 x      2     16 gates
+oa2a2a23_x2     sxlib     2 x      4      8 gates
+on12_x1         sxlib   100 x      2    170 gates
+on12_x4         sxlib     7 x      3     19 gates
+sff1_x4         sxlib   171 x      6   1026 gates
+sff2_x4         sxlib   119 x      8    952 gates
+xr2_x1          sxlib    44 x      3    132 gates
+zero_x0         sxlib     1 x      1      1 gates
+
+ Number of ports :                      43
+ Number of nets :                     1248
+ Number of instances :                1245
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    3657
+ Number of accumulated instances :    1245
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK1                 : 129.7 MHz
+	CLK2                 : 129.9 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                             GATE              ARRIVAL              LOAD
+--------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                           0.00 (ideal)
+
+
+Lc1_PRO_MAP_p1_reg_pro_state(1)/q                sff1_x4     0.00  0.78 dn             0.31
+ix543/nq                                         na2_x1      0.72  1.50 up             0.16
+ix4886/nq                                        inv_x1      0.39  1.88 dn             0.05
+ix4815/nq                                        na4_x1      0.40  2.28 up             0.03
+ix4063/nq                                        na3_x1      0.91  3.19 dn             0.13
+ix933/nq                                         no3_x1      0.92  4.11 up             0.12
+ix4906/nq                                        no4_x1      0.61  4.73 dn             0.08
+ix3943/nq                                        nmx2_x1     0.33  5.06 up             0.03
+ix6416/nq                                        na2_x1      0.31  5.37 dn             0.02
+ix3945/nq                                        inv_x1      0.28  5.65 up             0.05
+ix571/q                                          ao22_x2     0.48  6.13 up             0.03
+ix4894/nq                                        na4_x1      0.45  6.58 dn             0.03
+ix577/nq                                         na2_x1      0.18  6.76 up             0.03
+ix2708/nq                                        nao22_x1    0.36  7.12 dn             0.02
+Lc1_reg_LINK_ln_p1_GD/i                          sff1_x4     0.00  7.12 dn             0.00
+data arrival time                                                  7.12
+
+
+data required time                                              not specified
+--------------------------------------------------------------------------------------------
+data required time                                              not specified
+data arrival time                                                  7.12
+                                                                ----------
+                                                             unconstrained path
+--------------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD l2_simu.vhd
+-- Writing file l2_simu.vhd

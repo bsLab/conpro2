@@ -1,0 +1,1438 @@
+(*
+**      ==================================
+**      OOOO   OOOO OOOO  O      O   OOOO
+**      O   O  O    O     O     O O  O   O
+**      O   O  O    O     O     O O  O   O
+**      OOOO   OOOO OOOO  O     OOO  OOOO
+**      O   O     O    O  O    O   O O   O
+**      O   O     O    O  O    O   O O   O
+**      OOOO   OOOO OOOO  OOOO O   O OOOO
+**      ================================== 
+**      BSSLAB, Dr. Stefan Bosse http://www.bsslab.de
+**
+**      COPYRIGHT: THIS SOFTWARE, EXECUTABLE AND SOURCE CODE IS OWNED BY BSSLAB.
+**                 THIS SOURCE CODE MAY NOT BE COPIED, EXTRACTED,
+**                 MODIFIED, OR OTHERWISE USED IN A CONTEXT
+**                 OUTSIDE OF THE SOFTWARE SYSTEM.
+**
+**    $AUTHORS:     Stefan Bosse
+**    $INITIAL:     (C) 2008 BSSLAB
+**    $CREATED:     8.7.2008
+**    $VERSION:     2.09
+**
+**    $INFO:
+**
+**  Tool Description Interface - Interpreter and Synthesis
+**
+**    $ENDOFINFO
+**
+*)
+open Cp_common
+open Cp_types
+open Cp_syntax
+open Cp_symbol
+open Cp_utils
+open Cp_data
+open Cp_printtypes
+open Cp_data_core
+open Printf
+open Cp_fun
+open Cp_tdi_types
+open Cp_print
+
+
+(*
+** First this is module class is generated one time at opening of module.
+** An instance is created using the #instance method each time an object
+** is created.
+*)
+type func_builtin = 
+  |  F_PRINT 
+  |  F_PRINT_LINE 
+  |  F_WRITE 
+  |  F_WRITE_LINE
+  |  F_OPEN_FILE
+  |  F_CREATE_FILE 
+  |  F_APPEND_FILE 
+  |  F_REMOVE_FILE 
+  |  F_RENAME_FILE 
+  |  F_COPY_FILE 
+  |  F_MOVE_FILE 
+  |  F_REMOVE_DIR 
+  |  F_MAKE_DIR 
+  |  F_CHANGE_DIR 
+  |  F_EXIT 
+  |  F_EXEC 
+  |  F_EXEC_WRITE 
+  |  F_BASENAME
+  |  F_CHOPEXT
+  |  F_GETENV
+  |  F_USER of string
+
+type target_lang =
+  | L_BASH
+  | L_MAKE
+  | L_TCL
+  
+class tdi tname tops lmap =
+  object (self)    
+  (*
+  ** Instantiate an object from this TDI module description
+  *)            
+  method instance = Oo.copy self
+  (*
+  ** Module, object and type name
+  *)
+  val tname = tname 
+  val mutable oname = "root"
+  val mutable target = L_BASH
+
+  val mutable funs = []
+  val mutable env: (tdi_env list) = []
+  val mutable files = []
+  val mutable tops = []
+  
+  val oc = ref (Pervasives.stdout)
+  val mutable out_indent = 0
+  method private out str = 
+    output_string !oc ((ibox out_indent str)^"\n")
+  method private ind_incr = out_indent <- out_indent + 2
+  method private ind_decr = out_indent <- out_indent - 2
+  
+  method set_oname str = oname <- str
+  
+  method info = sprintf "tool.%s.%s" tname oname
+
+  (*
+  ***************************************************
+  ** Files
+  ***************************************************
+  *)
+  method private file_open fname =
+    let n = List.length files in
+    try 
+    begin
+        let (fname,fid) = List.find (fun (n,id) -> n = fname) files in
+        fid
+    end
+    with Not_found -> 
+    begin
+      files <- files @ [fname,n];
+      n
+    end;
+    
+      
+  method private file_id fname =
+    try 
+    begin
+        let (fname,fid) = List.find (fun (n,id) -> n = fname) files in
+        fid
+    end
+    with Not_found -> error 0 (sprintf "TDI<%s>: unknown filename <%s> found." self#info fname)
+  
+  (*
+  ***************************************************
+  ** Functions
+  ***************************************************
+  *) 
+  method private  func_map fname = 
+    let argn c = Array.to_list (Array.create 10 c) in
+      
+    match fname with
+    | "print"  -> F_PRINT,'_',(argn 's') 
+    | "print_line" -> F_PRINT_LINE ,'_',(argn 's')
+    | "write" ->  F_WRITE,'_',(argn 's')
+    | "write_line" ->  F_WRITE_LINE,'_',(argn 's')
+    | "create_file" -> F_CREATE_FILE,'_',['s'] 
+    | "open_file" -> F_OPEN_FILE,'_',['s'] 
+    | "append_file" -> F_APPEND_FILE,'_',['s'] 
+    | "remove_file" -> F_REMOVE_FILE,'_',['s'] 
+    | "rename_file" -> F_RENAME_FILE,'_',['s';'s'] 
+    | "copy_file" -> F_COPY_FILE ,'_',['s';'s']
+    | "move_file" -> F_MOVE_FILE ,'_',['s';'s']
+    | "remove_dir" -> F_REMOVE_DIR ,'_',['s']
+    | "make_dir" -> F_MAKE_DIR ,'_',['s']
+    | "change_dir" -> F_CHANGE_DIR ,'_',['s';'s']
+    | "exit" -> F_EXIT,'_',[]
+    | "exec" ->  F_EXEC,'d',['s']
+    | "exec_write" -> F_EXEC_WRITE,'d',['s';'s']
+    | "basename" -> F_BASENAME,'s',['s']
+    | "chop_extension" -> F_CHOPEXT,'s',['s']
+    | "get_env" -> F_GETENV,'s',['s';'s']
+    | _ -> F_USER fname,'?',['?']
+    
+  method private func_compile fname args =
+    let argn = List.length args in
+    let e str = error 0 (sprintf "TDI <%s>#func_compile: %s."  self#info str) in
+    let strip_var v =
+      if v.[0] = '$' then String.sub v 1 ((String.length v)-1) else v in
+      
+    match self#func_map fname with
+    | F_CHOPEXT,rt,atl -> 
+      if argn <> 1 then e "expected 1 argument";
+      let arg = List.nth args 0 in
+      if self#str_is_const arg then
+        (try Filename.chop_extension arg with _ -> arg)
+      else 
+      begin
+        match target with
+        | L_BASH -> sprintf "${%s\\.*}" (strip_var arg);
+        | _ -> e "unsupported target";
+      end;
+    | F_GETENV,rt,atl -> 
+    begin
+      if argn <> 2 then e "expected 2 arguments";
+      let v = List.nth args 0 in
+      let def = List.nth args 1 in 
+      match target with
+      | L_BASH ->
+        let temp = sprintf "TEMP%d" (Random.int 1000000) in
+        self#aux [sprintf "if [ \"X%s\" = \"X\" ]" v;
+                  "then";
+                  sprintf "  %s=%s" temp (self#format_string def);
+                  "else";
+                  sprintf "  %s=%s" temp v;
+                  "fi"];
+        sprintf "$%s" temp
+      | _ -> e "unsupported target";
+    end;
+    | F_PRINT,rt,atl ->
+    begin
+      match target with
+      | L_BASH ->
+        let s = ref "echo " in
+        List.iter (fun arg ->
+          let arg_type = self#str_type arg in
+          match arg_type with
+          | 's' ->
+            s := sprintf "%s%s" !s (self#format_string arg);
+          | 'd' ->
+            s := sprintf "%s%s" !s (self#format_int arg);
+          | '$' ->
+            s := sprintf "%s%s" !s (self#format_vars false arg);
+          | _ -> e (sprintf "unsupported argument type <%c>, argument <%s>" arg_type arg); 
+          ) args;
+        !s  
+      | _ -> e "unsupported target";
+    end;
+    | F_PRINT_LINE,rt,atl ->
+    begin
+      match target with
+      | L_BASH ->
+        let s = ref "" in
+        List.iter (fun arg ->
+          let arg_type = self#str_type arg in
+          match arg_type with
+          | 's' ->
+            s := sprintf "%secho %s\n" !s (self#format_string arg);
+          | 'd' ->
+            s := sprintf "%secho %s\n" !s (self#format_int arg);
+          | '$' ->
+            s := sprintf "%secho %s\n" !s (self#format_vars false arg);
+          | _ -> e (sprintf "unsupported argument type <%c>, argument <%s>" arg_type arg); 
+          ) args;
+        !s  
+      | _ -> e "unsupported target";
+    end;
+    | F_EXIT,rt,atl ->
+    begin
+      if argn <> 1 then e "expected 1 argument";
+      let arg = List.nth args 0 in
+      match target with
+      | L_BASH ->
+      begin
+        sprintf "exit %s" arg;
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_EXEC,rt,atl ->
+    begin
+      if argn <> 1 then e "expected 1 argument";
+      let arg = List.nth args 0 in
+      match target with
+      | L_BASH ->
+      begin
+        let temp = sprintf "TEMP%d" (Random.int 1000000) in
+        self#aux [
+          sprintf "%s" arg ; (*(self#format_string arg);*)
+          sprintf "$%s=$?" temp;
+          ];
+        sprintf "$%s" temp;
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_EXEC_WRITE,rt,atl ->
+    begin      
+      let fname,exec,printl = 
+        match args with
+        | [f;e] -> f,e,[]
+        | f :: (e  :: tl) -> f,e,tl;
+        | _ -> e "expected at least 2 arguments"; in
+      let fid = self#file_id fname in
+      match target with
+      | L_BASH ->
+      begin
+        let temp = sprintf "TEMP%d" (Random.int 1000000) in
+        self#aux (
+          [
+          sprintf "%s 2>&1 >> %s" exec fname;]@
+          (
+            if printl <> [] 
+              then List.map (fun line -> sprintf "echo %s >> %s" line fname) printl
+              else []
+          )@
+          [
+            sprintf "$%s=$?" temp;
+          ]);
+        sprintf "$%s" temp;
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_CREATE_FILE,rt,atl ->
+    begin
+      if argn <> 1 then e "expected 1 argument";
+      let fname = List.nth args 0 in
+      let fid = self#file_open fname in
+      match target with
+      | L_BASH ->
+      begin
+        sprintf "echo > %s" fname;
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_OPEN_FILE,rt,atl ->
+    begin
+      if argn <> 1 then e "expected 1 argument";
+      let fname = List.nth args 0 in
+      let fid = self#file_open fname in
+      match target with
+      | L_BASH ->
+      begin
+        ""
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_APPEND_FILE,rt,atl ->
+    begin
+      if argn <> 2 then e "expected 2 arguments";
+      let src = List.nth args 0 in
+      let dst = List.nth args 1 in
+      match target with
+      | L_BASH ->
+      begin
+        sprintf "cat %s >> %s" src dst;
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_COPY_FILE,rt,atl ->
+    begin
+      if argn <> 2 then e "expected 2 arguments";
+      let src = List.nth args 0 in
+      let dst = List.nth args 1 in
+      match target with
+      | L_BASH ->
+      begin
+        sprintf "cp %s %s" src dst;
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_WRITE,rt,atl ->
+    begin
+      if argn < 2 then e "expected at least 2 arguments";
+      let fname = List.nth args 0 in
+      let fid = self#file_id fname in
+      match target with
+      | L_BASH ->
+      begin
+       let s = ref "echo " in
+        List.iter (fun arg ->
+          let arg_type = self#str_type arg in
+          match arg_type with
+          | 's' ->
+            s := sprintf "%s%s" !s (self#format_string arg);
+          | 'd' ->
+            s := sprintf "%s%s" !s (self#format_int arg);
+          | '$' ->
+            s := sprintf "%s%s" !s (self#format_vars false arg);
+          | _ -> e (sprintf "unsupported argument type <%c>, argument <%s>" arg_type arg); 
+          ) (List.tl args);
+        sprintf "echo %s >> %s" !s fname;
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_WRITE_LINE,rt,atl ->
+    begin
+      if argn < 2 then e "expected at least 2 arguments";
+      let fname = List.nth args 0 in
+      let fid = self#file_id fname in
+      match target with
+      | L_BASH ->
+      begin
+        let s = ref "" in
+        List.iter (fun arg ->
+          let arg_type = self#str_type arg in
+          let line =
+            match arg_type with
+            | 's' ->
+              self#format_string arg;
+            | 'd' ->
+              self#format_int arg;
+            | '$' ->
+              self#format_vars false arg;
+            | _ -> e (sprintf "unsupported argument type <%c>, argument <%s>" arg_type arg) in
+          s := sprintf "%secho %s >> %s" (if !s <> "" then sprintf "%s\n" !s else "") line fname;
+          ) (List.tl args);
+        !s
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_CHANGE_DIR,rt,atl ->
+    begin
+      if argn <> 1 then e "expected 1 argument";
+      let dirname = List.nth args 0 in
+      match target with
+      | L_BASH ->
+      begin
+        sprintf "cd %s" dirname;
+      end;
+      | _ -> e "unsupported target";
+    end;
+    | F_USER fname,_,_ ->
+    begin
+      try 
+      begin
+        let f = List.find (fun f -> f.tdf_name = fname) funs in
+        match target with
+        | L_BASH ->
+          sprintf "%s()" fname;
+        | _ -> e "unsupported target";
+      end
+      with Not_found -> e (sprintf "unknown user function <%s> found." fname);
+      
+    end;
+    | _ -> e (sprintf "unsupported function <%s> found." fname)
+    
+  (*
+  *********************************************************************
+  ** Formatting
+  *********************************************************************
+  *)
+    
+  method private format_string str =
+    let e str = error 0 (sprintf "TDI <%s>#format_string: %s."  self#info str) in
+    match target with
+    | L_BASH ->
+      debug "TDI" 0 (sprintf "format_string <%s>" str);
+      (*
+      ** Divide string into pure string and variable components
+      *)
+      let n = ref 0 in
+      let strl = ref [] in
+      let last = ref "" in
+      let in_var = ref false in
+      let in_str = ref false in
+      String.iter (fun c ->
+        incr n;
+        match c with
+        | '$' ->
+          in_var := true;
+          if !last <> "" then strl := !strl @ [!last];
+          last := "$";
+        | '"' -> 
+          if !in_str then
+          begin
+            last := sprintf "%s\"" !last;
+            strl := !strl @ [!last];
+            last := "";
+            in_str := false;
+          end
+          else
+          begin
+            in_str := true;
+            if !last <> "" then strl := !strl @ [!last];
+            last := "\"";
+          end;
+        | '+' -> 
+          if !in_str then last := sprintf "%s+" !last
+          else if !last <> "" then 
+          begin
+            strl := !strl @ [!last];
+            last := "";
+          end;
+        | _ -> last := sprintf "%s%c" !last c;  
+        ) str;
+      if !last <> "" then strl := !strl @ [!last];
+      let str = ref "" in
+      List.iter (fun str' ->
+        if str'.[0] <> '"' then str := sprintf "%s\"%s\"" !str str'
+        else str := sprintf "%s%s" !str str';
+        ) !strl;
+      !str
+    | _ -> e "unsupported target"
+
+  method private format_int str =
+    str
+    
+
+  method private format_var lhs tde  =
+    let e str = error 0 (sprintf "TDI <%s>#format_var: %s."  self#info str) in
+    match target with
+    | L_BASH ->
+      if not tde.tde_array then
+      begin
+        let vname = String.sub tde.tde_name 1 ((String.length tde.tde_name)-1)  in
+        sprintf "%s%s" (if not lhs then "$" else "") vname
+      end
+      else
+      begin
+        match Str.split (Str.regexp "\.") tde.tde_name with
+        | [name;sel] -> 
+          let vname = String.sub name 1 ((String.length name)-1) in
+          let sname = String.sub sel 1 ((String.length sel)-2) in
+          sprintf "%s%s.[%s]" (if not lhs then "$" else "") vname (self#format_int sname)
+        | _ -> e "invalid array";
+      end;
+    | _ -> e "unsupported target"
+    
+  method private format_vars lhs name =
+    let e str = error 0 (sprintf "TDI <%s>#format_vars: %s."  self#info str) in
+    match Str.split (Str.regexp "\.") name with
+    | [name;sel] -> 
+    begin
+      match target with
+      | L_BASH ->
+        let vname = String.sub name 1 ((String.length name)-1) in
+        let sname = String.sub sel 1 ((String.length sel)-2) in
+        sprintf "%s%s.[%s]" (if not lhs then "$" else "") vname (self#format_int sname)
+      | _ -> e "unsupported target";
+    end;
+    | [name] ->
+    begin 
+      match target with
+      | L_BASH ->
+        let vname = String.sub name 1 ((String.length name)-1) in
+        sprintf "%s%s" (if not lhs then "$" else "") vname 
+      | _ -> e "unsupported target";
+    end;
+    | _ -> e "invalid variable name";
+ 
+ (*
+ ** Format RHS expression, check all variables in environment (env': local+global, env: global)
+ *)
+ method private format_expr env' te =
+    let e str = error 0 (sprintf "TDI <%s>#format_expr: %s."  self#info str) in
+    let f tt = self#format_expr env' tt in
+    match te with
+    | TT_value (t,(fp,str)) -> 
+    begin
+      self#cur_pos fp; 
+      match t with
+      | 's' -> self#format_string str;
+      | 'd' -> self#format_int str;
+      | _ -> e (sprintf "unsupported value type <%c>" t);
+    end;
+    | TT_var (fp,str) ->
+    begin
+      self#cur_pos fp;
+      let vname = self#get_var te in
+      match (try (let tde = List.find (fun tde -> tde.tde_name = vname) env' in Some tde) with _ -> None) with
+      | Some tde ->
+      begin
+        match (try (let tde = List.find (fun tde -> tde.tde_name = vname) env in Some tde) with _ -> None) with
+        | Some tde ->
+        begin
+          (*
+          ** Global variable -- try to replace value
+          *)
+          match tde.tde_type with
+          | 's' -> tde.tde_val;
+          | 'd' -> self#format_int tde.tde_val;
+          | _ -> self#format_vars false vname;
+        end;
+        | None ->
+          (*
+          ** local variable -- keep the variable
+          *)
+          self#format_vars false vname;
+      end;
+      | None -> 
+        e (sprintf "Found undefined variable <%s>." vname); 
+    end;
+    | TT_func (fn,args) ->
+      let fname = self#get_ident fn in
+      let args' = List.map  f args in
+      self#func_compile fname args'; 
+   | TT_expr (op,op1,op2) ->
+   begin
+     let expr_type = self#get_type te in
+     let op1_type = self#get_type op1 in
+     let op2_type = self#get_type op2 in
+     let op_type = if op1_type <> '?' && op1_type <> '$' then op1_type else op2_type in
+     match target with 
+     | L_BASH ->
+     begin      
+       match op,expr_type,op_type with
+       | "+",'s',_ -> 
+       begin
+         let op1' = f op1 in
+         let op2' = f op2 in
+         let is_var1 = op1'.[0] = '$' || op1'.[(String.length op1')-1] <> '"' in
+         let is_var2 = op2'.[0] = '$' || op2'.[(String.length op2')-1] <> '"' in
+ 
+         if not is_var1 && not is_var2 then
+          self#merge_strings op1' op2'
+         else 
+           op1' ^ op2' 
+       end;
+       | "+",'d',_ -> sprintf "`expr %s %s %s`" (f op1) op (f op2)
+       | "<>",'b','s'  -> sprintf "[ ! %s = %s ]" (f op1) (f op2)
+       | "=",'b','d' -> sprintf "[ %s = %s ]" (f op1) (f op2)
+       | "<>",'b','d'  -> sprintf "[ ! %s = %s ]" (f op1) (f op2)
+       | "=",'b','s' -> sprintf "[ %s = %s ]" (f op1) (f op2)
+       | _ -> e (sprintf "unsupported operator,type tuple <%s,%c,%c>" op expr_type op_type);
+     end;
+     | _ -> e "unsupported target";
+   end;
+   | _ -> e "unsupported expression statement"
+   
+        
+  (*
+  *********************************************************************
+  ** Utils
+  *********************************************************************
+  *)
+  method private cur_pos p =
+    if p <> {f_name="";f_cpos=0} then 
+    begin
+      an.a_curpos <- source_of_pos p;
+    end
+           
+
+  val mutable aux_lines = []
+  method private aux lines = aux_lines <- aux_lines @ lines
+  method private get_aux =
+    let str = ref "" in
+    List.iter (fun line -> str := sprintf "%s%s\n" !str line) aux_lines;
+    aux_lines <- [];
+    !str
+  method private get_auxl = 
+    let sl = aux_lines in
+    aux_lines <- [];
+    sl
+    
+  val mutable top_aux = "" 
+
+
+  method private merge_strings str1 str2 =
+    let str1' = String.sub str1 1 ((String.length str1)-2) in 
+    let str2' = String.sub str2 1 ((String.length str2)-2) in 
+    sprintf "\"%s%s\"" str1' str2' 
+      
+  method private strip_string str =
+       String.sub str 1 ((String.length str)-2)  
+
+  method private str_is_value str =
+    let n = String.length str in
+    let m = n - 2 in
+    if m > 0 then
+    begin
+      match str.[0],str.[1] with
+      | '0','b' -> true
+      | '0','x' -> true
+      | '0','o' -> true
+      | '0'..'9',_ -> true
+      | 'X','"' -> true
+      | '\'',_ -> true
+      | '"',_ -> true
+      | _ -> false
+    end
+    else if n > 0 then
+    begin
+      match str.[0] with
+      | '0'..'9' -> true
+      | _ -> false        
+    end
+    else false
+
+  method private str_is_const str =
+    (*
+    ** Constant value or actuallay not evaluated expression (containing variables and functions)?
+    *)
+    let expr = ref false in
+    let in_str = ref false in
+    String.iter (fun c ->
+      match c with
+      | '+' | '-'  | '$' | '(' | ')' -> expr := !expr || (not !in_str);
+      | '"' -> in_str := not !in_str;
+      | _ -> expr := !expr;) str;
+    not !expr
+    
+  method private str_type str =
+    let dot = protects(__(String.index str '.')) in
+    let n = String.length str in
+    let m = n - 2 in
+    if m > 0 then
+    begin
+      match str.[0],str.[1] with
+      | '0','b' -> 'd'
+      | '0','x' -> 'd'
+      | '0','o' -> 'd'
+      | '0'..'9',_ -> if dot then 'f' else 'd'
+      | '\'',_ -> 'c'
+      | '"',_ -> 's'
+      | '$',_ -> '$';
+      | _ -> '?'
+    end
+    else if n > 0 then
+    begin
+      match str.[0] with
+      | '0'..'9' -> 'd'
+      | '$' -> '$' 
+      | _ -> '?'     
+    end
+    else '?'
+    
+  (*
+  ** Return type of argument, can be an expression, so a list of data type is returned
+  *)
+  method private expr_type tt =
+    match tt with
+    | TT_value (t,(fp,str)) -> 
+      self#cur_pos fp;
+      [t];
+    | TT_var (fp,str) ->
+    begin
+      self#cur_pos fp;
+      match self#try_lookup_env str with
+      | Some tde ->
+        [tde.tde_type]
+      | None -> ['$']
+    end;
+    | TT_expr (op,op1,op2) -> 
+    begin
+      match op with
+      | "<" | ">" | "<>" | "<=" | "=>" | "=" -> ['b']
+      | _ ->
+        (self#expr_type op1)@(self#expr_type op2)
+    end;
+    | TT_func (f,args) ->
+      let fname = self#get_ident f in
+      let _,rt,_=self#func_map fname in
+      [rt]
+    | _ -> error 0 (sprintf "TDI <%s>#expr_type: unexpected argument found." 
+                             self#info)
+      
+  (*
+  ** Return type of argument,
+  *)
+  method private get_type tt =
+    match tt with
+    | TT_value (t,(fp,str)) -> 
+      self#cur_pos fp;
+      t;
+    | TT_var (fp,str) ->
+    begin
+      self#cur_pos fp;
+      match self#try_lookup_env str with
+      | Some tde ->
+        tde.tde_type
+      | None -> '$'
+    end;
+    | TT_expr _ ->
+      let tpl = self#expr_type tt in
+      let tp = ref '?' in
+      List.iter (fun tp' ->
+        if tp' <> '?' && tp' <> '$' then
+        begin
+          if !tp <> '?' && !tp <> tp' then
+            error 0 (sprintf "TDI <%s>#get_type: expected expression type is <%c>, but found <%c>." 
+                             self#info !tp tp');
+          tp := tp';
+        end;
+        ) tpl;
+      !tp
+    | TT_func (f,args) ->
+      let fname = self#get_ident f in
+      let _,rt,_=self#func_map fname in
+      rt
+    | _ -> error 0 (sprintf "TDI <%s>#get_type: unexpected argument found." 
+                             self#info)
+
+  method private get_val tt =
+      
+    let to_int str  = 
+      try 
+        int_of_string str
+      with _ -> error 0 (sprintf "TDI <%s>#get_val: Invalid integer value <%s> found." self#info str) in
+    match tt with
+    | TT_value (t,(fp,str)) -> 
+    begin
+      self#cur_pos fp; 
+      match t with
+      | 's' -> sprintf "\"%s\"" str;
+      | _ -> str;
+    end;
+    | TT_range ('=',a,b) ->
+      self#get_val a; (* actually only index is supported *)
+    | TT_var (fp,str) ->
+    begin
+      self#cur_pos fp;
+      match self#try_lookup_env str with
+      | Some tde ->
+      begin
+        match tde.tde_type with
+        | 's' -> tde.tde_val
+        | 'd' -> tde.tde_val
+        | _ -> tde.tde_val
+      end;
+      | None -> sprintf "$%s" str;
+    end;
+    | TT_func (f,args) ->
+      let fname = self#get_ident f in
+      let args' = List.map self#get_val args in
+      self#func_compile fname args';
+    | TT_expr (op,op1,op2) ->
+    begin
+      (*
+      ** Try to evaluate expression if possible
+      *)
+      let op1_tp = self#get_type op1 in
+      let op2_tp = self#get_type op2 in
+      let expr_tp = if op1_tp <> '?' && op1_tp <> '$' then op1_tp else op2_tp in
+      match expr_tp with
+      | 's' ->
+      begin
+        if op <> "+" then 
+          error 0 (sprintf "TDI <%s>#get_val: unexpected expression string operator <%s> found." 
+                             self#info op);
+        let op1' = self#get_val op1 in
+        let op2' = self#get_val op2 in
+        let c1 = (self#str_is_const op1') in
+        let c2 = (self#str_is_const op2') in
+        if c1 && c2 then
+          (self#merge_strings op1' op2')
+        else
+          sprintf "%s+%s" op1' op2';
+
+      end;
+      | 'd' -> 
+      begin
+        let op1' = self#get_val op1 in
+        let op2' = self#get_val op2 in
+        if not (self#str_is_const op1') || not (self#str_is_const op2') then
+          error 0 (sprintf "TDI <%s>#get_val: non constant integer expression found." 
+                             self#info);
+        let op1' = to_int op1' in
+        let op2' = to_int op2' in    
+        string_of_int (match op with
+                       | "+" -> op1'+op2';
+                       | "-" -> op1'-op2';
+                       | "*" -> op1'*op2';
+                       | "/" -> op1'/op2';
+                       | _ -> error 0 (sprintf "TDI <%s>#get_val: unexpected expression operator <%s> found." 
+                                               self#info op); 
+                      );
+      end;
+      | _ -> error 0 (sprintf "TDI <%s>#get_val: unexpected expression type <%c> found." 
+                              self#info expr_tp);
+    end;
+    | _ -> error 0 (sprintf "TDI <%s>#get_val: unexpected argument found." 
+                             self#info)
+                             
+  method private get_ident tt = 
+      match tt with
+      | TT_ident (fp,str) ->
+        self#cur_pos fp;
+        str
+      | _ -> 
+        let s = ref "" in
+        protect(s := self#get_var tt);
+        error 0 (sprintf "TDI <%s>#get_ident: unexpected identifier <%s> found." 
+                             self#info !s) 
+                                 
+  method private get_var tt =
+    match tt with
+    | TT_var (fp,str) ->
+      self#cur_pos fp;
+      sprintf "$%s" str
+    | TT_sub (tt',sub) -> sprintf "%s.[%s]"(self#get_var tt') (self#get_val sub);
+    | TT_sel (tt',sel) -> sprintf "%s.%s" (self#get_var tt') (self#get_val sel);
+    | _ -> 
+        let s = ref "" in
+        protect(s := self#get_ident tt);
+        error 0 (sprintf "TDI <%s>#get_var: unexpected identifier <%s> found ($ variable expected)." 
+                             self#info !s)
+  method private is_array tt =
+    match tt with
+    | TT_sub (TT_var _ ,_) -> true;
+    | _ -> false 
+ 
+  method private get_range tt =
+    match tt with
+    | TT_sub (_,tr) -> self#get_range tr;
+    | TT_range ('-',a,b) -> Some (self#get_int64_val b,self#get_int64_val a); 
+    | TT_range ('+',a,b) -> Some (self#get_int64_val a,self#get_int64_val b); 
+    | TT_range ('=',a,_) -> Some (self#get_int64_val a,self#get_int64_val a);  
+    | TT_ident _ | TT_var _ | TT_value _ -> None;     
+    | _ -> error 0 (sprintf "TDI <%s>#get_range: unexpected statement found." self#info) 
+
+  
+  method private get_int_val tt =
+    let to_int str  = 
+      try 
+        int_of_string str
+      with _ -> error 0 (sprintf "TDI <%s>#get_int64_val: Invalid integer value found." self#info) in
+    match tt with
+    | TT_ident (pos,str) ->
+    begin
+      self#cur_pos pos;
+      to_int str;
+    end;
+    | TT_var (pos,vname) -> 
+    begin
+      self#cur_pos pos;
+      match self#try_lookup_env vname with
+      | Some tde -> to_int tde.tde_val;
+      | None -> 0;
+    end;
+    | TT_value (t,(pos,str)) ->
+    begin
+      self#cur_pos pos;
+      to_int str; 
+    end; 
+    | _ -> error 0 (sprintf "TDI <%s>#get_int_val: unexpected value." self#info)
+
+  method private get_int64_val tt =
+    let to_int64 str  = 
+      try 
+        Int64.of_string str
+      with _ -> error 0 (sprintf "TDI <%s>#get_int64_val: Invalid integer value found." self#info) in
+      
+    match tt with
+    | TT_ident (pos,str) ->
+    begin
+      self#cur_pos pos;
+      to_int64 str;
+    end;
+    | TT_var (pos,vname) -> 
+    begin
+      self#cur_pos pos;
+      match self#try_lookup_env vname with
+      | Some tde -> to_int64 tde.tde_val;
+      | None -> Int64.zero;      
+    end;
+    | TT_value (t,(pos,str)) ->
+    begin
+      self#cur_pos pos;
+      to_int64 str; 
+    end; 
+    | _ -> error 0 (sprintf "TDI <%s>#get_int64_val: unexpected value." self#info)
+
+    
+  (*
+  *********************************************************************
+  ** Variable parameter environment, for example $datawidth
+  *********************************************************************
+  *)
+  method set_env new_env = 
+    List.iter (fun tde ->
+      try
+      begin
+        debug "TDI" 0 (sprintf "set_env(%s)" tde.tde_name);
+        let tde' = List.find (fun tde' -> tde'.tde_name = tde.tde_name) env in
+        match tde'.tde_type with
+        | 'i' ->
+        begin
+          (*
+          ** Check value wether in range or not
+          *)
+          let checked = ref false in
+          let v = Int64.of_string tde.tde_val in
+          List.iter (fun r ->
+            match r with
+            | TDE_point p -> checked := !checked or (v=p);
+            | TDE_line (a,b) -> checked := !checked or (v <= b && v >= a)) tde'.tde_range;  
+          if !checked then 
+          begin
+            out (sprintf "TDI <%s>#set_env: setting environment parameter <%s> to new value <%s>." 
+                             self#info tde.tde_name (Int64.to_string v));      
+            tde'.tde_val <- tde.tde_val;      
+          end
+          else
+            error 0 (sprintf "TDI <%s>#set_env: parameter <%s> value <%s> out of range." 
+                             self#info tde.tde_name (Int64.to_string v));
+        end;
+        | _ -> 
+          out (sprintf "TDI <%s>#set_env: setting environment parameter <%s> to new value <%s>." 
+                             self#info tde.tde_name tde.tde_val);
+          tde'.tde_val <- tde.tde_val;
+      end
+      with
+        Not_found -> env <- env @ [tde];      
+      ) new_env
+      
+  method private del_env old_env =
+    List.iter (fun tde ->
+      env <- List.filter (fun tde' -> tde'.tde_name <> tde.tde_name) env;
+      ) old_env
+    
+  method get_env = env
+  
+  method print_env =
+    let first = ref true in
+    let str = ref "" in
+    List.iter (fun e ->
+      if e.tde_type = '$' then ()
+      else 
+      begin
+        if !first then str := sprintf "%s=%s" e.tde_name e.tde_val
+        else str := sprintf "%s,%s=%s" !str e.tde_name e.tde_val;
+        first := false;
+      end;
+      ) env;
+    !str
+  (*
+  ** Set one single variable, do type and range checking
+  *)
+  method private set_var tn tv =
+    let vname = self#get_var tn in
+    debug "TDI" 0 (sprintf "set_var(%s)" vname);
+    let vtype = self#get_type tv in
+    match self#try_lookup_env vname with
+    | Some tde -> 
+      let check = tde.tde_type = vtype ||
+                  vtype = '?' ||
+                  vtype = '$' in
+      if not check then
+        error 0 (sprintf "TDI <%s>#set_var: parameter <%s> value doesn't match parameter type."  
+                         self#info vname);
+      tde.tde_val <-  self#get_val tv;
+    | None ->
+      env <- env @ [{
+        tde_name = vname;
+        tde_val = self#get_val tv;
+        tde_range = [];
+        tde_type = vtype;
+        tde_array = self#is_array tn; 
+        }];
+
+  method private set_vars nvl =
+    List.iter (fun (n,v) ->
+      let vname = n in
+      debug "TDI" 0 (sprintf "set_vars(%s)" vname);
+      let vtype = self#str_type v in
+      match self#try_lookup_env vname with
+      | Some tde -> 
+        let check = tde.tde_type = vtype ||
+                    vtype = '?' ||
+                    vtype = '$' in
+        if not check then
+          error 0 (sprintf "TDI <%s>#set_vars: parameter <%s> value doesn't match parameter type."  
+                           self#info vname);
+        tde.tde_val <- v;
+      | None ->
+        env <- env @ [{
+          tde_name = vname;
+          tde_val = v;
+          tde_range = [];
+          tde_type = vtype;
+          tde_array = false; 
+          }];
+      ) nvl
+      
+  method private del_vars old_names =
+    List.iter (fun name ->
+      env <- List.filter (fun tde' -> tde'.tde_name <> name) env;
+      ) old_names
+    
+  method private lookup_env name = 
+    let rec lookup_env envl name =
+      match envl with
+      | env :: tl ->
+      begin
+        if env.tde_name = name then env
+        else
+          lookup_env tl name;  
+      end;
+      | _ -> out (self#print_env); error 0 (sprintf "TDI <%s>: parameter <%s> not found." self#info name) in
+    lookup_env env (if name.[0] <> '$' then "$"^name else name)
+
+  method private try_lookup_env name = 
+    let rec lookup_env envl name =
+      match envl with
+      | env :: tl ->
+      begin
+        if env.tde_name = name then Some env
+        else
+          lookup_env tl name;  
+      end;
+      | _ -> None in
+    lookup_env env (if name.[0] <> '$' then "$"^name else name)
+
+  method private lookup_env_int name =
+    let rec lookup_env envl name =
+      match envl with
+      | env :: tl ->
+      begin
+        if env.tde_name = name then 
+        begin
+          try
+            int_of_string env.tde_val
+          with
+            _ -> error 0 (sprintf "TDI <%s>#lookup_env_int: parameter <%s> with unexpected value <%s>." 
+                                  self#info name env.tde_val)
+        end
+        else
+          lookup_env tl name;  
+      end;
+      | _ -> error 0 (sprintf "TDI <%s>#lookup_env_int: parameter <%s> not found." self#info name) in
+    lookup_env env (if name.[0] <> '$' then "$"^name else name)
+
+  method private lookup_env_int64 name =
+    let rec lookup_env envl name =
+      match envl with
+      | env :: tl ->
+      begin
+        if env.tde_name = name then 
+        begin
+          try
+            Int64.of_string env.tde_val
+          with
+            _ -> error 0 (sprintf "TDI <%s>#lookup_env_int64: parameter <%s> with unexpected value <%s>." 
+                                  self#info name env.tde_val)
+        end
+        else
+          lookup_env tl name;  
+      end;
+      | _ -> error 0 (sprintf "TDI <%s>#lookup_env_int64: parameter <%s> not found." self#info name) in
+    lookup_env env (if name.[0] <> '$' then "$"^name else name)
+
+    
+  (*
+  ************************************************************
+  ** #parameter section 
+  ************************************************************
+  *)
+  method private read_parameters = 
+    let print_env env =
+      let first = ref true in
+      let str = ref "" in
+      List.iter (fun e ->
+        if !first then str := sprintf "$%s=%s" e.tde_name e.tde_val
+        else str := sprintf "%s,%s=%s" !str e.tde_name e.tde_val;
+        first := false;
+        ) env;
+      !str in
+    let tml = List.filter (fun tm -> 
+      match tm with TT_parameter _ -> true | _ -> false ) tops in
+    if tml = [] then
+    begin
+      info (sprintf "TDI <%s>: No #parameter section found." self#info);
+    end;
+    List.iter (fun tt ->
+    match tt with
+      | TT_parameter il ->
+        out (sprintf "TDI <%s>: found #parameter section..." self#info);
+        ind_incr ();
+        let rec compile tm =
+          match tm with 
+          | TT_assign (lhs,rhs) ->
+          begin
+            debug "TDI" 0 "compile:TT_assign";
+            self#set_var lhs rhs; 
+          end;
+          | TT_sub (ev,sub) ->
+          begin
+            let env_name = self#get_ident ev in
+            try 
+            begin
+              let tde = List.find (fun tde -> tde.tde_name = env_name) env in
+              (*
+              ** Additional parameter range specifier found.
+              *)
+              let env_range = self#get_range sub in
+              match env_range with
+              | Some (a,b) -> 
+                if a=b then tde.tde_range <- tde.tde_range @ [TDE_point a]
+                else tde.tde_range <- tde.tde_range @ [TDE_line (a,b)];
+              | None -> error 0 (sprintf "TDI <%s>: duplicated parameter <%s> defintion in #parameter section found." 
+                                         self#info env_name);
+            end
+            with Not_found ->
+            begin
+              error 0 (sprintf "TDI <%s>:  parameter <%s> defintion without value in #parameter section found." 
+                               self#info env_name);
+            end;
+          end;
+          | TT_var (pos,env_name) ->
+          begin
+            (*
+            ** Only a parameter introduction definition
+            *)
+            self#cur_pos pos;
+            match self#try_lookup_env env_name with
+            | Some tde ->
+              error 0 (sprintf "TDI <%s>:  parameter <%s> exists already." 
+                               self#info env_name);
+            | None -> 
+              env <- env @ [{
+                  tde_name = "$"^env_name;
+                  tde_val = "?";
+                  tde_type = '?';
+                  tde_range = [];
+                  tde_array = false;
+                }];  
+          end;
+          | TT_foreach (v,ttl) ->
+          begin
+            let get_list name =
+              let vl = ref [] in
+              let n = ref 0 in
+              let more = ref true in
+              while (!more) 
+              do
+                incr n;
+                match self#try_lookup_env (sprintf "%s%d" name !n) with
+                | Some tde -> vl := !vl @ [tde];
+                | None -> more := false
+              done;
+              !vl in
+            let vname = self#get_var v in
+            out self#print_env;
+            let i = ref 0 in
+            List.iter (fun tde ->
+              incr i;
+              self#set_vars ["$i",(sprintf "%d" !i)];
+              self#set_env [{tde with tde_name=vname}];
+              List.iter compile ttl;
+              self#del_env [{tde with tde_name=vname}];
+              self#del_vars ["$i"];
+               ) (get_list vname);
+          end;
+          | TT_if (te,tt,tf) ->
+          begin
+            let expr = self#format_expr env te in
+            ()
+          end;
+          | _ -> error 0 (sprintf "TDI <%s>: unexpected statement in #parameter section found." self#info) in
+        List.iter compile il; 
+        top_aux <- self#get_aux;
+        ind_decr ();
+      | _ ->
+        error 0 (sprintf "TDI <%s>: unknown toplevel statement found." self#info);
+      ) tml
+    
+  (*
+  ************************************************************
+  ** #fun section 
+  ************************************************************
+  *)
+  method private read_funs = 
+    let tml = List.filter (fun tm -> 
+      match tm with TT_fun _ -> true | _ -> false ) tops in
+    if tml = [] then
+    begin
+      info (sprintf "TDI <%s>: No #fun section found." self#info);
+    end;
+    List.iter (fun tt ->
+    match tt with
+      | TT_fun (label,il) ->
+        
+        let fun_name = self#get_ident label in
+        out (sprintf "TDI <%s>: found #fun section <%s>..." self#info fun_name);
+        let f = {
+          tdf_name = fun_name;
+          tdf_code = [];
+          tdf_env = env;
+        } in
+        funs <- funs @ [f];
+        let e str = error 0 (sprintf "TDI <%s>#read_funs: %s." self#info str) in 
+        
+        let add_env vname vtype vexpr is_array =
+          
+          match (try (let tde = List.find (fun tde -> tde.tde_name = vname) f.tdf_env in Some tde) with _ -> None) with
+          | Some tde -> 
+            let check = tde.tde_type = vtype ||
+                        vtype = '?' ||
+                        vtype = '$' in
+            if not check then
+              error 0 (sprintf "TDI <%s>#read_funs.add_env: parameter <%s> value doesn't match parameter type."  
+                               self#info vname);
+            tde.tde_val <- vexpr;
+          | None ->
+            f.tdf_env <- f.tdf_env @ [{
+              tde_name = vname;
+              tde_val = vexpr;
+              tde_range = [];
+              tde_type = vtype;
+              tde_array = is_array; 
+              }];
+          in
+          
+        ind_incr ();
+        let rec compile indent tm =
+          match tm with 
+          | TT_assign (lhs,rhs) -> 
+            let vname = self#get_var lhs in
+            let vtype = self#get_type rhs in
+            let is_array = self#is_array lhs in
+            let vexpr = self#format_expr f.tdf_env rhs in
+            add_env vname vtype vexpr is_array;
+            let sl = [
+              match target with
+              | L_BASH ->
+                ibox indent (sprintf "%s=%s" (self#format_vars true vname) vexpr)
+              | _ -> e "unsupported target";
+              ] in
+            (self#get_auxl) @ sl; 
+          | TT_if (te,tt,tf) ->
+          begin
+            let te_type = self#get_type te in
+            if te_type <> 'b' then 
+              error 0 (sprintf "TDI <%s>#read_funs:  conditional expression is not boolean type."  
+                               self#info);
+            let vexpr = self#format_expr f.tdf_env te in
+            match target with
+            | L_BASH ->
+              let sl = [
+                  ibox indent (sprintf "if %s" vexpr);
+                  ibox indent "then";
+                ] @  (List.flatten (List.map (fun tm' -> compile (indent+2) tm') tt)) @
+                (if tf <> [] then 
+                  (ibox indent "else") :: (List.flatten (List.map (fun tm' ->  compile (indent+2) tm') tf)) 
+                 else [ibox indent "fi"]) in
+              (self#get_auxl) @ sl; 
+            | _ -> e "unsupported target";
+          end;
+          | TT_func (fn,args) ->
+            let fname = self#get_ident fn in
+            let args' = List.map (fun arg -> self#format_expr f.tdf_env arg) args in
+            let f = self#func_compile fname args' in
+            let sl = [
+              ibox indent (self#get_aux);
+              f;
+              ] in
+            (self#get_auxl) @ sl; 
+          | _ ->  [] (* error 0 (sprintf "TDI <%s>: unexpected statement in #fun section found." self#info)*)  in
+          
+        f.tdf_code <- f.tdf_code @ (List.flatten (
+            List.map (fun i -> compile 0 i)  il)); 
+        ind_decr ();
+      | _ ->
+        error 0 (sprintf "TDI <%s>: unknown toplevel statement found." self#info);
+      ) tml
+     
+  (*
+  ****************************************************************************
+  ** EMIT
+  ****************************************************************************
+  *)
+  
+  method private emit =
+    let e str = error 0 (sprintf "TDI<%s>#emit: %s" self#info str) in
+    
+    let proj_tde = self#lookup_env "$proj" in
+    let proj = self#strip_string proj_tde.tde_val in
+    let build = 
+      match target with
+      | L_BASH -> sprintf "%s.%s.sh" self#info proj;
+      | _ -> e "unsupported target"in 
+    oc := open_out (sprintf "%s%s" compiler.t_output build);
+    out (sprintf "Creating build script <%s>..." build);
+
+    let aux = top_aux in
+    if aux <> "" then self#out aux;
+    
+    List.iter (fun tde ->
+      match target with
+      | L_BASH -> 
+      begin    
+        match tde.tde_type with
+        | 's' ->
+         self#out (sprintf "%s=%s" (self#format_var true tde) (self#format_string tde.tde_val));
+        | 'd' ->
+         self#out (sprintf "%s=%s" (self#format_var true tde) tde.tde_val);
+        | '$' ->
+         self#out (sprintf "%s=%s" (self#format_var true tde) tde.tde_val);         
+        | _ -> e (sprintf "unsupported type %s<%c>" tde.tde_name tde.tde_type);
+      end;
+      | _ -> e "unsupported target";
+      ) env;
+    List.iter (fun f ->
+      (match target with
+       | L_BASH -> 
+          self#out (sprintf "%s()" f.tdf_name);
+          self#out "{";
+       | _ -> e "unsupported target";
+      );
+      self#ind_incr;
+      List.iter self#out f.tdf_code;
+      self#ind_decr;
+      (match target with
+       | L_BASH -> self#out "}"
+       | _ -> e "unsupported target";
+      );
+      ) funs;
+    close_out !oc
+    
+  (*
+  ** Required before synthesis and after analysis
+  *)
+  val mutable compiled = false
+  val mutable initialized = false
+
+  method private compile =
+    if not initialized then
+    begin
+      out (sprintf "TDI <%s>: Initializing tool ..." self#info);
+      self#read_parameters;
+      out self#print_env;
+      self#read_funs;
+      initialized <- true;
+    end;
+    if not compiled then
+    begin
+      self#emit;
+      out (sprintf "TDI <%s>: Compiling tool ..." self#info);
+      compiled <- true;
+      if debug_it "TDI" then
+      begin
+        out self#print_env;
+      end;
+    end
+     
+
+
+  (*
+  ********************************************************
+  ** Analysis and Synthesis entry point functions - API
+  ********************************************************
+  *)
+  
+ 
+  method new_obj obj_name params =
+    out (sprintf "TDI <%s>: creating object <%s>..." self#info obj_name);
+    let obj = self#instance in 
+    let get_type v =
+      if self#str_is_value v then 'i' else 's' in
+      
+    obj#set_oname obj_name;
+    obj#set_env (List.map (fun (n,v) -> 
+      let t = get_type v in
+      {tde_name=(if n.[0] <> '$' then "$"^n else n);
+       tde_val=if t = 's' then sprintf "\"%s\"" v else v;tde_type=t;tde_range=[];tde_array=false}) params);
+    obj
+    
+  (*
+  ** External access to this class object
+  *)
+  method interp cmd =
+    match cmd with
+    | "compile" -> self#compile; "ok";
+    | "init" -> "ok";
+    | _ -> "err";
+    
+      
+
+end
+

@@ -1,0 +1,53 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: diagrams
+%%Creator: Diagrams
+%%CreationDate: Fri Jan 22 18:04:08 2010
+%%DocumentFonts: Helvetica
+%%BoundingBox: 60 737 247 781
+%%EndProlog
+
+%%Page: "1" 1
+
+gsave
+/line { moveto lineto stroke } def
+/arctopop { arcto pop pop pop pop } def
+/polygon { 2 index 2 index moveto {lineto} repeat closepath } def
+/triangle { 3 polygon } def
+/rectangle { 4 polygon } def
+/text { moveto show } def
+
+/Helvetica findfont 10 scalefont setfont
+newpath
+gsave 12 156 translate
+gsave 0.80 0.80 scale
+(implementation-decl:) 60 771 text
+70 734 60 734 line
+304 734 284 734 line
+304 734 300 736 300 732 triangle eofill 
+70 734 66 736 66 732 triangle eofill 
+77 741 moveto 70 741 70 734 7 arctopop 70 734 lineto stroke
+70 734 moveto 70 726 157 726 7 arctopop 157 726 lineto stroke
+157 726 moveto 164 726 164 734 7 arctopop 164 734 lineto stroke
+164 734 moveto 164 741 77 741 7 arctopop 77 741 lineto stroke
+gsave
+/Courier findfont 10 scalefont setfont
+(IMPLEMENTATION) 75 731 text
+grestore
+174 734 164 734 line
+184 734 174 734 line
+274 734 284 734 line
+229 751 moveto 174 751 174 734 5 arctopop 174 734 lineto stroke
+284 734 moveto 284 751 229 751 5 arctopop 229 751 lineto stroke
+174 734 172 738 176 738 triangle eofill 
+184 734 180 736 180 732 triangle eofill 
+184 741 274 741 274 726 184 726 rectangle stroke
+(implementation) 194 731 text
+gsave [ -1 0 0 1 458.0  0 ] concat
+grestore
+grestore
+grestore
+
+showpage
+%%Page: "1" 1
+grestore
+%%Trailer

@@ -1,0 +1,464 @@
+Block frame trees
+-----------------
+For process <p_0>:
+  MAIN#16603 {
+    SOURCE: m.cp line 17
+    PARENT: NONE
+    TIME: (1+(10*>=9)) 
+          = >=91 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      COUNT_LOOP#30493
+      ]
+      COUNT_LOOP#30493 {
+        SOURCE: m.cp line 17
+        PARENT: MAIN#16603
+        TIME: (1+(10*>=9)) 
+              = >=91 TU
+        TYPE: LOOP
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#24690
+          ]
+          LOOP_BODY#24690 {
+            SOURCE: m.cp lines 19..24
+            PARENT: COUNT_LOOP#30493
+            TIME: >=8 TU
+            TYPE: COMPOUND
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN#7100
+              ASSIGN#50987
+              ASSIGN#91172
+              ASSIGN#87757
+              ASSIGN#59662
+              FUN#8650
+              ]
+              FUN#7100 {
+                SOURCE: m.cp line 19
+                PARENT: LOOP_BODY#24690
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#29677 {
+                  SOURCE: m.cp line 19
+                  PARENT: FUN#7100
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+              ASSIGN#50987 {
+                SOURCE: m.cp line 20
+                PARENT: LOOP_BODY#24690
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#91172 {
+                SOURCE: m.cp line 21
+                PARENT: LOOP_BODY#24690
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#87757 {
+                SOURCE: m.cp line 22
+                PARENT: LOOP_BODY#24690
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#59662 {
+                SOURCE: m.cp line 23
+                PARENT: LOOP_BODY#24690
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              FUN#8650 {
+                SOURCE: m.cp line 24
+                PARENT: LOOP_BODY#24690
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#8441 {
+                  SOURCE: m.cp line 24
+                  PARENT: FUN#8650
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+          }
+      }
+  }
+For process <p_1>:
+  MAIN#83560 {
+    SOURCE: m.cp line 17
+    PARENT: NONE
+    TIME: (1+(10*>=9)) 
+          = >=91 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      COUNT_LOOP#39314
+      ]
+      COUNT_LOOP#39314 {
+        SOURCE: m.cp line 17
+        PARENT: MAIN#83560
+        TIME: (1+(10*>=9)) 
+              = >=91 TU
+        TYPE: LOOP
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#17429
+          ]
+          LOOP_BODY#17429 {
+            SOURCE: m.cp lines 19..24
+            PARENT: COUNT_LOOP#39314
+            TIME: >=8 TU
+            TYPE: COMPOUND
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN#2877
+              ASSIGN#85449
+              ASSIGN#23890
+              ASSIGN#7669
+              ASSIGN#58851
+              FUN#71138
+              ]
+              FUN#2877 {
+                SOURCE: m.cp line 19
+                PARENT: LOOP_BODY#17429
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#11997 {
+                  SOURCE: m.cp line 19
+                  PARENT: FUN#2877
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+              ASSIGN#85449 {
+                SOURCE: m.cp line 20
+                PARENT: LOOP_BODY#17429
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#23890 {
+                SOURCE: m.cp line 21
+                PARENT: LOOP_BODY#17429
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#7669 {
+                SOURCE: m.cp line 22
+                PARENT: LOOP_BODY#17429
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#58851 {
+                SOURCE: m.cp line 23
+                PARENT: LOOP_BODY#17429
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              FUN#71138 {
+                SOURCE: m.cp line 24
+                PARENT: LOOP_BODY#17429
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#25871 {
+                  SOURCE: m.cp line 24
+                  PARENT: FUN#71138
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+          }
+      }
+  }
+For process <p_2>:
+  MAIN#98648 {
+    SOURCE: m.cp line 17
+    PARENT: NONE
+    TIME: (1+(10*>=9)) 
+          = >=91 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      COUNT_LOOP#96320
+      ]
+      COUNT_LOOP#96320 {
+        SOURCE: m.cp line 17
+        PARENT: MAIN#98648
+        TIME: (1+(10*>=9)) 
+              = >=91 TU
+        TYPE: LOOP
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#15578
+          ]
+          LOOP_BODY#15578 {
+            SOURCE: m.cp lines 19..24
+            PARENT: COUNT_LOOP#96320
+            TIME: >=8 TU
+            TYPE: COMPOUND
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN#46811
+              ASSIGN#95378
+              ASSIGN#46721
+              ASSIGN#38352
+              ASSIGN#47800
+              FUN#71698
+              ]
+              FUN#46811 {
+                SOURCE: m.cp line 19
+                PARENT: LOOP_BODY#15578
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#38972 {
+                  SOURCE: m.cp line 19
+                  PARENT: FUN#46811
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+              ASSIGN#95378 {
+                SOURCE: m.cp line 20
+                PARENT: LOOP_BODY#15578
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#46721 {
+                SOURCE: m.cp line 21
+                PARENT: LOOP_BODY#15578
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#38352 {
+                SOURCE: m.cp line 22
+                PARENT: LOOP_BODY#15578
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#47800 {
+                SOURCE: m.cp line 23
+                PARENT: LOOP_BODY#15578
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              FUN#71698 {
+                SOURCE: m.cp line 24
+                PARENT: LOOP_BODY#15578
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#89339 {
+                  SOURCE: m.cp line 24
+                  PARENT: FUN#71698
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+          }
+      }
+  }
+For process <p_3>:
+  MAIN#58270 {
+    SOURCE: m.cp line 17
+    PARENT: NONE
+    TIME: (1+(10*>=9)) 
+          = >=91 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      COUNT_LOOP#63574
+      ]
+      COUNT_LOOP#63574 {
+        SOURCE: m.cp line 17
+        PARENT: MAIN#58270
+        TIME: (1+(10*>=9)) 
+              = >=91 TU
+        TYPE: LOOP
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#5427
+          ]
+          LOOP_BODY#5427 {
+            SOURCE: m.cp lines 19..24
+            PARENT: COUNT_LOOP#63574
+            TIME: >=8 TU
+            TYPE: COMPOUND
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN#47348
+              ASSIGN#16077
+              ASSIGN#11607
+              ASSIGN#42151
+              ASSIGN#43252
+              FUN#41425
+              ]
+              FUN#47348 {
+                SOURCE: m.cp line 19
+                PARENT: LOOP_BODY#5427
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#58310 {
+                  SOURCE: m.cp line 19
+                  PARENT: FUN#47348
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+              ASSIGN#16077 {
+                SOURCE: m.cp line 20
+                PARENT: LOOP_BODY#5427
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#11607 {
+                SOURCE: m.cp line 21
+                PARENT: LOOP_BODY#5427
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#42151 {
+                SOURCE: m.cp line 22
+                PARENT: LOOP_BODY#5427
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              ASSIGN#43252 {
+                SOURCE: m.cp line 23
+                PARENT: LOOP_BODY#5427
+                TIME: >=2 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+              FUN#41425 {
+                SOURCE: m.cp line 24
+                PARENT: LOOP_BODY#5427
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#59455 {
+                  SOURCE: m.cp line 24
+                  PARENT: FUN#41425
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+          }
+      }
+  }
+For process <main>:
+  MAIN#40275 {
+    SOURCE: m.cp lines 30..34
+    PARENT: NONE
+    TIME: (1+(4*>=2)) 
+          = >=9 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      FUN#34847
+      ASSIGN#57915
+      ASSIGN#45461
+      ASSIGN#70081
+      COUNT_LOOP#88513
+      ]
+      FUN#34847 {
+        SOURCE: m.cp line 30
+        PARENT: MAIN#40275
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#77977 {
+          SOURCE: m.cp line 30
+          PARENT: FUN#34847
+          TIME: ? TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        }
+      }
+      ASSIGN#57915 {
+        SOURCE: m.cp line 31
+        PARENT: MAIN#40275
+        TIME: >=2 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      ASSIGN#45461 {
+        SOURCE: m.cp line 32
+        PARENT: MAIN#40275
+        TIME: >=2 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      ASSIGN#70081 {
+        SOURCE: m.cp line 33
+        PARENT: MAIN#40275
+        TIME: >=2 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      COUNT_LOOP#88513 {
+        SOURCE: m.cp line 34
+        PARENT: MAIN#40275
+        TIME: (1+(4*>=2)) 
+              = >=9 TU
+        TYPE: LOOP
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#58065
+          ]
+          LOOP_BODY#58065 {
+            SOURCE: m.cp line 35
+            PARENT: COUNT_LOOP#88513
+            TIME: >=1 TU
+            TYPE: COMPOUND
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN#14545
+              ]
+              FUN#14545 {
+                SOURCE: m.cp line 35
+                PARENT: LOOP_BODY#58065
+                TIME: >=1 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#81371 {
+                  SOURCE: m.cp line 35
+                  PARENT: FUN#14545
+                  TIME: >=1 TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                }
+              }
+          }
+      }
+  }

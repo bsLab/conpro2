@@ -1,0 +1,1342 @@
+Block frame trees
+-----------------
+For process <init>:
+  MAIN#47275 {
+    SOURCE: dining.cp lines 34..38
+    PARENT: NONE
+    TIME: (1+(5*>=2)+?) 
+          = >=11 TU
+    TYPE: COMPOUND
+    PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCKBOUND4_1#1
+      COUNT_LOOP#83561
+      FUN#9273
+      ]
+      BLOCKBOUND4_1#1 {
+        SOURCE: dining.cp line 34
+        PARENT: MAIN#47275
+        TIME: 1 TU
+        TYPE: COMPOUND
+        PARAMS=<BIND><SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          COUNT_LOOP_BLOCK1#83561
+          ]
+          COUNT_LOOP_BLOCK1#83561 {
+            SOURCE: dining.cp line 34
+            PARENT: BLOCKBOUND4_1#1
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared><BIND>.
+          }
+      }
+      COUNT_LOOP#83561 {
+        SOURCE: dining.cp line 34
+        PARENT: MAIN#47275
+        TIME: (5*>=2) 
+              = >=10 TU
+        TYPE: LOOP
+        PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#23398
+          ]
+          LOOP_BODY#23398 {
+            SOURCE: dining.cp line 36
+            PARENT: COUNT_LOOP#83561
+            TIME: >=1 TU
+            TYPE: COMPOUND
+            PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN#56720
+              ]
+              FUN#56720 {
+                SOURCE: dining.cp line 36
+                PARENT: LOOP_BODY#23398
+                TIME: >=1 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#91716 {
+                  SOURCE: dining.cp line 36
+                  PARENT: FUN#56720
+                  TIME: >=1 TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                  FUN#64819 {
+                    SOURCE: dining.cp line 36
+                    PARENT: FUN#91716
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                  }
+                }
+              }
+          }
+      }
+      FUN#9273 {
+        SOURCE: dining.cp line 38
+        PARENT: MAIN#47275
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#60409 {
+          SOURCE: dining.cp line 38
+          PARENT: FUN#9273
+          TIME: ? TU
+          TYPE: BASIC BLOCK
+          PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#13512 {
+            SOURCE: dining.cp line 38
+            PARENT: FUN#60409
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+  }
+For process <philosopher_0>:
+  MAIN#15578 {
+    SOURCE: dining.cp line 58
+    PARENT: NONE
+    TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+          = >=10 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCK#16603
+      ]
+      BLOCK#16603 {
+        SOURCE: dining.cp lines 58..66
+        PARENT: MAIN#15578
+        TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+              = >=10 TU
+        TYPE: COMPOUND
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          FUN#44358
+          LOOP#65705
+          ]
+          FUN#44358 {
+            SOURCE: dining.cp line 58
+            PARENT: BLOCK#16603
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            FUN#65215 {
+              SOURCE: dining.cp line 58
+              PARENT: FUN#44358
+              TIME: ? TU
+              TYPE: BASIC BLOCK
+              PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              FUN#95248 {
+                SOURCE: dining.cp line 58
+                PARENT: FUN#65215
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+            }
+          }
+          LOOP#65705 {
+            SOURCE: dining.cp line 66
+            PARENT: BLOCK#16603
+            TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+                  = >=10 TU
+            TYPE: LOOP
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              LOOP_BODY#8650
+              ]
+              LOOP_BODY#8650 {
+                SOURCE: dining.cp lines 62..66
+                PARENT: LOOP#65705
+                TIME: (1+(6*1)+1+>=1+>=1) 
+                      = >=10 TU
+                TYPE: COMPOUND
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                CHILDS [
+                  FUN#17429
+                  FUN#39314
+                  BLOCK#87757
+                  COND_LOOP#2877
+                  BLOCK#59662
+                  FUN#7669
+                  FUN#58851
+                  ]
+                  FUN#17429 {
+                    SOURCE: dining.cp line 62
+                    PARENT: LOOP_BODY#8650
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#13359 {
+                      SOURCE: dining.cp line 62
+                      PARENT: FUN#17429
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#21858 {
+                        SOURCE: dining.cp line 62
+                        PARENT: FUN#13359
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#39314 {
+                    SOURCE: dining.cp line 63
+                    PARENT: LOOP_BODY#8650
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#95127 {
+                      SOURCE: dining.cp line 63
+                      PARENT: FUN#39314
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#96624 {
+                        SOURCE: dining.cp line 63
+                        PARENT: FUN#95127
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  BLOCK#87757 {
+                    SOURCE: dining.cp lines 44..45
+                    PARENT: LOOP_BODY#8650
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#48484
+                      ASSIGN#37171
+                      ]
+                      ASSIGN#48484 {
+                        SOURCE: dining.cp line 44
+                        PARENT: BLOCK#87757
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#37171 {
+                        SOURCE: dining.cp line 45
+                        PARENT: BLOCK#87757
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  COND_LOOP#2877 {
+                    SOURCE: dining.cp line 47
+                    PARENT: LOOP_BODY#8650
+                    TIME: (1+(6*1)) 
+                          = 7 TU
+                    TYPE: LOOP
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ]
+                  }
+                  BLOCK#59662 {
+                    SOURCE: dining.cp lines 49..50
+                    PARENT: LOOP_BODY#8650
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#71138
+                      ASSIGN#83560
+                      ]
+                      ASSIGN#71138 {
+                        SOURCE: dining.cp line 49
+                        PARENT: BLOCK#59662
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#83560 {
+                        SOURCE: dining.cp line 50
+                        PARENT: BLOCK#59662
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  FUN#7669 {
+                    SOURCE: dining.cp line 65
+                    PARENT: LOOP_BODY#8650
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#98283 {
+                      SOURCE: dining.cp line 65
+                      PARENT: FUN#7669
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#69255 {
+                        SOURCE: dining.cp line 65
+                        PARENT: FUN#98283
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#58851 {
+                    SOURCE: dining.cp line 66
+                    PARENT: LOOP_BODY#8650
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#68501 {
+                      SOURCE: dining.cp line 66
+                      PARENT: FUN#58851
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#44727 {
+                        SOURCE: dining.cp line 66
+                        PARENT: FUN#68501
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+              }
+          }
+      }
+  }
+For process <philosopher_1>:
+  MAIN#57915 {
+    SOURCE: dining.cp line 58
+    PARENT: NONE
+    TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+          = >=10 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCK#72721
+      ]
+      BLOCK#72721 {
+        SOURCE: dining.cp lines 58..66
+        PARENT: MAIN#57915
+        TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+              = >=10 TU
+        TYPE: COMPOUND
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          FUN#61374
+          LOOP#5427
+          ]
+          FUN#61374 {
+            SOURCE: dining.cp line 58
+            PARENT: BLOCK#72721
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            FUN#81819 {
+              SOURCE: dining.cp line 58
+              PARENT: FUN#61374
+              TIME: ? TU
+              TYPE: BASIC BLOCK
+              PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              FUN#9106 {
+                SOURCE: dining.cp line 58
+                PARENT: FUN#81819
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+            }
+          }
+          LOOP#5427 {
+            SOURCE: dining.cp line 66
+            PARENT: BLOCK#72721
+            TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+                  = >=10 TU
+            TYPE: LOOP
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              LOOP_BODY#98648
+              ]
+              LOOP_BODY#98648 {
+                SOURCE: dining.cp lines 62..66
+                PARENT: LOOP#5427
+                TIME: (1+(6*1)+1+>=1+>=1) 
+                      = >=10 TU
+                TYPE: COMPOUND
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                CHILDS [
+                  FUN#63574
+                  FUN#47348
+                  BLOCK#47800
+                  COND_LOOP#16077
+                  BLOCK#71698
+                  FUN#43252
+                  FUN#41425
+                  ]
+                  FUN#63574 {
+                    SOURCE: dining.cp line 62
+                    PARENT: LOOP_BODY#98648
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#51668 {
+                      SOURCE: dining.cp line 62
+                      PARENT: FUN#63574
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#73132 {
+                        SOURCE: dining.cp line 62
+                        PARENT: FUN#51668
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#47348 {
+                    SOURCE: dining.cp line 63
+                    PARENT: LOOP_BODY#98648
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#61831 {
+                      SOURCE: dining.cp line 63
+                      PARENT: FUN#47348
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#52127 {
+                        SOURCE: dining.cp line 63
+                        PARENT: FUN#61831
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  BLOCK#47800 {
+                    SOURCE: dining.cp lines 44..45
+                    PARENT: LOOP_BODY#98648
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#99481
+                      ASSIGN#34847
+                      ]
+                      ASSIGN#99481 {
+                        SOURCE: dining.cp line 44
+                        PARENT: BLOCK#47800
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#34847 {
+                        SOURCE: dining.cp line 45
+                        PARENT: BLOCK#47800
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  COND_LOOP#16077 {
+                    SOURCE: dining.cp line 47
+                    PARENT: LOOP_BODY#98648
+                    TIME: (1+(6*1)) 
+                          = 7 TU
+                    TYPE: LOOP
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ]
+                  }
+                  BLOCK#71698 {
+                    SOURCE: dining.cp lines 49..50
+                    PARENT: LOOP_BODY#98648
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#58270
+                      ASSIGN#43856
+                      ]
+                      ASSIGN#58270 {
+                        SOURCE: dining.cp line 49
+                        PARENT: BLOCK#71698
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#43856 {
+                        SOURCE: dining.cp line 50
+                        PARENT: BLOCK#71698
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  FUN#43252 {
+                    SOURCE: dining.cp line 65
+                    PARENT: LOOP_BODY#98648
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#5683 {
+                      SOURCE: dining.cp line 65
+                      PARENT: FUN#43252
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#6952 {
+                        SOURCE: dining.cp line 65
+                        PARENT: FUN#5683
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#41425 {
+                    SOURCE: dining.cp line 66
+                    PARENT: LOOP_BODY#98648
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#95407 {
+                      SOURCE: dining.cp line 66
+                      PARENT: FUN#41425
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#36757 {
+                        SOURCE: dining.cp line 66
+                        PARENT: FUN#95407
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+              }
+          }
+      }
+  }
+For process <philosopher_2>:
+  MAIN#14484 {
+    SOURCE: dining.cp line 58
+    PARENT: NONE
+    TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+          = >=10 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCK#8441
+      ]
+      BLOCK#8441 {
+        SOURCE: dining.cp lines 58..66
+        PARENT: MAIN#14484
+        TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+              = >=10 TU
+        TYPE: COMPOUND
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          FUN#29677
+          LOOP#25871
+          ]
+          FUN#29677 {
+            SOURCE: dining.cp line 58
+            PARENT: BLOCK#8441
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            FUN#18499 {
+              SOURCE: dining.cp line 58
+              PARENT: FUN#29677
+              TIME: ? TU
+              TYPE: BASIC BLOCK
+              PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              FUN#23467 {
+                SOURCE: dining.cp line 58
+                PARENT: FUN#18499
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+            }
+          }
+          LOOP#25871 {
+            SOURCE: dining.cp line 66
+            PARENT: BLOCK#8441
+            TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+                  = >=10 TU
+            TYPE: LOOP
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              LOOP_BODY#38794
+              ]
+              LOOP_BODY#38794 {
+                SOURCE: dining.cp lines 62..66
+                PARENT: LOOP#25871
+                TIME: (1+(6*1)+1+>=1+>=1) 
+                      = >=10 TU
+                TYPE: COMPOUND
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                CHILDS [
+                  FUN#11997
+                  FUN#89339
+                  BLOCK#40275
+                  COND_LOOP#38972
+                  BLOCK#74415
+                  FUN#81371
+                  FUN#77977
+                  ]
+                  FUN#11997 {
+                    SOURCE: dining.cp line 62
+                    PARENT: LOOP_BODY#38794
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#34258 {
+                      SOURCE: dining.cp line 62
+                      PARENT: FUN#11997
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#5955 {
+                        SOURCE: dining.cp line 62
+                        PARENT: FUN#34258
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#89339 {
+                    SOURCE: dining.cp line 63
+                    PARENT: LOOP_BODY#38794
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#2445 {
+                      SOURCE: dining.cp line 63
+                      PARENT: FUN#89339
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#49350 {
+                        SOURCE: dining.cp line 63
+                        PARENT: FUN#2445
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  BLOCK#40275 {
+                    SOURCE: dining.cp lines 44..45
+                    PARENT: LOOP_BODY#38794
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#64777
+                      ASSIGN#13567
+                      ]
+                      ASSIGN#64777 {
+                        SOURCE: dining.cp line 44
+                        PARENT: BLOCK#40275
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#13567 {
+                        SOURCE: dining.cp line 45
+                        PARENT: BLOCK#40275
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  COND_LOOP#38972 {
+                    SOURCE: dining.cp line 47
+                    PARENT: LOOP_BODY#38794
+                    TIME: (1+(6*1)) 
+                          = 7 TU
+                    TYPE: LOOP
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ]
+                  }
+                  BLOCK#74415 {
+                    SOURCE: dining.cp lines 49..50
+                    PARENT: LOOP_BODY#38794
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#7961
+                      ASSIGN#87455
+                      ]
+                      ASSIGN#7961 {
+                        SOURCE: dining.cp line 49
+                        PARENT: BLOCK#74415
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#87455 {
+                        SOURCE: dining.cp line 50
+                        PARENT: BLOCK#74415
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  FUN#81371 {
+                    SOURCE: dining.cp line 65
+                    PARENT: LOOP_BODY#38794
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#91123 {
+                      SOURCE: dining.cp line 65
+                      PARENT: FUN#81371
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#7469 {
+                        SOURCE: dining.cp line 65
+                        PARENT: FUN#91123
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#77977 {
+                    SOURCE: dining.cp line 66
+                    PARENT: LOOP_BODY#38794
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#44627 {
+                      SOURCE: dining.cp line 66
+                      PARENT: FUN#77977
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#52421 {
+                        SOURCE: dining.cp line 66
+                        PARENT: FUN#44627
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+              }
+          }
+      }
+  }
+For process <philosopher_3>:
+  MAIN#33708 {
+    SOURCE: dining.cp line 58
+    PARENT: NONE
+    TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+          = >=10 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCK#19215
+      ]
+      BLOCK#19215 {
+        SOURCE: dining.cp lines 58..66
+        PARENT: MAIN#33708
+        TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+              = >=10 TU
+        TYPE: COMPOUND
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          FUN#24577
+          LOOP#63052
+          ]
+          FUN#24577 {
+            SOURCE: dining.cp line 58
+            PARENT: BLOCK#19215
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            FUN#54384 {
+              SOURCE: dining.cp line 58
+              PARENT: FUN#24577
+              TIME: ? TU
+              TYPE: BASIC BLOCK
+              PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              FUN#65496 {
+                SOURCE: dining.cp line 58
+                PARENT: FUN#54384
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+            }
+          }
+          LOOP#63052 {
+            SOURCE: dining.cp line 66
+            PARENT: BLOCK#19215
+            TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+                  = >=10 TU
+            TYPE: LOOP
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              LOOP_BODY#95086
+              ]
+              LOOP_BODY#95086 {
+                SOURCE: dining.cp lines 62..66
+                PARENT: LOOP#63052
+                TIME: (1+(6*1)+1+>=1+>=1) 
+                      = >=10 TU
+                TYPE: COMPOUND
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                CHILDS [
+                  FUN#83891
+                  FUN#19442
+                  BLOCK#83041
+                  COND_LOOP#78627
+                  BLOCK#83331
+                  FUN#7089
+                  FUN#2398
+                  ]
+                  FUN#83891 {
+                    SOURCE: dining.cp line 62
+                    PARENT: LOOP_BODY#95086
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#92183 {
+                      SOURCE: dining.cp line 62
+                      PARENT: FUN#83891
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#8118 {
+                        SOURCE: dining.cp line 62
+                        PARENT: FUN#92183
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#19442 {
+                    SOURCE: dining.cp line 63
+                    PARENT: LOOP_BODY#95086
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#17326 {
+                      SOURCE: dining.cp line 63
+                      PARENT: FUN#19442
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#57274 {
+                        SOURCE: dining.cp line 63
+                        PARENT: FUN#17326
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  BLOCK#83041 {
+                    SOURCE: dining.cp lines 44..45
+                    PARENT: LOOP_BODY#95086
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#11089
+                      ASSIGN#86320
+                      ]
+                      ASSIGN#11089 {
+                        SOURCE: dining.cp line 44
+                        PARENT: BLOCK#83041
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#86320 {
+                        SOURCE: dining.cp line 45
+                        PARENT: BLOCK#83041
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  COND_LOOP#78627 {
+                    SOURCE: dining.cp line 47
+                    PARENT: LOOP_BODY#95086
+                    TIME: (1+(6*1)) 
+                          = 7 TU
+                    TYPE: LOOP
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ]
+                  }
+                  BLOCK#83331 {
+                    SOURCE: dining.cp lines 49..50
+                    PARENT: LOOP_BODY#95086
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#45421
+                      ASSIGN#75600
+                      ]
+                      ASSIGN#45421 {
+                        SOURCE: dining.cp line 49
+                        PARENT: BLOCK#83331
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#75600 {
+                        SOURCE: dining.cp line 50
+                        PARENT: BLOCK#83331
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  FUN#7089 {
+                    SOURCE: dining.cp line 65
+                    PARENT: LOOP_BODY#95086
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#69341 {
+                      SOURCE: dining.cp line 65
+                      PARENT: FUN#7089
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#30940 {
+                        SOURCE: dining.cp line 65
+                        PARENT: FUN#69341
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#2398 {
+                    SOURCE: dining.cp line 66
+                    PARENT: LOOP_BODY#95086
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#8260 {
+                      SOURCE: dining.cp line 66
+                      PARENT: FUN#2398
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#74237 {
+                        SOURCE: dining.cp line 66
+                        PARENT: FUN#8260
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+              }
+          }
+      }
+  }
+For process <philosopher_4>:
+  MAIN#26142 {
+    SOURCE: dining.cp line 78
+    PARENT: NONE
+    TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+          = >=10 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCK#43691
+      ]
+      BLOCK#43691 {
+        SOURCE: dining.cp line 78
+        PARENT: MAIN#26142
+        TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+              = >=10 TU
+        TYPE: COMPOUND
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP#70779
+          ]
+          LOOP#70779 {
+            SOURCE: dining.cp line 78
+            PARENT: BLOCK#43691
+            TIME: (>=1*(1+(6*1)+1+>=1+>=1)) 
+                  = >=10 TU
+            TYPE: LOOP
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              LOOP_BODY#7507
+              ]
+              LOOP_BODY#7507 {
+                SOURCE: dining.cp lines 74..78
+                PARENT: LOOP#70779
+                TIME: (1+(6*1)+1+>=1+>=1) 
+                      = >=10 TU
+                TYPE: COMPOUND
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                CHILDS [
+                  FUN#77351
+                  FUN#33362
+                  BLOCK#66809
+                  COND_LOOP#61683
+                  BLOCK#13048
+                  FUN#69501
+                  FUN#58009
+                  ]
+                  FUN#77351 {
+                    SOURCE: dining.cp line 74
+                    PARENT: LOOP_BODY#7507
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#66454 {
+                      SOURCE: dining.cp line 74
+                      PARENT: FUN#77351
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#43407 {
+                        SOURCE: dining.cp line 74
+                        PARENT: FUN#66454
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#33362 {
+                    SOURCE: dining.cp line 75
+                    PARENT: LOOP_BODY#7507
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#30796 {
+                      SOURCE: dining.cp line 75
+                      PARENT: FUN#33362
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#5412 {
+                        SOURCE: dining.cp line 75
+                        PARENT: FUN#30796
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  BLOCK#66809 {
+                    SOURCE: dining.cp lines 44..45
+                    PARENT: LOOP_BODY#7507
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#67938
+                      ASSIGN#31439
+                      ]
+                      ASSIGN#67938 {
+                        SOURCE: dining.cp line 44
+                        PARENT: BLOCK#66809
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#31439 {
+                        SOURCE: dining.cp line 45
+                        PARENT: BLOCK#66809
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  COND_LOOP#61683 {
+                    SOURCE: dining.cp line 47
+                    PARENT: LOOP_BODY#7507
+                    TIME: (1+(6*1)) 
+                          = 7 TU
+                    TYPE: LOOP
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ]
+                  }
+                  BLOCK#13048 {
+                    SOURCE: dining.cp lines 49..50
+                    PARENT: LOOP_BODY#7507
+                    TIME: 1 TU
+                    TYPE: COMPOUND
+                    PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    CHILDS [
+                      ASSIGN#33018
+                      ASSIGN#92729
+                      ]
+                      ASSIGN#33018 {
+                        SOURCE: dining.cp line 49
+                        PARENT: BLOCK#13048
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                      ASSIGN#92729 {
+                        SOURCE: dining.cp line 50
+                        PARENT: BLOCK#13048
+                        TIME: 1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                  }
+                  FUN#69501 {
+                    SOURCE: dining.cp line 77
+                    PARENT: LOOP_BODY#7507
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#68203 {
+                      SOURCE: dining.cp line 77
+                      PARENT: FUN#69501
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#50798 {
+                        SOURCE: dining.cp line 77
+                        PARENT: FUN#68203
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+                  FUN#58009 {
+                    SOURCE: dining.cp line 78
+                    PARENT: LOOP_BODY#7507
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                    FUN#1662 {
+                      SOURCE: dining.cp line 78
+                      PARENT: FUN#58009
+                      TIME: >=1 TU
+                      TYPE: BASIC BLOCK
+                      PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      FUN#52287 {
+                        SOURCE: dining.cp line 78
+                        PARENT: FUN#1662
+                        TIME: >=1 TU
+                        TYPE: BASIC BLOCK
+                        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                      }
+                    }
+                  }
+              }
+          }
+      }
+  }
+For process <main>:
+  MAIN#1928 {
+    SOURCE: dining.cp lines 85..93
+    PARENT: NONE
+    TIME: (>=14+(5*>=2)+?+?) 
+          = >=24 TU
+    TYPE: COMPOUND
+    PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCKBOUND8_1#1
+      BLOCKBOUND3_1#3
+      ASSIGN#46547
+      FUN#14832
+      COUNT_LOOP#54265
+      ASSIGN#38777
+      FUN#89994
+      ]
+      BLOCKBOUND8_1#1 {
+        SOURCE: dining.cp line 85
+        PARENT: MAIN#1928
+        TIME: 1 TU
+        TYPE: COMPOUND
+        PARAMS=<BIND><SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          ASSIGN_BLOCK1#46547
+          ]
+          ASSIGN_BLOCK1#46547 {
+            SOURCE: dining.cp line 85
+            PARENT: BLOCKBOUND8_1#1
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared><BIND>.
+          }
+      }
+      BLOCKBOUND3_1#3 {
+        SOURCE: dining.cp line 92
+        PARENT: MAIN#1928
+        TIME: 1 TU
+        TYPE: COMPOUND
+        PARAMS=<BIND><SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          ASSIGN_BLOCK3#38777
+          ]
+          ASSIGN_BLOCK3#38777 {
+            SOURCE: dining.cp line 92
+            PARENT: BLOCKBOUND3_1#3
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared><BIND>.
+          }
+      }
+      ASSIGN#46547 {
+        SOURCE: dining.cp line 85
+        PARENT: MAIN#1928
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      FUN#14832 {
+        SOURCE: dining.cp line 86
+        PARENT: MAIN#1928
+        TIME: >=12 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#89143 {
+          SOURCE: dining.cp line 86
+          PARENT: FUN#14832
+          TIME: >=12 TU
+          TYPE: BASIC BLOCK
+          PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          BLOCKBOUND6_1#2 {
+            SOURCE: dining.cp lines 86..88
+            PARENT: FUN#89143
+            TIME: 1 TU
+            TYPE: COMPOUND
+            PARAMS=<BIND><SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN_BLOCK2#74680
+              ASSIGN_BLOCK2#21022
+              COUNT_LOOP_BLOCK2#54265
+              ]
+              FUN_BLOCK2#74680 {
+                SOURCE: dining.cp line 86
+                PARENT: BLOCKBOUND6_1#2
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared><BIND>.
+              }
+              ASSIGN_BLOCK2#21022 {
+                SOURCE: dining.cp line 87
+                PARENT: BLOCKBOUND6_1#2
+                TIME: 1 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared><BIND>.
+              }
+              COUNT_LOOP_BLOCK2#54265 {
+                SOURCE: dining.cp line 88
+                PARENT: BLOCKBOUND6_1#2
+                TIME: 1 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared><BIND>.
+              }
+          }
+          FUN#74680 {
+            SOURCE: dining.cp line 86
+            PARENT: FUN#89143
+            TIME: >=11 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+      COUNT_LOOP#54265 {
+        SOURCE: dining.cp line 88
+        PARENT: MAIN#1928
+        TIME: (5*>=2) 
+              = >=10 TU
+        TYPE: LOOP
+        PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#39979
+          ]
+          LOOP_BODY#39979 {
+            SOURCE: dining.cp line 90
+            PARENT: COUNT_LOOP#54265
+            TIME: >=1 TU
+            TYPE: COMPOUND
+            PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN#49014
+              ]
+              FUN#49014 {
+                SOURCE: dining.cp line 90
+                PARENT: LOOP_BODY#39979
+                TIME: >=1 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#93122 {
+                  SOURCE: dining.cp line 90
+                  PARENT: FUN#49014
+                  TIME: >=1 TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                  FUN#16346 {
+                    SOURCE: dining.cp line 90
+                    PARENT: FUN#93122
+                    TIME: >=1 TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+                  }
+                }
+              }
+          }
+      }
+      ASSIGN#38777 {
+        SOURCE: dining.cp line 92
+        PARENT: MAIN#1928
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      FUN#89994 {
+        SOURCE: dining.cp line 93
+        PARENT: MAIN#1928
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#48003 {
+          SOURCE: dining.cp line 93
+          PARENT: FUN#89994
+          TIME: ? TU
+          TYPE: BASIC BLOCK
+          PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#91205 {
+            SOURCE: dining.cp line 93
+            PARENT: FUN#48003
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<SCHED=CUSTOM/BB><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+  }

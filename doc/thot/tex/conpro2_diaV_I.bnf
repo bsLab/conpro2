@@ -1,0 +1,2 @@
+block ::= 'begin' { process-instruction }+ 'end' 
+            [ 'with' parameter-list ] ';' .

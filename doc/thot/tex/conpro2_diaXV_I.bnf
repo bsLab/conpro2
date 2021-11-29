@@ -1,0 +1,2 @@
+object-type ::=  'reg' | 'var' | 'reg array' | 'var array' 
+                 'reg struct' | 'var struct' | 'const' .

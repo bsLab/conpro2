@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export AT=/opt/Conpro2/bin/win32
+export WINEPREFIX=/opt/Conpro2/bin/wine
+export WINEDEBUG=warn-all,fixme-all,err-all
+export WINE=/opt/wine-1.1.7/bin/wine
+
+$WINE "$AT/AutoIt3.exe" ${@} &
+
+   

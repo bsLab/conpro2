@@ -1,0 +1,4 @@
+sed -f conpro2.xml.sed \
+< /home/sbosse/proj/conpro2/doc/thot/xml/conpro2.xml \
+> /tmp/thot.xml 
+mv /tmp/thot.xml /home/sbosse/proj/conpro2/doc/thot/xml/conpro2.xml

@@ -1,0 +1,1 @@
+struct-elem ::= name ':' ( core-type | symbol-set ) .

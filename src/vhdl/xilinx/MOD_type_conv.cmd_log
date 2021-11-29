@@ -1,0 +1,1 @@
+xst -ise "/home/sbosse/proj/conpro2/src/vhdl/xilinx/type_conv_test.ise" -intstyle ise -ifn MOD_type_conv.xst -ofn MOD_type_conv.syr

@@ -1,0 +1,815 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<840fd9a4> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  /home/sbosse/proj/conpro/test/random/src/cp
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+TDI: Opening tools file <tools>...
+  Searching tools file <tools.def>...
+  Opening tools file </opt/Conpro2/toolset/tools.def>...
+  Info [line 5]: Added synthesis tool defintion <generic>, version 1.02.
+  Info [line 25]: Added synthesis tool defintion <xilinx6>, version 1.02.
+  Info [line 169]: Added synthesis tool defintion <alliance>, version 1.02.
+  Info [line 191]: Added synthesis tool defintion <leonardo>, version 1.02.
+  Info [line 213]: Added synthesis tool defintion <actel>, version 1.02.
+  Info [line 235]: Added synthesis tool defintion <synplicity89>, version 1.02.
+  Info [line 257]: Added synthesis tool defintion <synplicity89_xilinx6>, version 1.02.
+TDI: Opening tool <synplicity89>...
+  Searching tool file <synplicity89.tool>...
+  Opening tool file </opt/Conpro2/toolset/synplicity89.tool>...
+Searching Conpro file <t.cp>...
+Opening file <t.cp>...
+Compiling module <t>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+    Opening module <Timer>...
+      Searching module file <timer.mod>...
+      Opening module file </opt/Conpro2/lib/timer.mod>...
+      EMI [Object Timer.timer.root]#init: Initializing module ...
+      EMI <Object Timer.timer.root>: creating rules for module...
+      Added module <Timer>.
+        EMI <Timer>: adding object type <timer>...
+    Added module <System>.
+    EMI <Object Sys.sys.root>: creating object <sys>...
+      EMI [Object Sys.sys.sys]#read_methods: added method <clock>.
+      EMI [Object Sys.sys.sys]#read_methods: added method <clock_level>.
+      EMI [Object Sys.sys.sys]#read_methods: added method <reset_level>.
+      EMI [Object Sys.sys.sys]#read_methods: added method <reset_internal>.
+      EMI [Object Sys.sys.sys]#read_methods: added method <simu_cycles>.
+      EMI [Object Sys.sys.sys]#read_methods: added method <simu_res>.
+      EMI [Object Sys.sys.sys]#read_methods: added method <target>.
+      EMI [Object Sys.sys.sys]#read_methods: added method <expr_type>.
+    EMI <Object Sys.sys.sys>: creating rules for module...
+    EMI <Object Timer.timer.root>: creating object <t>...
+      EMI [Object Timer.timer.t]#read_methods: added method <init>.
+      EMI [Object Timer.timer.t]#read_methods: added method <time>.
+      EMI [Object Timer.timer.t]#read_methods: added method <await>.
+      EMI [Object Timer.timer.t]#read_methods: added method <wakeup>.
+      EMI [Object Timer.timer.t]#read_methods: added method <start>.
+      EMI [Object Timer.timer.t]#read_methods: added method <stop>.
+      EMI [Object Timer.timer.t]#read_methods: added method <mode>.
+      EMI [Object Timer.timer.t]#read_methods: added method <sig_action>.
+    EMI <Object Timer.timer.t>: creating rules for module...
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [line 7]: Analyzing process <p_0>...
+      Analyzing process <p_0>...
+    Info [line 21]: Analyzing process <p_1>...
+      Analyzing process <p_1>...
+    Info [line 21]: Analyzing process <p_2>...
+      Analyzing process <p_2>...
+    Info [line 21]: Analyzing process <p_3>...
+      Analyzing process <p_3>...
+    Info [line 27]: Analyzing process <main>...
+      Analyzing process <main>...
+        Warning [line 32]: Changing non block array <p> to dynamic selection mode.
+  Performing program graph transformations and optimization for module <T>...
+    in process <p_0>...
+      Resolving object dependencies for process <p_0>...
+    in process <p_1>...
+      Resolving object dependencies for process <p_1>...
+    in process <p_2>...
+      Resolving object dependencies for process <p_2>...
+    in process <p_3>...
+      Resolving object dependencies for process <p_3>...
+    in process <main>...
+      Resolving object dependencies for process <main>...
+  Resolving object dependencies for process <MOD_T>...
+  Found 13 primary toplevel symbols.
+  Found 5 processes.
+  Found 0 shared function blocks.
+Synthesizing main module <T>...
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <T.p_0>
+        Removed 0 instructions(s).
+      in process <T.p_1>
+        Removed 0 instructions(s).
+      in process <T.p_2>
+        Removed 0 instructions(s).
+      in process <T.p_3>
+        Removed 0 instructions(s).
+      in process <T.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      ... in process <p_0> ...
+      ... in process <p_1> ...
+      ... in process <p_2> ...
+      ... in process <p_3> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <T.p_0>
+        Removed 0 operand(s).
+      in process <T.p_1>
+        Removed 0 operand(s).
+      in process <T.p_2>
+        Removed 0 operand(s).
+      in process <T.p_3>
+        Removed 0 operand(s).
+      in process <T.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 0.
+  Resolving object guards...
+    Found 1 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+  EMI [Object Timer.timer.t]#compiler: Compiling external module interface...
+  EMI [Object Timer.timer.t]#compiler: Environment is 
+    [$arch001(d)=[1],$arch002(d)=[2],$time(i)=[1000,2000],
+     $sig(?)=[?],$sig_action_level(?)=[?],$sig_def_level(?)=[?],$mode(d)=[0,0],
+     $P(s)=[main,MOD_T,p_3,
+    p_2,p_1,p_0],$P.init(s)=[main],$P.time(s)=[main,MOD_T],$P.await(s)=[p_3,p_2,p_1,p_0],
+     $P.wakeup(s)=[],$P.start(s)=[main],$P.stop(s)=[],$P.mode(s)=[main],
+     $P.sig_action(s)=[],$clock(d)=[10000000],$clock_level(d)=[1],$reset_level(d)=[1],
+     $reset_internal(d)=[0],$state_enc(s)=[binary],$targets(s)=[a3p125-ft256-2],$simu_cycles(d)=[300,50],
+     $simu_res(d)=[0],$expr_type(s)=[flat],$synth_tool(?)=[?],$logic_type(s)=[std_logic],
+     $alu_top_expr(d)=[1],$alu_thres(d)=[8]]
+  Synthesizing process instructions...
+    in process <T.p_0>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p_0>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p_0>...
+      Post type alignment of expressions for process <p_0>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p_0>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p_0>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p_0>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p_0>...
+        8 states created.
+      Calculating block frame time estimations for process <p_0>...
+    in process <T.p_1>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p_1>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p_1>...
+      Post type alignment of expressions for process <p_1>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p_1>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p_1>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p_1>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p_1>...
+        8 states created.
+      Calculating block frame time estimations for process <p_1>...
+    in process <T.p_2>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p_2>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p_2>...
+      Post type alignment of expressions for process <p_2>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p_2>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p_2>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p_2>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p_2>...
+        8 states created.
+      Calculating block frame time estimations for process <p_2>...
+    in process <T.p_3>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p_3>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p_3>...
+      Post type alignment of expressions for process <p_3>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p_3>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p_3>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p_3>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p_3>...
+        8 states created.
+      Calculating block frame time estimations for process <p_3>...
+    in process <T.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Post type alignment of expressions for process <main>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 2 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        10 states created.
+      Calculating block frame time estimations for process <main>...
+  Creating entity <t_p_0>...
+    Emitting state list for process <p_0>...
+    Emitting state machine for process <p_0>...
+    Port width: 15 bits
+  Creating entity <t_p_1>...
+    Emitting state list for process <p_1>...
+    Emitting state machine for process <p_1>...
+    Port width: 15 bits
+  Creating entity <t_p_2>...
+    Emitting state list for process <p_2>...
+    Emitting state machine for process <p_2>...
+    Port width: 15 bits
+  Creating entity <t_p_3>...
+    Emitting state list for process <p_3>...
+    Emitting state machine for process <p_3>...
+    Port width: 15 bits
+  Creating entity <t_main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 14 bits
+  Creating entity <t>...
+    Creating global register <d> [DT_logic 4, scheduler=PRIOstat #rd=4 #wr=4]...
+    EMI [Object Timer.timer.t]#read_process: compiling #process.TIMER_t_SCHED section...
+  Emitting MicroCode for module T...
+  Emitting object file for module T...
+  Emitting MicroCode for process p_0...
+  Emitting MicroCode for process p_1...
+  Emitting MicroCode for process p_2...
+  Emitting MicroCode for process p_3...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.p_0>: emitting MicroCode for process <p_0>.
+  UCI <ucode.uci_out.p_1>: emitting MicroCode for process <p_1>.
+  UCI <ucode.uci_out.p_2>: emitting MicroCode for process <p_2>.
+  UCI <ucode.uci_out.p_3>: emitting MicroCode for process <p_3>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+Info : Emitting block frame informations in file <t.ft>...
+TDI [Tool synplicity89.root]#new_obj: creating object <t>...
+TDI [Tool synplicity89.t]#compile_all: Initializing tool ...
+    TDI [Tool synplicity89.t]#read_parameters: compiling #parameter section...
+        TDI [Tool synplicity89.t]: Parameter <target_volt> not found. Using default value.
+    TDI [Tool synplicity89.t]#read_parameters: compiling #parameter section...
+    TDI [Tool synplicity89.t]#read_funs: compiling #fun section <check>...
+    TDI [Tool synplicity89.t]#read_funs: compiling #fun section <init>...
+    TDI [Tool synplicity89.t]#read_funs: compiling #fun section <finish>...
+    TDI [Tool synplicity89.t]#read_funs: compiling #fun section <make_synp_runscript>...
+    TDI [Tool synplicity89.t]#read_funs: compiling #fun section <do_synth>...
+    TDI [Tool synplicity89.t]#read_funs: compiling #fun section <make_designer_runscript>...
+        TDI [Tool synplicity89.t]: Parameter <target_volt> not found. Using default value.
+    TDI [Tool synplicity89.t]#read_funs: compiling #fun section <do_tech>...
+    TDI [Tool synplicity89.t]#read_targets: compiling #target section <init>...
+    TDI [Tool synplicity89.t]#read_targets: compiling #target section <synth>...
+    TDI [Tool synplicity89.t]#read_targets: compiling #target section <tech>...
+TDI [Tool synplicity89.t]#compiler_all: Compiling tool ...
+    TDI [Tool synplicity89.t]#emit: Creating build script <t.synplicity89.tool.sh>...
+        TDI [Tool synplicity89.t]: Environment is:
+    target_device=[|"a3p125"|],PWD=[$],
+    target_class=[|"a3p"|],TOP=[("MOD_") +.s ($proj)],
+    DEVICE_VOLT=[get_opt()],LOG=[($proj) +.s (".log")],
+    SRCDIR=["."],clock=["10000000"],
+    vhdl=[|"t","t_p_0","t_p_1",
+    "t_p_2","t_p_3","t_main"|],DESIGNER=[$],
+    DEVICE_CLASS=[get_opt()],ACTEL=[$],
+    VHDL=[|$|],target_speed=[|"2"|],
+    target_library=[|"proasic3"|],DUP=["tee"],
+    period=["100"],DEVICE_SPEED=[get_opt()],
+    DEVICE=[get_opt()],SYNPLIFY=[$],
+    target_package=[|"ft256"|],DESIGN=[$proj],
+    port=[|"d_RD:out:std_logic_vector:3 downto 0","CLK:in:std_logic","RESET:in:std_logic"|],target=[|"a3p125-ft256-2"|],
+    target_family=[|"proasic3"|],DEVICE_PACKAGE=[get_opt()],
+    proj=["t"],res=[$],
+    OBJDIR=["obj"],SYNPLICITY=[$],simu_cycles=["300"]
+Total CPU time consumed: 1.1 seconds.
+Total time elapsed: 1.0 seconds.
+
+Starting:    /export/home/fpga_89/solaris/mbin/synbatch
+Install:     /export/home/fpga_89
+Date:        Thu Feb 26 15:44:58 2009
+Version:     8.9
+
+
+Arguments:   -synplify -pro -batch t.prj
+ProductType: synplify_pro
+
+License checkout: synplifypro
+License: synplifypro from server sun203 
+
+
+
+Running synthesis on t:obj
+
+log file: "/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/obj/t.srr"
+
+
+Running Vhdl Compiler...
+
+Vhdl Compiler Completed
+
+
+Running Analysis Property Generator...
+
+Launching mapper in pro mode
+
+Analysis Property Generator Completed
+
+
+Analysis Property Generator Complete
+
+Running proasic3 Mapper...
+
+Launching mapper in pro mode
+
+proasic3 Mapper Completed with warnings
+
+
+exit status=0
+
+
+#Build: Synplify Pro 8.9, Build 004R, Jul 11 2007
+#install: /export/home/fpga_89
+#OS: SunOS 
+#Hostname: sun203
+
+#Implementation: obj
+
+#Thu Feb 26 15:44:58 2009
+
+$ Start of Compile
+#Thu Feb 26 15:44:58 2009
+
+Synplicity VHDL Compiler, version 3.7.5, Build 235R, built Jul 27 2007
+Copyright (C) 1994-2007, Synplicity Inc.  All Rights Reserved
+
+@N: CD720 :"/export/home/fpga_89/lib/vhd/std.vhd":123:18:123:21|Setting time resolution to ns
+@N:"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t.vhdl":17:7:17:11|Top entity is set to MOD_t.
+VHDL syntax check successful!
+@N: CD630 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t.vhdl":17:7:17:11|Synthesizing work.mod_t.main 
+@N: CD630 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_main.vhdl":17:7:17:12|Synthesizing work.t_main.main 
+@N: CD231 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_main.vhdl":41:18:41:19|Using onehot encoding for type pro_states (s_main_start="1000000000")
+@W: CG296 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_main.vhdl":136:13:136:19|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_main.vhdl":154:24:154:33|Referenced variable timer_t_gd is not in sensitivity list
+Post processing for work.t_main.main
+@N: CD630 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":17:7:17:11|Synthesizing work.t_p_3.main 
+@N: CD231 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":37:18:37:19|Using onehot encoding for type pro_states (s_p_3_start="10000000")
+@W: CG296 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":116:13:116:19|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":132:25:132:34|Referenced variable timer_t_gd is not in sensitivity list
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":134:30:134:37|Referenced variable reg_d_rd is not in sensitivity list
+Post processing for work.t_p_3.main
+@N: CD630 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":17:7:17:11|Synthesizing work.t_p_2.main 
+@N: CD231 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":37:18:37:19|Using onehot encoding for type pro_states (s_p_2_start="10000000")
+@W: CG296 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":116:13:116:19|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":132:25:132:34|Referenced variable timer_t_gd is not in sensitivity list
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":134:20:134:27|Referenced variable reg_d_rd is not in sensitivity list
+Post processing for work.t_p_2.main
+@N: CD630 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":17:7:17:11|Synthesizing work.t_p_1.main 
+@N: CD231 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":37:18:37:19|Using onehot encoding for type pro_states (s_p_1_start="10000000")
+@W: CG296 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":116:13:116:19|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":132:25:132:34|Referenced variable timer_t_gd is not in sensitivity list
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":134:20:134:27|Referenced variable reg_d_rd is not in sensitivity list
+Post processing for work.t_p_1.main
+@N: CD630 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":17:7:17:11|Synthesizing work.t_p_0.main 
+@N: CD231 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":37:18:37:19|Using onehot encoding for type pro_states (s_p_0_start="10000000")
+@W: CG296 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":116:13:116:19|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":132:25:132:34|Referenced variable timer_t_gd is not in sensitivity list
+@W: CG290 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":134:20:134:27|Referenced variable reg_d_rd is not in sensitivity list
+Post processing for work.t_p_0.main
+Post processing for work.mod_t.main
+@W: CL189 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t.vhdl":362:4:362:5|Register bit PRO_main_ENABLE is always 1, optimizing ...
+@W: CL189 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t.vhdl":257:4:257:5|Register bit TIMER_t_COUNT(0) is always 0, optimizing ...
+@W: CL171 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t.vhdl":257:4:257:5|Pruning Register bit <0> of TIMER_t_COUNT(4 downto 0)  
+@N: CL201 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":60:4:60:5|Trying to extract state machine for register pro_state
+Extracted state machine for register pro_state
+State machine has 8 reachable states with original encodings of:
+   00000001
+   00000010
+   00000100
+   00001000
+   00010000
+   00100000
+   01000000
+   10000000
+@W: CL209 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":20:9:20:16|Input port bit <0> of reg_d_rd(3 downto 0) is unused 
+@N: CL201 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":60:4:60:5|Trying to extract state machine for register pro_state
+Extracted state machine for register pro_state
+State machine has 8 reachable states with original encodings of:
+   00000001
+   00000010
+   00000100
+   00001000
+   00010000
+   00100000
+   01000000
+   10000000
+@W: CL209 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":20:9:20:16|Input port bit <1> of reg_d_rd(3 downto 0) is unused 
+@N: CL201 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":60:4:60:5|Trying to extract state machine for register pro_state
+Extracted state machine for register pro_state
+State machine has 8 reachable states with original encodings of:
+   00000001
+   00000010
+   00000100
+   00001000
+   00010000
+   00100000
+   01000000
+   10000000
+@W: CL209 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":20:9:20:16|Input port bit <2> of reg_d_rd(3 downto 0) is unused 
+@N: CL201 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":60:4:60:5|Trying to extract state machine for register pro_state
+Extracted state machine for register pro_state
+State machine has 8 reachable states with original encodings of:
+   00000001
+   00000010
+   00000100
+   00001000
+   00010000
+   00100000
+   01000000
+   10000000
+@W: CL209 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":20:9:20:16|Input port bit <3> of reg_d_rd(3 downto 0) is unused 
+@N: CL201 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_main.vhdl":68:4:68:5|Trying to extract state machine for register pro_state
+Extracted state machine for register pro_state
+State machine has 10 reachable states with original encodings of:
+   0000000001
+   0000000010
+   0000000100
+   0000001000
+   0000010000
+   0000100000
+   0001000000
+   0010000000
+   0100000000
+   1000000000
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Thu Feb 26 15:44:59 2009
+
+###########################################################]
+Synplicity Proasic Technology Mapper, Version 8.8.0, Build 022R, Built Jul 27 2007 17:33:29
+Copyright (C) 1994-2007, Synplicity Inc.  All Rights Reserved
+Product Version Version 8.9
+@N: MF249 |Running in 32-bit mode.
+@N: MF258 |Gated clock conversion disabled 
+
+
+@N: MT206 |Autoconstrain Mode is ON
+RTL optimization done.
+
+Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 40MB peak: 41MB)
+@N:"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":154:4:154:5|Found counter in view:work.t_p_0(main) inst LOOP_i_0[3:0]
+Encoding state machine work.t_p_0(main)-pro_state[0:7]
+original code -> new code
+   00000001 -> 00000001
+   00000010 -> 00000010
+   00000100 -> 00000100
+   00001000 -> 00001000
+   00010000 -> 00010000
+   00100000 -> 00100000
+   01000000 -> 01000000
+   10000000 -> 10000000
+@N:"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":154:4:154:5|Found counter in view:work.t_p_1(main) inst LOOP_i_1[3:0]
+Encoding state machine work.t_p_1(main)-pro_state[0:7]
+original code -> new code
+   00000001 -> 00000001
+   00000010 -> 00000010
+   00000100 -> 00000100
+   00001000 -> 00001000
+   00010000 -> 00010000
+   00100000 -> 00100000
+   01000000 -> 01000000
+   10000000 -> 10000000
+@N:"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":154:4:154:5|Found counter in view:work.t_p_2(main) inst LOOP_i_2[3:0]
+Encoding state machine work.t_p_2(main)-pro_state[0:7]
+original code -> new code
+   00000001 -> 00000001
+   00000010 -> 00000010
+   00000100 -> 00000100
+   00001000 -> 00001000
+   00010000 -> 00010000
+   00100000 -> 00100000
+   01000000 -> 01000000
+   10000000 -> 10000000
+@N:"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":154:4:154:5|Found counter in view:work.t_p_3(main) inst LOOP_i_3[3:0]
+Encoding state machine work.t_p_3(main)-pro_state[0:7]
+original code -> new code
+   00000001 -> 00000001
+   00000010 -> 00000010
+   00000100 -> 00000100
+   00001000 -> 00001000
+   00010000 -> 00010000
+   00100000 -> 00100000
+   01000000 -> 01000000
+   10000000 -> 10000000
+@N:"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_main.vhdl":185:4:185:5|Found counter in view:work.t_main(main) inst LOOP_i_4[3:0]
+Encoding state machine work.t_main(main)-pro_state[0:9]
+original code -> new code
+   0000000001 -> 0000000001
+   0000000010 -> 0000000010
+   0000000100 -> 0000000100
+   0000001000 -> 0000001000
+   0000010000 -> 0000010000
+   0000100000 -> 0000100000
+   0001000000 -> 0001000000
+   0010000000 -> 0010000000
+   0100000000 -> 0100000000
+   1000000000 -> 1000000000
+
+Finished factoring (Time elapsed 0h:00m:01s; Memory used current: 41MB peak: 42MB)
+@W: BN116 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_main.vhdl":129:6:129:23|Removing sequential instance PRO_MAP_main.pro_state[0] of view:PrimLib.dff(prim) because there are no references to its outputs 
+@W: BN116 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_3.vhdl":109:6:109:22|Removing sequential instance PRO_MAP_p_3.pro_state[0] of view:PrimLib.dff(prim) because there are no references to its outputs 
+@W: BN116 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_2.vhdl":109:6:109:22|Removing sequential instance PRO_MAP_p_2.pro_state[0] of view:PrimLib.dff(prim) because there are no references to its outputs 
+@W: BN116 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_1.vhdl":109:6:109:22|Removing sequential instance PRO_MAP_p_1.pro_state[0] of view:PrimLib.dff(prim) because there are no references to its outputs 
+@W: BN116 :"/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/t_p_0.vhdl":109:6:109:22|Removing sequential instance PRO_MAP_p_0.pro_state[0] of view:PrimLib.dff(prim) because there are no references to its outputs 
+
+Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:01s; Memory used current: 41MB peak: 42MB)
+
+Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:01s; Memory used current: 41MB peak: 42MB)
+
+Starting Early Timing Optimization (Time elapsed 0h:00m:01s; Memory used current: 41MB peak: 42MB)
+
+Finished Early Timing Optimization (Time elapsed 0h:00m:01s; Memory used current: 41MB peak: 42MB)
+
+Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:01s; Memory used current: 41MB peak: 42MB)
+
+Finished preparing to map (Time elapsed 0h:00m:02s; Memory used current: 43MB peak: 44MB)
+
+High Fanout Net Report
+**********************
+
+Driver Instance / Pin Name     Fanout, notes
+--------------------------------------------
+RESET_pad / Y                  54           
+============================================
+
+Promoting Net CLK_c on CLKBUF  CLK_pad
+Promoting Net RESET_c on CLKINT  I_26
+
+Finished technology mapping (Time elapsed 0h:00m:02s; Memory used current: 43MB peak: 44MB)
+
+Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:02s; Memory used current: 43MB peak: 44MB)
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+
+Finished restoring hierarchy (Time elapsed 0h:00m:02s; Memory used current: 43MB peak: 44MB)
+Writing Analyst data base /home/sbosse/proj/conpro2/test/tdi.synplicity89/out/obj/t.srm
+@N: BN225 |Writing default property annotation file /home/sbosse/proj/conpro2/test/tdi.synplicity89/out/obj/t.map.
+Writing EDIF Netlist and constraint files
+Found clock MOD_t|CLK with period 23.18ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Thu Feb 26 15:45:06 2009
+#
+
+
+Top view:               MOD_t
+Library name:           PA3
+Operating conditions:   COMWC-2 ( T = 70.0, V = 1.40, P = 1.33, tree_type = balanced_tree )
+Requested Frequency:    43.1 MHz
+Wire load mode:         top
+Wire load model:        PA3
+Paths requested:        5
+Constraint File(s):    
+@N: MT195 |This timing report estimates place and route data. Please look at the place and route timing report for final timing..
+
+@N: MT197 |Clock constraints cover only FF-to-FF paths associated with the clock..
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 10.252
+
+                   Requested     Estimated     Requested     Estimated                Clock        Clock                
+Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group                
+------------------------------------------------------------------------------------------------------------------------
+MOD_t|CLK          43.1 MHz      77.4 MHz      23.177        12.925        10.252     inferred     Autoconstr_clkgroup_0
+========================================================================================================================
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks                |    rise  to  rise    |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+-------------------------------------------------------------------------------------------------------------
+Starting   Ending     |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
+-------------------------------------------------------------------------------------------------------------
+MOD_t|CLK  MOD_t|CLK  |  23.177      10.252  |  No paths    -      |  No paths    -      |  No paths    -    
+=============================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+		No IO constraint found 
+
+
+
+====================================
+Detailed Report for Clock: MOD_t|CLK
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                             Starting                                              Arrival           
+Instance                     Reference     Type     Pin     Net                    Time        Slack 
+                             Clock                                                                   
+-----------------------------------------------------------------------------------------------------
+PRO_MAP_p_3.pro_state[4]     MOD_t|CLK     DFN1     Q       pro_state[4]           0.483       10.252
+TIMER_t_p_3_LOCKed           MOD_t|CLK     DFN1     Q       TIMER_t_p_3_LOCKed     0.483       10.279
+TIMER_t_p_3_GD               MOD_t|CLK     DFN1     Q       TIMER_t_p_3_GD         0.483       10.357
+TIMER_t_p_0_LOCKed           MOD_t|CLK     DFN1     Q       TIMER_t_p_0_LOCKed     0.483       10.546
+PRO_MAP_p_1.pro_state[4]     MOD_t|CLK     DFN1     Q       pro_state[4]           0.483       10.628
+PRO_MAP_p_0.pro_state[4]     MOD_t|CLK     DFN1     Q       pro_state[4]           0.483       10.705
+TIMER_t_p_2_LOCKed           MOD_t|CLK     DFN1     Q       TIMER_t_p_2_LOCKed     0.483       10.723
+TIMER_t_p_0_GD               MOD_t|CLK     DFN1     Q       TIMER_t_p_0_GD         0.483       10.810
+TIMER_t_main_GD              MOD_t|CLK     DFN1     Q       TIMER_t_main_GD        0.483       10.818
+PRO_MAP_p_2.pro_state[4]     MOD_t|CLK     DFN1     Q       pro_state[4]           0.483       10.884
+=====================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                       Starting                                                              Required           
+Instance               Reference     Type     Pin     Net                                    Time         Slack 
+                       Clock                                                                                    
+----------------------------------------------------------------------------------------------------------------
+TIMER_t_COUNTER[3]     MOD_t|CLK     DFN1     D       N_38                                   22.867       10.252
+TIMER_t_COUNTER[4]     MOD_t|CLK     DFN1     D       N_40                                   22.867       10.252
+TIMER_t_COUNTER[2]     MOD_t|CLK     DFN1     D       N_36                                   22.867       10.965
+TIMER_t_COUNTER[1]     MOD_t|CLK     DFN1     D       N_33                                   22.867       12.054
+TIMER_t_COUNTER[0]     MOD_t|CLK     DFN1     D       TIMER_t_SCHED.TIMER_t_COUNTER_9[0]     22.867       13.229
+TIMER_t_p_0_LOCKed     MOD_t|CLK     DFN1     D       TIMER_t_p_0_LOCKed_1_0_a2              22.767       14.858
+TIMER_t_p_1_LOCKed     MOD_t|CLK     DFN1     D       TIMER_t_p_1_LOCKed_1_0_a2              22.767       14.858
+REG_d[0]               MOD_t|CLK     DFN1     D       REG_d_1_0_a2[0]                        22.767       14.889
+TIMER_t_p_2_LOCKed     MOD_t|CLK     DFN1     D       TIMER_t_p_2_LOCKed_1_0_a2              22.767       14.952
+REG_d[2]               MOD_t|CLK     DFN1     D       REG_d_1_0_a2[2]                        22.767       14.999
+================================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+    Requested Period:                        23.177
+    - Setup time:                            0.310
+    = Required time:                         22.867
+
+    - Propagation time:                      12.616
+    = Slack (critical) :                     10.252
+
+    Number of logic level(s):                10
+    Starting point:                          PRO_MAP_p_3.pro_state[4] / Q
+    Ending point:                            TIMER_t_COUNTER[4] / D
+    The start point is clocked by            MOD_t|CLK [rising] on pin CLK
+    The end   point is clocked by            MOD_t|CLK [rising] on pin CLK
+
+Instance / Net                                                  Pin      Pin               Arrival     No. of    
+Name                                                  Type      Name     Dir     Delay     Time        Fan Out(s)
+-----------------------------------------------------------------------------------------------------------------
+PRO_MAP_p_3.pro_state[4]                              DFN1      Q        Out     0.483     0.483       -         
+pro_state[4]                                          Net       -        -       0.841     -           4         
+TIMER_t_SCHED.un4_timer_t_p_3_await_0_o2              OR3B      A        In      -         1.324       -         
+TIMER_t_SCHED.un4_timer_t_p_3_await_0_o2              OR3B      Y        Out     0.394     1.719       -         
+N_121                                                 Net       -        -       0.655     -           3         
+TIMER_t_main_GD_0_0_o2_0                              NOR2B     B        In      -         2.374       -         
+TIMER_t_main_GD_0_0_o2_0                              NOR2B     Y        Out     0.466     2.840       -         
+TIMER_t_main_GD_0_0_o2_0                              Net       -        -       0.655     -           3         
+un2_timer_t_main_start_i_o2_0                         NOR2B     B        In      -         3.495       -         
+un2_timer_t_main_start_i_o2_0                         NOR2B     Y        Out     0.466     3.961       -         
+un2_timer_t_main_start_i_o2_0                         Net       -        -       0.279     -           1         
+un2_timer_t_main_start_i_o2                           OR2B      A        In      -         4.240       -         
+un2_timer_t_main_start_i_o2                           OR2B      Y        Out     0.389     4.629       -         
+N_126                                                 Net       -        -       0.841     -           4         
+TIMER_t_COUNTER_1_sqmuxa_1_0_a2                       OR3C      C        In      -         5.470       -         
+TIMER_t_COUNTER_1_sqmuxa_1_0_a2                       OR3C      Y        Out     0.491     5.962       -         
+TIMER_t_COUNTER_1_sqmuxa_1                            Net       -        -       1.939     -           12        
+un1_TIMER_t_COUNTER_1.I_1                             AND2      B        In      -         7.901       -         
+un1_TIMER_t_COUNTER_1.I_1                             AND2      Y        Out     0.466     8.367       -         
+un1_TIMER_t_COUNTER_1.DWACT_ADD_CI_0_TMP[0]           Net       -        -       0.469     -           2         
+un1_TIMER_t_COUNTER_1.I_27                            AO1       B        In      -         8.836       -         
+un1_TIMER_t_COUNTER_1.I_27                            AO1       Y        Out     0.434     9.270       -         
+un1_TIMER_t_COUNTER_1.DWACT_ADD_CI_0_g_array_1[0]     Net       -        -       0.655     -           3         
+un1_TIMER_t_COUNTER_1.I_23                            AO1       B        In      -         9.925       -         
+un1_TIMER_t_COUNTER_1.I_23                            AO1       Y        Out     0.434     10.359      -         
+un1_TIMER_t_COUNTER_1.DWACT_ADD_CI_0_g_array_2[0]     Net       -        -       0.279     -           1         
+un1_TIMER_t_COUNTER_1.I_22                            XOR2      B        In      -         10.638      -         
+un1_TIMER_t_COUNTER_1.I_22                            XOR2      Y        Out     0.691     11.329      -         
+I_22                                                  Net       -        -       0.279     -           1         
+TIMER_t_SCHED.TIMER_t_COUNTER_9_i[4]                  OA1B      B        In      -         11.608      -         
+TIMER_t_SCHED.TIMER_t_COUNTER_9_i[4]                  OA1B      Y        Out     0.729     12.337      -         
+N_40                                                  Net       -        -       0.279     -           1         
+TIMER_t_COUNTER[4]                                    DFN1      D        In      -         12.616      -         
+=================================================================================================================
+Total path delay (propagation time + setup) of 12.925 is 5.754(44.5%) logic and 7.171(55.5%) route.
+
+
+
+##### END OF TIMING REPORT #####]
+
+--------------------------------------------------------------------------------
+Report for cell MOD_t.main
+  Core Cell usage:
+              cell count     area count*area
+              AND2     5      1.0        5.0
+               AO1     9      1.0        9.0
+              AO1A     5      1.0        5.0
+              AO1B     2      1.0        2.0
+              AO1C     2      1.0        2.0
+              AO1D     3      1.0        3.0
+              AOI1     6      1.0        6.0
+             AOI1B     2      1.0        2.0
+            CLKINT     1      0.0        0.0
+               GND     6      0.0        0.0
+               MX2     4      1.0        4.0
+              MX2B     2      1.0        2.0
+              MX2C     4      1.0        4.0
+              NOR2    12      1.0       12.0
+             NOR2A    19      1.0       19.0
+             NOR2B    19      1.0       19.0
+              NOR3    13      1.0       13.0
+             NOR3A    11      1.0       11.0
+             NOR3B    11      1.0       11.0
+             NOR3C     3      1.0        3.0
+               OA1     1      1.0        1.0
+              OA1A     1      1.0        1.0
+              OA1B    16      1.0       16.0
+              OA1C     7      1.0        7.0
+              OAI1     3      1.0        3.0
+               OR2    10      1.0       10.0
+              OR2A    15      1.0       15.0
+              OR2B     7      1.0        7.0
+               OR3     3      1.0        3.0
+              OR3A     7      1.0        7.0
+              OR3B    10      1.0       10.0
+              OR3C     5      1.0        5.0
+               VCC     6      0.0        0.0
+              XA1B    16      1.0       16.0
+              XA1C     3      1.0        3.0
+              XOR2    12      1.0       12.0
+
+
+              DFN1    74      1.0       74.0
+            DFN1E0    20      1.0       20.0
+                   -----          ----------
+             TOTAL   355               342.0
+
+
+  IO Cell usage:
+              cell count
+            CLKBUF     1
+             INBUF     1
+            OUTBUF     4
+                   -----
+             TOTAL     6
+
+
+Core Cells         : 342 of 128072 (0%)
+IO Cells           : 6
+
+RAM/ROM Usage Summary
+Block Rams : 0 of 8 (0%)
+
+Mapper successful!
+Process took 0h:00m:03s realtime, 0h:00m:02s cputime
+# Thu Feb 26 15:45:06 2009
+
+###########################################################]

@@ -1,0 +1,75 @@
+#
+#
+# 
+# Fri Dec 19 11:31:38 2008
+set bubble_tristates FALSE
+load_library sxlib
+read -dont_elaborate  { /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl }
+pd
+load_library sxlib
+read -technology "sxlib"  { /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 
+pd
+optimize .work.par_FUN_parity1.main -target sxlib -macro -area -effort quick -hierarchy auto 
+optimize_timing .work.par_FUN_parity1.main 
+report_area -cell_usage -all_leafs 
+set report_delay_slack_threshold 0.000000
+report_delay  -num_paths 1 -critical_paths -clock_frequency
+set novendor_constraint_file FALSE
+auto_write par_FUN_parity1.vhd
+load_library sxlib
+read -technology "sxlib"  { /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity2.vhdl }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 
+pd
+optimize .work.par_FUN_parity2.main -target sxlib -macro -area -effort quick -hierarchy auto 
+optimize_timing .work.par_FUN_parity2.main 
+report_area -cell_usage -all_leafs 
+report_delay  -num_paths 1 -critical_paths -clock_frequency
+set novendor_constraint_file FALSE
+auto_write par_FUN_parity2.vhd
+load_library sxlib
+read -technology "sxlib"  { /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity3.vhdl }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 
+pd
+optimize .work.par_FUN_parity3.main -target sxlib -macro -area -effort quick -hierarchy auto 
+optimize_timing .work.par_FUN_parity3.main 
+report_area -cell_usage -all_leafs 
+report_delay  -num_paths 1 -critical_paths -clock_frequency
+set novendor_constraint_file FALSE
+auto_write par_FUN_parity3.vhd
+load_library sxlib
+read -technology "sxlib"  { /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity4.vhdl }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 
+pd
+optimize .work.par_FUN_parity4.main -target sxlib -macro -area -effort quick -hierarchy auto 
+optimize_timing .work.par_FUN_parity4.main 
+report_area -cell_usage -all_leafs 
+report_delay  -num_paths 1 -critical_paths -clock_frequency
+set novendor_constraint_file FALSE
+auto_write par_FUN_parity4.vhd
+load_library sxlib
+read -technology "sxlib"  { /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity5.vhdl }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 
+pd
+optimize .work.par_FUN_parity5.main -target sxlib -macro -area -effort quick -hierarchy auto 
+optimize_timing .work.par_FUN_parity5.main 
+report_area -cell_usage -all_leafs 
+report_delay  -num_paths 1 -critical_paths -clock_frequency
+set novendor_constraint_file FALSE
+auto_write par_FUN_parity5.vhd
+load_library sxlib
+read -technology "sxlib"  { /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity6.vhdl }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 
+pd
+optimize .work.par_FUN_parity6.main -target sxlib -macro -area -effort quick -hierarchy auto 
+optimize_timing .work.par_FUN_parity6.main 
+report_area -cell_usage -all_leafs 
+report_delay  -num_paths 1 -critical_paths -clock_frequency
+set novendor_constraint_file FALSE
+auto_write par_FUN_parity6.vhd

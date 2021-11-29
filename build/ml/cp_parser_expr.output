@@ -1,0 +1,580 @@
+   0  $accept : %entry% $end
+
+   1  main : expr EOI
+
+   2  expr : expr PLUS expr
+   3       | MINUS expr
+   4       | expr MINUS expr
+   5       | expr TIMES expr
+   6       | expr DIVI expr
+   7       | expr EQ expr
+   8       | expr LT expr
+   9       | expr GT expr
+  10       | expr LEQ expr
+  11       | expr GEQ expr
+  12       | expr NEQ expr
+  13       | LPAREN expr RPAREN
+  14       | element
+
+  15  element : element U_NS
+  16          | element U_US
+  17          | IDENT
+  18          | PARAM
+  19          | STRING
+
+  20  %entry% : '\001' main
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . main  (20)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	main  goto 8
+	expr  goto 9
+	element  goto 10
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	element : STRING .  (19)
+
+	.  reduce 19
+
+
+state 4
+	element : IDENT .  (17)
+
+	.  reduce 17
+
+
+state 5
+	element : PARAM .  (18)
+
+	.  reduce 18
+
+
+state 6
+	expr : LPAREN . expr RPAREN  (13)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 11
+	element  goto 10
+
+
+state 7
+	expr : MINUS . expr  (3)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 12
+	element  goto 10
+
+
+state 8
+	%entry% : '\001' main .  (20)
+
+	.  reduce 20
+
+
+state 9
+	main : expr . EOI  (1)
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	EOI  shift 13
+	EQ  shift 14
+	NEQ  shift 15
+	LT  shift 16
+	GT  shift 17
+	LEQ  shift 18
+	GEQ  shift 19
+	PLUS  shift 20
+	MINUS  shift 21
+	TIMES  shift 22
+	DIVI  shift 23
+	.  error
+
+
+state 10
+	expr : element .  (14)
+	element : element . U_NS  (15)
+	element : element . U_US  (16)
+
+	U_NS  shift 24
+	U_US  shift 25
+	EOI  reduce 14
+	RPAREN  reduce 14
+	EQ  reduce 14
+	NEQ  reduce 14
+	LT  reduce 14
+	GT  reduce 14
+	LEQ  reduce 14
+	GEQ  reduce 14
+	PLUS  reduce 14
+	MINUS  reduce 14
+	TIMES  reduce 14
+	DIVI  reduce 14
+
+
+state 11
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+	expr : LPAREN expr . RPAREN  (13)
+
+	RPAREN  shift 26
+	EQ  shift 14
+	NEQ  shift 15
+	LT  shift 16
+	GT  shift 17
+	LEQ  shift 18
+	GEQ  shift 19
+	PLUS  shift 20
+	MINUS  shift 21
+	TIMES  shift 22
+	DIVI  shift 23
+	.  error
+
+
+state 12
+	expr : expr . PLUS expr  (2)
+	expr : MINUS expr .  (3)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	EQ  shift 14
+	NEQ  shift 15
+	LT  shift 16
+	GT  shift 17
+	LEQ  shift 18
+	GEQ  shift 19
+	TIMES  shift 22
+	DIVI  shift 23
+	EOI  reduce 3
+	RPAREN  reduce 3
+	PLUS  reduce 3
+	MINUS  reduce 3
+
+
+state 13
+	main : expr EOI .  (1)
+
+	.  reduce 1
+
+
+state 14
+	expr : expr EQ . expr  (7)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 27
+	element  goto 10
+
+
+state 15
+	expr : expr NEQ . expr  (12)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 28
+	element  goto 10
+
+
+state 16
+	expr : expr LT . expr  (8)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 29
+	element  goto 10
+
+
+state 17
+	expr : expr GT . expr  (9)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 30
+	element  goto 10
+
+
+state 18
+	expr : expr LEQ . expr  (10)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 31
+	element  goto 10
+
+
+state 19
+	expr : expr GEQ . expr  (11)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 32
+	element  goto 10
+
+
+state 20
+	expr : expr PLUS . expr  (2)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 33
+	element  goto 10
+
+
+state 21
+	expr : expr MINUS . expr  (4)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 34
+	element  goto 10
+
+
+state 22
+	expr : expr TIMES . expr  (5)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 35
+	element  goto 10
+
+
+state 23
+	expr : expr DIVI . expr  (6)
+
+	STRING  shift 3
+	IDENT  shift 4
+	PARAM  shift 5
+	LPAREN  shift 6
+	MINUS  shift 7
+	.  error
+
+	expr  goto 36
+	element  goto 10
+
+
+state 24
+	element : element U_NS .  (15)
+
+	.  reduce 15
+
+
+state 25
+	element : element U_US .  (16)
+
+	.  reduce 16
+
+
+state 26
+	expr : LPAREN expr RPAREN .  (13)
+
+	.  reduce 13
+
+
+state 27
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr EQ expr .  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	.  reduce 7
+
+
+state 28
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+	expr : expr NEQ expr .  (12)
+
+	.  reduce 12
+
+
+state 29
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr LT expr .  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	.  reduce 8
+
+
+state 30
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr GT expr .  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	.  reduce 9
+
+
+state 31
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr LEQ expr .  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	.  reduce 10
+
+
+state 32
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr GEQ expr .  (11)
+	expr : expr . NEQ expr  (12)
+
+	.  reduce 11
+
+
+state 33
+	expr : expr . PLUS expr  (2)
+	expr : expr PLUS expr .  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	EQ  shift 14
+	NEQ  shift 15
+	LT  shift 16
+	GT  shift 17
+	LEQ  shift 18
+	GEQ  shift 19
+	TIMES  shift 22
+	DIVI  shift 23
+	EOI  reduce 2
+	RPAREN  reduce 2
+	PLUS  reduce 2
+	MINUS  reduce 2
+
+
+state 34
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr MINUS expr .  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	EQ  shift 14
+	NEQ  shift 15
+	LT  shift 16
+	GT  shift 17
+	LEQ  shift 18
+	GEQ  shift 19
+	TIMES  shift 22
+	DIVI  shift 23
+	EOI  reduce 4
+	RPAREN  reduce 4
+	PLUS  reduce 4
+	MINUS  reduce 4
+
+
+state 35
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr TIMES expr .  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	EQ  shift 14
+	NEQ  shift 15
+	LT  shift 16
+	GT  shift 17
+	LEQ  shift 18
+	GEQ  shift 19
+	EOI  reduce 5
+	RPAREN  reduce 5
+	PLUS  reduce 5
+	MINUS  reduce 5
+	TIMES  reduce 5
+	DIVI  reduce 5
+
+
+state 36
+	expr : expr . PLUS expr  (2)
+	expr : expr . MINUS expr  (4)
+	expr : expr . TIMES expr  (5)
+	expr : expr . DIVI expr  (6)
+	expr : expr DIVI expr .  (6)
+	expr : expr . EQ expr  (7)
+	expr : expr . LT expr  (8)
+	expr : expr . GT expr  (9)
+	expr : expr . LEQ expr  (10)
+	expr : expr . GEQ expr  (11)
+	expr : expr . NEQ expr  (12)
+
+	EQ  shift 14
+	NEQ  shift 15
+	LT  shift 16
+	GT  shift 17
+	LEQ  shift 18
+	GEQ  shift 19
+	EOI  reduce 6
+	RPAREN  reduce 6
+	PLUS  reduce 6
+	MINUS  reduce 6
+	TIMES  reduce 6
+	DIVI  reduce 6
+
+
+25 terminals, 5 nonterminals
+21 grammar rules, 37 states

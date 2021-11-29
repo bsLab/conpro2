@@ -1,0 +1,37 @@
+  signal debug: out std_logic_vector(7 downto 0)
+  -- debug(0) <= QUEUE_q_lcd1_tx_LOCKED;
+  debug(0) <= RAM_ru_WE;
+  debug(1) <= RAM_ru_RE;
+  debug(2) <= RAM_ru_CS;
+  debug(3) <= RAM_ru_READ;
+  debug(4) <= RAM_ru_WRITE;
+  debug(5) <= RAM_ru_interp_RE;
+  debug(6) <= RAM_ru_BUSY;
+  debug(7) <= RAM_ru_interp_LOCKed;
+
+  debug(0) <= TIMER_eth_res_timer_ENABLED;
+  debug(1) <= MEM_eth_READ;
+  debug(2) <= MEM_eth_WRITE;
+  debug(3) <= MEM_eth_BUSY;
+  debug(4) <= MEM_eth_RE;
+  debug(5) <= MEM_eth_eth_svr_RE;
+  debug(6) <= MEM_eth_READ_DATA(5);
+  debug(7) <= MEM_eth_DB_RD(5);
+
+  debug(0) <= MEM_eth_RE;
+  debug(1) <= MEM_eth_WE;
+  debug(2) <= dev_eth_db(5);
+  debug(3) <= dev_eth_db(6);
+  debug(4) <= MEM_eth_READ_DATA(5);
+  debug(5) <= dev_eth_addr(4);
+  debug(6) <= dev_eth_addr(5);
+  debug(7) <= dev_eth_addr(6);
+
+  debug(0) <= MEM_eth_RE;
+  debug(1) <= MEM_eth_WE;
+  debug(2) <= MEM_eth_ADDR_DATA(4);
+  debug(3) <= MEM_eth_ADDR_DATA(5);
+  debug(4) <= MEM_eth_ADDR_DATA(6);
+  debug(5) <= MEM_eth_eth_svr_ADDR(4);
+  debug(6) <= MEM_eth_eth_svr_ADDR(5);
+  debug(7) <= MEM_eth_eth_svr_ADDR(6);

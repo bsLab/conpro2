@@ -1,0 +1,2817 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<840fd9a4> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+TDI: Opening tools file <tools>...
+  Searching tools file <tools.def>...
+  Opening tools file </opt/Conpro2/toolset/tools.def>...
+  Info [line 5]: Added synthesis tool defintion <generic>, version 1.03.
+  Info [line 26]: Added synthesis tool defintion <xilinx6>, version 1.03.
+  Info [line 171]: Added synthesis tool defintion <xilinx9>, version 1.03.
+  Info [line 316]: Added synthesis tool defintion <alliance>, version 1.03.
+  Info [line 339]: Added synthesis tool defintion <leonardo>, version 1.03.
+  Info [line 380]: Added synthesis tool defintion <actel>, version 1.03.
+  Info [line 403]: Added synthesis tool defintion <synplicity89>, version 1.03.
+  Info [line 426]: Added synthesis tool defintion <synplicity89_xilinx6>, version 1.03.
+TDI: Opening tool <leonardo>...
+  Searching tool file <leonardo.tool>...
+  Opening tool file </opt/Conpro2/toolset/leonardo.tool>...
+Searching Conpro file <e.cp>...
+Opening file <e.cp>...
+Compiling module <e>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [line 9]: Analyzing process <p1>...
+      Analyzing process <p1>...
+    Info [line 29]: Analyzing process <p2>...
+      Analyzing process <p2>...
+    Info [line 43]: Analyzing process <main>...
+      Analyzing process <main>...
+  Performing program graph transformations and optimization for module <E>...
+    in process <p1>...
+      Performing program transformations for process <p1>...
+      Resolving object dependencies for process <p1>...
+    in process <p2>...
+      Performing program transformations for process <p2>...
+      Resolving object dependencies for process <p2>...
+    in process <main>...
+      Performing program transformations for process <main>...
+      Resolving object dependencies for process <main>...
+  Resolving object dependencies for process <MOD_E>...
+  Found 12 primary toplevel symbols.
+  Found 3 processes.
+  Found 0 shared function blocks.
+Synthesizing main module <E>...
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <E.p1>
+        Removed 0 instructions(s).
+      in process <E.p2>
+        Removed 0 instructions(s).
+      in process <E.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      ... in process <p1> ...
+      ... in process <p2> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <E.p1>
+        Removed 0 operand(s).
+      in process <E.p2>
+        Removed 0 operand(s).
+      in process <E.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 0.
+  Resolving object guards...
+    Found 1 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+    Performing post-analysis transformations for process <p1>...
+    Performing post-analysis transformations for process <p2>...
+    Performing post-analysis transformations for process <main>...
+  Synthesizing process instructions...
+    in process <E.p1>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p1>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p1>...
+      Post type alignment of expressions for process <p1>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p1>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p1>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p1>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 5 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p1>...
+        13 states created.
+      Calculating block frame time estimations for process <p1>...
+    in process <E.p2>...
+      Warning [line 39]: Found raise of uncaught exception in process <p2>.
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p2>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p2>...
+      Post type alignment of expressions for process <p2>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p2>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p2>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p2>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 4 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p2>...
+        10 states created.
+      Calculating block frame time estimations for process <p2>...
+    in process <E.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Post type alignment of expressions for process <main>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 6 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        12 states created.
+      Calculating block frame time estimations for process <main>...
+  Creating entity <e_p1>...
+    Emitting state list for process <p1>...
+    Emitting state machine for process <p1>...
+    Port width: 30 bits
+  Creating entity <e_p2>...
+    Emitting state list for process <p2>...
+    Emitting state machine for process <p2>...
+    Port width: 22 bits
+  Creating entity <e_main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 42 bits
+  Creating entity <e>...
+    Creating global register <PRO_p1_EXCEPTION> [DT_int 8, scheduler=PRIOstat #rd=1 #wr=1]...
+    Creating global register <jg> [DT_int 8, scheduler=PRIOstat #rd=0 #wr=3]...
+    Creating global register <PRO_p2_EXCEPTION> [DT_int 8, scheduler=PRIOstat #rd=1 #wr=1]...
+    Creating global register <PRO_main_EXCEPTION> [DT_int 8, scheduler=PRIOstat #rd=1 #wr=1]...
+  Emitting MicroCode for module E...
+  Emitting object file for module E...
+  Emitting MicroCode for process p1...
+  Emitting MicroCode for process p2...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.p1>: emitting MicroCode for process <p1>.
+  UCI <ucode.uci_out.p2>: emitting MicroCode for process <p2>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+Info : Emitting block frame informations in file <e.ft>...
+TDI [Tool leonardo.root]#new_obj: creating object <e>...
+TDI [Tool leonardo.e]#compile_all: Initializing tool ...
+  TDI [Tool leonardo.e]: found #version 2.05...
+  TDI [Tool leonardo.e]: compiling #parameter section...
+    TDI [Tool leonardo.e]: Parameter <encoding> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <simu_period> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <simu_res> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <reset_state> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <reset_state> not found. Using default value.
+  TDI [Tool leonardo.e]: compiling #parameter section...
+  TDI [Tool leonardo.e]: compiling function <check>...
+  TDI [Tool leonardo.e]: compiling function <init>...
+  TDI [Tool leonardo.e]: compiling function <finish>...
+  TDI [Tool leonardo.e]: compiling function <do_patc>...
+    TDI [Tool leonardo.e]: Parameter <simu_period> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <simu_res> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.e]: Parameter <reset_state> not found. Using default value.
+  TDI [Tool leonardo.e]: compiling function <do_scram>...
+  TDI [Tool leonardo.e]: compiling function <do_synth>...
+    TDI [Tool leonardo.e]: Parameter <encoding> not found. Using default value.
+  TDI [Tool leonardo.e]: compiling function <do_vst>...
+  TDI [Tool leonardo.e]: compiling function <do_pat>...
+  TDI [Tool leonardo.e]: compiling function <do_asimut>...
+  TDI [Tool leonardo.e]: compiling function <do_xpat>...
+  TDI [Tool leonardo.e]: compiling target <init>...
+  TDI [Tool leonardo.e]: compiling target <vhdl>...
+  TDI [Tool leonardo.e]: compiling target <synth>...
+  TDI [Tool leonardo.e]: compiling target <simu>...
+  TDI [Tool leonardo.e]: compiling target <xpat>...
+  TDI [Tool leonardo.e]: compiling target <patc>...
+TDI [Tool leonardo.e]#compiler_all: Compiling tool ...
+  TDI [Tool leonardo.e]#emit: Creating build script <e.leonardo.tool.sh>...
+    TDI [Tool leonardo.e]: Environment is:
+      PWD=[$],
+      TOP=[$proj],
+      VHD2=[$],
+      LOG=[($TOP) + (".log")],
+      SRCDIR=["."],
+      SCRAM=[$],
+      clock=["10000000"],
+      vhdl=[|"e",
+             "e_p1",
+             "e_p2",
+             "e_main"|],
+      LEONARDO_TOP=[$],
+      MBK_CATA_LIB=[$],
+      CLOCK_EDGE_NEG=[$],
+      CLOCK_EDGE=[get_opt()],
+      VHDL=[|$|],
+      SXLIB_COMP=[$],
+      CELLS=[$],
+      DUP=["tee"],
+      RESET_STATE=[get_opt()],
+      LIBRARY=["sxlib"],
+      SIM_CYCLES=[get_opt()],
+      period=["100"],
+      PATH=[$],
+      ENCODING=[get_opt()],
+      DESIGN=[$proj],
+      port=[|"jg_RD:out:std_logic_vector:7 downto 0",
+             "CLK:in:std_logic",
+             "RESET:in:std_logic"|],
+      ALLIANCE_TOP=[$],
+      RESET_STATE_NEG=[$],
+      EXEMPLAR=[$],
+      SPECTRUM=[$],
+      proj=["e"],
+      res=[$],
+      OBJDIR=["obj"],
+      BIN=[$],
+      SIM_PERIOD=[get_opt()],
+      SIM_RES=[get_opt()],
+      simu_cycles=["50"]
+Total CPU time consumed: 0.8 seconds.
+Total time elapsed: 0.0 seconds.
+  
+  +---------------------------- SYNTHESIS SUMMARY ----------------------------+
+  +---------------------------------------------------------------------------+
+  | DESCRIPTION                                  VALUE                        |
+  +---------------------------------------------------------------------------+
+  | arithmetic unit                              11                           |
+  |  -> adder                                    (4)                          |
+  |  -> comparator                               (7)                          |
+  | process                                      3                            |
+  | process.main                                                              |
+  |  -> port-width [bit]                         42                           |
+  |  -> states                                   12                           |
+  | process.p1                                                                |
+  |  -> port-width [bit]                         30                           |
+  |  -> register                                 2                            |
+  |  -> states                                   13                           |
+  | process.p2                                                                |
+  |  -> port-width [bit]                         22                           |
+  |  -> register                                 2                            |
+  |  -> states                                   10                           |
+  | register-local                               4                            |
+  |  -> signed(4 downto 0)                       (2)                          |
+  |  -> signed(7 downto 0)                       (2)                          |
+  | register-shared                              4                            |
+  |  -> signed(7 downto 0)                       (4)                          |
+  | synthesis time [sec]                                                      |
+  +---------------------------------------------------------------------------+
+  
+[/export/home/leonardo/bin/spectrum -f e.tcl]
+/export/home/leonardo/bin/SunOS5/spectrum -f e.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/demo/exceptions/out/obj'
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/leonardo/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/leonardo/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_main.vhdl into library work
+-- Reading file /export/home/leonardo/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/leonardo/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/leonardo/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/leonardo/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading entity e_main into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_main.vhdl",line 41: Info, Enumerated type pro_states with 12 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+   S_main_start  0000
+    S_i1_assign  0001
+       S_i2_fun  0010
+       S_i9_fun  0011
+     S_i9_fun_1  -100
+     S_i9_fun_2  -101
+    S_i4_select  -110
+    S_i5_assign  -111
+    S_i6_assign  1000
+    S_i7_assign  1001
+    S_i8_assign  1010
+     S_main_end  1011
+
+-- Loading architecture main of e_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl into library work
+-- Loading entity e_p2 into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl",line 37: Info, Enumerated type pro_states with 10 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+     S_p2_start  0000
+    S_i1_assign  0001
+  S_i2_for_loop  -010
+S_i2_for_loop_cond  -011
+    S_i3_assign  -100
+    S_i4_branch  -101
+     S_i5_raise  -110
+S_i2_for_loop_incr  -111
+    S_i7_assign  1000
+       S_p2_end  1001
+
+-- Loading architecture main of e_p2 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl into library work
+-- Loading entity e_p1 into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl",line 38: Info, Enumerated type pro_states with 13 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+     S_p1_start  0000
+    S_i5_assign  0001
+  S_i6_for_loop  0010
+S_i6_for_loop_cond  0011
+    S_i7_assign  0100
+    S_i8_branch  -101
+     S_i9_raise  -110
+S_i6_for_loop_incr  -111
+   S_i11_assign  1000
+    S_i2_select  1001
+    S_i3_assign  1010
+    S_i4_assign  1011
+       S_p1_end  1100
+
+-- Loading architecture main of e_p1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e.vhdl into library work
+-- Loading entity MOD_e into library work
+-- Loading architecture main of MOD_e into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e.vhdl",line 93: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e.vhdl",line 99: Warning, signal PRO_p1_END is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_main.vhdl into library work
+-- Loading entity e_main into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_main.vhdl",line 17: Warning, replacing e_main in HDL library work.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_main.vhdl",line 41: Info, Enumerated type pro_states with 12 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+   S_main_start  0000
+    S_i1_assign  0001
+       S_i2_fun  0010
+       S_i9_fun  0011
+     S_i9_fun_1  -100
+     S_i9_fun_2  -101
+    S_i4_select  -110
+    S_i5_assign  -111
+    S_i6_assign  1000
+    S_i7_assign  1001
+    S_i8_assign  1010
+     S_main_end  1011
+
+-- Loading architecture main of e_main into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_main.vhdl",line 37: Warning, replacing main of entity e_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl into library work
+-- Loading entity e_p2 into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl",line 17: Warning, replacing e_p2 in HDL library work.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl",line 37: Info, Enumerated type pro_states with 10 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+     S_p2_start  0000
+    S_i1_assign  0001
+  S_i2_for_loop  -010
+S_i2_for_loop_cond  -011
+    S_i3_assign  -100
+    S_i4_branch  -101
+     S_i5_raise  -110
+S_i2_for_loop_incr  -111
+    S_i7_assign  1000
+       S_p2_end  1001
+
+-- Loading architecture main of e_p2 into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl",line 31: Warning, replacing main of entity e_p2.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl into library work
+-- Loading entity e_p1 into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl",line 17: Warning, replacing e_p1 in HDL library work.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl",line 38: Info, Enumerated type pro_states with 13 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+     S_p1_start  0000
+    S_i5_assign  0001
+  S_i6_for_loop  0010
+S_i6_for_loop_cond  0011
+    S_i7_assign  0100
+    S_i8_branch  -101
+     S_i9_raise  -110
+S_i6_for_loop_incr  -111
+   S_i11_assign  1000
+    S_i2_select  1001
+    S_i3_assign  1010
+    S_i4_assign  1011
+       S_p1_end  1100
+
+-- Loading architecture main of e_p1 into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl",line 32: Warning, replacing main of entity e_p1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e.vhdl into library work
+-- Loading entity MOD_e into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e.vhdl",line 17: Warning, replacing MOD_e in HDL library work.
+-- Loading architecture main of MOD_e into library work
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e.vhdl",line 93: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e.vhdl",line 99: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e.vhdl",line 25: Warning, replacing main of entity MOD_e.
+-- Compiling root entity MOD_e(main)
+-- Compiling entity e_p1(main)
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl",line 53: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl",line 54: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Compiling entity e_p2(main)
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl",line 49: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl",line 50: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Compiling entity e_main(main)
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_main.vhdl",line 55: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_main.vhdl",line 56: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Boundary optimization.
+-- Boundary optimization.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.e_p1.main_unfold_1173
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl", line 232:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sload_sclear_clock_clk_en_5'
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p1.vhdl", line 226:Info, Inferred counter instance 'j' of type 'counter_up_cnt_en_sclear_clock_clk_en_6'
+-- Start pre-optimization for design .work.e_p2.main_unfold_1174
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl", line 205:Info, Inferred counter instance 'LOOP_i_1' of type 'counter_up_sload_sclear_clock_clk_en_5'
+"/home/sbosse/proj/conpro2/demo/exceptions/out/obj/../e_p2.vhdl", line 199:Info, Inferred counter instance 'j' of type 'counter_up_cnt_en_sclear_clock_clk_en_6'
+-- Start pre-optimization for design .work.e_main.main_unfold_1369
+-- Start pre-optimization for design .work.MOD_e.main
+-- Start pre-optimization for design .work.e_p1.main_unfold_1173
+-- Start pre-optimization for design .work.e_p2.main_unfold_1174
+-- Start pre-optimization for design .work.e_main.main_unfold_1369
+-- Start pre-optimization for design .work.MOD_e.main
+-- Optimizing netlist .work.MOD_e.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_e.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_e    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib     2 x      2      3 gates
+a4_x2           sxlib     1 x      2      2 gates
+an12_x1         sxlib    20 x      2     34 gates
+ao22_x2         sxlib     3 x      2      6 gates
+inv_x1          sxlib    52 x      1     52 gates
+inv_x2          sxlib     1 x      1      1 gates
+inv_x4          sxlib     1 x      1      1 gates
+na2_x1          sxlib     9 x      1     12 gates
+na3_x1          sxlib    13 x      2     22 gates
+na4_x1          sxlib     8 x      2     16 gates
+nao22_x1        sxlib     4 x      2      8 gates
+nao2o22_x1      sxlib     5 x      2     12 gates
+nmx2_x1         sxlib     2 x      2      5 gates
+no2_x1          sxlib    21 x      1     27 gates
+no2_x4          sxlib     1 x      2      2 gates
+no3_x1          sxlib    17 x      2     29 gates
+no4_x1          sxlib     8 x      2     16 gates
+no4_x4          sxlib     1 x      3      3 gates
+noa22_x1        sxlib    16 x      2     32 gates
+noa2a22_x1      sxlib     4 x      2      9 gates
+noa2a2a23_x1    sxlib     1 x      3      3 gates
+noa2ao222_x1    sxlib     5 x      2     12 gates
+nxr2_x1         sxlib     3 x      3      9 gates
+o2_x2           sxlib     4 x      2      7 gates
+o3_x2           sxlib     1 x      2      2 gates
+o4_x2           sxlib     1 x      2      2 gates
+oa22_x2         sxlib     5 x      2     10 gates
+oa2a2a23_x2     sxlib     1 x      4      4 gates
+on12_x1         sxlib    20 x      2     34 gates
+on12_x4         sxlib     3 x      3      8 gates
+sff1_x4         sxlib    23 x      6    138 gates
+sff2_x4         sxlib    31 x      8    248 gates
+xr2_x1          sxlib     2 x      3      6 gates
+zero_x0         sxlib     1 x      1      1 gates
+
+ Number of ports :                      10
+ Number of nets :                      292
+ Number of instances :                 290
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     777
+ Number of accumulated instances :     290
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK                  : 195.7 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                         GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                       0.00 (ideal)
+
+
+PRO_MAP_main_reg_pro_state(1)/q              sff1_x4     0.00  0.65 up             0.17
+ix1977/q                                     on12_x1     0.82  1.47 up             0.13
+ix667/nq                                     inv_x1      0.29  1.76 dn             0.03
+ix523/nq                                     no4_x1      0.83  2.59 up             0.05
+ix529/nq                                     na4_x1      0.85  3.44 dn             0.07
+ix2388/nq                                    inv_x1      0.24  3.68 up             0.03
+ix1961/nq                                    na4_x1      0.45  4.13 dn             0.03
+ix1247/nq                                    na3_x1      0.21  4.35 up             0.02
+reg_REG_jg(0)/i1                             sff2_x4     0.00  4.35 up             0.00
+data arrival time                                              4.35
+
+
+data required time                                          not specified
+----------------------------------------------------------------------------------------
+data required time                                          not specified
+data arrival time                                              4.35
+                                                            ----------
+                                                         unconstrained path
+----------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD e.vhd
+-- Writing file e.vhd
+[/opt/alliance-5.0/bin/vhd2vst -nomod /opt/alliance-5.0/cells/sxlib/sxlib_components.vhd e.vhd]
+Warning: unknown primitive unix_wait.
+Warning: unknown primitive unix_select.
+Warning: unknown primitive unix_sleep.
+Parsing file </opt/alliance-5.0/cells/sxlib/sxlib_components.vhd>...
+Analyzing package <components>...
+Adding package <components>.
+Found 4 tri-state component(s).
+Parsing file <e.vhd>...
+Renaming entity <mod_e> to <e>.
+Analyzing entity <e>...
+  Analyzing port declaration...
+    Found 5 port entries.
+Renaming entity <mod_e> to <e>.
+Analyzing architecture header <main>...
+  Adding local package <ARCH_DECL_main>...
+Analyzing architecture body <main>...
+  Found 298 instructions.
+  Component <na2_x1>: 9
+  Component <buf_x2>: 8
+  Component <oa2a2a23_x2>: 1
+  Component <noa22_x1>: 16
+  Component <o2_x2>: 4
+  Component <sff2_x4>: 31
+  Component <a2_x2>: 2
+  Component <no4_x1>: 8
+  Component <no4_x4>: 1
+  Component <na4_x1>: 8
+  Component <o4_x2>: 1
+  Component <zero_x0>: 1
+  Component <a4_x2>: 1
+  Component <nxr2_x1>: 3
+  Component <xr2_x1>: 2
+  Component <noa2ao222_x1>: 5
+  Component <sff1_x4>: 23
+  Component <no3_x1>: 17
+  Component <an12_x1>: 20
+  Component <nao22_x1>: 4
+  Component <na3_x1>: 13
+  Component <on12_x1>: 20
+  Component <o3_x2>: 1
+  Component <on12_x4>: 3
+  Component <nao2o22_x1>: 5
+  Component <nmx2_x1>: 2
+  Component <ao22_x2>: 3
+  Component <inv_x1>: 52
+  Component <inv_x2>: 1
+  Component <noa2a2a23_x1>: 1
+  Component <inv_x4>: 1
+  Component <no2_x1>: 21
+  Component <noa2a22_x1>: 4
+  Component <no2_x4>: 1
+  Component <oa22_x2>: 5
+Found 4 tri-state component(s).
+Searching mapped bus signals in arch. <main>...
+Emitting VST <e.vst>...
+[/opt/alliance-5.0/bin/genpat e_pat]
+
+             @@@@ @                        @@@@@@@                      
+           @@    @@                          @@   @@               @    
+          @@      @                          @@    @@             @@    
+         @@             @@@@@   @@@ @@@      @@    @@   @@@@      @@    
+         @@            @     @   @@@   @     @@   @@   @@   @   @@@@@@@@
+         @@     @@@@@ @@     @@  @@    @@    @@@@@     @@   @@    @@    
+         @@     @ @@  @@@@@@@@@  @@    @@    @@          @@@@@    @@    
+         @@    @  @@  @@         @@    @@    @@        @@   @@    @@    
+          @@      @@  @@      @  @@    @@    @@       @@    @@    @@    
+           @@    @@    @@    @@  @@    @@    @@       @@   @@@    @@   @
+             @@@@        @@@@   @@@@  @@@@ @@@@@@      @@@@  @@    @@@@ 
+
+                     Procedural GENeration of test PATterns
+
+                  Alliance CAD System 5.0 20060509, genpat 3.1
+                  Copyright (c) 1991-2009,      ASIM/LIP6/UPMC
+                  E-mail        :  alliance-users@asim.lip6.fr
+
+[/opt/alliance-5.0/bin/asimut -bdd e e e_simu]
+
+             @        @@@@ @     @                            @@@@@@@@@@ 
+             @       @    @@    @@@                           @   @@   @ 
+            @@@     @@     @     @                           @    @@    @
+            @@@     @@@              @@@ @@ @@@   @@@  @@@@       @@     
+           @  @@     @@@@     @@@@    @@@ @@  @@   @@    @@       @@     
+           @  @@       @@@@     @@    @@  @@  @@   @@    @@       @@     
+          @    @@        @@@    @@    @@  @@  @@   @@    @@       @@     
+          @@@@@@@   @      @@   @@    @@  @@  @@   @@    @@       @@     
+         @      @@  @@     @@   @@    @@  @@  @@   @@    @@       @@     
+         @      @@  @@@    @    @@    @@  @@  @@   @@   @@@       @@     
+       @@@@    @@@@ @  @@@@   @@@@@@ @@@@ @@@ @@@   @@@@  @@    @@@@@@   
+
+                                A SIMUlation Tool
+
+                 Alliance CAD System 5.0 20060509, asimut v3.02
+                 Copyright (c) 1991...1999-2009, ASIM/LIP6/UPMC
+                 E-mail        :    alliance-users@asim.lip6.fr
+
+	Paris, France, Europe, Earth, Solar system, Milky Way, ...
+initializing ...
+searching `e` ...
+compiling `e` (Structural) ...
+
+flattening the root figure ...
+
+searching `buf_x2` ...
+BEH : Compiling `buf_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `zero_x0` ...
+BEH : Compiling `zero_x0.vbe` (Behaviour) ...
+making BDD ...
+
+searching `inv_x4` ...
+BEH : Compiling `inv_x4.vbe` (Behaviour) ...
+making BDD ...
+
+searching `no4_x4` ...
+BEH : Compiling `no4_x4.vbe` (Behaviour) ...
+making BDD ...
+
+searching `oa2a2a23_x2` ...
+BEH : Compiling `oa2a2a23_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `no2_x4` ...
+BEH : Compiling `no2_x4.vbe` (Behaviour) ...
+making BDD ...
+
+searching `noa2a2a23_x1` ...
+BEH : Compiling `noa2a2a23_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `nao2o22_x1` ...
+BEH : Compiling `nao2o22_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `oa22_x2` ...
+BEH : Compiling `oa22_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `inv_x2` ...
+BEH : Compiling `inv_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `o3_x2` ...
+BEH : Compiling `o3_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `nxr2_x1` ...
+BEH : Compiling `nxr2_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `ao22_x2` ...
+BEH : Compiling `ao22_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `no2_x1` ...
+BEH : Compiling `no2_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `xr2_x1` ...
+BEH : Compiling `xr2_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `no4_x1` ...
+BEH : Compiling `no4_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `nmx2_x1` ...
+BEH : Compiling `nmx2_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `sff1_x4` ...
+BEH : Compiling `sff1_x4.vbe` (Behaviour) ...
+making BDD ...
+
+searching `noa22_x1` ...
+BEH : Compiling `noa22_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `noa2a22_x1` ...
+BEH : Compiling `noa2a22_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `noa2ao222_x1` ...
+BEH : Compiling `noa2ao222_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `na4_x1` ...
+BEH : Compiling `na4_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `nao22_x1` ...
+BEH : Compiling `nao22_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `na2_x1` ...
+BEH : Compiling `na2_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `o4_x2` ...
+BEH : Compiling `o4_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `na3_x1` ...
+BEH : Compiling `na3_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `sff2_x4` ...
+BEH : Compiling `sff2_x4.vbe` (Behaviour) ...
+making BDD ...
+
+searching `inv_x1` ...
+BEH : Compiling `inv_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `no3_x1` ...
+BEH : Compiling `no3_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `a4_x2` ...
+BEH : Compiling `a4_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `on12_x4` ...
+BEH : Compiling `on12_x4.vbe` (Behaviour) ...
+making BDD ...
+
+searching `o2_x2` ...
+BEH : Compiling `o2_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `on12_x1` ...
+BEH : Compiling `on12_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching `a2_x2` ...
+BEH : Compiling `a2_x2.vbe` (Behaviour) ...
+making BDD ...
+
+searching `an12_x1` ...
+BEH : Compiling `an12_x1.vbe` (Behaviour) ...
+making BDD ...
+
+searching pattern file : `e` ...
+restoring ...
+
+linking ...
+executing ...
+###----- processing pattern 0 : 0 ps -----###
+###----- processing pattern 1 : 5000 ps -----###
+###----- processing pattern 2 : 10000 ps -----###
+###----- processing pattern 3 : 15000 ps -----###
+###----- processing pattern 4 : 20000 ps -----###
+###----- processing pattern 5 : 25000 ps -----###
+###----- processing pattern 6 : 30000 ps -----###
+###----- processing pattern 7 : 35000 ps -----###
+###----- processing pattern 8 : 40000 ps -----###
+###----- processing pattern 9 : 45000 ps -----###
+###----- processing pattern 10 : 50000 ps -----###
+###----- processing pattern 11 : 55000 ps -----###
+###----- processing pattern 12 : 60000 ps -----###
+###----- processing pattern 13 : 65000 ps -----###
+###----- processing pattern 14 : 70000 ps -----###
+###----- processing pattern 15 : 75000 ps -----###
+###----- processing pattern 16 : 80000 ps -----###
+###----- processing pattern 17 : 85000 ps -----###
+###----- processing pattern 18 : 90000 ps -----###
+###----- processing pattern 19 : 95000 ps -----###
+###----- processing pattern 20 : 100000 ps -----###
+###----- processing pattern 21 : 105000 ps -----###
+###----- processing pattern 22 : 110000 ps -----###
+###----- processing pattern 23 : 115000 ps -----###
+###----- processing pattern 24 : 120000 ps -----###
+###----- processing pattern 25 : 125000 ps -----###
+###----- processing pattern 26 : 130000 ps -----###
+###----- processing pattern 27 : 135000 ps -----###
+###----- processing pattern 28 : 140000 ps -----###
+###----- processing pattern 29 : 145000 ps -----###
+###----- processing pattern 30 : 150000 ps -----###
+###----- processing pattern 31 : 155000 ps -----###
+###----- processing pattern 32 : 160000 ps -----###
+###----- processing pattern 33 : 165000 ps -----###
+###----- processing pattern 34 : 170000 ps -----###
+###----- processing pattern 35 : 175000 ps -----###
+###----- processing pattern 36 : 180000 ps -----###
+###----- processing pattern 37 : 185000 ps -----###
+###----- processing pattern 38 : 190000 ps -----###
+###----- processing pattern 39 : 195000 ps -----###
+###----- processing pattern 40 : 200000 ps -----###
+###----- processing pattern 41 : 205000 ps -----###
+###----- processing pattern 42 : 210000 ps -----###
+###----- processing pattern 43 : 215000 ps -----###
+###----- processing pattern 44 : 220000 ps -----###
+###----- processing pattern 45 : 225000 ps -----###
+###----- processing pattern 46 : 230000 ps -----###
+###----- processing pattern 47 : 235000 ps -----###
+###----- processing pattern 48 : 240000 ps -----###
+###----- processing pattern 49 : 245000 ps -----###
+###----- processing pattern 50 : 250000 ps -----###
+###----- processing pattern 51 : 255000 ps -----###
+###----- processing pattern 52 : 260000 ps -----###
+###----- processing pattern 53 : 265000 ps -----###
+###----- processing pattern 54 : 270000 ps -----###
+###----- processing pattern 55 : 275000 ps -----###
+###----- processing pattern 56 : 280000 ps -----###
+###----- processing pattern 57 : 285000 ps -----###
+###----- processing pattern 58 : 290000 ps -----###
+###----- processing pattern 59 : 295000 ps -----###
+###----- processing pattern 60 : 300000 ps -----###
+###----- processing pattern 61 : 305000 ps -----###
+###----- processing pattern 62 : 310000 ps -----###
+###----- processing pattern 63 : 315000 ps -----###
+###----- processing pattern 64 : 320000 ps -----###
+###----- processing pattern 65 : 325000 ps -----###
+###----- processing pattern 66 : 330000 ps -----###
+###----- processing pattern 67 : 335000 ps -----###
+###----- processing pattern 68 : 340000 ps -----###
+###----- processing pattern 69 : 345000 ps -----###
+###----- processing pattern 70 : 350000 ps -----###
+###----- processing pattern 71 : 355000 ps -----###
+###----- processing pattern 72 : 360000 ps -----###
+###----- processing pattern 73 : 365000 ps -----###
+###----- processing pattern 74 : 370000 ps -----###
+###----- processing pattern 75 : 375000 ps -----###
+###----- processing pattern 76 : 380000 ps -----###
+###----- processing pattern 77 : 385000 ps -----###
+###----- processing pattern 78 : 390000 ps -----###
+###----- processing pattern 79 : 395000 ps -----###
+###----- processing pattern 80 : 400000 ps -----###
+###----- processing pattern 81 : 405000 ps -----###
+###----- processing pattern 82 : 410000 ps -----###
+###----- processing pattern 83 : 415000 ps -----###
+###----- processing pattern 84 : 420000 ps -----###
+###----- processing pattern 85 : 425000 ps -----###
+###----- processing pattern 86 : 430000 ps -----###
+###----- processing pattern 87 : 435000 ps -----###
+###----- processing pattern 88 : 440000 ps -----###
+###----- processing pattern 89 : 445000 ps -----###
+###----- processing pattern 90 : 450000 ps -----###
+###----- processing pattern 91 : 455000 ps -----###
+###----- processing pattern 92 : 460000 ps -----###
+###----- processing pattern 93 : 465000 ps -----###
+###----- processing pattern 94 : 470000 ps -----###
+###----- processing pattern 95 : 475000 ps -----###
+###----- processing pattern 96 : 480000 ps -----###
+###----- processing pattern 97 : 485000 ps -----###
+###----- processing pattern 98 : 490000 ps -----###
+###----- processing pattern 99 : 495000 ps -----###
+###----- processing pattern 100 : 500000 ps -----###
+###----- processing pattern 101 : 505000 ps -----###
+###----- processing pattern 102 : 510000 ps -----###
+###----- processing pattern 103 : 515000 ps -----###
+###----- processing pattern 104 : 520000 ps -----###
+###----- processing pattern 105 : 525000 ps -----###
+###----- processing pattern 106 : 530000 ps -----###
+###----- processing pattern 107 : 535000 ps -----###
+###----- processing pattern 108 : 540000 ps -----###
+###----- processing pattern 109 : 545000 ps -----###
+###----- processing pattern 110 : 550000 ps -----###
+###----- processing pattern 111 : 555000 ps -----###
+###----- processing pattern 112 : 560000 ps -----###
+###----- processing pattern 113 : 565000 ps -----###
+###----- processing pattern 114 : 570000 ps -----###
+###----- processing pattern 115 : 575000 ps -----###
+###----- processing pattern 116 : 580000 ps -----###
+###----- processing pattern 117 : 585000 ps -----###
+###----- processing pattern 118 : 590000 ps -----###
+###----- processing pattern 119 : 595000 ps -----###
+###----- processing pattern 120 : 600000 ps -----###
+###----- processing pattern 121 : 605000 ps -----###
+###----- processing pattern 122 : 610000 ps -----###
+###----- processing pattern 123 : 615000 ps -----###
+###----- processing pattern 124 : 620000 ps -----###
+###----- processing pattern 125 : 625000 ps -----###
+###----- processing pattern 126 : 630000 ps -----###
+###----- processing pattern 127 : 635000 ps -----###
+###----- processing pattern 128 : 640000 ps -----###
+###----- processing pattern 129 : 645000 ps -----###
+###----- processing pattern 130 : 650000 ps -----###
+###----- processing pattern 131 : 655000 ps -----###
+###----- processing pattern 132 : 660000 ps -----###
+###----- processing pattern 133 : 665000 ps -----###
+###----- processing pattern 134 : 670000 ps -----###
+###----- processing pattern 135 : 675000 ps -----###
+###----- processing pattern 136 : 680000 ps -----###
+###----- processing pattern 137 : 685000 ps -----###
+###----- processing pattern 138 : 690000 ps -----###
+###----- processing pattern 139 : 695000 ps -----###
+###----- processing pattern 140 : 700000 ps -----###
+###----- processing pattern 141 : 705000 ps -----###
+###----- processing pattern 142 : 710000 ps -----###
+###----- processing pattern 143 : 715000 ps -----###
+###----- processing pattern 144 : 720000 ps -----###
+###----- processing pattern 145 : 725000 ps -----###
+###----- processing pattern 146 : 730000 ps -----###
+###----- processing pattern 147 : 735000 ps -----###
+###----- processing pattern 148 : 740000 ps -----###
+###----- processing pattern 149 : 745000 ps -----###
+###----- processing pattern 150 : 750000 ps -----###
+###----- processing pattern 151 : 755000 ps -----###
+###----- processing pattern 152 : 760000 ps -----###
+###----- processing pattern 153 : 765000 ps -----###
+###----- processing pattern 154 : 770000 ps -----###
+###----- processing pattern 155 : 775000 ps -----###
+###----- processing pattern 156 : 780000 ps -----###
+###----- processing pattern 157 : 785000 ps -----###
+###----- processing pattern 158 : 790000 ps -----###
+###----- processing pattern 159 : 795000 ps -----###
+###----- processing pattern 160 : 800000 ps -----###
+###----- processing pattern 161 : 805000 ps -----###
+###----- processing pattern 162 : 810000 ps -----###
+###----- processing pattern 163 : 815000 ps -----###
+###----- processing pattern 164 : 820000 ps -----###
+###----- processing pattern 165 : 825000 ps -----###
+###----- processing pattern 166 : 830000 ps -----###
+###----- processing pattern 167 : 835000 ps -----###
+###----- processing pattern 168 : 840000 ps -----###
+###----- processing pattern 169 : 845000 ps -----###
+###----- processing pattern 170 : 850000 ps -----###
+###----- processing pattern 171 : 855000 ps -----###
+###----- processing pattern 172 : 860000 ps -----###
+###----- processing pattern 173 : 865000 ps -----###
+###----- processing pattern 174 : 870000 ps -----###
+###----- processing pattern 175 : 875000 ps -----###
+###----- processing pattern 176 : 880000 ps -----###
+###----- processing pattern 177 : 885000 ps -----###
+###----- processing pattern 178 : 890000 ps -----###
+###----- processing pattern 179 : 895000 ps -----###
+###----- processing pattern 180 : 900000 ps -----###
+###----- processing pattern 181 : 905000 ps -----###
+###----- processing pattern 182 : 910000 ps -----###
+###----- processing pattern 183 : 915000 ps -----###
+###----- processing pattern 184 : 920000 ps -----###
+###----- processing pattern 185 : 925000 ps -----###
+###----- processing pattern 186 : 930000 ps -----###
+###----- processing pattern 187 : 935000 ps -----###
+###----- processing pattern 188 : 940000 ps -----###
+###----- processing pattern 189 : 945000 ps -----###
+###----- processing pattern 190 : 950000 ps -----###
+###----- processing pattern 191 : 955000 ps -----###
+###----- processing pattern 192 : 960000 ps -----###
+###----- processing pattern 193 : 965000 ps -----###
+###----- processing pattern 194 : 970000 ps -----###
+###----- processing pattern 195 : 975000 ps -----###
+###----- processing pattern 196 : 980000 ps -----###
+###----- processing pattern 197 : 985000 ps -----###
+###----- processing pattern 198 : 990000 ps -----###
+###----- processing pattern 199 : 995000 ps -----###
+###----- processing pattern 200 : 1000000 ps -----###
+###----- processing pattern 201 : 1005000 ps -----###
+###----- processing pattern 202 : 1010000 ps -----###
+###----- processing pattern 203 : 1015000 ps -----###
+###----- processing pattern 204 : 1020000 ps -----###
+###----- processing pattern 205 : 1025000 ps -----###
+###----- processing pattern 206 : 1030000 ps -----###
+###----- processing pattern 207 : 1035000 ps -----###
+###----- processing pattern 208 : 1040000 ps -----###
+###----- processing pattern 209 : 1045000 ps -----###
+###----- processing pattern 210 : 1050000 ps -----###
+###----- processing pattern 211 : 1055000 ps -----###
+###----- processing pattern 212 : 1060000 ps -----###
+###----- processing pattern 213 : 1065000 ps -----###
+###----- processing pattern 214 : 1070000 ps -----###
+###----- processing pattern 215 : 1075000 ps -----###
+###----- processing pattern 216 : 1080000 ps -----###
+###----- processing pattern 217 : 1085000 ps -----###
+###----- processing pattern 218 : 1090000 ps -----###
+###----- processing pattern 219 : 1095000 ps -----###
+###----- processing pattern 220 : 1100000 ps -----###
+###----- processing pattern 221 : 1105000 ps -----###
+###----- processing pattern 222 : 1110000 ps -----###
+###----- processing pattern 223 : 1115000 ps -----###
+###----- processing pattern 224 : 1120000 ps -----###
+###----- processing pattern 225 : 1125000 ps -----###
+###----- processing pattern 226 : 1130000 ps -----###
+###----- processing pattern 227 : 1135000 ps -----###
+###----- processing pattern 228 : 1140000 ps -----###
+###----- processing pattern 229 : 1145000 ps -----###
+###----- processing pattern 230 : 1150000 ps -----###
+###----- processing pattern 231 : 1155000 ps -----###
+###----- processing pattern 232 : 1160000 ps -----###
+###----- processing pattern 233 : 1165000 ps -----###
+###----- processing pattern 234 : 1170000 ps -----###
+###----- processing pattern 235 : 1175000 ps -----###
+###----- processing pattern 236 : 1180000 ps -----###
+###----- processing pattern 237 : 1185000 ps -----###
+###----- processing pattern 238 : 1190000 ps -----###
+###----- processing pattern 239 : 1195000 ps -----###
+###----- processing pattern 240 : 1200000 ps -----###
+###----- processing pattern 241 : 1205000 ps -----###
+###----- processing pattern 242 : 1210000 ps -----###
+###----- processing pattern 243 : 1215000 ps -----###
+###----- processing pattern 244 : 1220000 ps -----###
+###----- processing pattern 245 : 1225000 ps -----###
+###----- processing pattern 246 : 1230000 ps -----###
+###----- processing pattern 247 : 1235000 ps -----###
+###----- processing pattern 248 : 1240000 ps -----###
+###----- processing pattern 249 : 1245000 ps -----###
+###----- processing pattern 250 : 1250000 ps -----###
+###----- processing pattern 251 : 1255000 ps -----###
+###----- processing pattern 252 : 1260000 ps -----###
+###----- processing pattern 253 : 1265000 ps -----###
+###----- processing pattern 254 : 1270000 ps -----###
+###----- processing pattern 255 : 1275000 ps -----###
+###----- processing pattern 256 : 1280000 ps -----###
+###----- processing pattern 257 : 1285000 ps -----###
+###----- processing pattern 258 : 1290000 ps -----###
+###----- processing pattern 259 : 1295000 ps -----###
+###----- processing pattern 260 : 1300000 ps -----###
+###----- processing pattern 261 : 1305000 ps -----###
+###----- processing pattern 262 : 1310000 ps -----###
+###----- processing pattern 263 : 1315000 ps -----###
+###----- processing pattern 264 : 1320000 ps -----###
+###----- processing pattern 265 : 1325000 ps -----###
+###----- processing pattern 266 : 1330000 ps -----###
+###----- processing pattern 267 : 1335000 ps -----###
+###----- processing pattern 268 : 1340000 ps -----###
+###----- processing pattern 269 : 1345000 ps -----###
+###----- processing pattern 270 : 1350000 ps -----###
+###----- processing pattern 271 : 1355000 ps -----###
+###----- processing pattern 272 : 1360000 ps -----###
+###----- processing pattern 273 : 1365000 ps -----###
+###----- processing pattern 274 : 1370000 ps -----###
+###----- processing pattern 275 : 1375000 ps -----###
+###----- processing pattern 276 : 1380000 ps -----###
+###----- processing pattern 277 : 1385000 ps -----###
+###----- processing pattern 278 : 1390000 ps -----###
+###----- processing pattern 279 : 1395000 ps -----###
+###----- processing pattern 280 : 1400000 ps -----###
+###----- processing pattern 281 : 1405000 ps -----###
+###----- processing pattern 282 : 1410000 ps -----###
+###----- processing pattern 283 : 1415000 ps -----###
+###----- processing pattern 284 : 1420000 ps -----###
+###----- processing pattern 285 : 1425000 ps -----###
+###----- processing pattern 286 : 1430000 ps -----###
+###----- processing pattern 287 : 1435000 ps -----###
+###----- processing pattern 288 : 1440000 ps -----###
+###----- processing pattern 289 : 1445000 ps -----###
+###----- processing pattern 290 : 1450000 ps -----###
+###----- processing pattern 291 : 1455000 ps -----###
+###----- processing pattern 292 : 1460000 ps -----###
+###----- processing pattern 293 : 1465000 ps -----###
+###----- processing pattern 294 : 1470000 ps -----###
+###----- processing pattern 295 : 1475000 ps -----###
+###----- processing pattern 296 : 1480000 ps -----###
+###----- processing pattern 297 : 1485000 ps -----###
+###----- processing pattern 298 : 1490000 ps -----###
+###----- processing pattern 299 : 1495000 ps -----###
+###----- processing pattern 300 : 1500000 ps -----###
+###----- processing pattern 301 : 1505000 ps -----###
+###----- processing pattern 302 : 1510000 ps -----###
+###----- processing pattern 303 : 1515000 ps -----###
+###----- processing pattern 304 : 1520000 ps -----###
+###----- processing pattern 305 : 1525000 ps -----###
+###----- processing pattern 306 : 1530000 ps -----###
+###----- processing pattern 307 : 1535000 ps -----###
+###----- processing pattern 308 : 1540000 ps -----###
+###----- processing pattern 309 : 1545000 ps -----###
+###----- processing pattern 310 : 1550000 ps -----###
+###----- processing pattern 311 : 1555000 ps -----###
+###----- processing pattern 312 : 1560000 ps -----###
+###----- processing pattern 313 : 1565000 ps -----###
+###----- processing pattern 314 : 1570000 ps -----###
+###----- processing pattern 315 : 1575000 ps -----###
+###----- processing pattern 316 : 1580000 ps -----###
+###----- processing pattern 317 : 1585000 ps -----###
+###----- processing pattern 318 : 1590000 ps -----###
+###----- processing pattern 319 : 1595000 ps -----###
+###----- processing pattern 320 : 1600000 ps -----###
+###----- processing pattern 321 : 1605000 ps -----###
+###----- processing pattern 322 : 1610000 ps -----###
+###----- processing pattern 323 : 1615000 ps -----###
+###----- processing pattern 324 : 1620000 ps -----###
+###----- processing pattern 325 : 1625000 ps -----###
+###----- processing pattern 326 : 1630000 ps -----###
+###----- processing pattern 327 : 1635000 ps -----###
+###----- processing pattern 328 : 1640000 ps -----###
+###----- processing pattern 329 : 1645000 ps -----###
+###----- processing pattern 330 : 1650000 ps -----###
+###----- processing pattern 331 : 1655000 ps -----###
+###----- processing pattern 332 : 1660000 ps -----###
+###----- processing pattern 333 : 1665000 ps -----###
+###----- processing pattern 334 : 1670000 ps -----###
+###----- processing pattern 335 : 1675000 ps -----###
+###----- processing pattern 336 : 1680000 ps -----###
+###----- processing pattern 337 : 1685000 ps -----###
+###----- processing pattern 338 : 1690000 ps -----###
+###----- processing pattern 339 : 1695000 ps -----###
+###----- processing pattern 340 : 1700000 ps -----###
+###----- processing pattern 341 : 1705000 ps -----###
+###----- processing pattern 342 : 1710000 ps -----###
+###----- processing pattern 343 : 1715000 ps -----###
+###----- processing pattern 344 : 1720000 ps -----###
+###----- processing pattern 345 : 1725000 ps -----###
+###----- processing pattern 346 : 1730000 ps -----###
+###----- processing pattern 347 : 1735000 ps -----###
+###----- processing pattern 348 : 1740000 ps -----###
+###----- processing pattern 349 : 1745000 ps -----###
+###----- processing pattern 350 : 1750000 ps -----###
+###----- processing pattern 351 : 1755000 ps -----###
+###----- processing pattern 352 : 1760000 ps -----###
+###----- processing pattern 353 : 1765000 ps -----###
+###----- processing pattern 354 : 1770000 ps -----###
+###----- processing pattern 355 : 1775000 ps -----###
+###----- processing pattern 356 : 1780000 ps -----###
+###----- processing pattern 357 : 1785000 ps -----###
+###----- processing pattern 358 : 1790000 ps -----###
+###----- processing pattern 359 : 1795000 ps -----###
+###----- processing pattern 360 : 1800000 ps -----###
+###----- processing pattern 361 : 1805000 ps -----###
+###----- processing pattern 362 : 1810000 ps -----###
+###----- processing pattern 363 : 1815000 ps -----###
+###----- processing pattern 364 : 1820000 ps -----###
+###----- processing pattern 365 : 1825000 ps -----###
+###----- processing pattern 366 : 1830000 ps -----###
+###----- processing pattern 367 : 1835000 ps -----###
+###----- processing pattern 368 : 1840000 ps -----###
+###----- processing pattern 369 : 1845000 ps -----###
+###----- processing pattern 370 : 1850000 ps -----###
+###----- processing pattern 371 : 1855000 ps -----###
+###----- processing pattern 372 : 1860000 ps -----###
+###----- processing pattern 373 : 1865000 ps -----###
+###----- processing pattern 374 : 1870000 ps -----###
+###----- processing pattern 375 : 1875000 ps -----###
+###----- processing pattern 376 : 1880000 ps -----###
+###----- processing pattern 377 : 1885000 ps -----###
+###----- processing pattern 378 : 1890000 ps -----###
+###----- processing pattern 379 : 1895000 ps -----###
+###----- processing pattern 380 : 1900000 ps -----###
+###----- processing pattern 381 : 1905000 ps -----###
+###----- processing pattern 382 : 1910000 ps -----###
+###----- processing pattern 383 : 1915000 ps -----###
+###----- processing pattern 384 : 1920000 ps -----###
+###----- processing pattern 385 : 1925000 ps -----###
+###----- processing pattern 386 : 1930000 ps -----###
+###----- processing pattern 387 : 1935000 ps -----###
+###----- processing pattern 388 : 1940000 ps -----###
+###----- processing pattern 389 : 1945000 ps -----###
+###----- processing pattern 390 : 1950000 ps -----###
+###----- processing pattern 391 : 1955000 ps -----###
+###----- processing pattern 392 : 1960000 ps -----###
+###----- processing pattern 393 : 1965000 ps -----###
+###----- processing pattern 394 : 1970000 ps -----###
+###----- processing pattern 395 : 1975000 ps -----###
+###----- processing pattern 396 : 1980000 ps -----###
+###----- processing pattern 397 : 1985000 ps -----###
+###----- processing pattern 398 : 1990000 ps -----###
+###----- processing pattern 399 : 1995000 ps -----###
+###----- processing pattern 400 : 2000000 ps -----###
+###----- processing pattern 401 : 2005000 ps -----###
+###----- processing pattern 402 : 2010000 ps -----###
+###----- processing pattern 403 : 2015000 ps -----###
+###----- processing pattern 404 : 2020000 ps -----###
+###----- processing pattern 405 : 2025000 ps -----###
+###----- processing pattern 406 : 2030000 ps -----###
+###----- processing pattern 407 : 2035000 ps -----###
+###----- processing pattern 408 : 2040000 ps -----###
+###----- processing pattern 409 : 2045000 ps -----###
+###----- processing pattern 410 : 2050000 ps -----###
+###----- processing pattern 411 : 2055000 ps -----###
+###----- processing pattern 412 : 2060000 ps -----###
+###----- processing pattern 413 : 2065000 ps -----###
+###----- processing pattern 414 : 2070000 ps -----###
+###----- processing pattern 415 : 2075000 ps -----###
+###----- processing pattern 416 : 2080000 ps -----###
+###----- processing pattern 417 : 2085000 ps -----###
+###----- processing pattern 418 : 2090000 ps -----###
+###----- processing pattern 419 : 2095000 ps -----###
+###----- processing pattern 420 : 2100000 ps -----###
+###----- processing pattern 421 : 2105000 ps -----###
+###----- processing pattern 422 : 2110000 ps -----###
+###----- processing pattern 423 : 2115000 ps -----###
+###----- processing pattern 424 : 2120000 ps -----###
+###----- processing pattern 425 : 2125000 ps -----###
+###----- processing pattern 426 : 2130000 ps -----###
+###----- processing pattern 427 : 2135000 ps -----###
+###----- processing pattern 428 : 2140000 ps -----###
+###----- processing pattern 429 : 2145000 ps -----###
+###----- processing pattern 430 : 2150000 ps -----###
+###----- processing pattern 431 : 2155000 ps -----###
+###----- processing pattern 432 : 2160000 ps -----###
+###----- processing pattern 433 : 2165000 ps -----###
+###----- processing pattern 434 : 2170000 ps -----###
+###----- processing pattern 435 : 2175000 ps -----###
+###----- processing pattern 436 : 2180000 ps -----###
+###----- processing pattern 437 : 2185000 ps -----###
+###----- processing pattern 438 : 2190000 ps -----###
+###----- processing pattern 439 : 2195000 ps -----###
+###----- processing pattern 440 : 2200000 ps -----###
+###----- processing pattern 441 : 2205000 ps -----###
+###----- processing pattern 442 : 2210000 ps -----###
+###----- processing pattern 443 : 2215000 ps -----###
+###----- processing pattern 444 : 2220000 ps -----###
+###----- processing pattern 445 : 2225000 ps -----###
+###----- processing pattern 446 : 2230000 ps -----###
+###----- processing pattern 447 : 2235000 ps -----###
+###----- processing pattern 448 : 2240000 ps -----###
+###----- processing pattern 449 : 2245000 ps -----###
+###----- processing pattern 450 : 2250000 ps -----###
+###----- processing pattern 451 : 2255000 ps -----###
+###----- processing pattern 452 : 2260000 ps -----###
+###----- processing pattern 453 : 2265000 ps -----###
+###----- processing pattern 454 : 2270000 ps -----###
+###----- processing pattern 455 : 2275000 ps -----###
+###----- processing pattern 456 : 2280000 ps -----###
+###----- processing pattern 457 : 2285000 ps -----###
+###----- processing pattern 458 : 2290000 ps -----###
+###----- processing pattern 459 : 2295000 ps -----###
+###----- processing pattern 460 : 2300000 ps -----###
+###----- processing pattern 461 : 2305000 ps -----###
+###----- processing pattern 462 : 2310000 ps -----###
+###----- processing pattern 463 : 2315000 ps -----###
+###----- processing pattern 464 : 2320000 ps -----###
+###----- processing pattern 465 : 2325000 ps -----###
+###----- processing pattern 466 : 2330000 ps -----###
+###----- processing pattern 467 : 2335000 ps -----###
+###----- processing pattern 468 : 2340000 ps -----###
+###----- processing pattern 469 : 2345000 ps -----###
+###----- processing pattern 470 : 2350000 ps -----###
+###----- processing pattern 471 : 2355000 ps -----###
+###----- processing pattern 472 : 2360000 ps -----###
+###----- processing pattern 473 : 2365000 ps -----###
+###----- processing pattern 474 : 2370000 ps -----###
+###----- processing pattern 475 : 2375000 ps -----###
+###----- processing pattern 476 : 2380000 ps -----###
+###----- processing pattern 477 : 2385000 ps -----###
+###----- processing pattern 478 : 2390000 ps -----###
+###----- processing pattern 479 : 2395000 ps -----###
+###----- processing pattern 480 : 2400000 ps -----###
+###----- processing pattern 481 : 2405000 ps -----###
+###----- processing pattern 482 : 2410000 ps -----###
+###----- processing pattern 483 : 2415000 ps -----###
+###----- processing pattern 484 : 2420000 ps -----###
+###----- processing pattern 485 : 2425000 ps -----###
+###----- processing pattern 486 : 2430000 ps -----###
+###----- processing pattern 487 : 2435000 ps -----###
+###----- processing pattern 488 : 2440000 ps -----###
+###----- processing pattern 489 : 2445000 ps -----###
+###----- processing pattern 490 : 2450000 ps -----###
+###----- processing pattern 491 : 2455000 ps -----###
+###----- processing pattern 492 : 2460000 ps -----###
+###----- processing pattern 493 : 2465000 ps -----###
+###----- processing pattern 494 : 2470000 ps -----###
+###----- processing pattern 495 : 2475000 ps -----###
+###----- processing pattern 496 : 2480000 ps -----###
+###----- processing pattern 497 : 2485000 ps -----###
+###----- processing pattern 498 : 2490000 ps -----###
+###----- processing pattern 499 : 2495000 ps -----###
+###----- processing pattern 500 : 2500000 ps -----###
+###----- processing pattern 501 : 2505000 ps -----###
+###----- processing pattern 502 : 2510000 ps -----###
+###----- processing pattern 503 : 2515000 ps -----###
+###----- processing pattern 504 : 2520000 ps -----###
+###----- processing pattern 505 : 2525000 ps -----###
+###----- processing pattern 506 : 2530000 ps -----###
+###----- processing pattern 507 : 2535000 ps -----###
+###----- processing pattern 508 : 2540000 ps -----###
+###----- processing pattern 509 : 2545000 ps -----###
+###----- processing pattern 510 : 2550000 ps -----###
+###----- processing pattern 511 : 2555000 ps -----###
+###----- processing pattern 512 : 2560000 ps -----###
+###----- processing pattern 513 : 2565000 ps -----###
+###----- processing pattern 514 : 2570000 ps -----###
+###----- processing pattern 515 : 2575000 ps -----###
+###----- processing pattern 516 : 2580000 ps -----###
+###----- processing pattern 517 : 2585000 ps -----###
+###----- processing pattern 518 : 2590000 ps -----###
+###----- processing pattern 519 : 2595000 ps -----###
+###----- processing pattern 520 : 2600000 ps -----###
+###----- processing pattern 521 : 2605000 ps -----###
+###----- processing pattern 522 : 2610000 ps -----###
+###----- processing pattern 523 : 2615000 ps -----###
+###----- processing pattern 524 : 2620000 ps -----###
+###----- processing pattern 525 : 2625000 ps -----###
+###----- processing pattern 526 : 2630000 ps -----###
+###----- processing pattern 527 : 2635000 ps -----###
+###----- processing pattern 528 : 2640000 ps -----###
+###----- processing pattern 529 : 2645000 ps -----###
+###----- processing pattern 530 : 2650000 ps -----###
+###----- processing pattern 531 : 2655000 ps -----###
+###----- processing pattern 532 : 2660000 ps -----###
+###----- processing pattern 533 : 2665000 ps -----###
+###----- processing pattern 534 : 2670000 ps -----###
+###----- processing pattern 535 : 2675000 ps -----###
+###----- processing pattern 536 : 2680000 ps -----###
+###----- processing pattern 537 : 2685000 ps -----###
+###----- processing pattern 538 : 2690000 ps -----###
+###----- processing pattern 539 : 2695000 ps -----###
+###----- processing pattern 540 : 2700000 ps -----###
+###----- processing pattern 541 : 2705000 ps -----###
+###----- processing pattern 542 : 2710000 ps -----###
+###----- processing pattern 543 : 2715000 ps -----###
+###----- processing pattern 544 : 2720000 ps -----###
+###----- processing pattern 545 : 2725000 ps -----###
+###----- processing pattern 546 : 2730000 ps -----###
+###----- processing pattern 547 : 2735000 ps -----###
+###----- processing pattern 548 : 2740000 ps -----###
+###----- processing pattern 549 : 2745000 ps -----###
+###----- processing pattern 550 : 2750000 ps -----###
+###----- processing pattern 551 : 2755000 ps -----###
+###----- processing pattern 552 : 2760000 ps -----###
+###----- processing pattern 553 : 2765000 ps -----###
+###----- processing pattern 554 : 2770000 ps -----###
+###----- processing pattern 555 : 2775000 ps -----###
+###----- processing pattern 556 : 2780000 ps -----###
+###----- processing pattern 557 : 2785000 ps -----###
+###----- processing pattern 558 : 2790000 ps -----###
+###----- processing pattern 559 : 2795000 ps -----###
+###----- processing pattern 560 : 2800000 ps -----###
+###----- processing pattern 561 : 2805000 ps -----###
+###----- processing pattern 562 : 2810000 ps -----###
+###----- processing pattern 563 : 2815000 ps -----###
+###----- processing pattern 564 : 2820000 ps -----###
+###----- processing pattern 565 : 2825000 ps -----###
+###----- processing pattern 566 : 2830000 ps -----###
+###----- processing pattern 567 : 2835000 ps -----###
+###----- processing pattern 568 : 2840000 ps -----###
+###----- processing pattern 569 : 2845000 ps -----###
+###----- processing pattern 570 : 2850000 ps -----###
+###----- processing pattern 571 : 2855000 ps -----###
+###----- processing pattern 572 : 2860000 ps -----###
+###----- processing pattern 573 : 2865000 ps -----###
+###----- processing pattern 574 : 2870000 ps -----###
+###----- processing pattern 575 : 2875000 ps -----###
+###----- processing pattern 576 : 2880000 ps -----###
+###----- processing pattern 577 : 2885000 ps -----###
+###----- processing pattern 578 : 2890000 ps -----###
+###----- processing pattern 579 : 2895000 ps -----###
+###----- processing pattern 580 : 2900000 ps -----###
+###----- processing pattern 581 : 2905000 ps -----###
+###----- processing pattern 582 : 2910000 ps -----###
+###----- processing pattern 583 : 2915000 ps -----###
+###----- processing pattern 584 : 2920000 ps -----###
+###----- processing pattern 585 : 2925000 ps -----###
+###----- processing pattern 586 : 2930000 ps -----###
+###----- processing pattern 587 : 2935000 ps -----###
+###----- processing pattern 588 : 2940000 ps -----###
+###----- processing pattern 589 : 2945000 ps -----###
+###----- processing pattern 590 : 2950000 ps -----###
+###----- processing pattern 591 : 2955000 ps -----###
+###----- processing pattern 592 : 2960000 ps -----###
+###----- processing pattern 593 : 2965000 ps -----###
+###----- processing pattern 594 : 2970000 ps -----###
+###----- processing pattern 595 : 2975000 ps -----###
+###----- processing pattern 596 : 2980000 ps -----###
+###----- processing pattern 597 : 2985000 ps -----###
+###----- processing pattern 598 : 2990000 ps -----###
+###----- processing pattern 599 : 2995000 ps -----###
+###----- processing pattern 600 : 3000000 ps -----###
+###----- processing pattern 601 : 3005000 ps -----###
+###----- processing pattern 602 : 3010000 ps -----###
+###----- processing pattern 603 : 3015000 ps -----###
+###----- processing pattern 604 : 3020000 ps -----###
+###----- processing pattern 605 : 3025000 ps -----###
+###----- processing pattern 606 : 3030000 ps -----###
+###----- processing pattern 607 : 3035000 ps -----###
+###----- processing pattern 608 : 3040000 ps -----###
+###----- processing pattern 609 : 3045000 ps -----###
+###----- processing pattern 610 : 3050000 ps -----###
+###----- processing pattern 611 : 3055000 ps -----###
+###----- processing pattern 612 : 3060000 ps -----###
+###----- processing pattern 613 : 3065000 ps -----###
+###----- processing pattern 614 : 3070000 ps -----###
+###----- processing pattern 615 : 3075000 ps -----###
+###----- processing pattern 616 : 3080000 ps -----###
+###----- processing pattern 617 : 3085000 ps -----###
+###----- processing pattern 618 : 3090000 ps -----###
+###----- processing pattern 619 : 3095000 ps -----###
+###----- processing pattern 620 : 3100000 ps -----###
+###----- processing pattern 621 : 3105000 ps -----###
+###----- processing pattern 622 : 3110000 ps -----###
+###----- processing pattern 623 : 3115000 ps -----###
+###----- processing pattern 624 : 3120000 ps -----###
+###----- processing pattern 625 : 3125000 ps -----###
+###----- processing pattern 626 : 3130000 ps -----###
+###----- processing pattern 627 : 3135000 ps -----###
+###----- processing pattern 628 : 3140000 ps -----###
+###----- processing pattern 629 : 3145000 ps -----###
+###----- processing pattern 630 : 3150000 ps -----###
+###----- processing pattern 631 : 3155000 ps -----###
+###----- processing pattern 632 : 3160000 ps -----###
+###----- processing pattern 633 : 3165000 ps -----###
+###----- processing pattern 634 : 3170000 ps -----###
+###----- processing pattern 635 : 3175000 ps -----###
+###----- processing pattern 636 : 3180000 ps -----###
+###----- processing pattern 637 : 3185000 ps -----###
+###----- processing pattern 638 : 3190000 ps -----###
+###----- processing pattern 639 : 3195000 ps -----###
+###----- processing pattern 640 : 3200000 ps -----###
+###----- processing pattern 641 : 3205000 ps -----###
+###----- processing pattern 642 : 3210000 ps -----###
+###----- processing pattern 643 : 3215000 ps -----###
+###----- processing pattern 644 : 3220000 ps -----###
+###----- processing pattern 645 : 3225000 ps -----###
+###----- processing pattern 646 : 3230000 ps -----###
+###----- processing pattern 647 : 3235000 ps -----###
+###----- processing pattern 648 : 3240000 ps -----###
+###----- processing pattern 649 : 3245000 ps -----###
+###----- processing pattern 650 : 3250000 ps -----###
+###----- processing pattern 651 : 3255000 ps -----###
+###----- processing pattern 652 : 3260000 ps -----###
+###----- processing pattern 653 : 3265000 ps -----###
+###----- processing pattern 654 : 3270000 ps -----###
+###----- processing pattern 655 : 3275000 ps -----###
+###----- processing pattern 656 : 3280000 ps -----###
+###----- processing pattern 657 : 3285000 ps -----###
+###----- processing pattern 658 : 3290000 ps -----###
+###----- processing pattern 659 : 3295000 ps -----###
+###----- processing pattern 660 : 3300000 ps -----###
+###----- processing pattern 661 : 3305000 ps -----###
+###----- processing pattern 662 : 3310000 ps -----###
+###----- processing pattern 663 : 3315000 ps -----###
+###----- processing pattern 664 : 3320000 ps -----###
+###----- processing pattern 665 : 3325000 ps -----###
+###----- processing pattern 666 : 3330000 ps -----###
+###----- processing pattern 667 : 3335000 ps -----###
+###----- processing pattern 668 : 3340000 ps -----###
+###----- processing pattern 669 : 3345000 ps -----###
+###----- processing pattern 670 : 3350000 ps -----###
+###----- processing pattern 671 : 3355000 ps -----###
+###----- processing pattern 672 : 3360000 ps -----###
+###----- processing pattern 673 : 3365000 ps -----###
+###----- processing pattern 674 : 3370000 ps -----###
+###----- processing pattern 675 : 3375000 ps -----###
+###----- processing pattern 676 : 3380000 ps -----###
+###----- processing pattern 677 : 3385000 ps -----###
+###----- processing pattern 678 : 3390000 ps -----###
+###----- processing pattern 679 : 3395000 ps -----###
+###----- processing pattern 680 : 3400000 ps -----###
+###----- processing pattern 681 : 3405000 ps -----###
+###----- processing pattern 682 : 3410000 ps -----###
+###----- processing pattern 683 : 3415000 ps -----###
+###----- processing pattern 684 : 3420000 ps -----###
+###----- processing pattern 685 : 3425000 ps -----###
+###----- processing pattern 686 : 3430000 ps -----###
+###----- processing pattern 687 : 3435000 ps -----###
+###----- processing pattern 688 : 3440000 ps -----###
+###----- processing pattern 689 : 3445000 ps -----###
+###----- processing pattern 690 : 3450000 ps -----###
+###----- processing pattern 691 : 3455000 ps -----###
+###----- processing pattern 692 : 3460000 ps -----###
+###----- processing pattern 693 : 3465000 ps -----###
+###----- processing pattern 694 : 3470000 ps -----###
+###----- processing pattern 695 : 3475000 ps -----###
+###----- processing pattern 696 : 3480000 ps -----###
+###----- processing pattern 697 : 3485000 ps -----###
+###----- processing pattern 698 : 3490000 ps -----###
+###----- processing pattern 699 : 3495000 ps -----###
+###----- processing pattern 700 : 3500000 ps -----###
+###----- processing pattern 701 : 3505000 ps -----###
+###----- processing pattern 702 : 3510000 ps -----###
+###----- processing pattern 703 : 3515000 ps -----###
+###----- processing pattern 704 : 3520000 ps -----###
+###----- processing pattern 705 : 3525000 ps -----###
+###----- processing pattern 706 : 3530000 ps -----###
+###----- processing pattern 707 : 3535000 ps -----###
+###----- processing pattern 708 : 3540000 ps -----###
+###----- processing pattern 709 : 3545000 ps -----###
+###----- processing pattern 710 : 3550000 ps -----###
+###----- processing pattern 711 : 3555000 ps -----###
+###----- processing pattern 712 : 3560000 ps -----###
+###----- processing pattern 713 : 3565000 ps -----###
+###----- processing pattern 714 : 3570000 ps -----###
+###----- processing pattern 715 : 3575000 ps -----###
+###----- processing pattern 716 : 3580000 ps -----###
+###----- processing pattern 717 : 3585000 ps -----###
+###----- processing pattern 718 : 3590000 ps -----###
+###----- processing pattern 719 : 3595000 ps -----###
+###----- processing pattern 720 : 3600000 ps -----###
+###----- processing pattern 721 : 3605000 ps -----###
+###----- processing pattern 722 : 3610000 ps -----###
+###----- processing pattern 723 : 3615000 ps -----###
+###----- processing pattern 724 : 3620000 ps -----###
+###----- processing pattern 725 : 3625000 ps -----###
+###----- processing pattern 726 : 3630000 ps -----###
+###----- processing pattern 727 : 3635000 ps -----###
+###----- processing pattern 728 : 3640000 ps -----###
+###----- processing pattern 729 : 3645000 ps -----###
+###----- processing pattern 730 : 3650000 ps -----###
+###----- processing pattern 731 : 3655000 ps -----###
+###----- processing pattern 732 : 3660000 ps -----###
+###----- processing pattern 733 : 3665000 ps -----###
+###----- processing pattern 734 : 3670000 ps -----###
+###----- processing pattern 735 : 3675000 ps -----###
+###----- processing pattern 736 : 3680000 ps -----###
+###----- processing pattern 737 : 3685000 ps -----###
+###----- processing pattern 738 : 3690000 ps -----###
+###----- processing pattern 739 : 3695000 ps -----###
+###----- processing pattern 740 : 3700000 ps -----###
+###----- processing pattern 741 : 3705000 ps -----###
+###----- processing pattern 742 : 3710000 ps -----###
+###----- processing pattern 743 : 3715000 ps -----###
+###----- processing pattern 744 : 3720000 ps -----###
+###----- processing pattern 745 : 3725000 ps -----###
+###----- processing pattern 746 : 3730000 ps -----###
+###----- processing pattern 747 : 3735000 ps -----###
+###----- processing pattern 748 : 3740000 ps -----###
+###----- processing pattern 749 : 3745000 ps -----###
+###----- processing pattern 750 : 3750000 ps -----###
+###----- processing pattern 751 : 3755000 ps -----###
+###----- processing pattern 752 : 3760000 ps -----###
+###----- processing pattern 753 : 3765000 ps -----###
+###----- processing pattern 754 : 3770000 ps -----###
+###----- processing pattern 755 : 3775000 ps -----###
+###----- processing pattern 756 : 3780000 ps -----###
+###----- processing pattern 757 : 3785000 ps -----###
+###----- processing pattern 758 : 3790000 ps -----###
+###----- processing pattern 759 : 3795000 ps -----###
+###----- processing pattern 760 : 3800000 ps -----###
+###----- processing pattern 761 : 3805000 ps -----###
+###----- processing pattern 762 : 3810000 ps -----###
+###----- processing pattern 763 : 3815000 ps -----###
+###----- processing pattern 764 : 3820000 ps -----###
+###----- processing pattern 765 : 3825000 ps -----###
+###----- processing pattern 766 : 3830000 ps -----###
+###----- processing pattern 767 : 3835000 ps -----###
+###----- processing pattern 768 : 3840000 ps -----###
+###----- processing pattern 769 : 3845000 ps -----###
+###----- processing pattern 770 : 3850000 ps -----###
+###----- processing pattern 771 : 3855000 ps -----###
+###----- processing pattern 772 : 3860000 ps -----###
+###----- processing pattern 773 : 3865000 ps -----###
+###----- processing pattern 774 : 3870000 ps -----###
+###----- processing pattern 775 : 3875000 ps -----###
+###----- processing pattern 776 : 3880000 ps -----###
+###----- processing pattern 777 : 3885000 ps -----###
+###----- processing pattern 778 : 3890000 ps -----###
+###----- processing pattern 779 : 3895000 ps -----###
+###----- processing pattern 780 : 3900000 ps -----###
+###----- processing pattern 781 : 3905000 ps -----###
+###----- processing pattern 782 : 3910000 ps -----###
+###----- processing pattern 783 : 3915000 ps -----###
+###----- processing pattern 784 : 3920000 ps -----###
+###----- processing pattern 785 : 3925000 ps -----###
+###----- processing pattern 786 : 3930000 ps -----###
+###----- processing pattern 787 : 3935000 ps -----###
+###----- processing pattern 788 : 3940000 ps -----###
+###----- processing pattern 789 : 3945000 ps -----###
+###----- processing pattern 790 : 3950000 ps -----###
+###----- processing pattern 791 : 3955000 ps -----###
+###----- processing pattern 792 : 3960000 ps -----###
+###----- processing pattern 793 : 3965000 ps -----###
+###----- processing pattern 794 : 3970000 ps -----###
+###----- processing pattern 795 : 3975000 ps -----###
+###----- processing pattern 796 : 3980000 ps -----###
+###----- processing pattern 797 : 3985000 ps -----###
+###----- processing pattern 798 : 3990000 ps -----###
+###----- processing pattern 799 : 3995000 ps -----###
+###----- processing pattern 800 : 4000000 ps -----###
+###----- processing pattern 801 : 4005000 ps -----###
+###----- processing pattern 802 : 4010000 ps -----###
+###----- processing pattern 803 : 4015000 ps -----###
+###----- processing pattern 804 : 4020000 ps -----###
+###----- processing pattern 805 : 4025000 ps -----###
+###----- processing pattern 806 : 4030000 ps -----###
+###----- processing pattern 807 : 4035000 ps -----###
+###----- processing pattern 808 : 4040000 ps -----###
+###----- processing pattern 809 : 4045000 ps -----###
+###----- processing pattern 810 : 4050000 ps -----###
+###----- processing pattern 811 : 4055000 ps -----###
+###----- processing pattern 812 : 4060000 ps -----###
+###----- processing pattern 813 : 4065000 ps -----###
+###----- processing pattern 814 : 4070000 ps -----###
+###----- processing pattern 815 : 4075000 ps -----###
+###----- processing pattern 816 : 4080000 ps -----###
+###----- processing pattern 817 : 4085000 ps -----###
+###----- processing pattern 818 : 4090000 ps -----###
+###----- processing pattern 819 : 4095000 ps -----###
+###----- processing pattern 820 : 4100000 ps -----###
+###----- processing pattern 821 : 4105000 ps -----###
+###----- processing pattern 822 : 4110000 ps -----###
+###----- processing pattern 823 : 4115000 ps -----###
+###----- processing pattern 824 : 4120000 ps -----###
+###----- processing pattern 825 : 4125000 ps -----###
+###----- processing pattern 826 : 4130000 ps -----###
+###----- processing pattern 827 : 4135000 ps -----###
+###----- processing pattern 828 : 4140000 ps -----###
+###----- processing pattern 829 : 4145000 ps -----###
+###----- processing pattern 830 : 4150000 ps -----###
+###----- processing pattern 831 : 4155000 ps -----###
+###----- processing pattern 832 : 4160000 ps -----###
+###----- processing pattern 833 : 4165000 ps -----###
+###----- processing pattern 834 : 4170000 ps -----###
+###----- processing pattern 835 : 4175000 ps -----###
+###----- processing pattern 836 : 4180000 ps -----###
+###----- processing pattern 837 : 4185000 ps -----###
+###----- processing pattern 838 : 4190000 ps -----###
+###----- processing pattern 839 : 4195000 ps -----###
+###----- processing pattern 840 : 4200000 ps -----###
+###----- processing pattern 841 : 4205000 ps -----###
+###----- processing pattern 842 : 4210000 ps -----###
+###----- processing pattern 843 : 4215000 ps -----###
+###----- processing pattern 844 : 4220000 ps -----###
+###----- processing pattern 845 : 4225000 ps -----###
+###----- processing pattern 846 : 4230000 ps -----###
+###----- processing pattern 847 : 4235000 ps -----###
+###----- processing pattern 848 : 4240000 ps -----###
+###----- processing pattern 849 : 4245000 ps -----###
+###----- processing pattern 850 : 4250000 ps -----###
+###----- processing pattern 851 : 4255000 ps -----###
+###----- processing pattern 852 : 4260000 ps -----###
+###----- processing pattern 853 : 4265000 ps -----###
+###----- processing pattern 854 : 4270000 ps -----###
+###----- processing pattern 855 : 4275000 ps -----###
+###----- processing pattern 856 : 4280000 ps -----###
+###----- processing pattern 857 : 4285000 ps -----###
+###----- processing pattern 858 : 4290000 ps -----###
+###----- processing pattern 859 : 4295000 ps -----###
+###----- processing pattern 860 : 4300000 ps -----###
+###----- processing pattern 861 : 4305000 ps -----###
+###----- processing pattern 862 : 4310000 ps -----###
+###----- processing pattern 863 : 4315000 ps -----###
+###----- processing pattern 864 : 4320000 ps -----###
+###----- processing pattern 865 : 4325000 ps -----###
+###----- processing pattern 866 : 4330000 ps -----###
+###----- processing pattern 867 : 4335000 ps -----###
+###----- processing pattern 868 : 4340000 ps -----###
+###----- processing pattern 869 : 4345000 ps -----###
+###----- processing pattern 870 : 4350000 ps -----###
+###----- processing pattern 871 : 4355000 ps -----###
+###----- processing pattern 872 : 4360000 ps -----###
+###----- processing pattern 873 : 4365000 ps -----###
+###----- processing pattern 874 : 4370000 ps -----###
+###----- processing pattern 875 : 4375000 ps -----###
+###----- processing pattern 876 : 4380000 ps -----###
+###----- processing pattern 877 : 4385000 ps -----###
+###----- processing pattern 878 : 4390000 ps -----###
+###----- processing pattern 879 : 4395000 ps -----###
+###----- processing pattern 880 : 4400000 ps -----###
+###----- processing pattern 881 : 4405000 ps -----###
+###----- processing pattern 882 : 4410000 ps -----###
+###----- processing pattern 883 : 4415000 ps -----###
+###----- processing pattern 884 : 4420000 ps -----###
+###----- processing pattern 885 : 4425000 ps -----###
+###----- processing pattern 886 : 4430000 ps -----###
+###----- processing pattern 887 : 4435000 ps -----###
+###----- processing pattern 888 : 4440000 ps -----###
+###----- processing pattern 889 : 4445000 ps -----###
+###----- processing pattern 890 : 4450000 ps -----###
+###----- processing pattern 891 : 4455000 ps -----###
+###----- processing pattern 892 : 4460000 ps -----###
+###----- processing pattern 893 : 4465000 ps -----###
+###----- processing pattern 894 : 4470000 ps -----###
+###----- processing pattern 895 : 4475000 ps -----###
+###----- processing pattern 896 : 4480000 ps -----###
+###----- processing pattern 897 : 4485000 ps -----###
+###----- processing pattern 898 : 4490000 ps -----###
+###----- processing pattern 899 : 4495000 ps -----###
+###----- processing pattern 900 : 4500000 ps -----###
+###----- processing pattern 901 : 4505000 ps -----###
+###----- processing pattern 902 : 4510000 ps -----###
+###----- processing pattern 903 : 4515000 ps -----###
+###----- processing pattern 904 : 4520000 ps -----###
+###----- processing pattern 905 : 4525000 ps -----###
+###----- processing pattern 906 : 4530000 ps -----###
+###----- processing pattern 907 : 4535000 ps -----###
+###----- processing pattern 908 : 4540000 ps -----###
+###----- processing pattern 909 : 4545000 ps -----###
+###----- processing pattern 910 : 4550000 ps -----###
+###----- processing pattern 911 : 4555000 ps -----###
+###----- processing pattern 912 : 4560000 ps -----###
+###----- processing pattern 913 : 4565000 ps -----###
+###----- processing pattern 914 : 4570000 ps -----###
+###----- processing pattern 915 : 4575000 ps -----###
+###----- processing pattern 916 : 4580000 ps -----###
+###----- processing pattern 917 : 4585000 ps -----###
+###----- processing pattern 918 : 4590000 ps -----###
+###----- processing pattern 919 : 4595000 ps -----###
+###----- processing pattern 920 : 4600000 ps -----###
+###----- processing pattern 921 : 4605000 ps -----###
+###----- processing pattern 922 : 4610000 ps -----###
+###----- processing pattern 923 : 4615000 ps -----###
+###----- processing pattern 924 : 4620000 ps -----###
+###----- processing pattern 925 : 4625000 ps -----###
+###----- processing pattern 926 : 4630000 ps -----###
+###----- processing pattern 927 : 4635000 ps -----###
+###----- processing pattern 928 : 4640000 ps -----###
+###----- processing pattern 929 : 4645000 ps -----###
+###----- processing pattern 930 : 4650000 ps -----###
+###----- processing pattern 931 : 4655000 ps -----###
+###----- processing pattern 932 : 4660000 ps -----###
+###----- processing pattern 933 : 4665000 ps -----###
+###----- processing pattern 934 : 4670000 ps -----###
+###----- processing pattern 935 : 4675000 ps -----###
+###----- processing pattern 936 : 4680000 ps -----###
+###----- processing pattern 937 : 4685000 ps -----###
+###----- processing pattern 938 : 4690000 ps -----###
+###----- processing pattern 939 : 4695000 ps -----###
+###----- processing pattern 940 : 4700000 ps -----###
+###----- processing pattern 941 : 4705000 ps -----###
+###----- processing pattern 942 : 4710000 ps -----###
+###----- processing pattern 943 : 4715000 ps -----###
+###----- processing pattern 944 : 4720000 ps -----###
+###----- processing pattern 945 : 4725000 ps -----###
+###----- processing pattern 946 : 4730000 ps -----###
+###----- processing pattern 947 : 4735000 ps -----###
+###----- processing pattern 948 : 4740000 ps -----###
+###----- processing pattern 949 : 4745000 ps -----###
+###----- processing pattern 950 : 4750000 ps -----###
+###----- processing pattern 951 : 4755000 ps -----###
+###----- processing pattern 952 : 4760000 ps -----###
+###----- processing pattern 953 : 4765000 ps -----###
+###----- processing pattern 954 : 4770000 ps -----###
+###----- processing pattern 955 : 4775000 ps -----###
+###----- processing pattern 956 : 4780000 ps -----###
+###----- processing pattern 957 : 4785000 ps -----###
+###----- processing pattern 958 : 4790000 ps -----###
+###----- processing pattern 959 : 4795000 ps -----###
+###----- processing pattern 960 : 4800000 ps -----###
+###----- processing pattern 961 : 4805000 ps -----###
+###----- processing pattern 962 : 4810000 ps -----###
+###----- processing pattern 963 : 4815000 ps -----###
+###----- processing pattern 964 : 4820000 ps -----###
+###----- processing pattern 965 : 4825000 ps -----###
+###----- processing pattern 966 : 4830000 ps -----###
+###----- processing pattern 967 : 4835000 ps -----###
+###----- processing pattern 968 : 4840000 ps -----###
+###----- processing pattern 969 : 4845000 ps -----###
+###----- processing pattern 970 : 4850000 ps -----###
+###----- processing pattern 971 : 4855000 ps -----###
+###----- processing pattern 972 : 4860000 ps -----###
+###----- processing pattern 973 : 4865000 ps -----###
+###----- processing pattern 974 : 4870000 ps -----###
+###----- processing pattern 975 : 4875000 ps -----###
+###----- processing pattern 976 : 4880000 ps -----###
+###----- processing pattern 977 : 4885000 ps -----###
+###----- processing pattern 978 : 4890000 ps -----###
+###----- processing pattern 979 : 4895000 ps -----###
+###----- processing pattern 980 : 4900000 ps -----###
+###----- processing pattern 981 : 4905000 ps -----###
+###----- processing pattern 982 : 4910000 ps -----###
+###----- processing pattern 983 : 4915000 ps -----###
+###----- processing pattern 984 : 4920000 ps -----###
+###----- processing pattern 985 : 4925000 ps -----###
+###----- processing pattern 986 : 4930000 ps -----###
+###----- processing pattern 987 : 4935000 ps -----###
+###----- processing pattern 988 : 4940000 ps -----###
+###----- processing pattern 989 : 4945000 ps -----###
+###----- processing pattern 990 : 4950000 ps -----###
+###----- processing pattern 991 : 4955000 ps -----###
+###----- processing pattern 992 : 4960000 ps -----###
+###----- processing pattern 993 : 4965000 ps -----###
+###----- processing pattern 994 : 4970000 ps -----###
+###----- processing pattern 995 : 4975000 ps -----###
+###----- processing pattern 996 : 4980000 ps -----###
+###----- processing pattern 997 : 4985000 ps -----###
+###----- processing pattern 998 : 4990000 ps -----###
+###----- processing pattern 999 : 4995000 ps -----###
+###----- processing pattern 1000 : 5000000 ps -----###
+###----- processing pattern 1001 : 5005000 ps -----###
+###----- processing pattern 1002 : 5010000 ps -----###
+###----- processing pattern 1003 : 5015000 ps -----###
+###----- processing pattern 1004 : 5020000 ps -----###
+###----- processing pattern 1005 : 5025000 ps -----###
+###----- processing pattern 1006 : 5030000 ps -----###
+###----- processing pattern 1007 : 5035000 ps -----###
+###----- processing pattern 1008 : 5040000 ps -----###
+###----- processing pattern 1009 : 5045000 ps -----###
+###----- processing pattern 1010 : 5050000 ps -----###
+###----- processing pattern 1011 : 5055000 ps -----###
+###----- processing pattern 1012 : 5060000 ps -----###
+###----- processing pattern 1013 : 5065000 ps -----###
+###----- processing pattern 1014 : 5070000 ps -----###
+###----- processing pattern 1015 : 5075000 ps -----###
+###----- processing pattern 1016 : 5080000 ps -----###
+###----- processing pattern 1017 : 5085000 ps -----###
+###----- processing pattern 1018 : 5090000 ps -----###
+###----- processing pattern 1019 : 5095000 ps -----###
+###----- processing pattern 1020 : 5100000 ps -----###
+###----- processing pattern 1021 : 5105000 ps -----###
+###----- processing pattern 1022 : 5110000 ps -----###
+###----- processing pattern 1023 : 5115000 ps -----###
+###----- processing pattern 1024 : 5120000 ps -----###
+###----- processing pattern 1025 : 5125000 ps -----###
+###----- processing pattern 1026 : 5130000 ps -----###
+###----- processing pattern 1027 : 5135000 ps -----###
+###----- processing pattern 1028 : 5140000 ps -----###
+###----- processing pattern 1029 : 5145000 ps -----###
+###----- processing pattern 1030 : 5150000 ps -----###
+###----- processing pattern 1031 : 5155000 ps -----###
+###----- processing pattern 1032 : 5160000 ps -----###
+###----- processing pattern 1033 : 5165000 ps -----###
+###----- processing pattern 1034 : 5170000 ps -----###
+###----- processing pattern 1035 : 5175000 ps -----###
+###----- processing pattern 1036 : 5180000 ps -----###
+###----- processing pattern 1037 : 5185000 ps -----###
+###----- processing pattern 1038 : 5190000 ps -----###
+###----- processing pattern 1039 : 5195000 ps -----###
+###----- processing pattern 1040 : 5200000 ps -----###
+###----- processing pattern 1041 : 5205000 ps -----###
+###----- processing pattern 1042 : 5210000 ps -----###
+###----- processing pattern 1043 : 5215000 ps -----###
+###----- processing pattern 1044 : 5220000 ps -----###
+###----- processing pattern 1045 : 5225000 ps -----###
+###----- processing pattern 1046 : 5230000 ps -----###
+###----- processing pattern 1047 : 5235000 ps -----###
+###----- processing pattern 1048 : 5240000 ps -----###
+###----- processing pattern 1049 : 5245000 ps -----###
+###----- processing pattern 1050 : 5250000 ps -----###
+###----- processing pattern 1051 : 5255000 ps -----###
+###----- processing pattern 1052 : 5260000 ps -----###
+###----- processing pattern 1053 : 5265000 ps -----###
+###----- processing pattern 1054 : 5270000 ps -----###
+###----- processing pattern 1055 : 5275000 ps -----###
+###----- processing pattern 1056 : 5280000 ps -----###
+###----- processing pattern 1057 : 5285000 ps -----###
+###----- processing pattern 1058 : 5290000 ps -----###
+###----- processing pattern 1059 : 5295000 ps -----###
+###----- processing pattern 1060 : 5300000 ps -----###
+###----- processing pattern 1061 : 5305000 ps -----###
+###----- processing pattern 1062 : 5310000 ps -----###
+###----- processing pattern 1063 : 5315000 ps -----###
+###----- processing pattern 1064 : 5320000 ps -----###
+###----- processing pattern 1065 : 5325000 ps -----###
+###----- processing pattern 1066 : 5330000 ps -----###
+###----- processing pattern 1067 : 5335000 ps -----###
+###----- processing pattern 1068 : 5340000 ps -----###
+###----- processing pattern 1069 : 5345000 ps -----###
+###----- processing pattern 1070 : 5350000 ps -----###
+###----- processing pattern 1071 : 5355000 ps -----###
+###----- processing pattern 1072 : 5360000 ps -----###
+###----- processing pattern 1073 : 5365000 ps -----###
+###----- processing pattern 1074 : 5370000 ps -----###
+###----- processing pattern 1075 : 5375000 ps -----###
+###----- processing pattern 1076 : 5380000 ps -----###
+###----- processing pattern 1077 : 5385000 ps -----###
+###----- processing pattern 1078 : 5390000 ps -----###
+###----- processing pattern 1079 : 5395000 ps -----###
+###----- processing pattern 1080 : 5400000 ps -----###
+###----- processing pattern 1081 : 5405000 ps -----###
+###----- processing pattern 1082 : 5410000 ps -----###
+###----- processing pattern 1083 : 5415000 ps -----###
+###----- processing pattern 1084 : 5420000 ps -----###
+###----- processing pattern 1085 : 5425000 ps -----###
+###----- processing pattern 1086 : 5430000 ps -----###
+###----- processing pattern 1087 : 5435000 ps -----###
+###----- processing pattern 1088 : 5440000 ps -----###
+###----- processing pattern 1089 : 5445000 ps -----###
+###----- processing pattern 1090 : 5450000 ps -----###
+###----- processing pattern 1091 : 5455000 ps -----###
+###----- processing pattern 1092 : 5460000 ps -----###
+###----- processing pattern 1093 : 5465000 ps -----###
+###----- processing pattern 1094 : 5470000 ps -----###
+###----- processing pattern 1095 : 5475000 ps -----###
+###----- processing pattern 1096 : 5480000 ps -----###
+###----- processing pattern 1097 : 5485000 ps -----###
+###----- processing pattern 1098 : 5490000 ps -----###
+###----- processing pattern 1099 : 5495000 ps -----###
+###----- processing pattern 1100 : 5500000 ps -----###
+###----- processing pattern 1101 : 5505000 ps -----###
+###----- processing pattern 1102 : 5510000 ps -----###
+###----- processing pattern 1103 : 5515000 ps -----###
+###----- processing pattern 1104 : 5520000 ps -----###
+###----- processing pattern 1105 : 5525000 ps -----###
+###----- processing pattern 1106 : 5530000 ps -----###
+###----- processing pattern 1107 : 5535000 ps -----###
+###----- processing pattern 1108 : 5540000 ps -----###
+###----- processing pattern 1109 : 5545000 ps -----###
+###----- processing pattern 1110 : 5550000 ps -----###
+###----- processing pattern 1111 : 5555000 ps -----###
+###----- processing pattern 1112 : 5560000 ps -----###
+###----- processing pattern 1113 : 5565000 ps -----###
+###----- processing pattern 1114 : 5570000 ps -----###
+###----- processing pattern 1115 : 5575000 ps -----###
+###----- processing pattern 1116 : 5580000 ps -----###
+###----- processing pattern 1117 : 5585000 ps -----###
+###----- processing pattern 1118 : 5590000 ps -----###
+###----- processing pattern 1119 : 5595000 ps -----###
+###----- processing pattern 1120 : 5600000 ps -----###
+###----- processing pattern 1121 : 5605000 ps -----###
+###----- processing pattern 1122 : 5610000 ps -----###
+###----- processing pattern 1123 : 5615000 ps -----###
+###----- processing pattern 1124 : 5620000 ps -----###
+###----- processing pattern 1125 : 5625000 ps -----###
+###----- processing pattern 1126 : 5630000 ps -----###
+###----- processing pattern 1127 : 5635000 ps -----###
+###----- processing pattern 1128 : 5640000 ps -----###
+###----- processing pattern 1129 : 5645000 ps -----###
+###----- processing pattern 1130 : 5650000 ps -----###
+###----- processing pattern 1131 : 5655000 ps -----###
+###----- processing pattern 1132 : 5660000 ps -----###
+###----- processing pattern 1133 : 5665000 ps -----###
+###----- processing pattern 1134 : 5670000 ps -----###
+###----- processing pattern 1135 : 5675000 ps -----###
+###----- processing pattern 1136 : 5680000 ps -----###
+###----- processing pattern 1137 : 5685000 ps -----###
+###----- processing pattern 1138 : 5690000 ps -----###
+###----- processing pattern 1139 : 5695000 ps -----###
+###----- processing pattern 1140 : 5700000 ps -----###
+###----- processing pattern 1141 : 5705000 ps -----###
+###----- processing pattern 1142 : 5710000 ps -----###
+###----- processing pattern 1143 : 5715000 ps -----###
+###----- processing pattern 1144 : 5720000 ps -----###
+###----- processing pattern 1145 : 5725000 ps -----###
+###----- processing pattern 1146 : 5730000 ps -----###
+###----- processing pattern 1147 : 5735000 ps -----###
+###----- processing pattern 1148 : 5740000 ps -----###
+###----- processing pattern 1149 : 5745000 ps -----###
+###----- processing pattern 1150 : 5750000 ps -----###
+###----- processing pattern 1151 : 5755000 ps -----###
+###----- processing pattern 1152 : 5760000 ps -----###
+###----- processing pattern 1153 : 5765000 ps -----###
+###----- processing pattern 1154 : 5770000 ps -----###
+###----- processing pattern 1155 : 5775000 ps -----###
+###----- processing pattern 1156 : 5780000 ps -----###
+###----- processing pattern 1157 : 5785000 ps -----###
+###----- processing pattern 1158 : 5790000 ps -----###
+###----- processing pattern 1159 : 5795000 ps -----###
+###----- processing pattern 1160 : 5800000 ps -----###
+###----- processing pattern 1161 : 5805000 ps -----###
+###----- processing pattern 1162 : 5810000 ps -----###
+###----- processing pattern 1163 : 5815000 ps -----###
+###----- processing pattern 1164 : 5820000 ps -----###
+###----- processing pattern 1165 : 5825000 ps -----###
+###----- processing pattern 1166 : 5830000 ps -----###
+###----- processing pattern 1167 : 5835000 ps -----###
+###----- processing pattern 1168 : 5840000 ps -----###
+###----- processing pattern 1169 : 5845000 ps -----###
+###----- processing pattern 1170 : 5850000 ps -----###
+###----- processing pattern 1171 : 5855000 ps -----###
+###----- processing pattern 1172 : 5860000 ps -----###
+###----- processing pattern 1173 : 5865000 ps -----###
+###----- processing pattern 1174 : 5870000 ps -----###
+###----- processing pattern 1175 : 5875000 ps -----###
+###----- processing pattern 1176 : 5880000 ps -----###
+###----- processing pattern 1177 : 5885000 ps -----###
+###----- processing pattern 1178 : 5890000 ps -----###
+###----- processing pattern 1179 : 5895000 ps -----###
+###----- processing pattern 1180 : 5900000 ps -----###
+###----- processing pattern 1181 : 5905000 ps -----###
+###----- processing pattern 1182 : 5910000 ps -----###
+###----- processing pattern 1183 : 5915000 ps -----###
+###----- processing pattern 1184 : 5920000 ps -----###
+###----- processing pattern 1185 : 5925000 ps -----###
+###----- processing pattern 1186 : 5930000 ps -----###
+###----- processing pattern 1187 : 5935000 ps -----###
+###----- processing pattern 1188 : 5940000 ps -----###
+###----- processing pattern 1189 : 5945000 ps -----###
+###----- processing pattern 1190 : 5950000 ps -----###
+###----- processing pattern 1191 : 5955000 ps -----###
+###----- processing pattern 1192 : 5960000 ps -----###
+###----- processing pattern 1193 : 5965000 ps -----###
+###----- processing pattern 1194 : 5970000 ps -----###
+###----- processing pattern 1195 : 5975000 ps -----###
+###----- processing pattern 1196 : 5980000 ps -----###
+###----- processing pattern 1197 : 5985000 ps -----###
+###----- processing pattern 1198 : 5990000 ps -----###
+###----- processing pattern 1199 : 5995000 ps -----###
+###----- processing pattern 1200 : 6000000 ps -----###
+###----- processing pattern 1201 : 6005000 ps -----###
+###----- processing pattern 1202 : 6010000 ps -----###
+###----- processing pattern 1203 : 6015000 ps -----###
+###----- processing pattern 1204 : 6020000 ps -----###
+###----- processing pattern 1205 : 6025000 ps -----###
+###----- processing pattern 1206 : 6030000 ps -----###
+###----- processing pattern 1207 : 6035000 ps -----###
+###----- processing pattern 1208 : 6040000 ps -----###
+###----- processing pattern 1209 : 6045000 ps -----###
+###----- processing pattern 1210 : 6050000 ps -----###
+###----- processing pattern 1211 : 6055000 ps -----###
+###----- processing pattern 1212 : 6060000 ps -----###
+###----- processing pattern 1213 : 6065000 ps -----###
+###----- processing pattern 1214 : 6070000 ps -----###
+###----- processing pattern 1215 : 6075000 ps -----###
+###----- processing pattern 1216 : 6080000 ps -----###
+###----- processing pattern 1217 : 6085000 ps -----###
+###----- processing pattern 1218 : 6090000 ps -----###
+###----- processing pattern 1219 : 6095000 ps -----###
+###----- processing pattern 1220 : 6100000 ps -----###
+###----- processing pattern 1221 : 6105000 ps -----###
+###----- processing pattern 1222 : 6110000 ps -----###
+###----- processing pattern 1223 : 6115000 ps -----###
+###----- processing pattern 1224 : 6120000 ps -----###
+###----- processing pattern 1225 : 6125000 ps -----###
+###----- processing pattern 1226 : 6130000 ps -----###
+###----- processing pattern 1227 : 6135000 ps -----###
+###----- processing pattern 1228 : 6140000 ps -----###
+###----- processing pattern 1229 : 6145000 ps -----###
+###----- processing pattern 1230 : 6150000 ps -----###
+###----- processing pattern 1231 : 6155000 ps -----###
+###----- processing pattern 1232 : 6160000 ps -----###
+###----- processing pattern 1233 : 6165000 ps -----###
+###----- processing pattern 1234 : 6170000 ps -----###
+###----- processing pattern 1235 : 6175000 ps -----###
+###----- processing pattern 1236 : 6180000 ps -----###
+###----- processing pattern 1237 : 6185000 ps -----###
+###----- processing pattern 1238 : 6190000 ps -----###
+###----- processing pattern 1239 : 6195000 ps -----###
+###----- processing pattern 1240 : 6200000 ps -----###
+###----- processing pattern 1241 : 6205000 ps -----###
+###----- processing pattern 1242 : 6210000 ps -----###
+###----- processing pattern 1243 : 6215000 ps -----###
+###----- processing pattern 1244 : 6220000 ps -----###
+###----- processing pattern 1245 : 6225000 ps -----###
+###----- processing pattern 1246 : 6230000 ps -----###
+###----- processing pattern 1247 : 6235000 ps -----###
+###----- processing pattern 1248 : 6240000 ps -----###
+###----- processing pattern 1249 : 6245000 ps -----###
+###----- processing pattern 1250 : 6250000 ps -----###
+###----- processing pattern 1251 : 6255000 ps -----###
+###----- processing pattern 1252 : 6260000 ps -----###
+###----- processing pattern 1253 : 6265000 ps -----###
+###----- processing pattern 1254 : 6270000 ps -----###
+###----- processing pattern 1255 : 6275000 ps -----###
+###----- processing pattern 1256 : 6280000 ps -----###
+###----- processing pattern 1257 : 6285000 ps -----###
+###----- processing pattern 1258 : 6290000 ps -----###
+###----- processing pattern 1259 : 6295000 ps -----###
+###----- processing pattern 1260 : 6300000 ps -----###
+###----- processing pattern 1261 : 6305000 ps -----###
+###----- processing pattern 1262 : 6310000 ps -----###
+###----- processing pattern 1263 : 6315000 ps -----###
+###----- processing pattern 1264 : 6320000 ps -----###
+###----- processing pattern 1265 : 6325000 ps -----###
+###----- processing pattern 1266 : 6330000 ps -----###
+###----- processing pattern 1267 : 6335000 ps -----###
+###----- processing pattern 1268 : 6340000 ps -----###
+###----- processing pattern 1269 : 6345000 ps -----###
+###----- processing pattern 1270 : 6350000 ps -----###
+###----- processing pattern 1271 : 6355000 ps -----###
+###----- processing pattern 1272 : 6360000 ps -----###
+###----- processing pattern 1273 : 6365000 ps -----###
+###----- processing pattern 1274 : 6370000 ps -----###
+###----- processing pattern 1275 : 6375000 ps -----###
+###----- processing pattern 1276 : 6380000 ps -----###
+###----- processing pattern 1277 : 6385000 ps -----###
+###----- processing pattern 1278 : 6390000 ps -----###
+###----- processing pattern 1279 : 6395000 ps -----###
+###----- processing pattern 1280 : 6400000 ps -----###
+###----- processing pattern 1281 : 6405000 ps -----###
+###----- processing pattern 1282 : 6410000 ps -----###
+###----- processing pattern 1283 : 6415000 ps -----###
+###----- processing pattern 1284 : 6420000 ps -----###
+###----- processing pattern 1285 : 6425000 ps -----###
+###----- processing pattern 1286 : 6430000 ps -----###
+###----- processing pattern 1287 : 6435000 ps -----###
+###----- processing pattern 1288 : 6440000 ps -----###
+###----- processing pattern 1289 : 6445000 ps -----###
+###----- processing pattern 1290 : 6450000 ps -----###
+###----- processing pattern 1291 : 6455000 ps -----###
+###----- processing pattern 1292 : 6460000 ps -----###
+###----- processing pattern 1293 : 6465000 ps -----###
+###----- processing pattern 1294 : 6470000 ps -----###
+###----- processing pattern 1295 : 6475000 ps -----###
+###----- processing pattern 1296 : 6480000 ps -----###
+###----- processing pattern 1297 : 6485000 ps -----###
+###----- processing pattern 1298 : 6490000 ps -----###
+###----- processing pattern 1299 : 6495000 ps -----###
+###----- processing pattern 1300 : 6500000 ps -----###
+###----- processing pattern 1301 : 6505000 ps -----###
+###----- processing pattern 1302 : 6510000 ps -----###
+###----- processing pattern 1303 : 6515000 ps -----###
+###----- processing pattern 1304 : 6520000 ps -----###
+###----- processing pattern 1305 : 6525000 ps -----###
+###----- processing pattern 1306 : 6530000 ps -----###
+###----- processing pattern 1307 : 6535000 ps -----###
+###----- processing pattern 1308 : 6540000 ps -----###
+###----- processing pattern 1309 : 6545000 ps -----###
+###----- processing pattern 1310 : 6550000 ps -----###
+###----- processing pattern 1311 : 6555000 ps -----###
+###----- processing pattern 1312 : 6560000 ps -----###
+###----- processing pattern 1313 : 6565000 ps -----###
+###----- processing pattern 1314 : 6570000 ps -----###
+###----- processing pattern 1315 : 6575000 ps -----###
+###----- processing pattern 1316 : 6580000 ps -----###
+###----- processing pattern 1317 : 6585000 ps -----###
+###----- processing pattern 1318 : 6590000 ps -----###
+###----- processing pattern 1319 : 6595000 ps -----###
+###----- processing pattern 1320 : 6600000 ps -----###
+###----- processing pattern 1321 : 6605000 ps -----###
+###----- processing pattern 1322 : 6610000 ps -----###
+###----- processing pattern 1323 : 6615000 ps -----###
+###----- processing pattern 1324 : 6620000 ps -----###
+###----- processing pattern 1325 : 6625000 ps -----###
+###----- processing pattern 1326 : 6630000 ps -----###
+###----- processing pattern 1327 : 6635000 ps -----###
+###----- processing pattern 1328 : 6640000 ps -----###
+###----- processing pattern 1329 : 6645000 ps -----###
+###----- processing pattern 1330 : 6650000 ps -----###
+###----- processing pattern 1331 : 6655000 ps -----###
+###----- processing pattern 1332 : 6660000 ps -----###
+###----- processing pattern 1333 : 6665000 ps -----###
+###----- processing pattern 1334 : 6670000 ps -----###
+###----- processing pattern 1335 : 6675000 ps -----###
+###----- processing pattern 1336 : 6680000 ps -----###
+###----- processing pattern 1337 : 6685000 ps -----###
+###----- processing pattern 1338 : 6690000 ps -----###
+###----- processing pattern 1339 : 6695000 ps -----###
+###----- processing pattern 1340 : 6700000 ps -----###
+###----- processing pattern 1341 : 6705000 ps -----###
+###----- processing pattern 1342 : 6710000 ps -----###
+###----- processing pattern 1343 : 6715000 ps -----###
+###----- processing pattern 1344 : 6720000 ps -----###
+###----- processing pattern 1345 : 6725000 ps -----###
+###----- processing pattern 1346 : 6730000 ps -----###
+###----- processing pattern 1347 : 6735000 ps -----###
+###----- processing pattern 1348 : 6740000 ps -----###
+###----- processing pattern 1349 : 6745000 ps -----###
+###----- processing pattern 1350 : 6750000 ps -----###
+###----- processing pattern 1351 : 6755000 ps -----###
+###----- processing pattern 1352 : 6760000 ps -----###
+###----- processing pattern 1353 : 6765000 ps -----###
+###----- processing pattern 1354 : 6770000 ps -----###
+###----- processing pattern 1355 : 6775000 ps -----###
+###----- processing pattern 1356 : 6780000 ps -----###
+###----- processing pattern 1357 : 6785000 ps -----###
+###----- processing pattern 1358 : 6790000 ps -----###
+###----- processing pattern 1359 : 6795000 ps -----###
+###----- processing pattern 1360 : 6800000 ps -----###
+###----- processing pattern 1361 : 6805000 ps -----###
+###----- processing pattern 1362 : 6810000 ps -----###
+###----- processing pattern 1363 : 6815000 ps -----###
+###----- processing pattern 1364 : 6820000 ps -----###
+###----- processing pattern 1365 : 6825000 ps -----###
+###----- processing pattern 1366 : 6830000 ps -----###
+###----- processing pattern 1367 : 6835000 ps -----###
+###----- processing pattern 1368 : 6840000 ps -----###
+###----- processing pattern 1369 : 6845000 ps -----###
+###----- processing pattern 1370 : 6850000 ps -----###
+###----- processing pattern 1371 : 6855000 ps -----###
+###----- processing pattern 1372 : 6860000 ps -----###
+###----- processing pattern 1373 : 6865000 ps -----###
+###----- processing pattern 1374 : 6870000 ps -----###
+###----- processing pattern 1375 : 6875000 ps -----###
+###----- processing pattern 1376 : 6880000 ps -----###
+###----- processing pattern 1377 : 6885000 ps -----###
+###----- processing pattern 1378 : 6890000 ps -----###
+###----- processing pattern 1379 : 6895000 ps -----###
+###----- processing pattern 1380 : 6900000 ps -----###
+###----- processing pattern 1381 : 6905000 ps -----###
+###----- processing pattern 1382 : 6910000 ps -----###
+###----- processing pattern 1383 : 6915000 ps -----###
+###----- processing pattern 1384 : 6920000 ps -----###
+###----- processing pattern 1385 : 6925000 ps -----###
+###----- processing pattern 1386 : 6930000 ps -----###
+###----- processing pattern 1387 : 6935000 ps -----###
+###----- processing pattern 1388 : 6940000 ps -----###
+###----- processing pattern 1389 : 6945000 ps -----###
+###----- processing pattern 1390 : 6950000 ps -----###
+###----- processing pattern 1391 : 6955000 ps -----###
+###----- processing pattern 1392 : 6960000 ps -----###
+###----- processing pattern 1393 : 6965000 ps -----###
+###----- processing pattern 1394 : 6970000 ps -----###
+###----- processing pattern 1395 : 6975000 ps -----###
+###----- processing pattern 1396 : 6980000 ps -----###
+###----- processing pattern 1397 : 6985000 ps -----###
+###----- processing pattern 1398 : 6990000 ps -----###
+###----- processing pattern 1399 : 6995000 ps -----###
+###----- processing pattern 1400 : 7000000 ps -----###
+###----- processing pattern 1401 : 7005000 ps -----###
+###----- processing pattern 1402 : 7010000 ps -----###
+###----- processing pattern 1403 : 7015000 ps -----###
+###----- processing pattern 1404 : 7020000 ps -----###
+###----- processing pattern 1405 : 7025000 ps -----###
+###----- processing pattern 1406 : 7030000 ps -----###
+###----- processing pattern 1407 : 7035000 ps -----###
+###----- processing pattern 1408 : 7040000 ps -----###
+###----- processing pattern 1409 : 7045000 ps -----###
+###----- processing pattern 1410 : 7050000 ps -----###
+###----- processing pattern 1411 : 7055000 ps -----###
+###----- processing pattern 1412 : 7060000 ps -----###
+###----- processing pattern 1413 : 7065000 ps -----###
+###----- processing pattern 1414 : 7070000 ps -----###
+###----- processing pattern 1415 : 7075000 ps -----###
+###----- processing pattern 1416 : 7080000 ps -----###
+###----- processing pattern 1417 : 7085000 ps -----###
+###----- processing pattern 1418 : 7090000 ps -----###
+###----- processing pattern 1419 : 7095000 ps -----###
+###----- processing pattern 1420 : 7100000 ps -----###
+###----- processing pattern 1421 : 7105000 ps -----###
+###----- processing pattern 1422 : 7110000 ps -----###
+###----- processing pattern 1423 : 7115000 ps -----###
+###----- processing pattern 1424 : 7120000 ps -----###
+###----- processing pattern 1425 : 7125000 ps -----###
+###----- processing pattern 1426 : 7130000 ps -----###
+###----- processing pattern 1427 : 7135000 ps -----###
+###----- processing pattern 1428 : 7140000 ps -----###
+###----- processing pattern 1429 : 7145000 ps -----###
+###----- processing pattern 1430 : 7150000 ps -----###
+###----- processing pattern 1431 : 7155000 ps -----###
+###----- processing pattern 1432 : 7160000 ps -----###
+###----- processing pattern 1433 : 7165000 ps -----###
+###----- processing pattern 1434 : 7170000 ps -----###
+###----- processing pattern 1435 : 7175000 ps -----###
+###----- processing pattern 1436 : 7180000 ps -----###
+###----- processing pattern 1437 : 7185000 ps -----###
+###----- processing pattern 1438 : 7190000 ps -----###
+###----- processing pattern 1439 : 7195000 ps -----###
+###----- processing pattern 1440 : 7200000 ps -----###
+###----- processing pattern 1441 : 7205000 ps -----###
+###----- processing pattern 1442 : 7210000 ps -----###
+###----- processing pattern 1443 : 7215000 ps -----###
+###----- processing pattern 1444 : 7220000 ps -----###
+###----- processing pattern 1445 : 7225000 ps -----###
+###----- processing pattern 1446 : 7230000 ps -----###
+###----- processing pattern 1447 : 7235000 ps -----###
+###----- processing pattern 1448 : 7240000 ps -----###
+###----- processing pattern 1449 : 7245000 ps -----###
+###----- processing pattern 1450 : 7250000 ps -----###
+###----- processing pattern 1451 : 7255000 ps -----###
+###----- processing pattern 1452 : 7260000 ps -----###
+###----- processing pattern 1453 : 7265000 ps -----###
+###----- processing pattern 1454 : 7270000 ps -----###
+###----- processing pattern 1455 : 7275000 ps -----###
+###----- processing pattern 1456 : 7280000 ps -----###
+###----- processing pattern 1457 : 7285000 ps -----###
+###----- processing pattern 1458 : 7290000 ps -----###
+###----- processing pattern 1459 : 7295000 ps -----###
+###----- processing pattern 1460 : 7300000 ps -----###
+###----- processing pattern 1461 : 7305000 ps -----###
+###----- processing pattern 1462 : 7310000 ps -----###
+###----- processing pattern 1463 : 7315000 ps -----###
+###----- processing pattern 1464 : 7320000 ps -----###
+###----- processing pattern 1465 : 7325000 ps -----###
+###----- processing pattern 1466 : 7330000 ps -----###
+###----- processing pattern 1467 : 7335000 ps -----###
+###----- processing pattern 1468 : 7340000 ps -----###
+###----- processing pattern 1469 : 7345000 ps -----###
+###----- processing pattern 1470 : 7350000 ps -----###
+###----- processing pattern 1471 : 7355000 ps -----###
+###----- processing pattern 1472 : 7360000 ps -----###
+###----- processing pattern 1473 : 7365000 ps -----###
+###----- processing pattern 1474 : 7370000 ps -----###
+###----- processing pattern 1475 : 7375000 ps -----###
+###----- processing pattern 1476 : 7380000 ps -----###
+###----- processing pattern 1477 : 7385000 ps -----###
+###----- processing pattern 1478 : 7390000 ps -----###
+###----- processing pattern 1479 : 7395000 ps -----###
+###----- processing pattern 1480 : 7400000 ps -----###
+###----- processing pattern 1481 : 7405000 ps -----###
+###----- processing pattern 1482 : 7410000 ps -----###
+###----- processing pattern 1483 : 7415000 ps -----###
+###----- processing pattern 1484 : 7420000 ps -----###
+###----- processing pattern 1485 : 7425000 ps -----###
+###----- processing pattern 1486 : 7430000 ps -----###
+###----- processing pattern 1487 : 7435000 ps -----###
+###----- processing pattern 1488 : 7440000 ps -----###
+###----- processing pattern 1489 : 7445000 ps -----###
+###----- processing pattern 1490 : 7450000 ps -----###
+###----- processing pattern 1491 : 7455000 ps -----###
+###----- processing pattern 1492 : 7460000 ps -----###
+###----- processing pattern 1493 : 7465000 ps -----###
+###----- processing pattern 1494 : 7470000 ps -----###
+###----- processing pattern 1495 : 7475000 ps -----###
+###----- processing pattern 1496 : 7480000 ps -----###
+###----- processing pattern 1497 : 7485000 ps -----###
+###----- processing pattern 1498 : 7490000 ps -----###
+###----- processing pattern 1499 : 7495000 ps -----###
+###----- processing pattern 1500 : 7500000 ps -----###
+###----- processing pattern 1501 : 7505000 ps -----###
+###----- processing pattern 1502 : 7510000 ps -----###
+###----- processing pattern 1503 : 7515000 ps -----###
+###----- processing pattern 1504 : 7520000 ps -----###
+###----- processing pattern 1505 : 7525000 ps -----###
+###----- processing pattern 1506 : 7530000 ps -----###
+###----- processing pattern 1507 : 7535000 ps -----###
+###----- processing pattern 1508 : 7540000 ps -----###
+###----- processing pattern 1509 : 7545000 ps -----###
+###----- processing pattern 1510 : 7550000 ps -----###
+###----- processing pattern 1511 : 7555000 ps -----###
+###----- processing pattern 1512 : 7560000 ps -----###
+###----- processing pattern 1513 : 7565000 ps -----###
+###----- processing pattern 1514 : 7570000 ps -----###
+###----- processing pattern 1515 : 7575000 ps -----###
+###----- processing pattern 1516 : 7580000 ps -----###
+###----- processing pattern 1517 : 7585000 ps -----###
+###----- processing pattern 1518 : 7590000 ps -----###
+###----- processing pattern 1519 : 7595000 ps -----###
+###----- processing pattern 1520 : 7600000 ps -----###
+###----- processing pattern 1521 : 7605000 ps -----###
+###----- processing pattern 1522 : 7610000 ps -----###
+###----- processing pattern 1523 : 7615000 ps -----###
+###----- processing pattern 1524 : 7620000 ps -----###
+###----- processing pattern 1525 : 7625000 ps -----###
+###----- processing pattern 1526 : 7630000 ps -----###
+###----- processing pattern 1527 : 7635000 ps -----###
+###----- processing pattern 1528 : 7640000 ps -----###
+###----- processing pattern 1529 : 7645000 ps -----###
+###----- processing pattern 1530 : 7650000 ps -----###
+###----- processing pattern 1531 : 7655000 ps -----###
+###----- processing pattern 1532 : 7660000 ps -----###
+###----- processing pattern 1533 : 7665000 ps -----###
+###----- processing pattern 1534 : 7670000 ps -----###
+###----- processing pattern 1535 : 7675000 ps -----###
+###----- processing pattern 1536 : 7680000 ps -----###
+###----- processing pattern 1537 : 7685000 ps -----###
+###----- processing pattern 1538 : 7690000 ps -----###
+###----- processing pattern 1539 : 7695000 ps -----###
+###----- processing pattern 1540 : 7700000 ps -----###
+###----- processing pattern 1541 : 7705000 ps -----###
+###----- processing pattern 1542 : 7710000 ps -----###
+###----- processing pattern 1543 : 7715000 ps -----###
+###----- processing pattern 1544 : 7720000 ps -----###
+###----- processing pattern 1545 : 7725000 ps -----###
+###----- processing pattern 1546 : 7730000 ps -----###
+###----- processing pattern 1547 : 7735000 ps -----###
+###----- processing pattern 1548 : 7740000 ps -----###
+###----- processing pattern 1549 : 7745000 ps -----###
+###----- processing pattern 1550 : 7750000 ps -----###
+###----- processing pattern 1551 : 7755000 ps -----###
+###----- processing pattern 1552 : 7760000 ps -----###
+###----- processing pattern 1553 : 7765000 ps -----###
+###----- processing pattern 1554 : 7770000 ps -----###
+###----- processing pattern 1555 : 7775000 ps -----###
+###----- processing pattern 1556 : 7780000 ps -----###
+###----- processing pattern 1557 : 7785000 ps -----###
+###----- processing pattern 1558 : 7790000 ps -----###
+###----- processing pattern 1559 : 7795000 ps -----###
+###----- processing pattern 1560 : 7800000 ps -----###
+###----- processing pattern 1561 : 7805000 ps -----###
+###----- processing pattern 1562 : 7810000 ps -----###
+###----- processing pattern 1563 : 7815000 ps -----###
+###----- processing pattern 1564 : 7820000 ps -----###
+###----- processing pattern 1565 : 7825000 ps -----###
+###----- processing pattern 1566 : 7830000 ps -----###
+###----- processing pattern 1567 : 7835000 ps -----###
+###----- processing pattern 1568 : 7840000 ps -----###
+###----- processing pattern 1569 : 7845000 ps -----###
+###----- processing pattern 1570 : 7850000 ps -----###
+###----- processing pattern 1571 : 7855000 ps -----###
+###----- processing pattern 1572 : 7860000 ps -----###
+###----- processing pattern 1573 : 7865000 ps -----###
+###----- processing pattern 1574 : 7870000 ps -----###
+###----- processing pattern 1575 : 7875000 ps -----###
+###----- processing pattern 1576 : 7880000 ps -----###
+###----- processing pattern 1577 : 7885000 ps -----###
+###----- processing pattern 1578 : 7890000 ps -----###
+###----- processing pattern 1579 : 7895000 ps -----###
+###----- processing pattern 1580 : 7900000 ps -----###
+###----- processing pattern 1581 : 7905000 ps -----###
+###----- processing pattern 1582 : 7910000 ps -----###
+###----- processing pattern 1583 : 7915000 ps -----###
+###----- processing pattern 1584 : 7920000 ps -----###
+###----- processing pattern 1585 : 7925000 ps -----###
+###----- processing pattern 1586 : 7930000 ps -----###
+###----- processing pattern 1587 : 7935000 ps -----###
+###----- processing pattern 1588 : 7940000 ps -----###
+###----- processing pattern 1589 : 7945000 ps -----###
+###----- processing pattern 1590 : 7950000 ps -----###
+###----- processing pattern 1591 : 7955000 ps -----###
+###----- processing pattern 1592 : 7960000 ps -----###
+###----- processing pattern 1593 : 7965000 ps -----###
+###----- processing pattern 1594 : 7970000 ps -----###
+###----- processing pattern 1595 : 7975000 ps -----###
+###----- processing pattern 1596 : 7980000 ps -----###
+###----- processing pattern 1597 : 7985000 ps -----###
+###----- processing pattern 1598 : 7990000 ps -----###
+###----- processing pattern 1599 : 7995000 ps -----###
+###----- processing pattern 1600 : 8000000 ps -----###
+###----- processing pattern 1601 : 8005000 ps -----###
+###----- processing pattern 1602 : 8010000 ps -----###
+###----- processing pattern 1603 : 8015000 ps -----###
+###----- processing pattern 1604 : 8020000 ps -----###
+###----- processing pattern 1605 : 8025000 ps -----###
+###----- processing pattern 1606 : 8030000 ps -----###
+###----- processing pattern 1607 : 8035000 ps -----###
+###----- processing pattern 1608 : 8040000 ps -----###
+###----- processing pattern 1609 : 8045000 ps -----###
+###----- processing pattern 1610 : 8050000 ps -----###
+###----- processing pattern 1611 : 8055000 ps -----###
+###----- processing pattern 1612 : 8060000 ps -----###
+###----- processing pattern 1613 : 8065000 ps -----###
+###----- processing pattern 1614 : 8070000 ps -----###
+###----- processing pattern 1615 : 8075000 ps -----###
+###----- processing pattern 1616 : 8080000 ps -----###
+###----- processing pattern 1617 : 8085000 ps -----###
+###----- processing pattern 1618 : 8090000 ps -----###
+###----- processing pattern 1619 : 8095000 ps -----###
+###----- processing pattern 1620 : 8100000 ps -----###
+###----- processing pattern 1621 : 8105000 ps -----###
+###----- processing pattern 1622 : 8110000 ps -----###
+###----- processing pattern 1623 : 8115000 ps -----###
+###----- processing pattern 1624 : 8120000 ps -----###
+###----- processing pattern 1625 : 8125000 ps -----###
+###----- processing pattern 1626 : 8130000 ps -----###
+###----- processing pattern 1627 : 8135000 ps -----###
+###----- processing pattern 1628 : 8140000 ps -----###
+###----- processing pattern 1629 : 8145000 ps -----###
+###----- processing pattern 1630 : 8150000 ps -----###
+###----- processing pattern 1631 : 8155000 ps -----###
+###----- processing pattern 1632 : 8160000 ps -----###
+###----- processing pattern 1633 : 8165000 ps -----###
+###----- processing pattern 1634 : 8170000 ps -----###
+###----- processing pattern 1635 : 8175000 ps -----###
+###----- processing pattern 1636 : 8180000 ps -----###
+###----- processing pattern 1637 : 8185000 ps -----###
+###----- processing pattern 1638 : 8190000 ps -----###
+###----- processing pattern 1639 : 8195000 ps -----###
+###----- processing pattern 1640 : 8200000 ps -----###
+###----- processing pattern 1641 : 8205000 ps -----###
+###----- processing pattern 1642 : 8210000 ps -----###
+###----- processing pattern 1643 : 8215000 ps -----###
+###----- processing pattern 1644 : 8220000 ps -----###
+###----- processing pattern 1645 : 8225000 ps -----###
+###----- processing pattern 1646 : 8230000 ps -----###
+###----- processing pattern 1647 : 8235000 ps -----###
+###----- processing pattern 1648 : 8240000 ps -----###
+###----- processing pattern 1649 : 8245000 ps -----###
+###----- processing pattern 1650 : 8250000 ps -----###
+###----- processing pattern 1651 : 8255000 ps -----###
+###----- processing pattern 1652 : 8260000 ps -----###
+###----- processing pattern 1653 : 8265000 ps -----###
+###----- processing pattern 1654 : 8270000 ps -----###
+###----- processing pattern 1655 : 8275000 ps -----###
+###----- processing pattern 1656 : 8280000 ps -----###
+###----- processing pattern 1657 : 8285000 ps -----###
+###----- processing pattern 1658 : 8290000 ps -----###
+###----- processing pattern 1659 : 8295000 ps -----###
+###----- processing pattern 1660 : 8300000 ps -----###
+###----- processing pattern 1661 : 8305000 ps -----###
+###----- processing pattern 1662 : 8310000 ps -----###
+###----- processing pattern 1663 : 8315000 ps -----###
+###----- processing pattern 1664 : 8320000 ps -----###
+###----- processing pattern 1665 : 8325000 ps -----###
+###----- processing pattern 1666 : 8330000 ps -----###
+###----- processing pattern 1667 : 8335000 ps -----###
+###----- processing pattern 1668 : 8340000 ps -----###
+###----- processing pattern 1669 : 8345000 ps -----###
+###----- processing pattern 1670 : 8350000 ps -----###
+###----- processing pattern 1671 : 8355000 ps -----###
+###----- processing pattern 1672 : 8360000 ps -----###
+###----- processing pattern 1673 : 8365000 ps -----###
+###----- processing pattern 1674 : 8370000 ps -----###
+###----- processing pattern 1675 : 8375000 ps -----###
+###----- processing pattern 1676 : 8380000 ps -----###
+###----- processing pattern 1677 : 8385000 ps -----###
+###----- processing pattern 1678 : 8390000 ps -----###
+###----- processing pattern 1679 : 8395000 ps -----###
+###----- processing pattern 1680 : 8400000 ps -----###
+###----- processing pattern 1681 : 8405000 ps -----###
+###----- processing pattern 1682 : 8410000 ps -----###
+###----- processing pattern 1683 : 8415000 ps -----###
+###----- processing pattern 1684 : 8420000 ps -----###
+###----- processing pattern 1685 : 8425000 ps -----###
+###----- processing pattern 1686 : 8430000 ps -----###
+###----- processing pattern 1687 : 8435000 ps -----###
+###----- processing pattern 1688 : 8440000 ps -----###
+###----- processing pattern 1689 : 8445000 ps -----###
+###----- processing pattern 1690 : 8450000 ps -----###
+###----- processing pattern 1691 : 8455000 ps -----###
+###----- processing pattern 1692 : 8460000 ps -----###
+###----- processing pattern 1693 : 8465000 ps -----###
+###----- processing pattern 1694 : 8470000 ps -----###
+###----- processing pattern 1695 : 8475000 ps -----###
+###----- processing pattern 1696 : 8480000 ps -----###
+###----- processing pattern 1697 : 8485000 ps -----###
+###----- processing pattern 1698 : 8490000 ps -----###
+###----- processing pattern 1699 : 8495000 ps -----###
+###----- processing pattern 1700 : 8500000 ps -----###
+###----- processing pattern 1701 : 8505000 ps -----###
+###----- processing pattern 1702 : 8510000 ps -----###
+###----- processing pattern 1703 : 8515000 ps -----###
+###----- processing pattern 1704 : 8520000 ps -----###
+###----- processing pattern 1705 : 8525000 ps -----###
+###----- processing pattern 1706 : 8530000 ps -----###
+###----- processing pattern 1707 : 8535000 ps -----###
+###----- processing pattern 1708 : 8540000 ps -----###
+###----- processing pattern 1709 : 8545000 ps -----###
+###----- processing pattern 1710 : 8550000 ps -----###
+###----- processing pattern 1711 : 8555000 ps -----###
+###----- processing pattern 1712 : 8560000 ps -----###
+###----- processing pattern 1713 : 8565000 ps -----###
+###----- processing pattern 1714 : 8570000 ps -----###
+###----- processing pattern 1715 : 8575000 ps -----###
+###----- processing pattern 1716 : 8580000 ps -----###
+###----- processing pattern 1717 : 8585000 ps -----###
+###----- processing pattern 1718 : 8590000 ps -----###
+###----- processing pattern 1719 : 8595000 ps -----###
+###----- processing pattern 1720 : 8600000 ps -----###
+###----- processing pattern 1721 : 8605000 ps -----###
+###----- processing pattern 1722 : 8610000 ps -----###
+###----- processing pattern 1723 : 8615000 ps -----###
+###----- processing pattern 1724 : 8620000 ps -----###
+###----- processing pattern 1725 : 8625000 ps -----###
+###----- processing pattern 1726 : 8630000 ps -----###
+###----- processing pattern 1727 : 8635000 ps -----###
+###----- processing pattern 1728 : 8640000 ps -----###
+###----- processing pattern 1729 : 8645000 ps -----###
+###----- processing pattern 1730 : 8650000 ps -----###
+###----- processing pattern 1731 : 8655000 ps -----###
+###----- processing pattern 1732 : 8660000 ps -----###
+###----- processing pattern 1733 : 8665000 ps -----###
+###----- processing pattern 1734 : 8670000 ps -----###
+###----- processing pattern 1735 : 8675000 ps -----###
+###----- processing pattern 1736 : 8680000 ps -----###
+###----- processing pattern 1737 : 8685000 ps -----###
+###----- processing pattern 1738 : 8690000 ps -----###
+###----- processing pattern 1739 : 8695000 ps -----###
+###----- processing pattern 1740 : 8700000 ps -----###
+###----- processing pattern 1741 : 8705000 ps -----###
+###----- processing pattern 1742 : 8710000 ps -----###
+###----- processing pattern 1743 : 8715000 ps -----###
+###----- processing pattern 1744 : 8720000 ps -----###
+###----- processing pattern 1745 : 8725000 ps -----###
+###----- processing pattern 1746 : 8730000 ps -----###
+###----- processing pattern 1747 : 8735000 ps -----###
+###----- processing pattern 1748 : 8740000 ps -----###
+###----- processing pattern 1749 : 8745000 ps -----###
+###----- processing pattern 1750 : 8750000 ps -----###
+###----- processing pattern 1751 : 8755000 ps -----###
+###----- processing pattern 1752 : 8760000 ps -----###
+###----- processing pattern 1753 : 8765000 ps -----###
+###----- processing pattern 1754 : 8770000 ps -----###
+###----- processing pattern 1755 : 8775000 ps -----###
+###----- processing pattern 1756 : 8780000 ps -----###
+###----- processing pattern 1757 : 8785000 ps -----###
+###----- processing pattern 1758 : 8790000 ps -----###
+###----- processing pattern 1759 : 8795000 ps -----###
+###----- processing pattern 1760 : 8800000 ps -----###
+###----- processing pattern 1761 : 8805000 ps -----###
+###----- processing pattern 1762 : 8810000 ps -----###
+###----- processing pattern 1763 : 8815000 ps -----###
+###----- processing pattern 1764 : 8820000 ps -----###
+###----- processing pattern 1765 : 8825000 ps -----###
+###----- processing pattern 1766 : 8830000 ps -----###
+###----- processing pattern 1767 : 8835000 ps -----###
+###----- processing pattern 1768 : 8840000 ps -----###
+###----- processing pattern 1769 : 8845000 ps -----###
+###----- processing pattern 1770 : 8850000 ps -----###
+###----- processing pattern 1771 : 8855000 ps -----###
+###----- processing pattern 1772 : 8860000 ps -----###
+###----- processing pattern 1773 : 8865000 ps -----###
+###----- processing pattern 1774 : 8870000 ps -----###
+###----- processing pattern 1775 : 8875000 ps -----###
+###----- processing pattern 1776 : 8880000 ps -----###
+###----- processing pattern 1777 : 8885000 ps -----###
+###----- processing pattern 1778 : 8890000 ps -----###
+###----- processing pattern 1779 : 8895000 ps -----###
+###----- processing pattern 1780 : 8900000 ps -----###
+###----- processing pattern 1781 : 8905000 ps -----###
+###----- processing pattern 1782 : 8910000 ps -----###
+###----- processing pattern 1783 : 8915000 ps -----###
+###----- processing pattern 1784 : 8920000 ps -----###
+###----- processing pattern 1785 : 8925000 ps -----###
+###----- processing pattern 1786 : 8930000 ps -----###
+###----- processing pattern 1787 : 8935000 ps -----###
+###----- processing pattern 1788 : 8940000 ps -----###
+###----- processing pattern 1789 : 8945000 ps -----###
+###----- processing pattern 1790 : 8950000 ps -----###
+###----- processing pattern 1791 : 8955000 ps -----###
+###----- processing pattern 1792 : 8960000 ps -----###
+###----- processing pattern 1793 : 8965000 ps -----###
+###----- processing pattern 1794 : 8970000 ps -----###
+###----- processing pattern 1795 : 8975000 ps -----###
+###----- processing pattern 1796 : 8980000 ps -----###
+###----- processing pattern 1797 : 8985000 ps -----###
+###----- processing pattern 1798 : 8990000 ps -----###
+###----- processing pattern 1799 : 8995000 ps -----###
+###----- processing pattern 1800 : 9000000 ps -----###
+###----- processing pattern 1801 : 9005000 ps -----###
+###----- processing pattern 1802 : 9010000 ps -----###
+###----- processing pattern 1803 : 9015000 ps -----###
+###----- processing pattern 1804 : 9020000 ps -----###
+###----- processing pattern 1805 : 9025000 ps -----###
+###----- processing pattern 1806 : 9030000 ps -----###
+###----- processing pattern 1807 : 9035000 ps -----###
+###----- processing pattern 1808 : 9040000 ps -----###
+###----- processing pattern 1809 : 9045000 ps -----###
+###----- processing pattern 1810 : 9050000 ps -----###
+###----- processing pattern 1811 : 9055000 ps -----###
+###----- processing pattern 1812 : 9060000 ps -----###
+###----- processing pattern 1813 : 9065000 ps -----###
+###----- processing pattern 1814 : 9070000 ps -----###
+###----- processing pattern 1815 : 9075000 ps -----###
+###----- processing pattern 1816 : 9080000 ps -----###
+###----- processing pattern 1817 : 9085000 ps -----###
+###----- processing pattern 1818 : 9090000 ps -----###
+###----- processing pattern 1819 : 9095000 ps -----###
+###----- processing pattern 1820 : 9100000 ps -----###
+###----- processing pattern 1821 : 9105000 ps -----###
+###----- processing pattern 1822 : 9110000 ps -----###
+###----- processing pattern 1823 : 9115000 ps -----###
+###----- processing pattern 1824 : 9120000 ps -----###
+###----- processing pattern 1825 : 9125000 ps -----###
+###----- processing pattern 1826 : 9130000 ps -----###
+###----- processing pattern 1827 : 9135000 ps -----###
+###----- processing pattern 1828 : 9140000 ps -----###
+###----- processing pattern 1829 : 9145000 ps -----###
+###----- processing pattern 1830 : 9150000 ps -----###
+###----- processing pattern 1831 : 9155000 ps -----###
+###----- processing pattern 1832 : 9160000 ps -----###
+###----- processing pattern 1833 : 9165000 ps -----###
+###----- processing pattern 1834 : 9170000 ps -----###
+###----- processing pattern 1835 : 9175000 ps -----###
+###----- processing pattern 1836 : 9180000 ps -----###
+###----- processing pattern 1837 : 9185000 ps -----###
+###----- processing pattern 1838 : 9190000 ps -----###
+###----- processing pattern 1839 : 9195000 ps -----###
+###----- processing pattern 1840 : 9200000 ps -----###
+###----- processing pattern 1841 : 9205000 ps -----###
+###----- processing pattern 1842 : 9210000 ps -----###
+###----- processing pattern 1843 : 9215000 ps -----###
+###----- processing pattern 1844 : 9220000 ps -----###
+###----- processing pattern 1845 : 9225000 ps -----###
+###----- processing pattern 1846 : 9230000 ps -----###
+###----- processing pattern 1847 : 9235000 ps -----###
+###----- processing pattern 1848 : 9240000 ps -----###
+###----- processing pattern 1849 : 9245000 ps -----###
+###----- processing pattern 1850 : 9250000 ps -----###
+###----- processing pattern 1851 : 9255000 ps -----###
+###----- processing pattern 1852 : 9260000 ps -----###
+###----- processing pattern 1853 : 9265000 ps -----###
+###----- processing pattern 1854 : 9270000 ps -----###
+###----- processing pattern 1855 : 9275000 ps -----###
+###----- processing pattern 1856 : 9280000 ps -----###
+###----- processing pattern 1857 : 9285000 ps -----###
+###----- processing pattern 1858 : 9290000 ps -----###
+###----- processing pattern 1859 : 9295000 ps -----###
+###----- processing pattern 1860 : 9300000 ps -----###
+###----- processing pattern 1861 : 9305000 ps -----###
+###----- processing pattern 1862 : 9310000 ps -----###
+###----- processing pattern 1863 : 9315000 ps -----###
+###----- processing pattern 1864 : 9320000 ps -----###
+###----- processing pattern 1865 : 9325000 ps -----###
+###----- processing pattern 1866 : 9330000 ps -----###
+###----- processing pattern 1867 : 9335000 ps -----###
+###----- processing pattern 1868 : 9340000 ps -----###
+###----- processing pattern 1869 : 9345000 ps -----###
+###----- processing pattern 1870 : 9350000 ps -----###
+###----- processing pattern 1871 : 9355000 ps -----###
+###----- processing pattern 1872 : 9360000 ps -----###
+###----- processing pattern 1873 : 9365000 ps -----###
+###----- processing pattern 1874 : 9370000 ps -----###
+###----- processing pattern 1875 : 9375000 ps -----###
+###----- processing pattern 1876 : 9380000 ps -----###
+###----- processing pattern 1877 : 9385000 ps -----###
+###----- processing pattern 1878 : 9390000 ps -----###
+###----- processing pattern 1879 : 9395000 ps -----###
+###----- processing pattern 1880 : 9400000 ps -----###
+###----- processing pattern 1881 : 9405000 ps -----###
+###----- processing pattern 1882 : 9410000 ps -----###
+###----- processing pattern 1883 : 9415000 ps -----###
+###----- processing pattern 1884 : 9420000 ps -----###
+###----- processing pattern 1885 : 9425000 ps -----###
+###----- processing pattern 1886 : 9430000 ps -----###
+###----- processing pattern 1887 : 9435000 ps -----###
+###----- processing pattern 1888 : 9440000 ps -----###
+###----- processing pattern 1889 : 9445000 ps -----###
+###----- processing pattern 1890 : 9450000 ps -----###
+###----- processing pattern 1891 : 9455000 ps -----###
+###----- processing pattern 1892 : 9460000 ps -----###
+###----- processing pattern 1893 : 9465000 ps -----###
+###----- processing pattern 1894 : 9470000 ps -----###
+###----- processing pattern 1895 : 9475000 ps -----###
+###----- processing pattern 1896 : 9480000 ps -----###
+###----- processing pattern 1897 : 9485000 ps -----###
+###----- processing pattern 1898 : 9490000 ps -----###
+###----- processing pattern 1899 : 9495000 ps -----###
+###----- processing pattern 1900 : 9500000 ps -----###
+###----- processing pattern 1901 : 9505000 ps -----###
+###----- processing pattern 1902 : 9510000 ps -----###
+###----- processing pattern 1903 : 9515000 ps -----###
+###----- processing pattern 1904 : 9520000 ps -----###
+###----- processing pattern 1905 : 9525000 ps -----###
+###----- processing pattern 1906 : 9530000 ps -----###
+###----- processing pattern 1907 : 9535000 ps -----###
+###----- processing pattern 1908 : 9540000 ps -----###
+###----- processing pattern 1909 : 9545000 ps -----###
+###----- processing pattern 1910 : 9550000 ps -----###
+###----- processing pattern 1911 : 9555000 ps -----###
+###----- processing pattern 1912 : 9560000 ps -----###
+###----- processing pattern 1913 : 9565000 ps -----###
+###----- processing pattern 1914 : 9570000 ps -----###
+###----- processing pattern 1915 : 9575000 ps -----###
+###----- processing pattern 1916 : 9580000 ps -----###
+###----- processing pattern 1917 : 9585000 ps -----###
+###----- processing pattern 1918 : 9590000 ps -----###
+###----- processing pattern 1919 : 9595000 ps -----###
+###----- processing pattern 1920 : 9600000 ps -----###
+###----- processing pattern 1921 : 9605000 ps -----###
+###----- processing pattern 1922 : 9610000 ps -----###
+###----- processing pattern 1923 : 9615000 ps -----###
+###----- processing pattern 1924 : 9620000 ps -----###
+###----- processing pattern 1925 : 9625000 ps -----###
+###----- processing pattern 1926 : 9630000 ps -----###
+###----- processing pattern 1927 : 9635000 ps -----###
+###----- processing pattern 1928 : 9640000 ps -----###
+###----- processing pattern 1929 : 9645000 ps -----###
+###----- processing pattern 1930 : 9650000 ps -----###
+###----- processing pattern 1931 : 9655000 ps -----###
+###----- processing pattern 1932 : 9660000 ps -----###
+###----- processing pattern 1933 : 9665000 ps -----###
+###----- processing pattern 1934 : 9670000 ps -----###
+###----- processing pattern 1935 : 9675000 ps -----###
+###----- processing pattern 1936 : 9680000 ps -----###
+###----- processing pattern 1937 : 9685000 ps -----###
+###----- processing pattern 1938 : 9690000 ps -----###
+###----- processing pattern 1939 : 9695000 ps -----###
+###----- processing pattern 1940 : 9700000 ps -----###
+###----- processing pattern 1941 : 9705000 ps -----###
+###----- processing pattern 1942 : 9710000 ps -----###
+###----- processing pattern 1943 : 9715000 ps -----###
+###----- processing pattern 1944 : 9720000 ps -----###
+###----- processing pattern 1945 : 9725000 ps -----###
+###----- processing pattern 1946 : 9730000 ps -----###
+###----- processing pattern 1947 : 9735000 ps -----###
+###----- processing pattern 1948 : 9740000 ps -----###
+###----- processing pattern 1949 : 9745000 ps -----###
+###----- processing pattern 1950 : 9750000 ps -----###
+###----- processing pattern 1951 : 9755000 ps -----###
+###----- processing pattern 1952 : 9760000 ps -----###
+###----- processing pattern 1953 : 9765000 ps -----###
+###----- processing pattern 1954 : 9770000 ps -----###
+###----- processing pattern 1955 : 9775000 ps -----###
+###----- processing pattern 1956 : 9780000 ps -----###
+###----- processing pattern 1957 : 9785000 ps -----###
+###----- processing pattern 1958 : 9790000 ps -----###
+###----- processing pattern 1959 : 9795000 ps -----###
+###----- processing pattern 1960 : 9800000 ps -----###
+###----- processing pattern 1961 : 9805000 ps -----###
+###----- processing pattern 1962 : 9810000 ps -----###
+###----- processing pattern 1963 : 9815000 ps -----###
+###----- processing pattern 1964 : 9820000 ps -----###
+###----- processing pattern 1965 : 9825000 ps -----###
+###----- processing pattern 1966 : 9830000 ps -----###
+###----- processing pattern 1967 : 9835000 ps -----###
+###----- processing pattern 1968 : 9840000 ps -----###
+###----- processing pattern 1969 : 9845000 ps -----###
+###----- processing pattern 1970 : 9850000 ps -----###
+###----- processing pattern 1971 : 9855000 ps -----###
+###----- processing pattern 1972 : 9860000 ps -----###
+###----- processing pattern 1973 : 9865000 ps -----###
+###----- processing pattern 1974 : 9870000 ps -----###
+###----- processing pattern 1975 : 9875000 ps -----###
+###----- processing pattern 1976 : 9880000 ps -----###
+###----- processing pattern 1977 : 9885000 ps -----###
+###----- processing pattern 1978 : 9890000 ps -----###
+###----- processing pattern 1979 : 9895000 ps -----###
+###----- processing pattern 1980 : 9900000 ps -----###
+###----- processing pattern 1981 : 9905000 ps -----###
+###----- processing pattern 1982 : 9910000 ps -----###
+###----- processing pattern 1983 : 9915000 ps -----###
+###----- processing pattern 1984 : 9920000 ps -----###
+###----- processing pattern 1985 : 9925000 ps -----###
+###----- processing pattern 1986 : 9930000 ps -----###
+###----- processing pattern 1987 : 9935000 ps -----###
+###----- processing pattern 1988 : 9940000 ps -----###
+###----- processing pattern 1989 : 9945000 ps -----###
+###----- processing pattern 1990 : 9950000 ps -----###
+###----- processing pattern 1991 : 9955000 ps -----###
+###----- processing pattern 1992 : 9960000 ps -----###
+###----- processing pattern 1993 : 9965000 ps -----###
+###----- processing pattern 1994 : 9970000 ps -----###
+###----- processing pattern 1995 : 9975000 ps -----###
+###----- processing pattern 1996 : 9980000 ps -----###
+###----- processing pattern 1997 : 9985000 ps -----###
+###----- processing pattern 1998 : 9990000 ps -----###
+###----- processing pattern 1999 : 9995000 ps -----###
+1247758056

@@ -1,0 +1,8196 @@
+   0  $accept : %entry% $end
+
+   1  main : section EOI
+
+   2  section : S_VERSION STRING
+   3          | S_PARAMETER BEGIN params END
+   4          | S_METHODS BEGIN methods END
+   5          | S_METHODS LPAREN expr RPAREN BEGIN methods END
+   6          | S_CHECK BEGIN checks END
+   7          | S_CHECK LPAREN expr RPAREN BEGIN checks END
+   8          | S_INTERFACE BEGIN interfaces END
+   9          | S_INTERFACE LPAREN expr RPAREN BEGIN interfaces END
+  10          | S_INTERFACE LPAREN expr RPAREN BEGIN NULL EOI END
+  11          | S_SIGNALS BEGIN signals END
+  12          | S_SIGNALS LPAREN expr RPAREN BEGIN signals END
+  13          | S_MAPPING BEGIN mappings END
+  14          | S_MAPPING LPAREN expr RPAREN BEGIN mappings END
+  15          | S_MAPPING LPAREN expr RPAREN BEGIN NULL EOI END
+  16          | S_TOP BEGIN instructions END
+  17          | S_TOP LPAREN expr RPAREN BEGIN instructions END
+  18          | name SEP1 S_PROCESS BEGIN instructions END
+  19          | name SEP1 S_PROCESS LPAREN expr RPAREN BEGIN instructions END
+  20          | name SEP1 S_ACCESS BEGIN access END
+  21          | name SEP1 S_ACCESS LPAREN expr RPAREN BEGIN access END
+
+  22  params : param_def EOI
+  23         | param_def EOI params
+
+  24  param_def : param
+  25            | param WITH attr_list
+
+  26  param : name
+  27        | name ASSIGN expr
+  28        | name LBRAK range RBRAK ASSIGN expr
+  29        | name LBRAK arg_list RBRAK ASSIGN expr
+  30        | name LBRAK range RBRAK
+  31        | name LBRAK arg_list RBRAK
+  32        | name LBRAK range SEP1 data_type RBRAK
+  33        | name LBRAK range SEP1 data_type RBRAK ASSIGN expr
+  34        | name LBRAK arg_list SEP1 data_type RBRAK
+  35        | name LBRAK arg_list SEP1 data_type RBRAK ASSIGN expr
+
+  36  data_type : LOGIC
+  37            | SIGNED
+  38            | INT
+  39            | BOOL
+  40            | CHAR
+  41            | STRINGS
+  42            | VAR
+
+  43  attr_list : IDENT
+  44            | IDENT AND attr_list
+
+  45  methods : method_decl EOI
+  46          | method_decl EOI methods
+
+  47  method_decl : func
+
+  48  checks : check EOI
+  49         | check EOI checks
+
+  50  check : expr
+
+  51  signals : signal_decl EOI
+  52          | signal_decl EOI signals
+
+  53  sig_dir : IN
+  54          | OUT
+
+  55  signal_decl : VAR IDENT
+  56              | FOREACH VAR IDENT IN foreach DO BEGIN signals END
+  57              | CONSTANT name
+  58              | CONSTANT name SEP1 arg_type ASSIGN2 expr
+  59              | SIGNAL name SEP1 arg_type
+  60              | SIGNAL name SEP1 sig_dir arg_type
+  61              | VARIABLE name SEP1 arg_type
+  62              | SHARED VARIABLE name SEP1 arg_type
+  63              | TYPE name IS LCURL name_list RCURL
+  64              | TYPE name IS ARRAY LBRAK range RBRAK OF arg_type
+  65              | TYPE name
+
+  66  interfaces : interface_decl EOI
+  67             | interface_decl EOI interfaces
+
+  68  interface_decl : FOREACH VAR IDENT IN foreach DO BEGIN interfaces END
+  69                 | SIGNAL name SEP1 sig_dir arg_type
+
+  70  mappings : mapping_decl EOI
+  71           | mapping_decl EOI mappings
+
+  72  mapping_decl : FOREACH VAR IDENT IN foreach DO BEGIN mappings END
+  73               | name FOLLOW name
+
+  74  access : access_decl EOI
+  75         | access_decl EOI access
+
+  76  access_decl : S_DATA BEGIN data_exprs END
+  77              | S_CONTROL BEGIN control_exprs END
+  78              | S_IMPORT BEGIN methods END
+  79              | S_SET BEGIN data_exprs END
+
+  80  foreach : VAR IDENT
+  81          | foreach AND foreach
+  82          | foreach OR foreach
+  83          | foreach XOR foreach
+
+  84  data_exprs : data_expr EOI
+  85             | data_expr EOI data_exprs
+
+  86  control_exprs : control_expr EOI
+  87                | control_expr EOI control_exprs
+
+  88  data_expr : element ASSIGN expr WHEN expr ELSE expr
+  89            | element ASSIGN expr
+  90            | element ASSIGN2 expr
+  91            | NULL
+  92            | func
+
+  93  ifothers : IF OTHERS THEN block_instr
+
+  94  ifseq : IF expr THEN block_instr ifseq
+  95        | ELSIF expr THEN block_instr ifseq
+  96        | IF expr THEN block_instr ifothers
+  97        | ELSIF expr THEN block_instr ifothers
+  98        | ELSIF expr THEN block_instr
+  99        | ELSIF expr THEN block_instr ELSE block_instr
+ 100        | ELSE IF expr THEN block_instr ifseq
+ 101        | ELSE IF expr THEN block_instr
+ 102        | ELSE IF expr THEN block_instr ELSE block_instr
+
+ 103  control_expr : WAIT FOR expr
+ 104               | WAIT UNTIL expr
+ 105               | IF expr THEN block_instr
+ 106               | IF expr THEN block_instr ELSE block_instr
+ 107               | IF OTHERS THEN block_instr
+ 108               | ifseq
+ 109               | CASE expr IS BEGIN when_list END
+ 110               | FOR expr EQ range DO block_instr
+ 111               | WITH expr DO block_instr
+ 112               | NULL
+
+ 113  block_instr : instruction
+ 114              | BEGIN instructions END
+
+ 115  when_list : when_expr
+ 116            | when_expr when_list
+
+ 117  when_expr : WHEN OTHERS FOLLOW block_instr EOI
+ 118            | WHEN expr FOLLOW block_instr EOI
+
+ 119  name : IDENT
+ 120       | VAR IDENT
+ 121       | var_expr
+
+ 122  var_expr : IDENT
+ 123           | VAR IDENT
+ 124           | VAR IDENT var_expr
+ 125           | IDENT var_expr
+
+ 126  name_list : name
+ 127            | name SEP2 name_list
+
+ 128  func : name LPAREN arg_list RPAREN
+ 129       | name LPAREN RPAREN
+
+ 130  arg_list : arg
+ 131           | arg SEP2 arg_list
+
+ 132  arg : expr
+ 133      | OR
+ 134      | LHS SEP1 arg_type
+ 135      | RHS SEP1 arg_type
+ 136      | LRHS SEP1 arg_type
+ 137      | LHS
+ 138      | RHS
+ 139      | LRHS
+
+ 140  arg_type : LOGIC
+ 141           | BOOL
+ 142           | INT LBRAK expr RBRAK
+ 143           | SIGNED LBRAK expr RBRAK
+ 144           | LOGIC LBRAK expr RBRAK
+ 145           | LOGIC LBRAK range RBRAK
+ 146           | NATURAL
+ 147           | STRINGS
+ 148           | name
+
+ 149  instructions : instruction EOI
+ 150               | instruction EOI instructions
+
+ 151  instruction : VARIABLE name SEP1 arg_type
+ 152              | data_expr
+ 153              | control_expr
+ 154              | SEQUENCE BEGIN instructions END
+ 155              | FOREACH VAR IDENT IN foreach DO BEGIN instructions END
+ 156              | FOREACH VAR IDENT IN foreach DO instruction
+
+ 157  expr : expr PLUS expr
+ 158       | expr EXP2 expr
+ 159       | MINUS expr
+ 160       | NOT expr
+ 161       | expr MINUS expr
+ 162       | expr TIMES expr
+ 163       | expr DIVI expr
+ 164       | expr EQ expr
+ 165       | expr LT expr
+ 166       | expr GT expr
+ 167       | expr ASSIGN expr
+ 168       | expr GEQ expr
+ 169       | expr NEQ expr
+ 170       | expr AND expr
+ 171       | expr OR expr
+ 172       | expr XOR expr
+ 173       | expr CONC expr
+ 174       | LPAREN expr RPAREN
+ 175       | element
+ 176       | func
+
+ 177  range : expr DOWNTO expr
+ 178        | expr TO expr
+ 179        | expr
+
+ 180  element : STRING
+ 181          | VALUE
+ 182          | VALUE timeunit
+ 183          | VALUE frequnit
+ 184          | OTHERS FOLLOW VALUE
+ 185          | name
+ 186          | name LBRAK range RBRAK
+ 187          | name ACC name
+
+ 188  timeunit : NSEC
+ 189           | USEC
+ 190           | MSEC
+ 191           | SEC
+
+ 192  frequnit : HZ
+ 193           | KHZ
+ 194           | MHZ
+ 195           | GHZ
+
+ 196  %entry% : '\001' main
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . main  (196)
+
+	IDENT  shift 3
+	S_VERSION  shift 4
+	S_PARAMETER  shift 5
+	S_METHODS  shift 6
+	S_SIGNALS  shift 7
+	S_INTERFACE  shift 8
+	S_MAPPING  shift 9
+	S_TOP  shift 10
+	S_CHECK  shift 11
+	VAR  shift 12
+	.  error
+
+	main  goto 13
+	section  goto 14
+	name  goto 15
+	var_expr  goto 16
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+3: reduce/reduce conflict (reduce 119, reduce 122) on DO
+3: reduce/reduce conflict (reduce 119, reduce 122) on IF
+3: reduce/reduce conflict (reduce 119, reduce 122) on THEN
+3: reduce/reduce conflict (reduce 119, reduce 122) on ELSE
+3: reduce/reduce conflict (reduce 119, reduce 122) on ELSIF
+3: reduce/reduce conflict (reduce 119, reduce 122) on WHEN
+3: reduce/reduce conflict (reduce 119, reduce 122) on IS
+3: reduce/reduce conflict (reduce 119, reduce 122) on EOI
+3: reduce/reduce conflict (reduce 119, reduce 122) on SEP1
+3: reduce/reduce conflict (reduce 119, reduce 122) on SEP2
+3: reduce/reduce conflict (reduce 119, reduce 122) on LPAREN
+3: reduce/reduce conflict (reduce 119, reduce 122) on RPAREN
+3: reduce/reduce conflict (reduce 119, reduce 122) on LBRAK
+3: reduce/reduce conflict (reduce 119, reduce 122) on RBRAK
+3: reduce/reduce conflict (reduce 119, reduce 122) on RCURL
+3: reduce/reduce conflict (reduce 119, reduce 122) on ACC
+3: reduce/reduce conflict (reduce 119, reduce 122) on FOLLOW
+3: reduce/reduce conflict (reduce 119, reduce 122) on EQ
+3: reduce/reduce conflict (reduce 119, reduce 122) on NEQ
+3: reduce/reduce conflict (reduce 119, reduce 122) on LT
+3: reduce/reduce conflict (reduce 119, reduce 122) on GT
+3: reduce/reduce conflict (reduce 119, reduce 122) on ASSIGN
+3: reduce/reduce conflict (reduce 119, reduce 122) on ASSIGN2
+3: reduce/reduce conflict (reduce 119, reduce 122) on GEQ
+3: reduce/reduce conflict (reduce 119, reduce 122) on PLUS
+3: reduce/reduce conflict (reduce 119, reduce 122) on MINUS
+3: reduce/reduce conflict (reduce 119, reduce 122) on TIMES
+3: reduce/reduce conflict (reduce 119, reduce 122) on DIVI
+3: reduce/reduce conflict (reduce 119, reduce 122) on EXP2
+3: reduce/reduce conflict (reduce 119, reduce 122) on CONC
+3: reduce/reduce conflict (reduce 119, reduce 122) on AND
+3: reduce/reduce conflict (reduce 119, reduce 122) on OR
+3: reduce/reduce conflict (reduce 119, reduce 122) on XOR
+3: reduce/reduce conflict (reduce 119, reduce 122) on TO
+3: reduce/reduce conflict (reduce 119, reduce 122) on DOWNTO
+3: reduce/reduce conflict (reduce 119, reduce 122) on WITH
+state 3
+	name : IDENT .  (119)
+	var_expr : IDENT .  (122)
+	var_expr : IDENT . var_expr  (125)
+
+	IDENT  shift 17
+	VAR  shift 18
+	DO  reduce 119
+	IF  reduce 119
+	THEN  reduce 119
+	ELSE  reduce 119
+	ELSIF  reduce 119
+	WHEN  reduce 119
+	IS  reduce 119
+	EOI  reduce 119
+	SEP1  reduce 119
+	SEP2  reduce 119
+	LPAREN  reduce 119
+	RPAREN  reduce 119
+	LBRAK  reduce 119
+	RBRAK  reduce 119
+	RCURL  reduce 119
+	ACC  reduce 119
+	FOLLOW  reduce 119
+	EQ  reduce 119
+	NEQ  reduce 119
+	LT  reduce 119
+	GT  reduce 119
+	ASSIGN  reduce 119
+	ASSIGN2  reduce 119
+	GEQ  reduce 119
+	PLUS  reduce 119
+	MINUS  reduce 119
+	TIMES  reduce 119
+	DIVI  reduce 119
+	EXP2  reduce 119
+	CONC  reduce 119
+	AND  reduce 119
+	OR  reduce 119
+	XOR  reduce 119
+	TO  reduce 119
+	DOWNTO  reduce 119
+	WITH  reduce 119
+
+	var_expr  goto 19
+
+
+state 4
+	section : S_VERSION . STRING  (2)
+
+	STRING  shift 20
+	.  error
+
+
+state 5
+	section : S_PARAMETER . BEGIN params END  (3)
+
+	BEGIN  shift 21
+	.  error
+
+
+state 6
+	section : S_METHODS . BEGIN methods END  (4)
+	section : S_METHODS . LPAREN expr RPAREN BEGIN methods END  (5)
+
+	BEGIN  shift 22
+	LPAREN  shift 23
+	.  error
+
+
+state 7
+	section : S_SIGNALS . BEGIN signals END  (11)
+	section : S_SIGNALS . LPAREN expr RPAREN BEGIN signals END  (12)
+
+	BEGIN  shift 24
+	LPAREN  shift 25
+	.  error
+
+
+state 8
+	section : S_INTERFACE . BEGIN interfaces END  (8)
+	section : S_INTERFACE . LPAREN expr RPAREN BEGIN interfaces END  (9)
+	section : S_INTERFACE . LPAREN expr RPAREN BEGIN NULL EOI END  (10)
+
+	BEGIN  shift 26
+	LPAREN  shift 27
+	.  error
+
+
+state 9
+	section : S_MAPPING . BEGIN mappings END  (13)
+	section : S_MAPPING . LPAREN expr RPAREN BEGIN mappings END  (14)
+	section : S_MAPPING . LPAREN expr RPAREN BEGIN NULL EOI END  (15)
+
+	BEGIN  shift 28
+	LPAREN  shift 29
+	.  error
+
+
+state 10
+	section : S_TOP . BEGIN instructions END  (16)
+	section : S_TOP . LPAREN expr RPAREN BEGIN instructions END  (17)
+
+	BEGIN  shift 30
+	LPAREN  shift 31
+	.  error
+
+
+state 11
+	section : S_CHECK . BEGIN checks END  (6)
+	section : S_CHECK . LPAREN expr RPAREN BEGIN checks END  (7)
+
+	BEGIN  shift 32
+	LPAREN  shift 33
+	.  error
+
+
+state 12
+	name : VAR . IDENT  (120)
+	var_expr : VAR . IDENT  (123)
+	var_expr : VAR . IDENT var_expr  (124)
+
+	IDENT  shift 34
+	.  error
+
+
+state 13
+	%entry% : '\001' main .  (196)
+
+	.  reduce 196
+
+
+state 14
+	main : section . EOI  (1)
+
+	EOI  shift 35
+	.  error
+
+
+state 15
+	section : name . SEP1 S_PROCESS BEGIN instructions END  (18)
+	section : name . SEP1 S_PROCESS LPAREN expr RPAREN BEGIN instructions END  (19)
+	section : name . SEP1 S_ACCESS BEGIN access END  (20)
+	section : name . SEP1 S_ACCESS LPAREN expr RPAREN BEGIN access END  (21)
+
+	SEP1  shift 36
+	.  error
+
+
+state 16
+	name : var_expr .  (121)
+
+	.  reduce 121
+
+
+state 17
+	var_expr : IDENT .  (122)
+	var_expr : IDENT . var_expr  (125)
+
+	IDENT  shift 17
+	VAR  shift 18
+	DO  reduce 122
+	IF  reduce 122
+	THEN  reduce 122
+	ELSE  reduce 122
+	ELSIF  reduce 122
+	WHEN  reduce 122
+	IS  reduce 122
+	EOI  reduce 122
+	SEP1  reduce 122
+	SEP2  reduce 122
+	LPAREN  reduce 122
+	RPAREN  reduce 122
+	LBRAK  reduce 122
+	RBRAK  reduce 122
+	RCURL  reduce 122
+	ACC  reduce 122
+	FOLLOW  reduce 122
+	EQ  reduce 122
+	NEQ  reduce 122
+	LT  reduce 122
+	GT  reduce 122
+	ASSIGN  reduce 122
+	ASSIGN2  reduce 122
+	GEQ  reduce 122
+	PLUS  reduce 122
+	MINUS  reduce 122
+	TIMES  reduce 122
+	DIVI  reduce 122
+	EXP2  reduce 122
+	CONC  reduce 122
+	AND  reduce 122
+	OR  reduce 122
+	XOR  reduce 122
+	TO  reduce 122
+	DOWNTO  reduce 122
+	WITH  reduce 122
+
+	var_expr  goto 19
+
+
+state 18
+	var_expr : VAR . IDENT  (123)
+	var_expr : VAR . IDENT var_expr  (124)
+
+	IDENT  shift 37
+	.  error
+
+
+state 19
+	var_expr : IDENT var_expr .  (125)
+
+	.  reduce 125
+
+
+state 20
+	section : S_VERSION STRING .  (2)
+
+	.  reduce 2
+
+
+state 21
+	section : S_PARAMETER BEGIN . params END  (3)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	params  goto 38
+	name  goto 39
+	param_def  goto 40
+	param  goto 41
+	var_expr  goto 16
+
+
+state 22
+	section : S_METHODS BEGIN . methods END  (4)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	methods  goto 42
+	name  goto 43
+	method_decl  goto 44
+	func  goto 45
+	var_expr  goto 16
+
+
+state 23
+	section : S_METHODS LPAREN . expr RPAREN BEGIN methods END  (5)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 52
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 24
+	section : S_SIGNALS BEGIN . signals END  (11)
+
+	VAR  shift 56
+	SIGNAL  shift 57
+	CONSTANT  shift 58
+	VARIABLE  shift 59
+	SHARED  shift 60
+	FOREACH  shift 61
+	TYPE  shift 62
+	.  error
+
+	signals  goto 63
+	signal_decl  goto 64
+
+
+state 25
+	section : S_SIGNALS LPAREN . expr RPAREN BEGIN signals END  (12)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 65
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 26
+	section : S_INTERFACE BEGIN . interfaces END  (8)
+
+	SIGNAL  shift 66
+	FOREACH  shift 67
+	.  error
+
+	interfaces  goto 68
+	interface_decl  goto 69
+
+
+state 27
+	section : S_INTERFACE LPAREN . expr RPAREN BEGIN interfaces END  (9)
+	section : S_INTERFACE LPAREN . expr RPAREN BEGIN NULL EOI END  (10)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 70
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 28
+	section : S_MAPPING BEGIN . mappings END  (13)
+
+	IDENT  shift 3
+	VAR  shift 12
+	FOREACH  shift 71
+	.  error
+
+	mappings  goto 72
+	name  goto 73
+	mapping_decl  goto 74
+	var_expr  goto 16
+
+
+state 29
+	section : S_MAPPING LPAREN . expr RPAREN BEGIN mappings END  (14)
+	section : S_MAPPING LPAREN . expr RPAREN BEGIN NULL EOI END  (15)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 75
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 30
+	section : S_TOP BEGIN . instructions END  (16)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	instructions  goto 87
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 93
+	var_expr  goto 16
+
+
+state 31
+	section : S_TOP LPAREN . expr RPAREN BEGIN instructions END  (17)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 94
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 32
+	section : S_CHECK BEGIN . checks END  (6)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 95
+	checks  goto 96
+	name  goto 53
+	func  goto 54
+	check  goto 97
+	element  goto 55
+	var_expr  goto 16
+
+
+state 33
+	section : S_CHECK LPAREN . expr RPAREN BEGIN checks END  (7)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 98
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+34: reduce/reduce conflict (reduce 120, reduce 123) on DO
+34: reduce/reduce conflict (reduce 120, reduce 123) on IF
+34: reduce/reduce conflict (reduce 120, reduce 123) on THEN
+34: reduce/reduce conflict (reduce 120, reduce 123) on ELSE
+34: reduce/reduce conflict (reduce 120, reduce 123) on ELSIF
+34: reduce/reduce conflict (reduce 120, reduce 123) on WHEN
+34: reduce/reduce conflict (reduce 120, reduce 123) on IS
+34: reduce/reduce conflict (reduce 120, reduce 123) on EOI
+34: reduce/reduce conflict (reduce 120, reduce 123) on SEP1
+34: reduce/reduce conflict (reduce 120, reduce 123) on SEP2
+34: reduce/reduce conflict (reduce 120, reduce 123) on LPAREN
+34: reduce/reduce conflict (reduce 120, reduce 123) on RPAREN
+34: reduce/reduce conflict (reduce 120, reduce 123) on LBRAK
+34: reduce/reduce conflict (reduce 120, reduce 123) on RBRAK
+34: reduce/reduce conflict (reduce 120, reduce 123) on RCURL
+34: reduce/reduce conflict (reduce 120, reduce 123) on ACC
+34: reduce/reduce conflict (reduce 120, reduce 123) on FOLLOW
+34: reduce/reduce conflict (reduce 120, reduce 123) on EQ
+34: reduce/reduce conflict (reduce 120, reduce 123) on NEQ
+34: reduce/reduce conflict (reduce 120, reduce 123) on LT
+34: reduce/reduce conflict (reduce 120, reduce 123) on GT
+34: reduce/reduce conflict (reduce 120, reduce 123) on ASSIGN
+34: reduce/reduce conflict (reduce 120, reduce 123) on ASSIGN2
+34: reduce/reduce conflict (reduce 120, reduce 123) on GEQ
+34: reduce/reduce conflict (reduce 120, reduce 123) on PLUS
+34: reduce/reduce conflict (reduce 120, reduce 123) on MINUS
+34: reduce/reduce conflict (reduce 120, reduce 123) on TIMES
+34: reduce/reduce conflict (reduce 120, reduce 123) on DIVI
+34: reduce/reduce conflict (reduce 120, reduce 123) on EXP2
+34: reduce/reduce conflict (reduce 120, reduce 123) on CONC
+34: reduce/reduce conflict (reduce 120, reduce 123) on AND
+34: reduce/reduce conflict (reduce 120, reduce 123) on OR
+34: reduce/reduce conflict (reduce 120, reduce 123) on XOR
+34: reduce/reduce conflict (reduce 120, reduce 123) on TO
+34: reduce/reduce conflict (reduce 120, reduce 123) on DOWNTO
+34: reduce/reduce conflict (reduce 120, reduce 123) on WITH
+state 34
+	name : VAR IDENT .  (120)
+	var_expr : VAR IDENT .  (123)
+	var_expr : VAR IDENT . var_expr  (124)
+
+	IDENT  shift 17
+	VAR  shift 18
+	DO  reduce 120
+	IF  reduce 120
+	THEN  reduce 120
+	ELSE  reduce 120
+	ELSIF  reduce 120
+	WHEN  reduce 120
+	IS  reduce 120
+	EOI  reduce 120
+	SEP1  reduce 120
+	SEP2  reduce 120
+	LPAREN  reduce 120
+	RPAREN  reduce 120
+	LBRAK  reduce 120
+	RBRAK  reduce 120
+	RCURL  reduce 120
+	ACC  reduce 120
+	FOLLOW  reduce 120
+	EQ  reduce 120
+	NEQ  reduce 120
+	LT  reduce 120
+	GT  reduce 120
+	ASSIGN  reduce 120
+	ASSIGN2  reduce 120
+	GEQ  reduce 120
+	PLUS  reduce 120
+	MINUS  reduce 120
+	TIMES  reduce 120
+	DIVI  reduce 120
+	EXP2  reduce 120
+	CONC  reduce 120
+	AND  reduce 120
+	OR  reduce 120
+	XOR  reduce 120
+	TO  reduce 120
+	DOWNTO  reduce 120
+	WITH  reduce 120
+
+	var_expr  goto 99
+
+
+state 35
+	main : section EOI .  (1)
+
+	.  reduce 1
+
+
+state 36
+	section : name SEP1 . S_PROCESS BEGIN instructions END  (18)
+	section : name SEP1 . S_PROCESS LPAREN expr RPAREN BEGIN instructions END  (19)
+	section : name SEP1 . S_ACCESS BEGIN access END  (20)
+	section : name SEP1 . S_ACCESS LPAREN expr RPAREN BEGIN access END  (21)
+
+	S_ACCESS  shift 100
+	S_PROCESS  shift 101
+	.  error
+
+
+state 37
+	var_expr : VAR IDENT .  (123)
+	var_expr : VAR IDENT . var_expr  (124)
+
+	IDENT  shift 17
+	VAR  shift 18
+	DO  reduce 123
+	IF  reduce 123
+	THEN  reduce 123
+	ELSE  reduce 123
+	ELSIF  reduce 123
+	WHEN  reduce 123
+	IS  reduce 123
+	EOI  reduce 123
+	SEP1  reduce 123
+	SEP2  reduce 123
+	LPAREN  reduce 123
+	RPAREN  reduce 123
+	LBRAK  reduce 123
+	RBRAK  reduce 123
+	RCURL  reduce 123
+	ACC  reduce 123
+	FOLLOW  reduce 123
+	EQ  reduce 123
+	NEQ  reduce 123
+	LT  reduce 123
+	GT  reduce 123
+	ASSIGN  reduce 123
+	ASSIGN2  reduce 123
+	GEQ  reduce 123
+	PLUS  reduce 123
+	MINUS  reduce 123
+	TIMES  reduce 123
+	DIVI  reduce 123
+	EXP2  reduce 123
+	CONC  reduce 123
+	AND  reduce 123
+	OR  reduce 123
+	XOR  reduce 123
+	TO  reduce 123
+	DOWNTO  reduce 123
+	WITH  reduce 123
+
+	var_expr  goto 99
+
+
+state 38
+	section : S_PARAMETER BEGIN params . END  (3)
+
+	END  shift 102
+	.  error
+
+
+state 39
+	param : name .  (26)
+	param : name . ASSIGN expr  (27)
+	param : name . LBRAK range RBRAK ASSIGN expr  (28)
+	param : name . LBRAK arg_list RBRAK ASSIGN expr  (29)
+	param : name . LBRAK range RBRAK  (30)
+	param : name . LBRAK arg_list RBRAK  (31)
+	param : name . LBRAK range SEP1 data_type RBRAK  (32)
+	param : name . LBRAK range SEP1 data_type RBRAK ASSIGN expr  (33)
+	param : name . LBRAK arg_list SEP1 data_type RBRAK  (34)
+	param : name . LBRAK arg_list SEP1 data_type RBRAK ASSIGN expr  (35)
+
+	LBRAK  shift 103
+	ASSIGN  shift 104
+	EOI  reduce 26
+	WITH  reduce 26
+
+
+state 40
+	params : param_def . EOI  (22)
+	params : param_def . EOI params  (23)
+
+	EOI  shift 105
+	.  error
+
+
+state 41
+	param_def : param .  (24)
+	param_def : param . WITH attr_list  (25)
+
+	WITH  shift 106
+	EOI  reduce 24
+
+
+state 42
+	section : S_METHODS BEGIN methods . END  (4)
+
+	END  shift 107
+	.  error
+
+
+state 43
+	func : name . LPAREN arg_list RPAREN  (128)
+	func : name . LPAREN RPAREN  (129)
+
+	LPAREN  shift 108
+	.  error
+
+
+state 44
+	methods : method_decl . EOI  (45)
+	methods : method_decl . EOI methods  (46)
+
+	EOI  shift 109
+	.  error
+
+
+state 45
+	method_decl : func .  (47)
+
+	.  reduce 47
+
+
+state 46
+	element : STRING .  (180)
+
+	.  reduce 180
+
+
+state 47
+	element : VALUE .  (181)
+	element : VALUE . timeunit  (182)
+	element : VALUE . frequnit  (183)
+
+	NSEC  shift 110
+	USEC  shift 111
+	MSEC  shift 112
+	SEC  shift 113
+	HZ  shift 114
+	KHZ  shift 115
+	MHZ  shift 116
+	GHZ  shift 117
+	DO  reduce 181
+	IF  reduce 181
+	THEN  reduce 181
+	ELSE  reduce 181
+	ELSIF  reduce 181
+	WHEN  reduce 181
+	IS  reduce 181
+	EOI  reduce 181
+	SEP1  reduce 181
+	SEP2  reduce 181
+	RPAREN  reduce 181
+	RBRAK  reduce 181
+	FOLLOW  reduce 181
+	EQ  reduce 181
+	NEQ  reduce 181
+	LT  reduce 181
+	GT  reduce 181
+	ASSIGN  reduce 181
+	ASSIGN2  reduce 181
+	GEQ  reduce 181
+	PLUS  reduce 181
+	MINUS  reduce 181
+	TIMES  reduce 181
+	DIVI  reduce 181
+	EXP2  reduce 181
+	CONC  reduce 181
+	AND  reduce 181
+	OR  reduce 181
+	XOR  reduce 181
+	TO  reduce 181
+	DOWNTO  reduce 181
+	WITH  reduce 181
+
+	timeunit  goto 118
+	frequnit  goto 119
+
+
+state 48
+	expr : LPAREN . expr RPAREN  (174)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 120
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 49
+	element : OTHERS . FOLLOW VALUE  (184)
+
+	FOLLOW  shift 121
+	.  error
+
+
+state 50
+	expr : MINUS . expr  (159)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 122
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 51
+	expr : NOT . expr  (160)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 123
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 52
+	section : S_METHODS LPAREN expr . RPAREN BEGIN methods END  (5)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RPAREN  shift 124
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 53
+	func : name . LPAREN arg_list RPAREN  (128)
+	func : name . LPAREN RPAREN  (129)
+	element : name .  (185)
+	element : name . LBRAK range RBRAK  (186)
+	element : name . ACC name  (187)
+
+	LPAREN  shift 108
+	LBRAK  shift 140
+	ACC  shift 141
+	DO  reduce 185
+	IF  reduce 185
+	THEN  reduce 185
+	ELSE  reduce 185
+	ELSIF  reduce 185
+	WHEN  reduce 185
+	IS  reduce 185
+	EOI  reduce 185
+	SEP1  reduce 185
+	SEP2  reduce 185
+	RPAREN  reduce 185
+	RBRAK  reduce 185
+	FOLLOW  reduce 185
+	EQ  reduce 185
+	NEQ  reduce 185
+	LT  reduce 185
+	GT  reduce 185
+	ASSIGN  reduce 185
+	ASSIGN2  reduce 185
+	GEQ  reduce 185
+	PLUS  reduce 185
+	MINUS  reduce 185
+	TIMES  reduce 185
+	DIVI  reduce 185
+	EXP2  reduce 185
+	CONC  reduce 185
+	AND  reduce 185
+	OR  reduce 185
+	XOR  reduce 185
+	TO  reduce 185
+	DOWNTO  reduce 185
+	WITH  reduce 185
+
+
+state 54
+	expr : func .  (176)
+
+	.  reduce 176
+
+
+state 55
+	expr : element .  (175)
+
+	.  reduce 175
+
+
+state 56
+	signal_decl : VAR . IDENT  (55)
+
+	IDENT  shift 142
+	.  error
+
+
+state 57
+	signal_decl : SIGNAL . name SEP1 arg_type  (59)
+	signal_decl : SIGNAL . name SEP1 sig_dir arg_type  (60)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 143
+	var_expr  goto 16
+
+
+state 58
+	signal_decl : CONSTANT . name  (57)
+	signal_decl : CONSTANT . name SEP1 arg_type ASSIGN2 expr  (58)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 144
+	var_expr  goto 16
+
+
+state 59
+	signal_decl : VARIABLE . name SEP1 arg_type  (61)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 145
+	var_expr  goto 16
+
+
+state 60
+	signal_decl : SHARED . VARIABLE name SEP1 arg_type  (62)
+
+	VARIABLE  shift 146
+	.  error
+
+
+state 61
+	signal_decl : FOREACH . VAR IDENT IN foreach DO BEGIN signals END  (56)
+
+	VAR  shift 147
+	.  error
+
+
+state 62
+	signal_decl : TYPE . name IS LCURL name_list RCURL  (63)
+	signal_decl : TYPE . name IS ARRAY LBRAK range RBRAK OF arg_type  (64)
+	signal_decl : TYPE . name  (65)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 148
+	var_expr  goto 16
+
+
+state 63
+	section : S_SIGNALS BEGIN signals . END  (11)
+
+	END  shift 149
+	.  error
+
+
+state 64
+	signals : signal_decl . EOI  (51)
+	signals : signal_decl . EOI signals  (52)
+
+	EOI  shift 150
+	.  error
+
+
+state 65
+	section : S_SIGNALS LPAREN expr . RPAREN BEGIN signals END  (12)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RPAREN  shift 151
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 66
+	interface_decl : SIGNAL . name SEP1 sig_dir arg_type  (69)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 152
+	var_expr  goto 16
+
+
+state 67
+	interface_decl : FOREACH . VAR IDENT IN foreach DO BEGIN interfaces END  (68)
+
+	VAR  shift 153
+	.  error
+
+
+state 68
+	section : S_INTERFACE BEGIN interfaces . END  (8)
+
+	END  shift 154
+	.  error
+
+
+state 69
+	interfaces : interface_decl . EOI  (66)
+	interfaces : interface_decl . EOI interfaces  (67)
+
+	EOI  shift 155
+	.  error
+
+
+state 70
+	section : S_INTERFACE LPAREN expr . RPAREN BEGIN interfaces END  (9)
+	section : S_INTERFACE LPAREN expr . RPAREN BEGIN NULL EOI END  (10)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RPAREN  shift 156
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 71
+	mapping_decl : FOREACH . VAR IDENT IN foreach DO BEGIN mappings END  (72)
+
+	VAR  shift 157
+	.  error
+
+
+state 72
+	section : S_MAPPING BEGIN mappings . END  (13)
+
+	END  shift 158
+	.  error
+
+
+state 73
+	mapping_decl : name . FOLLOW name  (73)
+
+	FOLLOW  shift 159
+	.  error
+
+
+state 74
+	mappings : mapping_decl . EOI  (70)
+	mappings : mapping_decl . EOI mappings  (71)
+
+	EOI  shift 160
+	.  error
+
+
+state 75
+	section : S_MAPPING LPAREN expr . RPAREN BEGIN mappings END  (14)
+	section : S_MAPPING LPAREN expr . RPAREN BEGIN NULL EOI END  (15)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RPAREN  shift 161
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 76
+	instruction : VARIABLE . name SEP1 arg_type  (151)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 162
+	var_expr  goto 16
+
+
+state 77
+	instruction : FOREACH . VAR IDENT IN foreach DO BEGIN instructions END  (155)
+	instruction : FOREACH . VAR IDENT IN foreach DO instruction  (156)
+
+	VAR  shift 163
+	.  error
+
+
+state 78
+	control_expr : FOR . expr EQ range DO block_instr  (110)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 164
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 79
+	ifseq : IF . expr THEN block_instr ifseq  (94)
+	ifseq : IF . expr THEN block_instr ifothers  (96)
+	control_expr : IF . expr THEN block_instr  (105)
+	control_expr : IF . expr THEN block_instr ELSE block_instr  (106)
+	control_expr : IF . OTHERS THEN block_instr  (107)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 165
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 166
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 80
+	ifseq : ELSE . IF expr THEN block_instr ifseq  (100)
+	ifseq : ELSE . IF expr THEN block_instr  (101)
+	ifseq : ELSE . IF expr THEN block_instr ELSE block_instr  (102)
+
+	IF  shift 167
+	.  error
+
+
+state 81
+	ifseq : ELSIF . expr THEN block_instr ifseq  (95)
+	ifseq : ELSIF . expr THEN block_instr ifothers  (97)
+	ifseq : ELSIF . expr THEN block_instr  (98)
+	ifseq : ELSIF . expr THEN block_instr ELSE block_instr  (99)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 168
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 82
+	control_expr : WAIT . FOR expr  (103)
+	control_expr : WAIT . UNTIL expr  (104)
+
+	FOR  shift 169
+	UNTIL  shift 170
+	.  error
+
+
+state 83
+	instruction : SEQUENCE . BEGIN instructions END  (154)
+
+	BEGIN  shift 171
+	.  error
+
+
+state 84
+	control_expr : CASE . expr IS BEGIN when_list END  (109)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 172
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+85: reduce/reduce conflict (reduce 91, reduce 112) on IF
+85: reduce/reduce conflict (reduce 91, reduce 112) on ELSE
+85: reduce/reduce conflict (reduce 91, reduce 112) on ELSIF
+85: reduce/reduce conflict (reduce 91, reduce 112) on EOI
+state 85
+	data_expr : NULL .  (91)
+	control_expr : NULL .  (112)
+
+	.  reduce 91
+
+
+state 86
+	control_expr : WITH . expr DO block_instr  (111)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 173
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 87
+	section : S_TOP BEGIN instructions . END  (16)
+
+	END  shift 174
+	.  error
+
+
+state 88
+	data_expr : func .  (92)
+
+	.  reduce 92
+
+
+state 89
+	instruction : data_expr .  (152)
+
+	.  reduce 152
+
+
+state 90
+	instruction : control_expr .  (153)
+
+	.  reduce 153
+
+
+state 91
+	data_expr : element . ASSIGN expr WHEN expr ELSE expr  (88)
+	data_expr : element . ASSIGN expr  (89)
+	data_expr : element . ASSIGN2 expr  (90)
+
+	ASSIGN  shift 175
+	ASSIGN2  shift 176
+	.  error
+
+
+state 92
+	control_expr : ifseq .  (108)
+
+	.  reduce 108
+
+
+state 93
+	instructions : instruction . EOI  (149)
+	instructions : instruction . EOI instructions  (150)
+
+	EOI  shift 177
+	.  error
+
+
+state 94
+	section : S_TOP LPAREN expr . RPAREN BEGIN instructions END  (17)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RPAREN  shift 178
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 95
+	check : expr .  (50)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	EOI  reduce 50
+
+
+state 96
+	section : S_CHECK BEGIN checks . END  (6)
+
+	END  shift 179
+	.  error
+
+
+state 97
+	checks : check . EOI  (48)
+	checks : check . EOI checks  (49)
+
+	EOI  shift 180
+	.  error
+
+
+state 98
+	section : S_CHECK LPAREN expr . RPAREN BEGIN checks END  (7)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RPAREN  shift 181
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 99
+	var_expr : VAR IDENT var_expr .  (124)
+
+	.  reduce 124
+
+
+state 100
+	section : name SEP1 S_ACCESS . BEGIN access END  (20)
+	section : name SEP1 S_ACCESS . LPAREN expr RPAREN BEGIN access END  (21)
+
+	BEGIN  shift 182
+	LPAREN  shift 183
+	.  error
+
+
+state 101
+	section : name SEP1 S_PROCESS . BEGIN instructions END  (18)
+	section : name SEP1 S_PROCESS . LPAREN expr RPAREN BEGIN instructions END  (19)
+
+	BEGIN  shift 184
+	LPAREN  shift 185
+	.  error
+
+
+state 102
+	section : S_PARAMETER BEGIN params END .  (3)
+
+	.  reduce 3
+
+
+state 103
+	param : name LBRAK . range RBRAK ASSIGN expr  (28)
+	param : name LBRAK . arg_list RBRAK ASSIGN expr  (29)
+	param : name LBRAK . range RBRAK  (30)
+	param : name LBRAK . arg_list RBRAK  (31)
+	param : name LBRAK . range SEP1 data_type RBRAK  (32)
+	param : name LBRAK . range SEP1 data_type RBRAK ASSIGN expr  (33)
+	param : name LBRAK . arg_list SEP1 data_type RBRAK  (34)
+	param : name LBRAK . arg_list SEP1 data_type RBRAK ASSIGN expr  (35)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	LHS  shift 186
+	RHS  shift 187
+	LRHS  shift 188
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	OR  shift 189
+	NOT  shift 51
+	.  error
+
+	expr  goto 190
+	name  goto 53
+	range  goto 191
+	arg_list  goto 192
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+	arg  goto 193
+
+
+state 104
+	param : name ASSIGN . expr  (27)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 194
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 105
+	params : param_def EOI .  (22)
+	params : param_def EOI . params  (23)
+
+	IDENT  shift 3
+	VAR  shift 12
+	END  reduce 22
+
+	params  goto 195
+	name  goto 39
+	param_def  goto 40
+	param  goto 41
+	var_expr  goto 16
+
+
+state 106
+	param_def : param WITH . attr_list  (25)
+
+	IDENT  shift 196
+	.  error
+
+	attr_list  goto 197
+
+
+state 107
+	section : S_METHODS BEGIN methods END .  (4)
+
+	.  reduce 4
+
+
+state 108
+	func : name LPAREN . arg_list RPAREN  (128)
+	func : name LPAREN . RPAREN  (129)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	LHS  shift 186
+	RHS  shift 187
+	LRHS  shift 188
+	VAR  shift 12
+	LPAREN  shift 48
+	RPAREN  shift 198
+	OTHERS  shift 49
+	MINUS  shift 50
+	OR  shift 189
+	NOT  shift 51
+	.  error
+
+	expr  goto 199
+	name  goto 53
+	arg_list  goto 200
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+	arg  goto 193
+
+
+state 109
+	methods : method_decl EOI .  (45)
+	methods : method_decl EOI . methods  (46)
+
+	IDENT  shift 3
+	VAR  shift 12
+	END  reduce 45
+
+	methods  goto 201
+	name  goto 43
+	method_decl  goto 44
+	func  goto 45
+	var_expr  goto 16
+
+
+state 110
+	timeunit : NSEC .  (188)
+
+	.  reduce 188
+
+
+state 111
+	timeunit : USEC .  (189)
+
+	.  reduce 189
+
+
+state 112
+	timeunit : MSEC .  (190)
+
+	.  reduce 190
+
+
+state 113
+	timeunit : SEC .  (191)
+
+	.  reduce 191
+
+
+state 114
+	frequnit : HZ .  (192)
+
+	.  reduce 192
+
+
+state 115
+	frequnit : KHZ .  (193)
+
+	.  reduce 193
+
+
+state 116
+	frequnit : MHZ .  (194)
+
+	.  reduce 194
+
+
+state 117
+	frequnit : GHZ .  (195)
+
+	.  reduce 195
+
+
+state 118
+	element : VALUE timeunit .  (182)
+
+	.  reduce 182
+
+
+state 119
+	element : VALUE frequnit .  (183)
+
+	.  reduce 183
+
+
+state 120
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+	expr : LPAREN expr . RPAREN  (174)
+
+	RPAREN  shift 202
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 121
+	element : OTHERS FOLLOW . VALUE  (184)
+
+	VALUE  shift 203
+	.  error
+
+
+122: shift/reduce conflict (shift 129, reduce 159) on ASSIGN
+122: shift/reduce conflict (shift 139, reduce 159) on XOR
+state 122
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : MINUS expr .  (159)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 159
+	IF  reduce 159
+	THEN  reduce 159
+	ELSE  reduce 159
+	ELSIF  reduce 159
+	WHEN  reduce 159
+	IS  reduce 159
+	EOI  reduce 159
+	SEP1  reduce 159
+	SEP2  reduce 159
+	RPAREN  reduce 159
+	RBRAK  reduce 159
+	FOLLOW  reduce 159
+	PLUS  reduce 159
+	MINUS  reduce 159
+	TO  reduce 159
+	DOWNTO  reduce 159
+	WITH  reduce 159
+
+
+123: shift/reduce conflict (shift 129, reduce 160) on ASSIGN
+123: shift/reduce conflict (shift 139, reduce 160) on XOR
+state 123
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : NOT expr .  (160)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	CONC  shift 136
+	XOR  shift 139
+	DO  reduce 160
+	IF  reduce 160
+	THEN  reduce 160
+	ELSE  reduce 160
+	ELSIF  reduce 160
+	WHEN  reduce 160
+	IS  reduce 160
+	EOI  reduce 160
+	SEP1  reduce 160
+	SEP2  reduce 160
+	RPAREN  reduce 160
+	RBRAK  reduce 160
+	FOLLOW  reduce 160
+	PLUS  reduce 160
+	MINUS  reduce 160
+	TIMES  reduce 160
+	DIVI  reduce 160
+	EXP2  reduce 160
+	AND  reduce 160
+	OR  reduce 160
+	TO  reduce 160
+	DOWNTO  reduce 160
+	WITH  reduce 160
+
+
+state 124
+	section : S_METHODS LPAREN expr RPAREN . BEGIN methods END  (5)
+
+	BEGIN  shift 204
+	.  error
+
+
+state 125
+	expr : expr EQ . expr  (164)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 205
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 126
+	expr : expr NEQ . expr  (169)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 206
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 127
+	expr : expr LT . expr  (165)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 207
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 128
+	expr : expr GT . expr  (166)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 208
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 129
+	expr : expr ASSIGN . expr  (167)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 209
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 130
+	expr : expr GEQ . expr  (168)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 210
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 131
+	expr : expr PLUS . expr  (157)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 211
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 132
+	expr : expr MINUS . expr  (161)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 212
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 133
+	expr : expr TIMES . expr  (162)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 213
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 134
+	expr : expr DIVI . expr  (163)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 214
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 135
+	expr : expr EXP2 . expr  (158)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 215
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 136
+	expr : expr CONC . expr  (173)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 216
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 137
+	expr : expr AND . expr  (170)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 217
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 138
+	expr : expr OR . expr  (171)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 218
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 139
+	expr : expr XOR . expr  (172)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 219
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 140
+	element : name LBRAK . range RBRAK  (186)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 220
+	name  goto 53
+	range  goto 221
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 141
+	element : name ACC . name  (187)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 222
+	var_expr  goto 16
+
+
+state 142
+	signal_decl : VAR IDENT .  (55)
+
+	.  reduce 55
+
+
+state 143
+	signal_decl : SIGNAL name . SEP1 arg_type  (59)
+	signal_decl : SIGNAL name . SEP1 sig_dir arg_type  (60)
+
+	SEP1  shift 223
+	.  error
+
+
+state 144
+	signal_decl : CONSTANT name .  (57)
+	signal_decl : CONSTANT name . SEP1 arg_type ASSIGN2 expr  (58)
+
+	SEP1  shift 224
+	EOI  reduce 57
+
+
+state 145
+	signal_decl : VARIABLE name . SEP1 arg_type  (61)
+
+	SEP1  shift 225
+	.  error
+
+
+state 146
+	signal_decl : SHARED VARIABLE . name SEP1 arg_type  (62)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 226
+	var_expr  goto 16
+
+
+state 147
+	signal_decl : FOREACH VAR . IDENT IN foreach DO BEGIN signals END  (56)
+
+	IDENT  shift 227
+	.  error
+
+
+state 148
+	signal_decl : TYPE name . IS LCURL name_list RCURL  (63)
+	signal_decl : TYPE name . IS ARRAY LBRAK range RBRAK OF arg_type  (64)
+	signal_decl : TYPE name .  (65)
+
+	IS  shift 228
+	EOI  reduce 65
+
+
+state 149
+	section : S_SIGNALS BEGIN signals END .  (11)
+
+	.  reduce 11
+
+
+state 150
+	signals : signal_decl EOI .  (51)
+	signals : signal_decl EOI . signals  (52)
+
+	VAR  shift 56
+	SIGNAL  shift 57
+	CONSTANT  shift 58
+	VARIABLE  shift 59
+	SHARED  shift 60
+	FOREACH  shift 61
+	TYPE  shift 62
+	END  reduce 51
+
+	signals  goto 229
+	signal_decl  goto 64
+
+
+state 151
+	section : S_SIGNALS LPAREN expr RPAREN . BEGIN signals END  (12)
+
+	BEGIN  shift 230
+	.  error
+
+
+state 152
+	interface_decl : SIGNAL name . SEP1 sig_dir arg_type  (69)
+
+	SEP1  shift 231
+	.  error
+
+
+state 153
+	interface_decl : FOREACH VAR . IDENT IN foreach DO BEGIN interfaces END  (68)
+
+	IDENT  shift 232
+	.  error
+
+
+state 154
+	section : S_INTERFACE BEGIN interfaces END .  (8)
+
+	.  reduce 8
+
+
+state 155
+	interfaces : interface_decl EOI .  (66)
+	interfaces : interface_decl EOI . interfaces  (67)
+
+	SIGNAL  shift 66
+	FOREACH  shift 67
+	END  reduce 66
+
+	interfaces  goto 233
+	interface_decl  goto 69
+
+
+state 156
+	section : S_INTERFACE LPAREN expr RPAREN . BEGIN interfaces END  (9)
+	section : S_INTERFACE LPAREN expr RPAREN . BEGIN NULL EOI END  (10)
+
+	BEGIN  shift 234
+	.  error
+
+
+state 157
+	mapping_decl : FOREACH VAR . IDENT IN foreach DO BEGIN mappings END  (72)
+
+	IDENT  shift 235
+	.  error
+
+
+state 158
+	section : S_MAPPING BEGIN mappings END .  (13)
+
+	.  reduce 13
+
+
+state 159
+	mapping_decl : name FOLLOW . name  (73)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 236
+	var_expr  goto 16
+
+
+state 160
+	mappings : mapping_decl EOI .  (70)
+	mappings : mapping_decl EOI . mappings  (71)
+
+	IDENT  shift 3
+	VAR  shift 12
+	FOREACH  shift 71
+	END  reduce 70
+
+	mappings  goto 237
+	name  goto 73
+	mapping_decl  goto 74
+	var_expr  goto 16
+
+
+state 161
+	section : S_MAPPING LPAREN expr RPAREN . BEGIN mappings END  (14)
+	section : S_MAPPING LPAREN expr RPAREN . BEGIN NULL EOI END  (15)
+
+	BEGIN  shift 238
+	.  error
+
+
+state 162
+	instruction : VARIABLE name . SEP1 arg_type  (151)
+
+	SEP1  shift 239
+	.  error
+
+
+state 163
+	instruction : FOREACH VAR . IDENT IN foreach DO BEGIN instructions END  (155)
+	instruction : FOREACH VAR . IDENT IN foreach DO instruction  (156)
+
+	IDENT  shift 240
+	.  error
+
+
+state 164
+	control_expr : FOR expr . EQ range DO block_instr  (110)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 241
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 165
+	control_expr : IF OTHERS . THEN block_instr  (107)
+	element : OTHERS . FOLLOW VALUE  (184)
+
+	THEN  shift 242
+	FOLLOW  shift 121
+	.  error
+
+
+state 166
+	ifseq : IF expr . THEN block_instr ifseq  (94)
+	ifseq : IF expr . THEN block_instr ifothers  (96)
+	control_expr : IF expr . THEN block_instr  (105)
+	control_expr : IF expr . THEN block_instr ELSE block_instr  (106)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	THEN  shift 243
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 167
+	ifseq : ELSE IF . expr THEN block_instr ifseq  (100)
+	ifseq : ELSE IF . expr THEN block_instr  (101)
+	ifseq : ELSE IF . expr THEN block_instr ELSE block_instr  (102)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 244
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 168
+	ifseq : ELSIF expr . THEN block_instr ifseq  (95)
+	ifseq : ELSIF expr . THEN block_instr ifothers  (97)
+	ifseq : ELSIF expr . THEN block_instr  (98)
+	ifseq : ELSIF expr . THEN block_instr ELSE block_instr  (99)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	THEN  shift 245
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 169
+	control_expr : WAIT FOR . expr  (103)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 246
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 170
+	control_expr : WAIT UNTIL . expr  (104)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 247
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 171
+	instruction : SEQUENCE BEGIN . instructions END  (154)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	instructions  goto 248
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 93
+	var_expr  goto 16
+
+
+state 172
+	control_expr : CASE expr . IS BEGIN when_list END  (109)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	IS  shift 249
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 173
+	control_expr : WITH expr . DO block_instr  (111)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	DO  shift 250
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 174
+	section : S_TOP BEGIN instructions END .  (16)
+
+	.  reduce 16
+
+
+state 175
+	data_expr : element ASSIGN . expr WHEN expr ELSE expr  (88)
+	data_expr : element ASSIGN . expr  (89)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 251
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 176
+	data_expr : element ASSIGN2 . expr  (90)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 252
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 177
+	instructions : instruction EOI .  (149)
+	instructions : instruction EOI . instructions  (150)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	END  reduce 149
+
+	instructions  goto 253
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 93
+	var_expr  goto 16
+
+
+state 178
+	section : S_TOP LPAREN expr RPAREN . BEGIN instructions END  (17)
+
+	BEGIN  shift 254
+	.  error
+
+
+state 179
+	section : S_CHECK BEGIN checks END .  (6)
+
+	.  reduce 6
+
+
+state 180
+	checks : check EOI .  (48)
+	checks : check EOI . checks  (49)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	END  reduce 48
+
+	expr  goto 95
+	checks  goto 255
+	name  goto 53
+	func  goto 54
+	check  goto 97
+	element  goto 55
+	var_expr  goto 16
+
+
+state 181
+	section : S_CHECK LPAREN expr RPAREN . BEGIN checks END  (7)
+
+	BEGIN  shift 256
+	.  error
+
+
+state 182
+	section : name SEP1 S_ACCESS BEGIN . access END  (20)
+
+	S_DATA  shift 257
+	S_CONTROL  shift 258
+	S_IMPORT  shift 259
+	S_SET  shift 260
+	.  error
+
+	access  goto 261
+	access_decl  goto 262
+
+
+state 183
+	section : name SEP1 S_ACCESS LPAREN . expr RPAREN BEGIN access END  (21)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 263
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 184
+	section : name SEP1 S_PROCESS BEGIN . instructions END  (18)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	instructions  goto 264
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 93
+	var_expr  goto 16
+
+
+state 185
+	section : name SEP1 S_PROCESS LPAREN . expr RPAREN BEGIN instructions END  (19)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 265
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+186: shift/reduce conflict (shift 266, reduce 137) on SEP1
+state 186
+	arg : LHS . SEP1 arg_type  (134)
+	arg : LHS .  (137)
+
+	SEP1  shift 266
+	SEP2  reduce 137
+	RPAREN  reduce 137
+	RBRAK  reduce 137
+
+
+187: shift/reduce conflict (shift 267, reduce 138) on SEP1
+state 187
+	arg : RHS . SEP1 arg_type  (135)
+	arg : RHS .  (138)
+
+	SEP1  shift 267
+	SEP2  reduce 138
+	RPAREN  reduce 138
+	RBRAK  reduce 138
+
+
+188: shift/reduce conflict (shift 268, reduce 139) on SEP1
+state 188
+	arg : LRHS . SEP1 arg_type  (136)
+	arg : LRHS .  (139)
+
+	SEP1  shift 268
+	SEP2  reduce 139
+	RPAREN  reduce 139
+	RBRAK  reduce 139
+
+
+state 189
+	arg : OR .  (133)
+
+	.  reduce 133
+
+
+190: reduce/reduce conflict (reduce 132, reduce 179) on SEP1
+190: reduce/reduce conflict (reduce 132, reduce 179) on RBRAK
+state 190
+	arg : expr .  (132)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+	range : expr . DOWNTO expr  (177)
+	range : expr . TO expr  (178)
+	range : expr .  (179)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	TO  shift 269
+	DOWNTO  shift 270
+	SEP1  reduce 132
+	SEP2  reduce 132
+	RBRAK  reduce 132
+
+
+state 191
+	param : name LBRAK range . RBRAK ASSIGN expr  (28)
+	param : name LBRAK range . RBRAK  (30)
+	param : name LBRAK range . SEP1 data_type RBRAK  (32)
+	param : name LBRAK range . SEP1 data_type RBRAK ASSIGN expr  (33)
+
+	SEP1  shift 271
+	RBRAK  shift 272
+	.  error
+
+
+state 192
+	param : name LBRAK arg_list . RBRAK ASSIGN expr  (29)
+	param : name LBRAK arg_list . RBRAK  (31)
+	param : name LBRAK arg_list . SEP1 data_type RBRAK  (34)
+	param : name LBRAK arg_list . SEP1 data_type RBRAK ASSIGN expr  (35)
+
+	SEP1  shift 273
+	RBRAK  shift 274
+	.  error
+
+
+state 193
+	arg_list : arg .  (130)
+	arg_list : arg . SEP2 arg_list  (131)
+
+	SEP2  shift 275
+	SEP1  reduce 130
+	RPAREN  reduce 130
+	RBRAK  reduce 130
+
+
+state 194
+	param : name ASSIGN expr .  (27)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	EOI  reduce 27
+	WITH  reduce 27
+
+
+state 195
+	params : param_def EOI params .  (23)
+
+	.  reduce 23
+
+
+state 196
+	attr_list : IDENT .  (43)
+	attr_list : IDENT . AND attr_list  (44)
+
+	AND  shift 276
+	EOI  reduce 43
+
+
+state 197
+	param_def : param WITH attr_list .  (25)
+
+	.  reduce 25
+
+
+state 198
+	func : name LPAREN RPAREN .  (129)
+
+	.  reduce 129
+
+
+state 199
+	arg : expr .  (132)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	SEP1  reduce 132
+	SEP2  reduce 132
+	RPAREN  reduce 132
+	RBRAK  reduce 132
+
+
+state 200
+	func : name LPAREN arg_list . RPAREN  (128)
+
+	RPAREN  shift 277
+	.  error
+
+
+state 201
+	methods : method_decl EOI methods .  (46)
+
+	.  reduce 46
+
+
+state 202
+	expr : LPAREN expr RPAREN .  (174)
+
+	.  reduce 174
+
+
+state 203
+	element : OTHERS FOLLOW VALUE .  (184)
+
+	.  reduce 184
+
+
+state 204
+	section : S_METHODS LPAREN expr RPAREN BEGIN . methods END  (5)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	methods  goto 278
+	name  goto 43
+	method_decl  goto 44
+	func  goto 45
+	var_expr  goto 16
+
+
+205: shift/reduce conflict (shift 129, reduce 164) on ASSIGN
+205: shift/reduce conflict (shift 139, reduce 164) on XOR
+state 205
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr EQ expr .  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	ASSIGN  shift 129
+	CONC  shift 136
+	XOR  shift 139
+	DO  reduce 164
+	IF  reduce 164
+	THEN  reduce 164
+	ELSE  reduce 164
+	ELSIF  reduce 164
+	WHEN  reduce 164
+	IS  reduce 164
+	EOI  reduce 164
+	SEP1  reduce 164
+	SEP2  reduce 164
+	RPAREN  reduce 164
+	RBRAK  reduce 164
+	FOLLOW  reduce 164
+	EQ  reduce 164
+	NEQ  reduce 164
+	LT  reduce 164
+	GT  reduce 164
+	GEQ  reduce 164
+	PLUS  reduce 164
+	MINUS  reduce 164
+	TIMES  reduce 164
+	DIVI  reduce 164
+	EXP2  reduce 164
+	AND  reduce 164
+	OR  reduce 164
+	TO  reduce 164
+	DOWNTO  reduce 164
+	WITH  reduce 164
+
+
+206: shift/reduce conflict (shift 129, reduce 169) on ASSIGN
+206: shift/reduce conflict (shift 139, reduce 169) on XOR
+state 206
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr NEQ expr .  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	ASSIGN  shift 129
+	CONC  shift 136
+	XOR  shift 139
+	DO  reduce 169
+	IF  reduce 169
+	THEN  reduce 169
+	ELSE  reduce 169
+	ELSIF  reduce 169
+	WHEN  reduce 169
+	IS  reduce 169
+	EOI  reduce 169
+	SEP1  reduce 169
+	SEP2  reduce 169
+	RPAREN  reduce 169
+	RBRAK  reduce 169
+	FOLLOW  reduce 169
+	EQ  reduce 169
+	NEQ  reduce 169
+	LT  reduce 169
+	GT  reduce 169
+	GEQ  reduce 169
+	PLUS  reduce 169
+	MINUS  reduce 169
+	TIMES  reduce 169
+	DIVI  reduce 169
+	EXP2  reduce 169
+	AND  reduce 169
+	OR  reduce 169
+	TO  reduce 169
+	DOWNTO  reduce 169
+	WITH  reduce 169
+
+
+207: shift/reduce conflict (shift 129, reduce 165) on ASSIGN
+207: shift/reduce conflict (shift 139, reduce 165) on XOR
+state 207
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr LT expr .  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	ASSIGN  shift 129
+	CONC  shift 136
+	XOR  shift 139
+	DO  reduce 165
+	IF  reduce 165
+	THEN  reduce 165
+	ELSE  reduce 165
+	ELSIF  reduce 165
+	WHEN  reduce 165
+	IS  reduce 165
+	EOI  reduce 165
+	SEP1  reduce 165
+	SEP2  reduce 165
+	RPAREN  reduce 165
+	RBRAK  reduce 165
+	FOLLOW  reduce 165
+	EQ  reduce 165
+	NEQ  reduce 165
+	LT  reduce 165
+	GT  reduce 165
+	GEQ  reduce 165
+	PLUS  reduce 165
+	MINUS  reduce 165
+	TIMES  reduce 165
+	DIVI  reduce 165
+	EXP2  reduce 165
+	AND  reduce 165
+	OR  reduce 165
+	TO  reduce 165
+	DOWNTO  reduce 165
+	WITH  reduce 165
+
+
+208: shift/reduce conflict (shift 129, reduce 166) on ASSIGN
+208: shift/reduce conflict (shift 139, reduce 166) on XOR
+state 208
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr GT expr .  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	ASSIGN  shift 129
+	CONC  shift 136
+	XOR  shift 139
+	DO  reduce 166
+	IF  reduce 166
+	THEN  reduce 166
+	ELSE  reduce 166
+	ELSIF  reduce 166
+	WHEN  reduce 166
+	IS  reduce 166
+	EOI  reduce 166
+	SEP1  reduce 166
+	SEP2  reduce 166
+	RPAREN  reduce 166
+	RBRAK  reduce 166
+	FOLLOW  reduce 166
+	EQ  reduce 166
+	NEQ  reduce 166
+	LT  reduce 166
+	GT  reduce 166
+	GEQ  reduce 166
+	PLUS  reduce 166
+	MINUS  reduce 166
+	TIMES  reduce 166
+	DIVI  reduce 166
+	EXP2  reduce 166
+	AND  reduce 166
+	OR  reduce 166
+	TO  reduce 166
+	DOWNTO  reduce 166
+	WITH  reduce 166
+
+
+209: shift/reduce conflict (shift 125, reduce 167) on EQ
+209: shift/reduce conflict (shift 126, reduce 167) on NEQ
+209: shift/reduce conflict (shift 127, reduce 167) on LT
+209: shift/reduce conflict (shift 128, reduce 167) on GT
+209: shift/reduce conflict (shift 129, reduce 167) on ASSIGN
+209: shift/reduce conflict (shift 130, reduce 167) on GEQ
+209: shift/reduce conflict (shift 131, reduce 167) on PLUS
+209: shift/reduce conflict (shift 132, reduce 167) on MINUS
+209: shift/reduce conflict (shift 133, reduce 167) on TIMES
+209: shift/reduce conflict (shift 134, reduce 167) on DIVI
+209: shift/reduce conflict (shift 135, reduce 167) on EXP2
+209: shift/reduce conflict (shift 136, reduce 167) on CONC
+209: shift/reduce conflict (shift 137, reduce 167) on AND
+209: shift/reduce conflict (shift 138, reduce 167) on OR
+209: shift/reduce conflict (shift 139, reduce 167) on XOR
+state 209
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr ASSIGN expr .  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 167
+	IF  reduce 167
+	THEN  reduce 167
+	ELSE  reduce 167
+	ELSIF  reduce 167
+	WHEN  reduce 167
+	IS  reduce 167
+	EOI  reduce 167
+	SEP1  reduce 167
+	SEP2  reduce 167
+	RPAREN  reduce 167
+	RBRAK  reduce 167
+	FOLLOW  reduce 167
+	TO  reduce 167
+	DOWNTO  reduce 167
+	WITH  reduce 167
+
+
+210: shift/reduce conflict (shift 129, reduce 168) on ASSIGN
+210: shift/reduce conflict (shift 139, reduce 168) on XOR
+state 210
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr GEQ expr .  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	ASSIGN  shift 129
+	CONC  shift 136
+	XOR  shift 139
+	DO  reduce 168
+	IF  reduce 168
+	THEN  reduce 168
+	ELSE  reduce 168
+	ELSIF  reduce 168
+	WHEN  reduce 168
+	IS  reduce 168
+	EOI  reduce 168
+	SEP1  reduce 168
+	SEP2  reduce 168
+	RPAREN  reduce 168
+	RBRAK  reduce 168
+	FOLLOW  reduce 168
+	EQ  reduce 168
+	NEQ  reduce 168
+	LT  reduce 168
+	GT  reduce 168
+	GEQ  reduce 168
+	PLUS  reduce 168
+	MINUS  reduce 168
+	TIMES  reduce 168
+	DIVI  reduce 168
+	EXP2  reduce 168
+	AND  reduce 168
+	OR  reduce 168
+	TO  reduce 168
+	DOWNTO  reduce 168
+	WITH  reduce 168
+
+
+211: shift/reduce conflict (shift 129, reduce 157) on ASSIGN
+211: shift/reduce conflict (shift 139, reduce 157) on XOR
+state 211
+	expr : expr . PLUS expr  (157)
+	expr : expr PLUS expr .  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 157
+	IF  reduce 157
+	THEN  reduce 157
+	ELSE  reduce 157
+	ELSIF  reduce 157
+	WHEN  reduce 157
+	IS  reduce 157
+	EOI  reduce 157
+	SEP1  reduce 157
+	SEP2  reduce 157
+	RPAREN  reduce 157
+	RBRAK  reduce 157
+	FOLLOW  reduce 157
+	PLUS  reduce 157
+	MINUS  reduce 157
+	TO  reduce 157
+	DOWNTO  reduce 157
+	WITH  reduce 157
+
+
+212: shift/reduce conflict (shift 129, reduce 161) on ASSIGN
+212: shift/reduce conflict (shift 139, reduce 161) on XOR
+state 212
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr MINUS expr .  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 161
+	IF  reduce 161
+	THEN  reduce 161
+	ELSE  reduce 161
+	ELSIF  reduce 161
+	WHEN  reduce 161
+	IS  reduce 161
+	EOI  reduce 161
+	SEP1  reduce 161
+	SEP2  reduce 161
+	RPAREN  reduce 161
+	RBRAK  reduce 161
+	FOLLOW  reduce 161
+	PLUS  reduce 161
+	MINUS  reduce 161
+	TO  reduce 161
+	DOWNTO  reduce 161
+	WITH  reduce 161
+
+
+213: shift/reduce conflict (shift 129, reduce 162) on ASSIGN
+213: shift/reduce conflict (shift 139, reduce 162) on XOR
+state 213
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr TIMES expr .  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 162
+	IF  reduce 162
+	THEN  reduce 162
+	ELSE  reduce 162
+	ELSIF  reduce 162
+	WHEN  reduce 162
+	IS  reduce 162
+	EOI  reduce 162
+	SEP1  reduce 162
+	SEP2  reduce 162
+	RPAREN  reduce 162
+	RBRAK  reduce 162
+	FOLLOW  reduce 162
+	PLUS  reduce 162
+	MINUS  reduce 162
+	TIMES  reduce 162
+	DIVI  reduce 162
+	EXP2  reduce 162
+	TO  reduce 162
+	DOWNTO  reduce 162
+	WITH  reduce 162
+
+
+214: shift/reduce conflict (shift 129, reduce 163) on ASSIGN
+214: shift/reduce conflict (shift 139, reduce 163) on XOR
+state 214
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr DIVI expr .  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 163
+	IF  reduce 163
+	THEN  reduce 163
+	ELSE  reduce 163
+	ELSIF  reduce 163
+	WHEN  reduce 163
+	IS  reduce 163
+	EOI  reduce 163
+	SEP1  reduce 163
+	SEP2  reduce 163
+	RPAREN  reduce 163
+	RBRAK  reduce 163
+	FOLLOW  reduce 163
+	PLUS  reduce 163
+	MINUS  reduce 163
+	TIMES  reduce 163
+	DIVI  reduce 163
+	EXP2  reduce 163
+	TO  reduce 163
+	DOWNTO  reduce 163
+	WITH  reduce 163
+
+
+215: shift/reduce conflict (shift 129, reduce 158) on ASSIGN
+215: shift/reduce conflict (shift 139, reduce 158) on XOR
+state 215
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr EXP2 expr .  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 158
+	IF  reduce 158
+	THEN  reduce 158
+	ELSE  reduce 158
+	ELSIF  reduce 158
+	WHEN  reduce 158
+	IS  reduce 158
+	EOI  reduce 158
+	SEP1  reduce 158
+	SEP2  reduce 158
+	RPAREN  reduce 158
+	RBRAK  reduce 158
+	FOLLOW  reduce 158
+	PLUS  reduce 158
+	MINUS  reduce 158
+	TIMES  reduce 158
+	DIVI  reduce 158
+	EXP2  reduce 158
+	TO  reduce 158
+	DOWNTO  reduce 158
+	WITH  reduce 158
+
+
+216: shift/reduce conflict (shift 129, reduce 173) on ASSIGN
+216: shift/reduce conflict (shift 139, reduce 173) on XOR
+state 216
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+	expr : expr CONC expr .  (173)
+
+	ASSIGN  shift 129
+	XOR  shift 139
+	DO  reduce 173
+	IF  reduce 173
+	THEN  reduce 173
+	ELSE  reduce 173
+	ELSIF  reduce 173
+	WHEN  reduce 173
+	IS  reduce 173
+	EOI  reduce 173
+	SEP1  reduce 173
+	SEP2  reduce 173
+	RPAREN  reduce 173
+	RBRAK  reduce 173
+	FOLLOW  reduce 173
+	EQ  reduce 173
+	NEQ  reduce 173
+	LT  reduce 173
+	GT  reduce 173
+	GEQ  reduce 173
+	PLUS  reduce 173
+	MINUS  reduce 173
+	TIMES  reduce 173
+	DIVI  reduce 173
+	EXP2  reduce 173
+	CONC  reduce 173
+	AND  reduce 173
+	OR  reduce 173
+	TO  reduce 173
+	DOWNTO  reduce 173
+	WITH  reduce 173
+
+
+217: shift/reduce conflict (shift 129, reduce 170) on ASSIGN
+217: shift/reduce conflict (shift 139, reduce 170) on XOR
+state 217
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr AND expr .  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	CONC  shift 136
+	XOR  shift 139
+	DO  reduce 170
+	IF  reduce 170
+	THEN  reduce 170
+	ELSE  reduce 170
+	ELSIF  reduce 170
+	WHEN  reduce 170
+	IS  reduce 170
+	EOI  reduce 170
+	SEP1  reduce 170
+	SEP2  reduce 170
+	RPAREN  reduce 170
+	RBRAK  reduce 170
+	FOLLOW  reduce 170
+	PLUS  reduce 170
+	MINUS  reduce 170
+	TIMES  reduce 170
+	DIVI  reduce 170
+	EXP2  reduce 170
+	AND  reduce 170
+	OR  reduce 170
+	TO  reduce 170
+	DOWNTO  reduce 170
+	WITH  reduce 170
+
+
+218: shift/reduce conflict (shift 129, reduce 171) on ASSIGN
+218: shift/reduce conflict (shift 139, reduce 171) on XOR
+state 218
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr OR expr .  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	CONC  shift 136
+	XOR  shift 139
+	DO  reduce 171
+	IF  reduce 171
+	THEN  reduce 171
+	ELSE  reduce 171
+	ELSIF  reduce 171
+	WHEN  reduce 171
+	IS  reduce 171
+	EOI  reduce 171
+	SEP1  reduce 171
+	SEP2  reduce 171
+	RPAREN  reduce 171
+	RBRAK  reduce 171
+	FOLLOW  reduce 171
+	PLUS  reduce 171
+	MINUS  reduce 171
+	TIMES  reduce 171
+	DIVI  reduce 171
+	EXP2  reduce 171
+	AND  reduce 171
+	OR  reduce 171
+	TO  reduce 171
+	DOWNTO  reduce 171
+	WITH  reduce 171
+
+
+219: shift/reduce conflict (shift 125, reduce 172) on EQ
+219: shift/reduce conflict (shift 126, reduce 172) on NEQ
+219: shift/reduce conflict (shift 127, reduce 172) on LT
+219: shift/reduce conflict (shift 128, reduce 172) on GT
+219: shift/reduce conflict (shift 129, reduce 172) on ASSIGN
+219: shift/reduce conflict (shift 130, reduce 172) on GEQ
+219: shift/reduce conflict (shift 131, reduce 172) on PLUS
+219: shift/reduce conflict (shift 132, reduce 172) on MINUS
+219: shift/reduce conflict (shift 133, reduce 172) on TIMES
+219: shift/reduce conflict (shift 134, reduce 172) on DIVI
+219: shift/reduce conflict (shift 135, reduce 172) on EXP2
+219: shift/reduce conflict (shift 136, reduce 172) on CONC
+219: shift/reduce conflict (shift 137, reduce 172) on AND
+219: shift/reduce conflict (shift 138, reduce 172) on OR
+219: shift/reduce conflict (shift 139, reduce 172) on XOR
+state 219
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr XOR expr .  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 172
+	IF  reduce 172
+	THEN  reduce 172
+	ELSE  reduce 172
+	ELSIF  reduce 172
+	WHEN  reduce 172
+	IS  reduce 172
+	EOI  reduce 172
+	SEP1  reduce 172
+	SEP2  reduce 172
+	RPAREN  reduce 172
+	RBRAK  reduce 172
+	FOLLOW  reduce 172
+	TO  reduce 172
+	DOWNTO  reduce 172
+	WITH  reduce 172
+
+
+state 220
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+	range : expr . DOWNTO expr  (177)
+	range : expr . TO expr  (178)
+	range : expr .  (179)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	TO  shift 269
+	DOWNTO  shift 270
+	RBRAK  reduce 179
+
+
+state 221
+	element : name LBRAK range . RBRAK  (186)
+
+	RBRAK  shift 279
+	.  error
+
+
+state 222
+	element : name ACC name .  (187)
+
+	.  reduce 187
+
+
+state 223
+	signal_decl : SIGNAL name SEP1 . arg_type  (59)
+	signal_decl : SIGNAL name SEP1 . sig_dir arg_type  (60)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	IN  shift 283
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	OUT  shift 287
+	.  error
+
+	name  goto 288
+	sig_dir  goto 289
+	arg_type  goto 290
+	var_expr  goto 16
+
+
+state 224
+	signal_decl : CONSTANT name SEP1 . arg_type ASSIGN2 expr  (58)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 291
+	var_expr  goto 16
+
+
+state 225
+	signal_decl : VARIABLE name SEP1 . arg_type  (61)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 292
+	var_expr  goto 16
+
+
+state 226
+	signal_decl : SHARED VARIABLE name . SEP1 arg_type  (62)
+
+	SEP1  shift 293
+	.  error
+
+
+state 227
+	signal_decl : FOREACH VAR IDENT . IN foreach DO BEGIN signals END  (56)
+
+	IN  shift 294
+	.  error
+
+
+state 228
+	signal_decl : TYPE name IS . LCURL name_list RCURL  (63)
+	signal_decl : TYPE name IS . ARRAY LBRAK range RBRAK OF arg_type  (64)
+
+	ARRAY  shift 295
+	LCURL  shift 296
+	.  error
+
+
+state 229
+	signals : signal_decl EOI signals .  (52)
+
+	.  reduce 52
+
+
+state 230
+	section : S_SIGNALS LPAREN expr RPAREN BEGIN . signals END  (12)
+
+	VAR  shift 56
+	SIGNAL  shift 57
+	CONSTANT  shift 58
+	VARIABLE  shift 59
+	SHARED  shift 60
+	FOREACH  shift 61
+	TYPE  shift 62
+	.  error
+
+	signals  goto 297
+	signal_decl  goto 64
+
+
+state 231
+	interface_decl : SIGNAL name SEP1 . sig_dir arg_type  (69)
+
+	IN  shift 283
+	OUT  shift 287
+	.  error
+
+	sig_dir  goto 298
+
+
+state 232
+	interface_decl : FOREACH VAR IDENT . IN foreach DO BEGIN interfaces END  (68)
+
+	IN  shift 299
+	.  error
+
+
+state 233
+	interfaces : interface_decl EOI interfaces .  (67)
+
+	.  reduce 67
+
+
+state 234
+	section : S_INTERFACE LPAREN expr RPAREN BEGIN . interfaces END  (9)
+	section : S_INTERFACE LPAREN expr RPAREN BEGIN . NULL EOI END  (10)
+
+	SIGNAL  shift 66
+	FOREACH  shift 67
+	NULL  shift 300
+	.  error
+
+	interfaces  goto 301
+	interface_decl  goto 69
+
+
+state 235
+	mapping_decl : FOREACH VAR IDENT . IN foreach DO BEGIN mappings END  (72)
+
+	IN  shift 302
+	.  error
+
+
+state 236
+	mapping_decl : name FOLLOW name .  (73)
+
+	.  reduce 73
+
+
+state 237
+	mappings : mapping_decl EOI mappings .  (71)
+
+	.  reduce 71
+
+
+state 238
+	section : S_MAPPING LPAREN expr RPAREN BEGIN . mappings END  (14)
+	section : S_MAPPING LPAREN expr RPAREN BEGIN . NULL EOI END  (15)
+
+	IDENT  shift 3
+	VAR  shift 12
+	FOREACH  shift 71
+	NULL  shift 303
+	.  error
+
+	mappings  goto 304
+	name  goto 73
+	mapping_decl  goto 74
+	var_expr  goto 16
+
+
+state 239
+	instruction : VARIABLE name SEP1 . arg_type  (151)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 305
+	var_expr  goto 16
+
+
+state 240
+	instruction : FOREACH VAR IDENT . IN foreach DO BEGIN instructions END  (155)
+	instruction : FOREACH VAR IDENT . IN foreach DO instruction  (156)
+
+	IN  shift 306
+	.  error
+
+
+state 241
+	control_expr : FOR expr EQ . range DO block_instr  (110)
+	expr : expr EQ . expr  (164)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 307
+	name  goto 53
+	range  goto 308
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 242
+	control_expr : IF OTHERS THEN . block_instr  (107)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 310
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 243
+	ifseq : IF expr THEN . block_instr ifseq  (94)
+	ifseq : IF expr THEN . block_instr ifothers  (96)
+	control_expr : IF expr THEN . block_instr  (105)
+	control_expr : IF expr THEN . block_instr ELSE block_instr  (106)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 312
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 244
+	ifseq : ELSE IF expr . THEN block_instr ifseq  (100)
+	ifseq : ELSE IF expr . THEN block_instr  (101)
+	ifseq : ELSE IF expr . THEN block_instr ELSE block_instr  (102)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	THEN  shift 313
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 245
+	ifseq : ELSIF expr THEN . block_instr ifseq  (95)
+	ifseq : ELSIF expr THEN . block_instr ifothers  (97)
+	ifseq : ELSIF expr THEN . block_instr  (98)
+	ifseq : ELSIF expr THEN . block_instr ELSE block_instr  (99)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 314
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 246
+	control_expr : WAIT FOR expr .  (103)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	IF  reduce 103
+	ELSE  reduce 103
+	ELSIF  reduce 103
+	EOI  reduce 103
+
+
+state 247
+	control_expr : WAIT UNTIL expr .  (104)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	IF  reduce 104
+	ELSE  reduce 104
+	ELSIF  reduce 104
+	EOI  reduce 104
+
+
+state 248
+	instruction : SEQUENCE BEGIN instructions . END  (154)
+
+	END  shift 315
+	.  error
+
+
+state 249
+	control_expr : CASE expr IS . BEGIN when_list END  (109)
+
+	BEGIN  shift 316
+	.  error
+
+
+state 250
+	control_expr : WITH expr DO . block_instr  (111)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 317
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 251
+	data_expr : element ASSIGN expr . WHEN expr ELSE expr  (88)
+	data_expr : element ASSIGN expr .  (89)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	WHEN  shift 318
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	IF  reduce 89
+	ELSE  reduce 89
+	ELSIF  reduce 89
+	EOI  reduce 89
+
+
+state 252
+	data_expr : element ASSIGN2 expr .  (90)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	IF  reduce 90
+	ELSE  reduce 90
+	ELSIF  reduce 90
+	EOI  reduce 90
+
+
+state 253
+	instructions : instruction EOI instructions .  (150)
+
+	.  reduce 150
+
+
+state 254
+	section : S_TOP LPAREN expr RPAREN BEGIN . instructions END  (17)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	instructions  goto 319
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 93
+	var_expr  goto 16
+
+
+state 255
+	checks : check EOI checks .  (49)
+
+	.  reduce 49
+
+
+state 256
+	section : S_CHECK LPAREN expr RPAREN BEGIN . checks END  (7)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 95
+	checks  goto 320
+	name  goto 53
+	func  goto 54
+	check  goto 97
+	element  goto 55
+	var_expr  goto 16
+
+
+state 257
+	access_decl : S_DATA . BEGIN data_exprs END  (76)
+
+	BEGIN  shift 321
+	.  error
+
+
+state 258
+	access_decl : S_CONTROL . BEGIN control_exprs END  (77)
+
+	BEGIN  shift 322
+	.  error
+
+
+state 259
+	access_decl : S_IMPORT . BEGIN methods END  (78)
+
+	BEGIN  shift 323
+	.  error
+
+
+state 260
+	access_decl : S_SET . BEGIN data_exprs END  (79)
+
+	BEGIN  shift 324
+	.  error
+
+
+state 261
+	section : name SEP1 S_ACCESS BEGIN access . END  (20)
+
+	END  shift 325
+	.  error
+
+
+state 262
+	access : access_decl . EOI  (74)
+	access : access_decl . EOI access  (75)
+
+	EOI  shift 326
+	.  error
+
+
+state 263
+	section : name SEP1 S_ACCESS LPAREN expr . RPAREN BEGIN access END  (21)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RPAREN  shift 327
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 264
+	section : name SEP1 S_PROCESS BEGIN instructions . END  (18)
+
+	END  shift 328
+	.  error
+
+
+state 265
+	section : name SEP1 S_PROCESS LPAREN expr . RPAREN BEGIN instructions END  (19)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RPAREN  shift 329
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 266
+	arg : LHS SEP1 . arg_type  (134)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 330
+	var_expr  goto 16
+
+
+state 267
+	arg : RHS SEP1 . arg_type  (135)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 331
+	var_expr  goto 16
+
+
+state 268
+	arg : LRHS SEP1 . arg_type  (136)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 332
+	var_expr  goto 16
+
+
+state 269
+	range : expr TO . expr  (178)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 333
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 270
+	range : expr DOWNTO . expr  (177)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 334
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 271
+	param : name LBRAK range SEP1 . data_type RBRAK  (32)
+	param : name LBRAK range SEP1 . data_type RBRAK ASSIGN expr  (33)
+
+	VAR  shift 335
+	LOGIC  shift 336
+	BOOL  shift 337
+	INT  shift 338
+	CHAR  shift 339
+	STRINGS  shift 340
+	SIGNED  shift 341
+	.  error
+
+	data_type  goto 342
+
+
+state 272
+	param : name LBRAK range RBRAK . ASSIGN expr  (28)
+	param : name LBRAK range RBRAK .  (30)
+
+	ASSIGN  shift 343
+	EOI  reduce 30
+	WITH  reduce 30
+
+
+state 273
+	param : name LBRAK arg_list SEP1 . data_type RBRAK  (34)
+	param : name LBRAK arg_list SEP1 . data_type RBRAK ASSIGN expr  (35)
+
+	VAR  shift 335
+	LOGIC  shift 336
+	BOOL  shift 337
+	INT  shift 338
+	CHAR  shift 339
+	STRINGS  shift 340
+	SIGNED  shift 341
+	.  error
+
+	data_type  goto 344
+
+
+state 274
+	param : name LBRAK arg_list RBRAK . ASSIGN expr  (29)
+	param : name LBRAK arg_list RBRAK .  (31)
+
+	ASSIGN  shift 345
+	EOI  reduce 31
+	WITH  reduce 31
+
+
+state 275
+	arg_list : arg SEP2 . arg_list  (131)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	LHS  shift 186
+	RHS  shift 187
+	LRHS  shift 188
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	OR  shift 189
+	NOT  shift 51
+	.  error
+
+	expr  goto 199
+	name  goto 53
+	arg_list  goto 346
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+	arg  goto 193
+
+
+state 276
+	attr_list : IDENT AND . attr_list  (44)
+
+	IDENT  shift 196
+	.  error
+
+	attr_list  goto 347
+
+
+state 277
+	func : name LPAREN arg_list RPAREN .  (128)
+
+	.  reduce 128
+
+
+state 278
+	section : S_METHODS LPAREN expr RPAREN BEGIN methods . END  (5)
+
+	END  shift 348
+	.  error
+
+
+state 279
+	element : name LBRAK range RBRAK .  (186)
+
+	.  reduce 186
+
+
+state 280
+	arg_type : LOGIC .  (140)
+	arg_type : LOGIC . LBRAK expr RBRAK  (144)
+	arg_type : LOGIC . LBRAK range RBRAK  (145)
+
+	LBRAK  shift 349
+	IF  reduce 140
+	ELSE  reduce 140
+	ELSIF  reduce 140
+	EOI  reduce 140
+	SEP1  reduce 140
+	SEP2  reduce 140
+	RPAREN  reduce 140
+	RBRAK  reduce 140
+	ASSIGN2  reduce 140
+
+
+state 281
+	arg_type : NATURAL .  (146)
+
+	.  reduce 146
+
+
+state 282
+	arg_type : BOOL .  (141)
+
+	.  reduce 141
+
+
+state 283
+	sig_dir : IN .  (53)
+
+	.  reduce 53
+
+
+state 284
+	arg_type : INT . LBRAK expr RBRAK  (142)
+
+	LBRAK  shift 350
+	.  error
+
+
+state 285
+	arg_type : STRINGS .  (147)
+
+	.  reduce 147
+
+
+state 286
+	arg_type : SIGNED . LBRAK expr RBRAK  (143)
+
+	LBRAK  shift 351
+	.  error
+
+
+state 287
+	sig_dir : OUT .  (54)
+
+	.  reduce 54
+
+
+state 288
+	arg_type : name .  (148)
+
+	.  reduce 148
+
+
+state 289
+	signal_decl : SIGNAL name SEP1 sig_dir . arg_type  (60)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 352
+	var_expr  goto 16
+
+
+state 290
+	signal_decl : SIGNAL name SEP1 arg_type .  (59)
+
+	.  reduce 59
+
+
+state 291
+	signal_decl : CONSTANT name SEP1 arg_type . ASSIGN2 expr  (58)
+
+	ASSIGN2  shift 353
+	.  error
+
+
+state 292
+	signal_decl : VARIABLE name SEP1 arg_type .  (61)
+
+	.  reduce 61
+
+
+state 293
+	signal_decl : SHARED VARIABLE name SEP1 . arg_type  (62)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 354
+	var_expr  goto 16
+
+
+state 294
+	signal_decl : FOREACH VAR IDENT IN . foreach DO BEGIN signals END  (56)
+
+	VAR  shift 355
+	.  error
+
+	foreach  goto 356
+
+
+state 295
+	signal_decl : TYPE name IS ARRAY . LBRAK range RBRAK OF arg_type  (64)
+
+	LBRAK  shift 357
+	.  error
+
+
+state 296
+	signal_decl : TYPE name IS LCURL . name_list RCURL  (63)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 358
+	name_list  goto 359
+	var_expr  goto 16
+
+
+state 297
+	section : S_SIGNALS LPAREN expr RPAREN BEGIN signals . END  (12)
+
+	END  shift 360
+	.  error
+
+
+state 298
+	interface_decl : SIGNAL name SEP1 sig_dir . arg_type  (69)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 361
+	var_expr  goto 16
+
+
+state 299
+	interface_decl : FOREACH VAR IDENT IN . foreach DO BEGIN interfaces END  (68)
+
+	VAR  shift 355
+	.  error
+
+	foreach  goto 362
+
+
+state 300
+	section : S_INTERFACE LPAREN expr RPAREN BEGIN NULL . EOI END  (10)
+
+	EOI  shift 363
+	.  error
+
+
+state 301
+	section : S_INTERFACE LPAREN expr RPAREN BEGIN interfaces . END  (9)
+
+	END  shift 364
+	.  error
+
+
+state 302
+	mapping_decl : FOREACH VAR IDENT IN . foreach DO BEGIN mappings END  (72)
+
+	VAR  shift 355
+	.  error
+
+	foreach  goto 365
+
+
+state 303
+	section : S_MAPPING LPAREN expr RPAREN BEGIN NULL . EOI END  (15)
+
+	EOI  shift 366
+	.  error
+
+
+state 304
+	section : S_MAPPING LPAREN expr RPAREN BEGIN mappings . END  (14)
+
+	END  shift 367
+	.  error
+
+
+state 305
+	instruction : VARIABLE name SEP1 arg_type .  (151)
+
+	.  reduce 151
+
+
+state 306
+	instruction : FOREACH VAR IDENT IN . foreach DO BEGIN instructions END  (155)
+	instruction : FOREACH VAR IDENT IN . foreach DO instruction  (156)
+
+	VAR  shift 355
+	.  error
+
+	foreach  goto 368
+
+
+307: shift/reduce conflict (shift 129, reduce 164) on ASSIGN
+307: shift/reduce conflict (shift 139, reduce 164) on XOR
+state 307
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr EQ expr .  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+	range : expr . DOWNTO expr  (177)
+	range : expr . TO expr  (178)
+	range : expr .  (179)
+
+	ASSIGN  shift 129
+	CONC  shift 136
+	XOR  shift 139
+	TO  shift 269
+	DOWNTO  shift 270
+	DO  reduce 179
+	EQ  reduce 164
+	NEQ  reduce 164
+	LT  reduce 164
+	GT  reduce 164
+	GEQ  reduce 164
+	PLUS  reduce 164
+	MINUS  reduce 164
+	TIMES  reduce 164
+	DIVI  reduce 164
+	EXP2  reduce 164
+	AND  reduce 164
+	OR  reduce 164
+
+
+state 308
+	control_expr : FOR expr EQ range . DO block_instr  (110)
+
+	DO  shift 369
+	.  error
+
+
+state 309
+	block_instr : BEGIN . instructions END  (114)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	instructions  goto 370
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 93
+	var_expr  goto 16
+
+
+state 310
+	control_expr : IF OTHERS THEN block_instr .  (107)
+
+	.  reduce 107
+
+
+state 311
+	block_instr : instruction .  (113)
+
+	.  reduce 113
+
+
+312: shift/reduce conflict (shift 371, reduce 105) on IF
+312: shift/reduce conflict (shift 372, reduce 105) on ELSE
+312: shift/reduce conflict (shift 81, reduce 105) on ELSIF
+state 312
+	ifseq : IF expr THEN block_instr . ifseq  (94)
+	ifseq : IF expr THEN block_instr . ifothers  (96)
+	control_expr : IF expr THEN block_instr .  (105)
+	control_expr : IF expr THEN block_instr . ELSE block_instr  (106)
+
+	IF  shift 371
+	ELSE  shift 372
+	ELSIF  shift 81
+	EOI  reduce 105
+
+	ifothers  goto 373
+	ifseq  goto 374
+
+
+state 313
+	ifseq : ELSE IF expr THEN . block_instr ifseq  (100)
+	ifseq : ELSE IF expr THEN . block_instr  (101)
+	ifseq : ELSE IF expr THEN . block_instr ELSE block_instr  (102)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 375
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+314: shift/reduce conflict (shift 371, reduce 98) on IF
+314: shift/reduce conflict (shift 376, reduce 98) on ELSE
+314: shift/reduce conflict (shift 81, reduce 98) on ELSIF
+state 314
+	ifseq : ELSIF expr THEN block_instr . ifseq  (95)
+	ifseq : ELSIF expr THEN block_instr . ifothers  (97)
+	ifseq : ELSIF expr THEN block_instr .  (98)
+	ifseq : ELSIF expr THEN block_instr . ELSE block_instr  (99)
+
+	IF  shift 371
+	ELSE  shift 376
+	ELSIF  shift 81
+	EOI  reduce 98
+
+	ifothers  goto 377
+	ifseq  goto 378
+
+
+state 315
+	instruction : SEQUENCE BEGIN instructions END .  (154)
+
+	.  reduce 154
+
+
+state 316
+	control_expr : CASE expr IS BEGIN . when_list END  (109)
+
+	WHEN  shift 379
+	.  error
+
+	when_list  goto 380
+	when_expr  goto 381
+
+
+state 317
+	control_expr : WITH expr DO block_instr .  (111)
+
+	.  reduce 111
+
+
+state 318
+	data_expr : element ASSIGN expr WHEN . expr ELSE expr  (88)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 382
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 319
+	section : S_TOP LPAREN expr RPAREN BEGIN instructions . END  (17)
+
+	END  shift 383
+	.  error
+
+
+state 320
+	section : S_CHECK LPAREN expr RPAREN BEGIN checks . END  (7)
+
+	END  shift 384
+	.  error
+
+
+state 321
+	access_decl : S_DATA BEGIN . data_exprs END  (76)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	NULL  shift 385
+	OTHERS  shift 49
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_exprs  goto 386
+	data_expr  goto 387
+	element  goto 91
+	var_expr  goto 16
+
+
+state 322
+	access_decl : S_CONTROL BEGIN . control_exprs END  (77)
+
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	CASE  shift 84
+	NULL  shift 388
+	WITH  shift 86
+	.  error
+
+	control_exprs  goto 389
+	control_expr  goto 390
+	ifseq  goto 92
+
+
+state 323
+	access_decl : S_IMPORT BEGIN . methods END  (78)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	methods  goto 391
+	name  goto 43
+	method_decl  goto 44
+	func  goto 45
+	var_expr  goto 16
+
+
+state 324
+	access_decl : S_SET BEGIN . data_exprs END  (79)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	NULL  shift 385
+	OTHERS  shift 49
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_exprs  goto 392
+	data_expr  goto 387
+	element  goto 91
+	var_expr  goto 16
+
+
+state 325
+	section : name SEP1 S_ACCESS BEGIN access END .  (20)
+
+	.  reduce 20
+
+
+state 326
+	access : access_decl EOI .  (74)
+	access : access_decl EOI . access  (75)
+
+	S_DATA  shift 257
+	S_CONTROL  shift 258
+	S_IMPORT  shift 259
+	S_SET  shift 260
+	END  reduce 74
+
+	access  goto 393
+	access_decl  goto 262
+
+
+state 327
+	section : name SEP1 S_ACCESS LPAREN expr RPAREN . BEGIN access END  (21)
+
+	BEGIN  shift 394
+	.  error
+
+
+state 328
+	section : name SEP1 S_PROCESS BEGIN instructions END .  (18)
+
+	.  reduce 18
+
+
+state 329
+	section : name SEP1 S_PROCESS LPAREN expr RPAREN . BEGIN instructions END  (19)
+
+	BEGIN  shift 395
+	.  error
+
+
+state 330
+	arg : LHS SEP1 arg_type .  (134)
+
+	.  reduce 134
+
+
+state 331
+	arg : RHS SEP1 arg_type .  (135)
+
+	.  reduce 135
+
+
+state 332
+	arg : LRHS SEP1 arg_type .  (136)
+
+	.  reduce 136
+
+
+state 333
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+	range : expr TO expr .  (178)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 178
+	SEP1  reduce 178
+	RBRAK  reduce 178
+
+
+state 334
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+	range : expr DOWNTO expr .  (177)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	DO  reduce 177
+	SEP1  reduce 177
+	RBRAK  reduce 177
+
+
+state 335
+	data_type : VAR .  (42)
+
+	.  reduce 42
+
+
+state 336
+	data_type : LOGIC .  (36)
+
+	.  reduce 36
+
+
+state 337
+	data_type : BOOL .  (39)
+
+	.  reduce 39
+
+
+state 338
+	data_type : INT .  (38)
+
+	.  reduce 38
+
+
+state 339
+	data_type : CHAR .  (40)
+
+	.  reduce 40
+
+
+state 340
+	data_type : STRINGS .  (41)
+
+	.  reduce 41
+
+
+state 341
+	data_type : SIGNED .  (37)
+
+	.  reduce 37
+
+
+state 342
+	param : name LBRAK range SEP1 data_type . RBRAK  (32)
+	param : name LBRAK range SEP1 data_type . RBRAK ASSIGN expr  (33)
+
+	RBRAK  shift 396
+	.  error
+
+
+state 343
+	param : name LBRAK range RBRAK ASSIGN . expr  (28)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 397
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 344
+	param : name LBRAK arg_list SEP1 data_type . RBRAK  (34)
+	param : name LBRAK arg_list SEP1 data_type . RBRAK ASSIGN expr  (35)
+
+	RBRAK  shift 398
+	.  error
+
+
+state 345
+	param : name LBRAK arg_list RBRAK ASSIGN . expr  (29)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 399
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 346
+	arg_list : arg SEP2 arg_list .  (131)
+
+	.  reduce 131
+
+
+state 347
+	attr_list : IDENT AND attr_list .  (44)
+
+	.  reduce 44
+
+
+state 348
+	section : S_METHODS LPAREN expr RPAREN BEGIN methods END .  (5)
+
+	.  reduce 5
+
+
+state 349
+	arg_type : LOGIC LBRAK . expr RBRAK  (144)
+	arg_type : LOGIC LBRAK . range RBRAK  (145)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 400
+	name  goto 53
+	range  goto 401
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 350
+	arg_type : INT LBRAK . expr RBRAK  (142)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 402
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 351
+	arg_type : SIGNED LBRAK . expr RBRAK  (143)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 403
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 352
+	signal_decl : SIGNAL name SEP1 sig_dir arg_type .  (60)
+
+	.  reduce 60
+
+
+state 353
+	signal_decl : CONSTANT name SEP1 arg_type ASSIGN2 . expr  (58)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 404
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 354
+	signal_decl : SHARED VARIABLE name SEP1 arg_type .  (62)
+
+	.  reduce 62
+
+
+state 355
+	foreach : VAR . IDENT  (80)
+
+	IDENT  shift 405
+	.  error
+
+
+state 356
+	signal_decl : FOREACH VAR IDENT IN foreach . DO BEGIN signals END  (56)
+	foreach : foreach . AND foreach  (81)
+	foreach : foreach . OR foreach  (82)
+	foreach : foreach . XOR foreach  (83)
+
+	DO  shift 406
+	AND  shift 407
+	OR  shift 408
+	XOR  shift 409
+	.  error
+
+
+state 357
+	signal_decl : TYPE name IS ARRAY LBRAK . range RBRAK OF arg_type  (64)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 220
+	name  goto 53
+	range  goto 410
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 358
+	name_list : name .  (126)
+	name_list : name . SEP2 name_list  (127)
+
+	SEP2  shift 411
+	RCURL  reduce 126
+
+
+state 359
+	signal_decl : TYPE name IS LCURL name_list . RCURL  (63)
+
+	RCURL  shift 412
+	.  error
+
+
+state 360
+	section : S_SIGNALS LPAREN expr RPAREN BEGIN signals END .  (12)
+
+	.  reduce 12
+
+
+state 361
+	interface_decl : SIGNAL name SEP1 sig_dir arg_type .  (69)
+
+	.  reduce 69
+
+
+state 362
+	interface_decl : FOREACH VAR IDENT IN foreach . DO BEGIN interfaces END  (68)
+	foreach : foreach . AND foreach  (81)
+	foreach : foreach . OR foreach  (82)
+	foreach : foreach . XOR foreach  (83)
+
+	DO  shift 413
+	AND  shift 407
+	OR  shift 408
+	XOR  shift 409
+	.  error
+
+
+state 363
+	section : S_INTERFACE LPAREN expr RPAREN BEGIN NULL EOI . END  (10)
+
+	END  shift 414
+	.  error
+
+
+state 364
+	section : S_INTERFACE LPAREN expr RPAREN BEGIN interfaces END .  (9)
+
+	.  reduce 9
+
+
+state 365
+	mapping_decl : FOREACH VAR IDENT IN foreach . DO BEGIN mappings END  (72)
+	foreach : foreach . AND foreach  (81)
+	foreach : foreach . OR foreach  (82)
+	foreach : foreach . XOR foreach  (83)
+
+	DO  shift 415
+	AND  shift 407
+	OR  shift 408
+	XOR  shift 409
+	.  error
+
+
+state 366
+	section : S_MAPPING LPAREN expr RPAREN BEGIN NULL EOI . END  (15)
+
+	END  shift 416
+	.  error
+
+
+state 367
+	section : S_MAPPING LPAREN expr RPAREN BEGIN mappings END .  (14)
+
+	.  reduce 14
+
+
+state 368
+	foreach : foreach . AND foreach  (81)
+	foreach : foreach . OR foreach  (82)
+	foreach : foreach . XOR foreach  (83)
+	instruction : FOREACH VAR IDENT IN foreach . DO BEGIN instructions END  (155)
+	instruction : FOREACH VAR IDENT IN foreach . DO instruction  (156)
+
+	DO  shift 417
+	AND  shift 407
+	OR  shift 408
+	XOR  shift 409
+	.  error
+
+
+state 369
+	control_expr : FOR expr EQ range DO . block_instr  (110)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 418
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 370
+	block_instr : BEGIN instructions . END  (114)
+
+	END  shift 419
+	.  error
+
+
+state 371
+	ifothers : IF . OTHERS THEN block_instr  (93)
+	ifseq : IF . expr THEN block_instr ifseq  (94)
+	ifseq : IF . expr THEN block_instr ifothers  (96)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 420
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 421
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 372
+	ifseq : ELSE . IF expr THEN block_instr ifseq  (100)
+	ifseq : ELSE . IF expr THEN block_instr  (101)
+	ifseq : ELSE . IF expr THEN block_instr ELSE block_instr  (102)
+	control_expr : IF expr THEN block_instr ELSE . block_instr  (106)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 422
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 423
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 373
+	ifseq : IF expr THEN block_instr ifothers .  (96)
+
+	.  reduce 96
+
+
+state 374
+	ifseq : IF expr THEN block_instr ifseq .  (94)
+
+	.  reduce 94
+
+
+375: shift/reduce conflict (shift 424, reduce 101) on IF
+375: shift/reduce conflict (shift 425, reduce 101) on ELSE
+375: shift/reduce conflict (shift 81, reduce 101) on ELSIF
+state 375
+	ifseq : ELSE IF expr THEN block_instr . ifseq  (100)
+	ifseq : ELSE IF expr THEN block_instr .  (101)
+	ifseq : ELSE IF expr THEN block_instr . ELSE block_instr  (102)
+
+	IF  shift 424
+	ELSE  shift 425
+	ELSIF  shift 81
+	EOI  reduce 101
+
+	ifseq  goto 426
+
+
+state 376
+	ifseq : ELSIF expr THEN block_instr ELSE . block_instr  (99)
+	ifseq : ELSE . IF expr THEN block_instr ifseq  (100)
+	ifseq : ELSE . IF expr THEN block_instr  (101)
+	ifseq : ELSE . IF expr THEN block_instr ELSE block_instr  (102)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 422
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 427
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 377
+	ifseq : ELSIF expr THEN block_instr ifothers .  (97)
+
+	.  reduce 97
+
+
+state 378
+	ifseq : ELSIF expr THEN block_instr ifseq .  (95)
+
+	.  reduce 95
+
+
+state 379
+	when_expr : WHEN . OTHERS FOLLOW block_instr EOI  (117)
+	when_expr : WHEN . expr FOLLOW block_instr EOI  (118)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 428
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 429
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 380
+	control_expr : CASE expr IS BEGIN when_list . END  (109)
+
+	END  shift 430
+	.  error
+
+
+state 381
+	when_list : when_expr .  (115)
+	when_list : when_expr . when_list  (116)
+
+	WHEN  shift 379
+	END  reduce 115
+
+	when_list  goto 431
+	when_expr  goto 381
+
+
+state 382
+	data_expr : element ASSIGN expr WHEN expr . ELSE expr  (88)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	ELSE  shift 432
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 383
+	section : S_TOP LPAREN expr RPAREN BEGIN instructions END .  (17)
+
+	.  reduce 17
+
+
+state 384
+	section : S_CHECK LPAREN expr RPAREN BEGIN checks END .  (7)
+
+	.  reduce 7
+
+
+state 385
+	data_expr : NULL .  (91)
+
+	.  reduce 91
+
+
+state 386
+	access_decl : S_DATA BEGIN data_exprs . END  (76)
+
+	END  shift 433
+	.  error
+
+
+state 387
+	data_exprs : data_expr . EOI  (84)
+	data_exprs : data_expr . EOI data_exprs  (85)
+
+	EOI  shift 434
+	.  error
+
+
+state 388
+	control_expr : NULL .  (112)
+
+	.  reduce 112
+
+
+state 389
+	access_decl : S_CONTROL BEGIN control_exprs . END  (77)
+
+	END  shift 435
+	.  error
+
+
+state 390
+	control_exprs : control_expr . EOI  (86)
+	control_exprs : control_expr . EOI control_exprs  (87)
+
+	EOI  shift 436
+	.  error
+
+
+state 391
+	access_decl : S_IMPORT BEGIN methods . END  (78)
+
+	END  shift 437
+	.  error
+
+
+state 392
+	access_decl : S_SET BEGIN data_exprs . END  (79)
+
+	END  shift 438
+	.  error
+
+
+state 393
+	access : access_decl EOI access .  (75)
+
+	.  reduce 75
+
+
+state 394
+	section : name SEP1 S_ACCESS LPAREN expr RPAREN BEGIN . access END  (21)
+
+	S_DATA  shift 257
+	S_CONTROL  shift 258
+	S_IMPORT  shift 259
+	S_SET  shift 260
+	.  error
+
+	access  goto 439
+	access_decl  goto 262
+
+
+state 395
+	section : name SEP1 S_PROCESS LPAREN expr RPAREN BEGIN . instructions END  (19)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	instructions  goto 440
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 93
+	var_expr  goto 16
+
+
+state 396
+	param : name LBRAK range SEP1 data_type RBRAK .  (32)
+	param : name LBRAK range SEP1 data_type RBRAK . ASSIGN expr  (33)
+
+	ASSIGN  shift 441
+	EOI  reduce 32
+	WITH  reduce 32
+
+
+state 397
+	param : name LBRAK range RBRAK ASSIGN expr .  (28)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	EOI  reduce 28
+	WITH  reduce 28
+
+
+state 398
+	param : name LBRAK arg_list SEP1 data_type RBRAK .  (34)
+	param : name LBRAK arg_list SEP1 data_type RBRAK . ASSIGN expr  (35)
+
+	ASSIGN  shift 442
+	EOI  reduce 34
+	WITH  reduce 34
+
+
+state 399
+	param : name LBRAK arg_list RBRAK ASSIGN expr .  (29)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	EOI  reduce 29
+	WITH  reduce 29
+
+
+400: shift/reduce conflict (shift 443, reduce 179) on RBRAK
+state 400
+	arg_type : LOGIC LBRAK expr . RBRAK  (144)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+	range : expr . DOWNTO expr  (177)
+	range : expr . TO expr  (178)
+	range : expr .  (179)
+
+	RBRAK  shift 443
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	TO  shift 269
+	DOWNTO  shift 270
+
+
+state 401
+	arg_type : LOGIC LBRAK range . RBRAK  (145)
+
+	RBRAK  shift 444
+	.  error
+
+
+state 402
+	arg_type : INT LBRAK expr . RBRAK  (142)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RBRAK  shift 445
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 403
+	arg_type : SIGNED LBRAK expr . RBRAK  (143)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	RBRAK  shift 446
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 404
+	signal_decl : CONSTANT name SEP1 arg_type ASSIGN2 expr .  (58)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	EOI  reduce 58
+
+
+state 405
+	foreach : VAR IDENT .  (80)
+
+	.  reduce 80
+
+
+state 406
+	signal_decl : FOREACH VAR IDENT IN foreach DO . BEGIN signals END  (56)
+
+	BEGIN  shift 447
+	.  error
+
+
+state 407
+	foreach : foreach AND . foreach  (81)
+
+	VAR  shift 355
+	.  error
+
+	foreach  goto 448
+
+
+state 408
+	foreach : foreach OR . foreach  (82)
+
+	VAR  shift 355
+	.  error
+
+	foreach  goto 449
+
+
+state 409
+	foreach : foreach XOR . foreach  (83)
+
+	VAR  shift 355
+	.  error
+
+	foreach  goto 450
+
+
+state 410
+	signal_decl : TYPE name IS ARRAY LBRAK range . RBRAK OF arg_type  (64)
+
+	RBRAK  shift 451
+	.  error
+
+
+state 411
+	name_list : name SEP2 . name_list  (127)
+
+	IDENT  shift 3
+	VAR  shift 12
+	.  error
+
+	name  goto 358
+	name_list  goto 452
+	var_expr  goto 16
+
+
+state 412
+	signal_decl : TYPE name IS LCURL name_list RCURL .  (63)
+
+	.  reduce 63
+
+
+state 413
+	interface_decl : FOREACH VAR IDENT IN foreach DO . BEGIN interfaces END  (68)
+
+	BEGIN  shift 453
+	.  error
+
+
+state 414
+	section : S_INTERFACE LPAREN expr RPAREN BEGIN NULL EOI END .  (10)
+
+	.  reduce 10
+
+
+state 415
+	mapping_decl : FOREACH VAR IDENT IN foreach DO . BEGIN mappings END  (72)
+
+	BEGIN  shift 454
+	.  error
+
+
+state 416
+	section : S_MAPPING LPAREN expr RPAREN BEGIN NULL EOI END .  (15)
+
+	.  reduce 15
+
+
+state 417
+	instruction : FOREACH VAR IDENT IN foreach DO . BEGIN instructions END  (155)
+	instruction : FOREACH VAR IDENT IN foreach DO . instruction  (156)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 455
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 456
+	var_expr  goto 16
+
+
+state 418
+	control_expr : FOR expr EQ range DO block_instr .  (110)
+
+	.  reduce 110
+
+
+state 419
+	block_instr : BEGIN instructions END .  (114)
+
+	.  reduce 114
+
+
+state 420
+	ifothers : IF OTHERS . THEN block_instr  (93)
+	element : OTHERS . FOLLOW VALUE  (184)
+
+	THEN  shift 457
+	FOLLOW  shift 121
+	.  error
+
+
+state 421
+	ifseq : IF expr . THEN block_instr ifseq  (94)
+	ifseq : IF expr . THEN block_instr ifothers  (96)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	THEN  shift 458
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 422
+	ifseq : IF . expr THEN block_instr ifseq  (94)
+	ifseq : IF . expr THEN block_instr ifothers  (96)
+	ifseq : ELSE IF . expr THEN block_instr ifseq  (100)
+	ifseq : ELSE IF . expr THEN block_instr  (101)
+	ifseq : ELSE IF . expr THEN block_instr ELSE block_instr  (102)
+	control_expr : IF . expr THEN block_instr  (105)
+	control_expr : IF . expr THEN block_instr ELSE block_instr  (106)
+	control_expr : IF . OTHERS THEN block_instr  (107)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 165
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 459
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 423
+	control_expr : IF expr THEN block_instr ELSE block_instr .  (106)
+
+	.  reduce 106
+
+
+state 424
+	ifseq : IF . expr THEN block_instr ifseq  (94)
+	ifseq : IF . expr THEN block_instr ifothers  (96)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 421
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 425
+	ifseq : ELSE . IF expr THEN block_instr ifseq  (100)
+	ifseq : ELSE . IF expr THEN block_instr  (101)
+	ifseq : ELSE . IF expr THEN block_instr ELSE block_instr  (102)
+	ifseq : ELSE IF expr THEN block_instr ELSE . block_instr  (102)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 422
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 460
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 426
+	ifseq : ELSE IF expr THEN block_instr ifseq .  (100)
+
+	.  reduce 100
+
+
+state 427
+	ifseq : ELSIF expr THEN block_instr ELSE block_instr .  (99)
+
+	.  reduce 99
+
+
+state 428
+	when_expr : WHEN OTHERS . FOLLOW block_instr EOI  (117)
+	element : OTHERS . FOLLOW VALUE  (184)
+
+	FOLLOW  shift 461
+	.  error
+
+
+state 429
+	when_expr : WHEN expr . FOLLOW block_instr EOI  (118)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	FOLLOW  shift 462
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 430
+	control_expr : CASE expr IS BEGIN when_list END .  (109)
+
+	.  reduce 109
+
+
+state 431
+	when_list : when_expr when_list .  (116)
+
+	.  reduce 116
+
+
+state 432
+	data_expr : element ASSIGN expr WHEN expr ELSE . expr  (88)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 463
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 433
+	access_decl : S_DATA BEGIN data_exprs END .  (76)
+
+	.  reduce 76
+
+
+state 434
+	data_exprs : data_expr EOI .  (84)
+	data_exprs : data_expr EOI . data_exprs  (85)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	NULL  shift 385
+	OTHERS  shift 49
+	END  reduce 84
+
+	name  goto 53
+	func  goto 88
+	data_exprs  goto 464
+	data_expr  goto 387
+	element  goto 91
+	var_expr  goto 16
+
+
+state 435
+	access_decl : S_CONTROL BEGIN control_exprs END .  (77)
+
+	.  reduce 77
+
+
+state 436
+	control_exprs : control_expr EOI .  (86)
+	control_exprs : control_expr EOI . control_exprs  (87)
+
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	CASE  shift 84
+	NULL  shift 388
+	WITH  shift 86
+	END  reduce 86
+
+	control_exprs  goto 465
+	control_expr  goto 390
+	ifseq  goto 92
+
+
+state 437
+	access_decl : S_IMPORT BEGIN methods END .  (78)
+
+	.  reduce 78
+
+
+state 438
+	access_decl : S_SET BEGIN data_exprs END .  (79)
+
+	.  reduce 79
+
+
+state 439
+	section : name SEP1 S_ACCESS LPAREN expr RPAREN BEGIN access . END  (21)
+
+	END  shift 466
+	.  error
+
+
+state 440
+	section : name SEP1 S_PROCESS LPAREN expr RPAREN BEGIN instructions . END  (19)
+
+	END  shift 467
+	.  error
+
+
+state 441
+	param : name LBRAK range SEP1 data_type RBRAK ASSIGN . expr  (33)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 468
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 442
+	param : name LBRAK arg_list SEP1 data_type RBRAK ASSIGN . expr  (35)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	LPAREN  shift 48
+	OTHERS  shift 49
+	MINUS  shift 50
+	NOT  shift 51
+	.  error
+
+	expr  goto 469
+	name  goto 53
+	func  goto 54
+	element  goto 55
+	var_expr  goto 16
+
+
+state 443
+	arg_type : LOGIC LBRAK expr RBRAK .  (144)
+
+	.  reduce 144
+
+
+state 444
+	arg_type : LOGIC LBRAK range RBRAK .  (145)
+
+	.  reduce 145
+
+
+state 445
+	arg_type : INT LBRAK expr RBRAK .  (142)
+
+	.  reduce 142
+
+
+state 446
+	arg_type : SIGNED LBRAK expr RBRAK .  (143)
+
+	.  reduce 143
+
+
+state 447
+	signal_decl : FOREACH VAR IDENT IN foreach DO BEGIN . signals END  (56)
+
+	VAR  shift 56
+	SIGNAL  shift 57
+	CONSTANT  shift 58
+	VARIABLE  shift 59
+	SHARED  shift 60
+	FOREACH  shift 61
+	TYPE  shift 62
+	.  error
+
+	signals  goto 470
+	signal_decl  goto 64
+
+
+448: shift/reduce conflict (shift 409, reduce 81) on XOR
+state 448
+	foreach : foreach . AND foreach  (81)
+	foreach : foreach AND foreach .  (81)
+	foreach : foreach . OR foreach  (82)
+	foreach : foreach . XOR foreach  (83)
+
+	XOR  shift 409
+	DO  reduce 81
+	AND  reduce 81
+	OR  reduce 81
+
+
+449: shift/reduce conflict (shift 409, reduce 82) on XOR
+state 449
+	foreach : foreach . AND foreach  (81)
+	foreach : foreach . OR foreach  (82)
+	foreach : foreach OR foreach .  (82)
+	foreach : foreach . XOR foreach  (83)
+
+	XOR  shift 409
+	DO  reduce 82
+	AND  reduce 82
+	OR  reduce 82
+
+
+450: shift/reduce conflict (shift 407, reduce 83) on AND
+450: shift/reduce conflict (shift 408, reduce 83) on OR
+450: shift/reduce conflict (shift 409, reduce 83) on XOR
+state 450
+	foreach : foreach . AND foreach  (81)
+	foreach : foreach . OR foreach  (82)
+	foreach : foreach . XOR foreach  (83)
+	foreach : foreach XOR foreach .  (83)
+
+	AND  shift 407
+	OR  shift 408
+	XOR  shift 409
+	DO  reduce 83
+
+
+state 451
+	signal_decl : TYPE name IS ARRAY LBRAK range RBRAK . OF arg_type  (64)
+
+	OF  shift 471
+	.  error
+
+
+state 452
+	name_list : name SEP2 name_list .  (127)
+
+	.  reduce 127
+
+
+state 453
+	interface_decl : FOREACH VAR IDENT IN foreach DO BEGIN . interfaces END  (68)
+
+	SIGNAL  shift 66
+	FOREACH  shift 67
+	.  error
+
+	interfaces  goto 472
+	interface_decl  goto 69
+
+
+state 454
+	mapping_decl : FOREACH VAR IDENT IN foreach DO BEGIN . mappings END  (72)
+
+	IDENT  shift 3
+	VAR  shift 12
+	FOREACH  shift 71
+	.  error
+
+	mappings  goto 473
+	name  goto 73
+	mapping_decl  goto 74
+	var_expr  goto 16
+
+
+state 455
+	instruction : FOREACH VAR IDENT IN foreach DO BEGIN . instructions END  (155)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	instructions  goto 474
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	ifseq  goto 92
+	instruction  goto 93
+	var_expr  goto 16
+
+
+state 456
+	instruction : FOREACH VAR IDENT IN foreach DO instruction .  (156)
+
+	.  reduce 156
+
+
+state 457
+	ifothers : IF OTHERS THEN . block_instr  (93)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 475
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 458
+	ifseq : IF expr THEN . block_instr ifseq  (94)
+	ifseq : IF expr THEN . block_instr ifothers  (96)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 476
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 459
+	ifseq : IF expr . THEN block_instr ifseq  (94)
+	ifseq : IF expr . THEN block_instr ifothers  (96)
+	ifseq : ELSE IF expr . THEN block_instr ifseq  (100)
+	ifseq : ELSE IF expr . THEN block_instr  (101)
+	ifseq : ELSE IF expr . THEN block_instr ELSE block_instr  (102)
+	control_expr : IF expr . THEN block_instr  (105)
+	control_expr : IF expr . THEN block_instr ELSE block_instr  (106)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	THEN  shift 477
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	.  error
+
+
+state 460
+	ifseq : ELSE IF expr THEN block_instr ELSE block_instr .  (102)
+
+	.  reduce 102
+
+
+state 461
+	when_expr : WHEN OTHERS FOLLOW . block_instr EOI  (117)
+	element : OTHERS FOLLOW . VALUE  (184)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 478
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 479
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 462
+	when_expr : WHEN expr FOLLOW . block_instr EOI  (118)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 480
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+state 463
+	data_expr : element ASSIGN expr WHEN expr ELSE expr .  (88)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	IF  reduce 88
+	ELSE  reduce 88
+	ELSIF  reduce 88
+	EOI  reduce 88
+
+
+state 464
+	data_exprs : data_expr EOI data_exprs .  (85)
+
+	.  reduce 85
+
+
+state 465
+	control_exprs : control_expr EOI control_exprs .  (87)
+
+	.  reduce 87
+
+
+state 466
+	section : name SEP1 S_ACCESS LPAREN expr RPAREN BEGIN access END .  (21)
+
+	.  reduce 21
+
+
+state 467
+	section : name SEP1 S_PROCESS LPAREN expr RPAREN BEGIN instructions END .  (19)
+
+	.  reduce 19
+
+
+state 468
+	param : name LBRAK range SEP1 data_type RBRAK ASSIGN expr .  (33)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	EOI  reduce 33
+	WITH  reduce 33
+
+
+state 469
+	param : name LBRAK arg_list SEP1 data_type RBRAK ASSIGN expr .  (35)
+	expr : expr . PLUS expr  (157)
+	expr : expr . EXP2 expr  (158)
+	expr : expr . MINUS expr  (161)
+	expr : expr . TIMES expr  (162)
+	expr : expr . DIVI expr  (163)
+	expr : expr . EQ expr  (164)
+	expr : expr . LT expr  (165)
+	expr : expr . GT expr  (166)
+	expr : expr . ASSIGN expr  (167)
+	expr : expr . GEQ expr  (168)
+	expr : expr . NEQ expr  (169)
+	expr : expr . AND expr  (170)
+	expr : expr . OR expr  (171)
+	expr : expr . XOR expr  (172)
+	expr : expr . CONC expr  (173)
+
+	EQ  shift 125
+	NEQ  shift 126
+	LT  shift 127
+	GT  shift 128
+	ASSIGN  shift 129
+	GEQ  shift 130
+	PLUS  shift 131
+	MINUS  shift 132
+	TIMES  shift 133
+	DIVI  shift 134
+	EXP2  shift 135
+	CONC  shift 136
+	AND  shift 137
+	OR  shift 138
+	XOR  shift 139
+	EOI  reduce 35
+	WITH  reduce 35
+
+
+state 470
+	signal_decl : FOREACH VAR IDENT IN foreach DO BEGIN signals . END  (56)
+
+	END  shift 481
+	.  error
+
+
+state 471
+	signal_decl : TYPE name IS ARRAY LBRAK range RBRAK OF . arg_type  (64)
+
+	IDENT  shift 3
+	VAR  shift 12
+	LOGIC  shift 280
+	NATURAL  shift 281
+	BOOL  shift 282
+	INT  shift 284
+	STRINGS  shift 285
+	SIGNED  shift 286
+	.  error
+
+	name  goto 288
+	arg_type  goto 482
+	var_expr  goto 16
+
+
+state 472
+	interface_decl : FOREACH VAR IDENT IN foreach DO BEGIN interfaces . END  (68)
+
+	END  shift 483
+	.  error
+
+
+state 473
+	mapping_decl : FOREACH VAR IDENT IN foreach DO BEGIN mappings . END  (72)
+
+	END  shift 484
+	.  error
+
+
+state 474
+	instruction : FOREACH VAR IDENT IN foreach DO BEGIN instructions . END  (155)
+
+	END  shift 485
+	.  error
+
+
+state 475
+	ifothers : IF OTHERS THEN block_instr .  (93)
+
+	.  reduce 93
+
+
+state 476
+	ifseq : IF expr THEN block_instr . ifseq  (94)
+	ifseq : IF expr THEN block_instr . ifothers  (96)
+
+	IF  shift 371
+	ELSE  shift 80
+	ELSIF  shift 81
+	.  error
+
+	ifothers  goto 373
+	ifseq  goto 374
+
+
+state 477
+	ifseq : IF expr THEN . block_instr ifseq  (94)
+	ifseq : IF expr THEN . block_instr ifothers  (96)
+	ifseq : ELSE IF expr THEN . block_instr ifseq  (100)
+	ifseq : ELSE IF expr THEN . block_instr  (101)
+	ifseq : ELSE IF expr THEN . block_instr ELSE block_instr  (102)
+	control_expr : IF expr THEN . block_instr  (105)
+	control_expr : IF expr THEN . block_instr ELSE block_instr  (106)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 79
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 486
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+478: reduce/reduce conflict (reduce 181, reduce 184) on ASSIGN
+state 478
+	element : VALUE .  (181)
+	element : VALUE . timeunit  (182)
+	element : VALUE . frequnit  (183)
+	element : OTHERS FOLLOW VALUE .  (184)
+
+	NSEC  shift 110
+	USEC  shift 111
+	MSEC  shift 112
+	SEC  shift 113
+	HZ  shift 114
+	KHZ  shift 115
+	MHZ  shift 116
+	GHZ  shift 117
+	FOLLOW  reduce 184
+	EQ  reduce 184
+	NEQ  reduce 184
+	LT  reduce 184
+	GT  reduce 184
+	ASSIGN  reduce 181
+	ASSIGN2  reduce 181
+	GEQ  reduce 184
+	PLUS  reduce 184
+	MINUS  reduce 184
+	TIMES  reduce 184
+	DIVI  reduce 184
+	EXP2  reduce 184
+	CONC  reduce 184
+	AND  reduce 184
+	OR  reduce 184
+	XOR  reduce 184
+
+	timeunit  goto 118
+	frequnit  goto 119
+
+
+state 479
+	when_expr : WHEN OTHERS FOLLOW block_instr . EOI  (117)
+
+	EOI  shift 487
+	.  error
+
+
+state 480
+	when_expr : WHEN expr FOLLOW block_instr . EOI  (118)
+
+	EOI  shift 488
+	.  error
+
+
+state 481
+	signal_decl : FOREACH VAR IDENT IN foreach DO BEGIN signals END .  (56)
+
+	.  reduce 56
+
+
+state 482
+	signal_decl : TYPE name IS ARRAY LBRAK range RBRAK OF arg_type .  (64)
+
+	.  reduce 64
+
+
+state 483
+	interface_decl : FOREACH VAR IDENT IN foreach DO BEGIN interfaces END .  (68)
+
+	.  reduce 68
+
+
+state 484
+	mapping_decl : FOREACH VAR IDENT IN foreach DO BEGIN mappings END .  (72)
+
+	.  reduce 72
+
+
+state 485
+	instruction : FOREACH VAR IDENT IN foreach DO BEGIN instructions END .  (155)
+
+	.  reduce 155
+
+
+486: shift/reduce conflict (shift 371, reduce 101) on IF
+486: shift/reduce conflict (shift 371, reduce 105) on IF
+486: shift/reduce conflict (shift 489, reduce 101) on ELSE
+486: shift/reduce conflict (shift 489, reduce 105) on ELSE
+486: shift/reduce conflict (shift 81, reduce 101) on ELSIF
+486: shift/reduce conflict (shift 81, reduce 105) on ELSIF
+486: reduce/reduce conflict (reduce 101, reduce 105) on EOI
+state 486
+	ifseq : IF expr THEN block_instr . ifseq  (94)
+	ifseq : IF expr THEN block_instr . ifothers  (96)
+	ifseq : ELSE IF expr THEN block_instr . ifseq  (100)
+	ifseq : ELSE IF expr THEN block_instr .  (101)
+	ifseq : ELSE IF expr THEN block_instr . ELSE block_instr  (102)
+	control_expr : IF expr THEN block_instr .  (105)
+	control_expr : IF expr THEN block_instr . ELSE block_instr  (106)
+
+	IF  shift 371
+	ELSE  shift 489
+	ELSIF  shift 81
+	EOI  reduce 101
+
+	ifothers  goto 373
+	ifseq  goto 490
+
+
+state 487
+	when_expr : WHEN OTHERS FOLLOW block_instr EOI .  (117)
+
+	.  reduce 117
+
+
+state 488
+	when_expr : WHEN expr FOLLOW block_instr EOI .  (118)
+
+	.  reduce 118
+
+
+state 489
+	ifseq : ELSE . IF expr THEN block_instr ifseq  (100)
+	ifseq : ELSE . IF expr THEN block_instr  (101)
+	ifseq : ELSE . IF expr THEN block_instr ELSE block_instr  (102)
+	ifseq : ELSE IF expr THEN block_instr ELSE . block_instr  (102)
+	control_expr : IF expr THEN block_instr ELSE . block_instr  (106)
+
+	STRING  shift 46
+	IDENT  shift 3
+	VALUE  shift 47
+	VAR  shift 12
+	VARIABLE  shift 76
+	FOREACH  shift 77
+	FOR  shift 78
+	IF  shift 422
+	ELSE  shift 80
+	ELSIF  shift 81
+	BEGIN  shift 309
+	WAIT  shift 82
+	SEQUENCE  shift 83
+	CASE  shift 84
+	NULL  shift 85
+	OTHERS  shift 49
+	WITH  shift 86
+	.  error
+
+	name  goto 53
+	func  goto 88
+	data_expr  goto 89
+	control_expr  goto 90
+	element  goto 91
+	block_instr  goto 491
+	ifseq  goto 92
+	instruction  goto 311
+	var_expr  goto 16
+
+
+490: reduce/reduce conflict (reduce 94, reduce 100) on IF
+490: reduce/reduce conflict (reduce 94, reduce 100) on ELSE
+490: reduce/reduce conflict (reduce 94, reduce 100) on ELSIF
+490: reduce/reduce conflict (reduce 94, reduce 100) on EOI
+state 490
+	ifseq : IF expr THEN block_instr ifseq .  (94)
+	ifseq : ELSE IF expr THEN block_instr ifseq .  (100)
+
+	.  reduce 94
+
+
+491: reduce/reduce conflict (reduce 102, reduce 106) on IF
+491: reduce/reduce conflict (reduce 102, reduce 106) on ELSE
+491: reduce/reduce conflict (reduce 102, reduce 106) on ELSIF
+491: reduce/reduce conflict (reduce 102, reduce 106) on EOI
+state 491
+	ifseq : ELSE IF expr THEN block_instr ELSE block_instr .  (102)
+	control_expr : IF expr THEN block_instr ELSE block_instr .  (106)
+
+	.  reduce 102
+
+
+State 3 contains 36 reduce/reduce conflicts.
+State 34 contains 36 reduce/reduce conflicts.
+State 85 contains 4 reduce/reduce conflicts.
+State 122 contains 2 shift/reduce conflicts.
+State 123 contains 2 shift/reduce conflicts.
+State 186 contains 1 shift/reduce conflict.
+State 187 contains 1 shift/reduce conflict.
+State 188 contains 1 shift/reduce conflict.
+State 190 contains 2 reduce/reduce conflicts.
+State 205 contains 2 shift/reduce conflicts.
+State 206 contains 2 shift/reduce conflicts.
+State 207 contains 2 shift/reduce conflicts.
+State 208 contains 2 shift/reduce conflicts.
+State 209 contains 15 shift/reduce conflicts.
+State 210 contains 2 shift/reduce conflicts.
+State 211 contains 2 shift/reduce conflicts.
+State 212 contains 2 shift/reduce conflicts.
+State 213 contains 2 shift/reduce conflicts.
+State 214 contains 2 shift/reduce conflicts.
+State 215 contains 2 shift/reduce conflicts.
+State 216 contains 2 shift/reduce conflicts.
+State 217 contains 2 shift/reduce conflicts.
+State 218 contains 2 shift/reduce conflicts.
+State 219 contains 15 shift/reduce conflicts.
+State 307 contains 2 shift/reduce conflicts.
+State 312 contains 3 shift/reduce conflicts.
+State 314 contains 3 shift/reduce conflicts.
+State 375 contains 3 shift/reduce conflicts.
+State 400 contains 1 shift/reduce conflict.
+State 448 contains 1 shift/reduce conflict.
+State 449 contains 1 shift/reduce conflict.
+State 450 contains 3 shift/reduce conflicts.
+State 478 contains 1 reduce/reduce conflict.
+State 486 contains 6 shift/reduce conflicts, 1 reduce/reduce conflict.
+State 490 contains 4 reduce/reduce conflicts.
+State 491 contains 4 reduce/reduce conflicts.
+
+
+99 terminals, 46 nonterminals
+197 grammar rules, 492 states

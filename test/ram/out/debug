@@ -1,0 +1,10 @@
+  signal debug: out std_logic_vector(7 downto 0)
+  -- debug(0) <= QUEUE_q_lcd1_tx_LOCKED;
+  debug(0) <= RAM_ru_WE;
+  debug(1) <= RAM_ru_RE;
+  debug(2) <= RAM_ru_CS;
+  debug(3) <= RAM_ru_READ;
+  debug(4) <= RAM_ru_WRITE;
+  debug(5) <= RAM_ru_interp_RE;
+  debug(6) <= RAM_ru_BUSY;
+  debug(7) <= RAM_ru_interp_LOCKed;

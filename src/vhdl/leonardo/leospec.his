@@ -1,0 +1,23 @@
+#
+#
+# 
+# Fri 19 Dec 2008 11:31:38 AM CET
+set bubble_tristates FALSE
+load_library sxlib
+read -dont_elaborate  { /home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl }
+pd
+read -technology "sxlib"  { /home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 
+load_library sxlib
+read -technology "sxlib"  { /home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl }
+pre_optimize -common_logic -unused_logic -boundary -xor_comparator_optimize 
+pre_optimize -extract 
+pd
+optimize .work.MOD_type_conv.main -target sxlib -macro -area -effort quick -hierarchy auto 
+optimize_timing .work.MOD_type_conv.main 
+report_area -cell_usage -all_leafs 
+set report_delay_slack_threshold 0.000000
+report_delay  -num_paths 1 -critical_paths -clock_frequency
+set novendor_constraint_file FALSE
+auto_write type_conv_0.vhd

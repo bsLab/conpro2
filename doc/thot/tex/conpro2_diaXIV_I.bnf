@@ -1,0 +1,1 @@
+method-decl ::= 'METHOD' name ':' { argument-type }+ .

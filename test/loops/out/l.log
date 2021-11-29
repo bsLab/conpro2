@@ -1,0 +1,460 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<83f2ea7a> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+TDI: Opening tools file <tools>...
+  Searching tools file <tools.def>...
+  Opening tools file </opt/Conpro2/toolset/tools.def>...
+  Opening tool library file </opt/Conpro2/toolset/generic.lib>...
+  Info [file <tools.def>, line 7]: Added synthesis tool defintion <generic>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/xilinx6.lib>...
+  Info [file <tools.def>, line 27]: Added synthesis tool defintion <xilinx6>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/xilinx9.lib>...
+  Info [file <tools.def>, line 173]: Added synthesis tool defintion <xilinx9>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/alliance.lib>...
+  Info [file <tools.def>, line 319]: Added synthesis tool defintion <alliance>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/leonardo.lib>...
+  Info [file <tools.def>, line 342]: Added synthesis tool defintion <leonardo>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/actel.lib>...
+  Info [file <tools.def>, line 366]: Added synthesis tool defintion <actel>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89.lib>...
+  Info [file <tools.def>, line 389]: Added synthesis tool defintion <synplicity89>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89_xilinx6.lib>...
+  Info [file <tools.def>, line 412]: Added synthesis tool defintion <synplicity89_xilinx6>, version 1.05.
+TDI: Opening tool <leonardo>...
+  Searching tool file <leonardo.tool>...
+  Opening tool file </opt/Conpro2/toolset/leonardo.tool>...
+Searching Conpro file <l.cp>...
+Opening file <l.cp>...
+Compiling module <l>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [file <l.cp>, line 7]: Analyzing process <p1>...
+      Analyzing process <p1>...
+    Info [file <l.cp>, line 24]: Analyzing process <main>...
+      Analyzing process <main>...
+  Performing program graph transformations and optimization for module <L>...
+    in process <p1>...
+      Performing program transformations for process <p1>...
+      Resolving object dependencies for process <p1>...
+    in process <main>...
+      Performing program transformations for process <main>...
+      Resolving object dependencies for process <main>...
+  Resolving object dependencies for process <MOD_L>...
+  Found 8 primary toplevel symbols.
+  Found 2 processes.
+  Found 0 shared function blocks.
+Synthesizing main module <L>...
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <L.p1>
+        Removed 0 instructions(s).
+      in process <L.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      [L.MOD_L]: Removing Register <L.PRO_p1_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <main> ...
+      ... in process <p1> ...
+      [L.MOD_L]: Removing Register <L.PRO_main_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      Removed 2 object(s).
+    Optimizer: folding constants in expressions...
+      in process <L.p1>
+        Removed 0 operand(s).
+      in process <L.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 2.
+  Optimizing and pre-scheduling, pass 2...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <L.p1>
+        Removed 0 instructions(s).
+      in process <L.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      ... in process <p1> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <L.p1>
+        Removed 0 operand(s).
+      in process <L.main>
+        Removed 0 operand(s).
+    ... Progress of pass 2: 0.
+  Resolving object guards...
+    Found 0 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+    Performing post-analysis transformations for process <p1>...
+    Performing post-analysis transformations for process <main>...
+  Synthesizing process instructions...
+    in process <L.p1>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p1>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p1>...
+      Post type alignment of expressions for process <p1>...
+        4 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p1>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p1>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p1>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 4 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p1>...
+        9 states created.
+      Calculating block frame time estimations for process <p1>...
+    in process <L.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Post type alignment of expressions for process <main>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        3 states created.
+      Calculating block frame time estimations for process <main>...
+  Creating entity <l_p1>...
+    Emitting state list for process <p1>...
+    Emitting state machine for process <p1>...
+    Port width: 20 bits
+  Creating entity <l_main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 5 bits
+  Creating entity <l>...
+    Creating global register <x> [DT_int 8, scheduler=PRIOstat #rd=1 #wr=1]...
+  Emitting MicroCode for module L...
+  Emitting object file for module L...
+  Emitting MicroCode for process p1...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.p1>: emitting MicroCode for process <p1>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+Info : Emitting block frame informations in file <l.ft>...
+TDI [Tool leonardo.root]#new_obj: creating object <l>...
+TDI [Tool leonardo.l]#compile_all: Initializing tool ...
+  TDI [Tool leonardo.l]: found #version 2.05...
+  TDI [Tool leonardo.l]: compiling #parameter section...
+    TDI [Tool leonardo.l]: Parameter <encoding> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <simu_period> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <simu_res> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <reset_state> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <reset_state> not found. Using default value.
+  TDI [Tool leonardo.l]: compiling #parameter section...
+  TDI [Tool leonardo.l]: compiling function <check>...
+  TDI [Tool leonardo.l]: compiling function <init>...
+  TDI [Tool leonardo.l]: compiling function <finish>...
+  TDI [Tool leonardo.l]: compiling function <do_patc>...
+    TDI [Tool leonardo.l]: Parameter <simu_period> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <simu_res> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.l]: Parameter <reset_state> not found. Using default value.
+  TDI [Tool leonardo.l]: compiling function <do_scram>...
+  TDI [Tool leonardo.l]: compiling function <do_synth>...
+    TDI [Tool leonardo.l]: Parameter <encoding> not found. Using default value.
+  TDI [Tool leonardo.l]: compiling function <do_vst>...
+  TDI [Tool leonardo.l]: compiling function <do_pat>...
+  TDI [Tool leonardo.l]: compiling function <do_asimut>...
+  TDI [Tool leonardo.l]: compiling function <do_xpat>...
+  TDI [Tool leonardo.l]: compiling target <init>...
+  TDI [Tool leonardo.l]: compiling target <vhdl>...
+  TDI [Tool leonardo.l]: compiling target <synth>...
+  TDI [Tool leonardo.l]: compiling target <simu>...
+  TDI [Tool leonardo.l]: compiling target <xpat>...
+  TDI [Tool leonardo.l]: compiling target <patc>...
+TDI [Tool leonardo.l]#compiler_all: Compiling tool ...
+  TDI [Tool leonardo.l]#emit: Creating build script <l.leonardo.tool.sh>...
+    TDI [Tool leonardo.l]: Environment is:
+      PWD=[$],
+      TOP=[$proj],
+      VHD2=[$],
+      LOG=[($TOP) + (".log")],
+      SRCDIR=["."],
+      SCRAM=[$],
+      clock=["10000000"],
+      vhdl=[|"l",
+             "l_p1",
+             "l_main"|],
+      LEONARDO_TOP=[$],
+      MBK_CATA_LIB=[$],
+      CLOCK_EDGE_NEG=[$],
+      CLOCK_EDGE=[get_opt()],
+      VHDL=[|$|],
+      SXLIB_COMP=[$],
+      CELLS=[$],
+      DUP=["tee"],
+      RESET_STATE=[get_opt()],
+      LIBRARY=["sxlib"],
+      SIM_CYCLES=[get_opt()],
+      period=["100"],
+      PATH=[$],
+      ENCODING=[get_opt()],
+      DESIGN=[$proj],
+      port=[|"x_RD:out:std_logic_vector:7 downto 0",
+             "CLK:in:std_logic",
+             "RESET:in:std_logic"|],
+      ALLIANCE_TOP=[$],
+      RESET_STATE_NEG=[$],
+      EXEMPLAR=[$],
+      SPECTRUM=[$],
+      proj=["l"],
+      res=[$],
+      OBJDIR=["obj"],
+      BIN=[$],
+      SIM_PERIOD=[get_opt()],
+      SIM_RES=[get_opt()],
+      simu_cycles=["50"]
+Total CPU time consumed: 0.7 seconds.
+Total time elapsed: 0.0 seconds.
+  
+  +------------------------ SYNTHESIS RESULT SUMMARY -------------------------+
+  +---------------------------------------------------------------------------+
+  | DESCRIPTION                                  VALUE                        |
+  +---------------------------------------------------------------------------+
+  | arithmetic unit                              3                            |
+  |  -> adder                                    (1)                          |
+  |  -> comparator                               (2)                          |
+  | process                                      2                            |
+  | process.main                                                              |
+  |  -> port-width [bit]                         5                            |
+  |  -> states                                   3                            |
+  | process.p1                                                                |
+  |  -> port-width [bit]                         20                           |
+  |  -> register                                 2                            |
+  |  -> states                                   9                            |
+  | register-local                               2                            |
+  |  -> std_logic                                (2)                          |
+  | register-shared                              1                            |
+  |  -> signed(7 downto 0)                       (1)                          |
+  | synthesis time [sec]                                                      |
+  +---------------------------------------------------------------------------+
+  
+[/export/home/leonardo/bin/spectrum -f l.tcl]
+/export/home/leonardo/bin/SunOS5/spectrum -f l.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/test/loops/out/obj'
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/leonardo/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/leonardo/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/loops/out/obj/../l_main.vhdl into library work
+-- Reading file /export/home/leonardo/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/leonardo/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/leonardo/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/leonardo/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading entity l_main into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_main.vhdl",line 32: Info, Enumerated type pro_states with 3 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[1-0]
+================================
+   S_main_start  00
+       S_i1_fun  -1
+     S_main_end  10
+
+-- Loading architecture main of l_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/loops/out/obj/../l_p1.vhdl into library work
+-- Loading entity l_p1 into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_p1.vhdl",line 35: Info, Enumerated type pro_states with 9 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+     S_p1_start  0000
+    S_i1_assign  -001
+    S_i2_assign  -010
+S_i3_while_loop  -011
+S_i4_while_loop  -100
+    S_i5_assign  -101
+    S_i6_assign  -110
+    S_i7_assign  -111
+       S_p1_end  1000
+
+-- Loading architecture main of l_p1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/loops/out/obj/../l.vhdl into library work
+-- Loading entity MOD_l into library work
+-- Loading architecture main of MOD_l into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l.vhdl",line 254: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l.vhdl",line 256: Warning, signal PRO_p1_END is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/loops/out/obj/../l_main.vhdl into library work
+-- Loading entity l_main into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_main.vhdl",line 17: Warning, replacing l_main in HDL library work.
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_main.vhdl",line 32: Info, Enumerated type pro_states with 3 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[1-0]
+================================
+   S_main_start  00
+       S_i1_fun  -1
+     S_main_end  10
+
+-- Loading architecture main of l_main into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_main.vhdl",line 28: Warning, replacing main of entity l_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/loops/out/obj/../l_p1.vhdl into library work
+-- Loading entity l_p1 into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_p1.vhdl",line 17: Warning, replacing l_p1 in HDL library work.
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_p1.vhdl",line 35: Info, Enumerated type pro_states with 9 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+     S_p1_start  0000
+    S_i1_assign  -001
+    S_i2_assign  -010
+S_i3_while_loop  -011
+S_i4_while_loop  -100
+    S_i5_assign  -101
+    S_i6_assign  -110
+    S_i7_assign  -111
+       S_p1_end  1000
+
+-- Loading architecture main of l_p1 into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_p1.vhdl",line 29: Warning, replacing main of entity l_p1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/loops/out/obj/../l.vhdl into library work
+-- Loading entity MOD_l into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l.vhdl",line 17: Warning, replacing MOD_l in HDL library work.
+-- Loading architecture main of MOD_l into library work
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l.vhdl",line 254: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l.vhdl",line 256: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l.vhdl",line 223: Warning, replacing main of entity MOD_l.
+-- Compiling root entity MOD_l(main)
+-- Compiling entity l_p1(main)
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_p1.vhdl",line 46: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_p1.vhdl",line 47: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Compiling entity l_main(main)
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_main.vhdl",line 37: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/loops/out/obj/../l_main.vhdl",line 38: Warning, initial value for pro_state_next is ignored for synthesis.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.l_p1.main_unfold_1180
+-- Start pre-optimization for design .work.l_main.main_unfold_1376
+-- Start pre-optimization for design .work.MOD_l.main
+-- Start pre-optimization for design .work.l_p1.main_unfold_1180
+-- Start pre-optimization for design .work.l_main.main_unfold_1376
+-- Start pre-optimization for design .work.MOD_l.main
+-- Optimizing netlist .work.MOD_l.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_l.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_l    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib     1 x      2      2 gates
+a3_x2           sxlib     6 x      2     12 gates
+an12_x1         sxlib     3 x      2      5 gates
+ao22_x2         sxlib     2 x      2      4 gates
+inv_x1          sxlib    12 x      1     12 gates
+inv_x2          sxlib     1 x      1      1 gates
+na2_x1          sxlib     2 x      1      3 gates
+na3_x1          sxlib     6 x      2     10 gates
+na4_x1          sxlib     2 x      2      4 gates
+nao22_x1        sxlib     2 x      2      4 gates
+nao2o22_x1      sxlib     2 x      2      5 gates
+no2_x1          sxlib     3 x      1      4 gates
+no3_x1          sxlib     3 x      2      5 gates
+no4_x4          sxlib     1 x      3      3 gates
+noa22_x1        sxlib     1 x      2      2 gates
+noa2ao222_x1    sxlib     1 x      2      2 gates
+o2_x2           sxlib     2 x      2      3 gates
+oa22_x2         sxlib     2 x      2      4 gates
+on12_x1         sxlib     9 x      2     15 gates
+on12_x4         sxlib     1 x      3      3 gates
+sff1_x4         sxlib     9 x      6     54 gates
+sff2_x4         sxlib    10 x      8     80 gates
+xr2_x1          sxlib     1 x      3      3 gates
+
+ Number of ports :                      10
+ Number of nets :                       84
+ Number of instances :                  82
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     240
+ Number of accumulated instances :      82
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK                  : 218.7 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                         GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                       0.00 (ideal)
+
+
+reg_REG_x(0)/q                               sff2_x4     0.00  0.67 dn             0.19
+ix574/nq                                     na4_x1      0.58  1.25 up             0.07
+ix579/q                                      on12_x1     0.62  1.87 up             0.07
+ix585/q                                      on12_x1     0.62  2.49 up             0.07
+ix591/q                                      on12_x1     0.57  3.06 up             0.06
+ix596/q                                      xr2_x1      0.49  3.55 up             0.03
+ix342/q                                      an12_x1     0.26  3.81 dn             0.02
+reg_REG_x(7)/i1                              sff2_x4     0.00  3.81 dn             0.00
+data arrival time                                              3.81
+
+
+data required time                                          not specified
+----------------------------------------------------------------------------------------
+data required time                                          not specified
+data arrival time                                              3.81
+                                                            ----------
+                                                         unconstrained path
+----------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD l.vhd
+-- Writing file l.vhd

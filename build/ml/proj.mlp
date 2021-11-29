@@ -1,0 +1,111 @@
+FILES:
+
+@ * ! conpro.ml
+@ * ! cp_Clock.ml
+@ * ! cp_Core.ml
+@ * ! cp_Core_head.ml
+@ * ! cp_Core_instr_ucode.ml
+@ * ! cp_Core_obj_code.ml
+@ * ! cp_Core_obj_decl.ml
+@ * ! cp_Core_obj_map.ml
+@ * ! cp_Core_obj_port.ml
+@ * ! cp_Core_top.ml
+@ * ! cp_Process.ml
+@ * ! cp_Reset.ml
+@ * ! cp_Sys.ml
+@ * ! cp_alu.ml
+@ * ! cp_analysis.ml
+@ * ! cp_analysis_1.ml
+@ * ! cp_analysis_2.ml
+@ * ! cp_analysis_3.ml
+@ * ! cp_analysis_4.ml
+@ * ! cp_analysis_5.ml
+@ * ! cp_analysis_6.ml
+@ * ! cp_basicblock.ml
+@ * ! cp_block_frame.ml
+@ * ! cp_c.ml
+@ * ! cp_c_high.ml
+@ * ! cp_c_types.ml
+@ * ! cp_class.ml
+@ * ! cp_common.ml
+@ * ! cp_data.ml
+@ * ! cp_data_core.ml
+@ * ! cp_data_trans.ml
+@ * ! cp_data_trans_table.ml
+@ * ! cp_emi.ml
+@ * ! cp_emi_analysis.ml
+@ * ! cp_emi_interp.ml
+@ * ! cp_emi_types.ml
+@ * ! cp_expr.ml
+@ * ! cp_expr_sched.ml
+@ * ! cp_flex.ml
+@ * ! cp_fun.ml
+@ * ! cp_graph.ml
+@ * ! cp_module.ml
+@ * ! cp_ml.ml
+@ * ! cp_ml_high.ml
+@ * ! cp_ml_types.ml
+@ * ! cp_optimize.ml
+@ * ! cp_print.ml
+@ * ! cp_printtypes.ml
+@ * ! cp_process.ml
+@ * ! cp_refstack.ml
+@ * ! cp_resource.ml
+@ * ! cp_rtl.ml
+@ * ! cp_stat.ml
+@ * ! cp_symbol.ml
+@ * ! cp_syntax.ml
+@ * ! cp_synthesis.ml
+@ * ! cp_tdi.ml
+@ * ! cp_tdi_analysis.ml
+@ * ! cp_tdi_interp.ml
+@ * ! cp_tdi_types.ml
+@ * ! cp_tools_analysis.ml
+@ * ! cp_types.ml
+@ * ! cp_uci.ml
+@ * ! cp_uci_analysis.ml
+@ * ! cp_uci_in.ml
+@ * ! cp_uci_out.ml
+@ * ! cp_uci_types.ml
+@ * ! cp_ucode.ml
+@ * ! cp_utils.ml
+@ * ! cp_utils_1.ml
+@ * ! cp_utils_2.ml
+@ * ! cp_utils_3.ml
+@ * ! cp_utils_4.ml
+@ * ! cp_utils_5.ml
+@ * ! cp_utils_6.ml
+@ * ! cp_utils_7.ml
+@ * ! cp_version.ml
+@ * ! cp_vhdl.ml
+@ * ! flexgen.ml
+@ cp_parser.mly
+@ cp_lexer.mll
+@ cp_parser_expr.mly
+@ cp_lexer_expr.mll
+@ cp_parser_emi.mly
+@ cp_lexer_emi.mll
+@ cp_parser_tdi.mly
+@ cp_lexer_tdi.mll
+@ cp_parser_tools.mly
+@ cp_lexer_tools.mll
+@ cp_parser_uci.mly
+@ cp_lexer_uci.mll
+@ Amake.srclist
+@ bug-report
+
+
+PROJECT:
+  PROJ_PATH $HOME/proj/conpro2
+  SRC_PATH $PROJ_PATH/src/ml
+  OBJ_PATH $PROJ_PATH/build/ml
+  VUM_PATH /opt/Vum-2.1
+
+COMMANDS:
+  OPEN ALL
+  CLOSE ALL
+  BUILD ALL
+  BUILD CLEAN
+  BUILD INSTALL
+  BUILD VERSION
+

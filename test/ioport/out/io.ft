@@ -1,0 +1,176 @@
+Block frame trees
+-----------------
+For process <p1>:
+  MAIN#44358 {
+    SOURCE: io.cp line 21
+    PARENT: NONE
+    TIME: (1+(8*1)) 
+          = 9 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      COUNT_LOOP#59662
+      ]
+      COUNT_LOOP#59662 {
+        SOURCE: io.cp line 21
+        PARENT: MAIN#44358
+        TIME: (1+(8*1)) 
+              = 9 TU
+        TYPE: LOOP
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          LOOP_BODY#87757
+          ]
+          LOOP_BODY#87757 {
+            SOURCE: io.cp lines 23..24
+            PARENT: COUNT_LOOP#59662
+            TIME: ? TU
+            TYPE: COMPOUND
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              FUN#8650
+              FUN#16603
+              ]
+              FUN#8650 {
+                SOURCE: io.cp line 23
+                PARENT: LOOP_BODY#87757
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#46811 {
+                  SOURCE: io.cp line 23
+                  PARENT: FUN#8650
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                  FUN#72721 {
+                    SOURCE: io.cp line 23
+                    PARENT: FUN#46811
+                    TIME: ? TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                  }
+                }
+              }
+              FUN#16603 {
+                SOURCE: io.cp line 24
+                PARENT: LOOP_BODY#87757
+                TIME: ? TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                FUN#96320 {
+                  SOURCE: io.cp line 24
+                  PARENT: FUN#16603
+                  TIME: ? TU
+                  TYPE: BASIC BLOCK
+                  PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                  FUN#98648 {
+                    SOURCE: io.cp line 24
+                    PARENT: FUN#96320
+                    TIME: ? TU
+                    TYPE: BASIC BLOCK
+                    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+                  }
+                }
+              }
+          }
+      }
+  }
+For process <main>:
+  MAIN#58851 {
+    SOURCE: io.cp lines 30..34
+    PARENT: NONE
+    TIME: >=1 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      FUN#39314
+      FUN#2877
+      FUN#23890
+      FUN#7669
+      ]
+      FUN#39314 {
+        SOURCE: io.cp line 30
+        PARENT: MAIN#58851
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#71698 {
+          SOURCE: io.cp line 30
+          PARENT: FUN#39314
+          TIME: ? TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#16077 {
+            SOURCE: io.cp line 30
+            PARENT: FUN#71698
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+      FUN#2877 {
+        SOURCE: io.cp line 31
+        PARENT: MAIN#58851
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#47800 {
+          SOURCE: io.cp line 31
+          PARENT: FUN#2877
+          TIME: ? TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#47348 {
+            SOURCE: io.cp line 31
+            PARENT: FUN#47800
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+      FUN#23890 {
+        SOURCE: io.cp line 33
+        PARENT: MAIN#58851
+        TIME: ? TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#46721 {
+          SOURCE: io.cp line 33
+          PARENT: FUN#23890
+          TIME: ? TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#5427 {
+            SOURCE: io.cp line 33
+            PARENT: FUN#46721
+            TIME: ? TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+      FUN#7669 {
+        SOURCE: io.cp line 34
+        PARENT: MAIN#58851
+        TIME: >=1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        FUN#95378 {
+          SOURCE: io.cp line 34
+          PARENT: FUN#7669
+          TIME: >=1 TU
+          TYPE: BASIC BLOCK
+          PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          FUN#61374 {
+            SOURCE: io.cp line 34
+            PARENT: FUN#95378
+            TIME: >=1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+        }
+      }
+  }

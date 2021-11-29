@@ -1,0 +1,379 @@
+{ui_code=Label (i1_fun);
+ ui_frame={bf_name=FUN; bf_id=57274; bf_src={file=dining.cp; line=56};
+           bf_parent=Some {bf_name=FUN;bf_id=17326}
+           bf_time=?
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Fun ([]:OT_object(ev).await, [...]);
+ ui_frame={bf_name=FUN; bf_id=57274; bf_src={file=dining.cp; line=56};
+           bf_parent=Some {bf_name=FUN;bf_id=17326}
+           bf_time=?
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i1_fun_end);
+ ui_frame={bf_name=FUN; bf_id=57274; bf_src={file=dining.cp; line=56};
+           bf_parent=Some {bf_name=FUN;bf_id=17326}
+           bf_time=?
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Jump (i3_fun);
+ ui_frame={bf_name=FUN; bf_id=57274; bf_src={file=dining.cp; line=56};
+           bf_parent=Some {bf_name=FUN;bf_id=17326}
+           bf_time=?
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i2_loop);
+ ui_frame={bf_name=LOOP; bf_id=63052; bf_src={file=dining.cp; line=64};
+           bf_parent=Some {bf_name=BLOCK;bf_id=19215}
+           bf_time=(>=1*(1+(6*1)+1+>=1+>=1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[LOOP_BODY95086]}}
+{ui_code=Nop;
+ ui_frame={bf_name=FUN; bf_id=30940; bf_src={file=dining.cp; line=60};
+           bf_parent=Some {bf_name=FUN;bf_id=69341}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i3_fun);
+ ui_frame={bf_name=FUN; bf_id=30940; bf_src={file=dining.cp; line=60};
+           bf_parent=Some {bf_name=FUN;bf_id=69341}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Fun ([OD_sel[|3|]]:OT_array(fork).down, [...]);
+ ui_frame={bf_name=FUN; bf_id=30940; bf_src={file=dining.cp; line=60};
+           bf_parent=Some {bf_name=FUN;bf_id=69341}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i3_fun_end);
+ ui_frame={bf_name=FUN; bf_id=30940; bf_src={file=dining.cp; line=60};
+           bf_parent=Some {bf_name=FUN;bf_id=69341}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Nop;
+ ui_frame={bf_name=FUN; bf_id=74237; bf_src={file=dining.cp; line=61};
+           bf_parent=Some {bf_name=FUN;bf_id=8260}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i4_fun);
+ ui_frame={bf_name=FUN; bf_id=74237; bf_src={file=dining.cp; line=61};
+           bf_parent=Some {bf_name=FUN;bf_id=8260}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Fun ([OD_sel[|4|]]:OT_array(fork).down, [...]);
+ ui_frame={bf_name=FUN; bf_id=74237; bf_src={file=dining.cp; line=61};
+           bf_parent=Some {bf_name=FUN;bf_id=8260}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i4_fun_end);
+ ui_frame={bf_name=FUN; bf_id=74237; bf_src={file=dining.cp; line=61};
+           bf_parent=Some {bf_name=FUN;bf_id=8260}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Nop;
+ ui_frame={bf_name=BLOCK; bf_id=83041; bf_src={file=dining.cp; lines=42..43};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=1
+           bf_type=BF_compound
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[ASSIGN11089;ASSIGN86320]}}
+{ui_code=Label (i5_bind_to_6);
+ ui_frame={bf_name=BLOCK; bf_id=83041; bf_src={file=dining.cp; lines=42..43};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=1
+           bf_type=BF_compound
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[ASSIGN11089;ASSIGN86320]}}
+{ui_code=Bind (2);
+ ui_frame={bf_name=BLOCK; bf_id=83041; bf_src={file=dining.cp; lines=42..43};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=1
+           bf_type=BF_compound
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[ASSIGN11089;ASSIGN86320]}}
+{ui_code=Move (UC_reg {uo_name=eating_3;uo_range=None;uo_index=None;
+                       uo_flags=[UO_lhs];
+                       uo_sel=[];
+                       uo_addr=(ind0 => );
+                       uo_type={DT=DT_logic(1);ET=DT_logic(1);TC=*;
+                                PT=*;LT=*;ST=*;NT=*;}},
+               UC_val {uv_type={DT=DT_int(1);ET=DT_logic(1);TC=*;
+                       PT=*;LT=*;ST=*;NT=*;};uv_val=1});
+ ui_frame={bf_name=ASSIGN; bf_id=11089; bf_src={file=dining.cp; line=42};
+           bf_parent=Some {bf_name=BLOCK;bf_id=83041}
+           bf_time=1
+           bf_type=BF_data
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Move (UC_reg {uo_name=thinking_3;uo_range=None;uo_index=None;
+                       uo_flags=[UO_lhs];
+                       uo_sel=[];
+                       uo_addr=(ind0 => );
+                       uo_type={DT=DT_logic(1);ET=DT_logic(1);TC=*;
+                                PT=*;LT=*;ST=*;NT=*;}},
+               UC_val {uv_type={DT=DT_int(0);ET=DT_logic(1);TC=*;
+                       PT=*;LT=*;ST=*;NT=*;};uv_val=0});
+ ui_frame={bf_name=ASSIGN; bf_id=86320; bf_src={file=dining.cp; line=43};
+           bf_parent=Some {bf_name=BLOCK;bf_id=83041}
+           bf_time=1
+           bf_type=BF_data
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i5_bind_to_6_end);
+ ui_frame={bf_name=BLOCK; bf_id=83041; bf_src={file=dining.cp; lines=42..43};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=1
+           bf_type=BF_compound
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[ASSIGN11089;ASSIGN86320]}}
+{ui_code=Nop;
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i7_waitfor);
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Move (UC_temp {ut_name=waitfor_count;ut_range=None;
+                        ut_flags=[UO_lhs;UO_loc];
+                        ut_type={DT=DT_logic(4);ET=DT_logic(4);TC=*;
+                                 PT=DT_logic(4);LT=*;ST=*;NT=*;}},
+               UC_val {uv_type={DT=DT_logic(4);ET=DT_logic(4);TC=*;
+                       PT=*;LT=*;ST=*;NT=*;};uv_val=3});
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i7_waitfor_loop);
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Bind (4);
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Expr (UC_temp {ut_name=waitfor_count;ut_range=None;
+                        ut_flags=[UO_lhs;UO_loc];
+                        ut_type={DT=DT_logic(4);ET=DT_logic(4);TC=*;
+                                 PT=DT_logic(4);LT=*;ST=*;NT=*;}},
+               UC_temp {ut_name=waitfor_count;ut_range=None;
+                        ut_flags=[UO_rhs;UO_loc];
+                        ut_type={DT=DT_logic(4);ET=DT_logic(4);TC=*;
+                                 PT=DT_logic(4);LT=*;ST=*;NT=*;}},
+               [-],
+               UC_val {uv_type={DT=DT_logic(4);ET=DT_logic(4);TC=*;
+                       PT=*;LT=*;ST=*;NT=*;};uv_val=1});
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Nop;
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Expr (UC_immed (1),
+               UC_temp {ut_name=waitfor_count;ut_range=None;
+                        ut_flags=[UO_rhs;UO_loc];
+                        ut_type={DT=DT_logic(4);ET=DT_logic(4);TC=*;
+                                 PT=DT_logic(4);LT=*;ST=*;NT=*;}},
+               [=],
+               UC_val {uv_type={DT=DT_logic(4);ET=DT_logic(4);TC=*;
+                       PT=*;LT=*;ST=*;NT=*;};uv_val=0});
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Falsejump (UC_immed (1),i7_waitfor_loop);
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i7_waitfor_loop_end);
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Jump (i8_bind_to_9);
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i7_waitfor_end);
+ ui_frame={bf_name=COND_LOOP; bf_id=78627; bf_src={file=dining.cp; line=45};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=(1+(6*1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Nop;
+ ui_frame={bf_name=BLOCK; bf_id=83331; bf_src={file=dining.cp; lines=47..48};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=1
+           bf_type=BF_compound
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[ASSIGN45421;ASSIGN75600]}}
+{ui_code=Label (i8_bind_to_9);
+ ui_frame={bf_name=BLOCK; bf_id=83331; bf_src={file=dining.cp; lines=47..48};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=1
+           bf_type=BF_compound
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[ASSIGN45421;ASSIGN75600]}}
+{ui_code=Bind (2);
+ ui_frame={bf_name=BLOCK; bf_id=83331; bf_src={file=dining.cp; lines=47..48};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=1
+           bf_type=BF_compound
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[ASSIGN45421;ASSIGN75600]}}
+{ui_code=Move (UC_reg {uo_name=eating_3;uo_range=None;uo_index=None;
+                       uo_flags=[UO_lhs];
+                       uo_sel=[];
+                       uo_addr=(ind0 => );
+                       uo_type={DT=DT_logic(1);ET=DT_logic(1);TC=*;
+                                PT=*;LT=*;ST=*;NT=*;}},
+               UC_val {uv_type={DT=DT_int(0);ET=DT_logic(1);TC=*;
+                       PT=*;LT=*;ST=*;NT=*;};uv_val=0});
+ ui_frame={bf_name=ASSIGN; bf_id=45421; bf_src={file=dining.cp; line=47};
+           bf_parent=Some {bf_name=BLOCK;bf_id=83331}
+           bf_time=1
+           bf_type=BF_data
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Move (UC_reg {uo_name=thinking_3;uo_range=None;uo_index=None;
+                       uo_flags=[UO_lhs];
+                       uo_sel=[];
+                       uo_addr=(ind0 => );
+                       uo_type={DT=DT_logic(1);ET=DT_logic(1);TC=*;
+                                PT=*;LT=*;ST=*;NT=*;}},
+               UC_val {uv_type={DT=DT_int(1);ET=DT_logic(1);TC=*;
+                       PT=*;LT=*;ST=*;NT=*;};uv_val=1});
+ ui_frame={bf_name=ASSIGN; bf_id=75600; bf_src={file=dining.cp; line=48};
+           bf_parent=Some {bf_name=BLOCK;bf_id=83331}
+           bf_time=1
+           bf_type=BF_data
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i8_bind_to_9_end);
+ ui_frame={bf_name=BLOCK; bf_id=83331; bf_src={file=dining.cp; lines=47..48};
+           bf_parent=Some {bf_name=LOOP_BODY;bf_id=95086}
+           bf_time=1
+           bf_type=BF_compound
+           bf_params=[BP_bind;BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[ASSIGN45421;ASSIGN75600]}}
+{ui_code=Nop;
+ ui_frame={bf_name=FUN; bf_id=23467; bf_src={file=dining.cp; line=63};
+           bf_parent=Some {bf_name=FUN;bf_id=18499}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i10_fun);
+ ui_frame={bf_name=FUN; bf_id=23467; bf_src={file=dining.cp; line=63};
+           bf_parent=Some {bf_name=FUN;bf_id=18499}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Fun ([OD_sel[|3|]]:OT_array(fork).up, [...]);
+ ui_frame={bf_name=FUN; bf_id=23467; bf_src={file=dining.cp; line=63};
+           bf_parent=Some {bf_name=FUN;bf_id=18499}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i10_fun_end);
+ ui_frame={bf_name=FUN; bf_id=23467; bf_src={file=dining.cp; line=63};
+           bf_parent=Some {bf_name=FUN;bf_id=18499}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Nop;
+ ui_frame={bf_name=FUN; bf_id=5955; bf_src={file=dining.cp; line=64};
+           bf_parent=Some {bf_name=FUN;bf_id=34258}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i11_fun);
+ ui_frame={bf_name=FUN; bf_id=5955; bf_src={file=dining.cp; line=64};
+           bf_parent=Some {bf_name=FUN;bf_id=34258}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Fun ([OD_sel[|4|]]:OT_array(fork).up, [...]);
+ ui_frame={bf_name=FUN; bf_id=5955; bf_src={file=dining.cp; line=64};
+           bf_parent=Some {bf_name=FUN;bf_id=34258}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i11_fun_end);
+ ui_frame={bf_name=FUN; bf_id=5955; bf_src={file=dining.cp; line=64};
+           bf_parent=Some {bf_name=FUN;bf_id=34258}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Jump (i3_fun);
+ ui_frame={bf_name=FUN; bf_id=5955; bf_src={file=dining.cp; line=64};
+           bf_parent=Some {bf_name=FUN;bf_id=34258}
+           bf_time=>=1
+           bf_type=BF_data
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[]}}
+{ui_code=Label (i2_loop_end);
+ ui_frame={bf_name=LOOP; bf_id=63052; bf_src={file=dining.cp; line=64};
+           bf_parent=Some {bf_name=BLOCK;bf_id=19215}
+           bf_time=(>=1*(1+(6*1)+1+>=1+>=1))
+           bf_type=BF_loop
+           bf_params=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]
+           bf_childs=[LOOP_BODY95086]}}

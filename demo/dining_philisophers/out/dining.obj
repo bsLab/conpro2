@@ -1,0 +1,43 @@
+-- CONPRO: Hardware Synthesis with an Imperative High Level Multiprocess Approach
+--         (c) 2006-2010 by BSSLAB, Dr. Stefan Bosse
+--         Version: 2.1 Revision: D148 Genetic size: 2661823
+--         Compile date: Fri Apr 23 17:13:19 CEST 2010
+--         Compiled by:  sbosse
+--         Compiled on:  SunOS sunsil 5.10 Generic_137137-09 sun4u sparc SUNW,Sun-Blade-2500
+
+export:
+begin
+  register stat: C
+  array thinking: register[5] of L1 :: {
+           thinking_0,thinking_1,thinking_2,thinking_3,thinking_4}
+  array eating: register[5] of L1 :: {
+           eating_0,eating_1,eating_2,eating_3,eating_4}
+end
+
+data:
+begin
+  process init
+  type system
+  object init: Process.process
+  array philosopher: object[5] of Process.process
+  function eat(n)
+  register stat: C
+  type semaphore
+  process philosopher_0
+  process philosopher_1
+  object sys: System.system
+  process philosopher_2
+  process philosopher_3
+  process philosopher_4
+  object ev: Event.event
+  array thinking: register[5] of L1 :: {
+           thinking_0,thinking_1,thinking_2,thinking_3,thinking_4}
+  type event
+  process main
+  object main: Process.process
+  array fork: object[5] of Semaphore.semaphore
+  type process
+  array eating: register[5] of L1 :: {
+           eating_0,eating_1,eating_2,eating_3,eating_4}
+end
+

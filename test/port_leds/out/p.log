@@ -1,0 +1,1387 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<840fd9a4> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  /home/sbosse/proj/conpro2/test/port_leds/src/cp
+    Source:  /home/sbosse/proj/conpro2/test/port_leds/src/vhdl
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+TDI: Opening tools file <tools>...
+  Searching tools file <tools.def>...
+  Opening tools file </opt/Conpro2/toolset/tools.def>...
+  Opening tool library file </opt/Conpro2/toolset/generic.lib>...
+  Info [file <tools.def>, line 7]: Added synthesis tool defintion <generic>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/xilinx6.lib>...
+  Info [file <tools.def>, line 27]: Added synthesis tool defintion <xilinx6>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/xilinx9.lib>...
+  Info [file <tools.def>, line 173]: Added synthesis tool defintion <xilinx9>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/alliance.lib>...
+  Info [file <tools.def>, line 319]: Added synthesis tool defintion <alliance>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/leonardo.lib>...
+  Info [file <tools.def>, line 342]: Added synthesis tool defintion <leonardo>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/actel.lib>...
+  Info [file <tools.def>, line 366]: Added synthesis tool defintion <actel>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89.lib>...
+  Info [file <tools.def>, line 389]: Added synthesis tool defintion <synplicity89>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89_xilinx6.lib>...
+  Info [file <tools.def>, line 412]: Added synthesis tool defintion <synplicity89_xilinx6>, version 1.05.
+TDI: Opening tool <xilinx6>...
+  Searching tool file <xilinx6.tool>...
+  Opening tool file </opt/Conpro2/toolset/xilinx6.tool>...
+Searching Conpro file <p.cp>...
+Opening file <p.cp>...
+Compiling module <p>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+    Opening module <Ioport>...
+      Searching module file <ioport.mod>...
+      Opening module file </opt/Conpro2/lib/ioport.mod>...
+      EMI [Object Ioport.ioport.root]#init: Initializing module ...
+      EMI <Object Ioport.ioport.root>: creating rules for module...
+      Added module <Ioport>.
+        EMI <Ioport>: adding object type <ioport>...
+    Added module <System>.
+    EMI <Object Sys.sys.root>: creating object <sys>...
+      EMI [Object Sys.sys.sys]: added method <clock>.
+      EMI [Object Sys.sys.sys]: added method <clock_level>.
+      EMI [Object Sys.sys.sys]: added method <reset_level>.
+      EMI [Object Sys.sys.sys]: added method <reset_internal>.
+      EMI [Object Sys.sys.sys]: added method <simu_cycles>.
+      EMI [Object Sys.sys.sys]: added method <simu_res>.
+      EMI [Object Sys.sys.sys]: added method <target>.
+      EMI [Object Sys.sys.sys]: added method <expr_type>.
+    EMI <Object Sys.sys.sys>: creating rules for module...
+    EMI <Object Ioport.ioport.root>: creating object <pt>...
+      EMI [Object Ioport.ioport.pt]: added method <init>.
+      EMI [Object Ioport.ioport.pt]: added method <read>.
+      EMI [Object Ioport.ioport.pt]: added method <write>.
+      EMI [Object Ioport.ioport.pt]: added method <dir>.
+      EMI [Object Ioport.ioport.pt]: added method <interface>.
+    EMI <Object Ioport.ioport.pt>: creating rules for module...
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [file <p.cp>, line 22]: EMI#fun_compile <Object Ioport.ioport.pt>: importing signal <top_p_leds> and assigning it to parameter <port_db>.
+    Info [file <p.cp>, line 24]: Analyzing process <p1>...
+      Analyzing process <p1>...
+    Info [file <p.cp>, line 43]: Analyzing process <main>...
+      Analyzing process <main>...
+  Performing program graph transformations and optimization for module <P>...
+    in process <p1>...
+      Performing program transformations for process <p1>...
+      Resolving object dependencies for process <p1>...
+    in process <main>...
+      Performing program transformations for process <main>...
+      Resolving object dependencies for process <main>...
+  Resolving object dependencies for process <MOD_P>...
+  Found 14 primary toplevel symbols.
+  Found 2 processes.
+  Found 0 shared function blocks.
+Synthesizing main module <P>...
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <P.p1>
+        Removed 0 instructions(s).
+      in process <P.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      [P.MOD_P]: Removing Register <P.PRO_p1_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <main> ...
+      ... in process <p1> ...
+      [P.MOD_P]: Removing Register <P.PRO_main_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      Removed 2 object(s).
+    Optimizer: folding constants in expressions...
+      in process <P.p1>
+        Removed 0 operand(s).
+      in process <P.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 2.
+  Optimizing and pre-scheduling, pass 2...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <P.p1>
+        Removed 0 instructions(s).
+      in process <P.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      ... in process <p1> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <P.p1>
+        Removed 0 operand(s).
+      in process <P.main>
+        Removed 0 operand(s).
+    ... Progress of pass 2: 0.
+  Resolving object guards...
+    Found 0 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+    Performing post-analysis transformations for process <p1>...
+    Performing post-analysis transformations for process <main>...
+  EMI [Object Ioport.ioport.pt]: compiling external module interface...
+  EMI [Object Ioport.ioport.pt]: Environment is:
+    NAME(s)=["IOPORT"],
+    width(i)=[8;8],
+    dir(i)=[0],
+    port_db(U)=["top_p_leds"],
+    O(s)=["pt"],
+    P(s)=["main";"p1";"MOD_P"],
+    P.init(s)=["main"],
+    P.read(s)=[],
+    P.write(s)=["p1"],
+    P.dir(s)=["p1"],
+    P.interface(s)=["MOD_P"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  Synthesizing process instructions...
+    in process <P.p1>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p1>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p1>...
+      Post type alignment of expressions for process <p1>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p1>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p1>...
+        Created 1 register(s):
+          TEMP_0: logic[26]
+      Block Scheduler: Exploring concurrency in basic blocks for process <p1>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 4 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p1>...
+        11 states created.
+      Calculating block frame time estimations for process <p1>...
+    in process <P.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Post type alignment of expressions for process <main>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        4 states created.
+      Calculating block frame time estimations for process <main>...
+  Creating entity <p_p1>...
+    Emitting state list for process <p1>...
+    Emitting state machine for process <p1>...
+    Port width: 22 bits
+  Creating entity <p_main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 7 bits
+  Creating entity <p>...
+    EMI [Object Ioport.ioport.pt]: compiling process <PORT_pt_SCHED> ...
+    EMI [Object Ioport.ioport.pt]: compiling process <PORT_pt_IO> ...
+    EMI [Object Ioport.ioport.pt]: compiling #assert section [NAME(s)=["IOPORT"],
+    width(i)=[8;8],
+    dir(i)=[0],
+    port_db(U)=["top_p_leds"],
+    O(s)=["pt"],
+    P(s)=["main";"p1";"MOD_P"],
+    P.init(s)=["main"],
+    P.read(s)=[],
+    P.write(s)=["p1"],
+    P.dir(s)=["p1"],
+    P.interface(s)=["MOD_P"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 2 conditions...
+  Emitting MicroCode for module P...
+  Emitting object file for module P...
+  Emitting MicroCode for process p1...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.p1>: emitting MicroCode for process <p1>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+Info : Emitting block frame informations in file <p.ft>...
+TDI [Tool xilinx6.root]#new_obj: creating object <p>...
+TDI [Tool xilinx6.p]#compile_all: Initializing tool ...
+  TDI [Tool xilinx6.p]: found #version 2.05...
+  TDI [Tool xilinx6.p]: compiling #parameter section...
+  TDI [Tool xilinx6.p]: compiling #parameter section...
+  TDI [Tool xilinx6.p]: compiling #parameter section...
+  TDI [Tool xilinx6.p]: compiling function <check>...
+  TDI [Tool xilinx6.p]: compiling function <init>...
+  TDI [Tool xilinx6.p]: compiling function <finish>...
+  TDI [Tool xilinx6.p]: compiling function <make_xst_runscript>...
+  TDI [Tool xilinx6.p]: compiling function <make_proj>...
+  TDI [Tool xilinx6.p]: compiling function <do_synth>...
+  TDI [Tool xilinx6.p]: compiling function <do_scram>...
+  TDI [Tool xilinx6.p]: compiling function <do_trans>...
+  TDI [Tool xilinx6.p]: compiling function <do_map>...
+  TDI [Tool xilinx6.p]: compiling function <do_place>...
+  TDI [Tool xilinx6.p]: compiling function <do_bitgen>...
+  TDI [Tool xilinx6.p]: compiling function <do_ucf>...
+  TDI [Tool xilinx6.p]: compiling function <do_prom>...
+  TDI [Tool xilinx6.p]: compiling function <do_fpga>...
+  TDI [Tool xilinx6.p]: compiling target <init>...
+  TDI [Tool xilinx6.p]: compiling target <vhdl>...
+  TDI [Tool xilinx6.p]: compiling target <synth>...
+  TDI [Tool xilinx6.p]: compiling target <tech>...
+  TDI [Tool xilinx6.p]: compiling target <svf>...
+  TDI [Tool xilinx6.p]: compiling target <ucf>...
+TDI [Tool xilinx6.p]#compiler_all: Compiling tool ...
+  TDI [Tool xilinx6.p]#emit: Creating build script <p.xilinx6.tool.sh>...
+    TDI [Tool xilinx6.p]: Environment is:
+      PROM=[get_opt()],
+      target_device=[|"xc3s1000",
+                      "xc18v04"|],
+      target_class=[|"xc3s",
+                     "unknown"|],
+      TOP=[("MOD_") + ($proj)],
+      LOG=[($proj) + (".log")],
+      SRCDIR=["."],
+      SCRAM=[$],
+      clock=["18500000"],
+      vhdl=[|"p",
+             "p_p1",
+             "p_main"|],
+      syn_synth_set=[|"fsm_extract YES",
+                      "fsm_encoding Sequential",
+                      "fsm_style lut",
+                      "mux_extract YES",
+                      "mux_style Auto",
+                      "ram_extract Yes",
+                      "ram_style Block",
+                      "rom_extract Yes",
+                      "rom_style Auto",
+                      "mult_style lut",
+                      "priority_extract Yes",
+                      "shreg_extract Yes",
+                      "decoder_extract Yes",
+                      "shift_extract Yes",
+                      "opt_mode speed",
+                      "opt_level 1",
+                      "iobuf YES",
+                      "iob Auto",
+                      "max_fanout 100",
+                      "xor_collapse Yes",
+                      "resource_sharing Yes",
+                      "slice_packing Yes",
+                      "slice_utilization_ratio 100",
+                      "slice_utilization_ratio_maxmargin 5",
+                      "bufg 4",
+                      "register_duplication Yes",
+                      "register_balancing No",
+                      "equivalent_register_removal Yes",
+                      "optimize_primitives No",
+                      "tristate2logic No",
+                      "glob_opt AllClockNets",
+                      "iuc NO"|],
+      VHDL=[|$|],
+      target_speed=[|"5"|],
+      syn_tech_set_par=[|"t 1"|],
+      BITGEN_CONF=[get_opt()],
+      target_library=[|"xis3",
+                       "unknown"|],
+      DUP=["tee"],
+      RECLEN=[get_opt()],
+      SYNSET=[$],
+      period=["54"],
+      DEVICE=[get_opt()],
+      SPEED=[get_opt()],
+      XILINX=[$],
+      target_package=[|"ft256"|],
+      syn_tech_set_map=[|"pr b",
+                         "k 4",
+                         "c 100",
+                         "tx off"|],
+      DESIGN=[$proj],
+      port=[|"top_p_leds:inout:std_logic_vector:7 downto 0",
+             "CLK:in:std_logic",
+             "RESET:in:std_logic"|],
+      reclen=["1024"],
+      target=[|"xc3s1000-ft256-5",
+               "xc18v04"|],
+      MAPSET=[$],
+      target_family=[|"spartan3",
+                      "unknown"|],
+      proj=["p"],
+      PARSET=[$],
+      res=[$],
+      OBJDIR=["obj"],
+      bitgen_conf=["-g DebugBitstream:No -g Binary:no -g CclkPin:PullUp -g M0Pin:PullUp -g M1Pin:PullUp -g M2Pin:PullUp -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g StartUpClk:CClk -g DONE_cycle:4"],
+      simu_cycles=["50"]
+Total CPU time consumed: 1.0 seconds.
+Total time elapsed: 1.0 seconds.
+  
+  +------------------------ SYNTHESIS RESULT SUMMARY -------------------------+
+  +---------------------------------------------------------------------------+
+  | DESCRIPTION                                  VALUE                        |
+  +---------------------------------------------------------------------------+
+  | arithmetic unit                              4                            |
+  |  -> adder                                    (1)                          |
+  |  -> comparator                               (2)                          |
+  |  -> subtractor                               (1)                          |
+  | object                                       1                            |
+  |  -> ioport                                   (1)                          |
+  | process                                      2                            |
+  | process.main                                                              |
+  |  -> port-width [bit]                         7                            |
+  |  -> states                                   4                            |
+  | process.p1                                                                |
+  |  -> port-width [bit]                         22                           |
+  |  -> register                                 3                            |
+  |  -> states                                   11                           |
+  | register-local                               3                            |
+  |  -> signed(4 downto 0)                       (1)                          |
+  |  -> std_logic_vector(25 downto 0)            (1)                          |
+  |  -> std_logic_vector(7 downto 0)             (1)                          |
+  | synthesis time [sec]                         1                            |
+  +---------------------------------------------------------------------------+
+  
+Release 6.3.03i - xst G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+  5) Advanced HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+     7.1) Device utilization summary
+     7.2) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : p.prj
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : p
+Output Format                      : NGC
+Target Device                      : xc3s1000-ft256-5
+
+---- Source Options
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Sequential
+FSM Style                          : lut
+Mux Extraction                     : YES
+Mux Style                          : Auto
+RAM Extraction                     : Yes
+RAM Style                          : Block
+ROM Extraction                     : Yes
+ROM Style                          : Auto
+Multiplier Style                   : lut
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : Yes
+Decoder Extraction                 : Yes
+Logical Shifter Extraction         : Yes
+XOR Collapsing                     : Yes
+Resource Sharing                   : Yes
+Automatic Register Balancing       : No
+Top Module Name                    : MOD_p
+
+---- Target Options
+Add IO Buffers                     : YES
+Pack IO Registers into IOBs        : Auto
+Global Maximum Fanout              : 100
+Slice Packing                      : Yes
+Add Generic Clock Buffer(BUFG)     : 4
+Register Duplication               : Yes
+Equivalent register Removal        : Yes
+
+---- General Options
+Optimization Goal                  : speed
+Optimization Effort                : 1
+Slice Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+Global Optimization                : AllClockNets
+
+---- Other Options
+Optimize Instantiated Primitives   : No
+tristate2logic                     : No
+
+=========================================================================
+
+Setting FSM Encoding Algorithm to : SEQ
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p_p1.vhdl in Library work.
+Entity <p_p1> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p_main.vhdl in Library work.
+Entity <p_main> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p.vhdl in Library work.
+Entity <mod_p> (Architecture <main>) compiled.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <MOD_p> (Architecture <main>).
+INFO:Xst:1304 - Contents of register <PRO_main_ENABLE> in unit <MOD_p> never changes during circuit operation. The register is replaced by logic.
+Entity <MOD_p> analyzed. Unit <MOD_p> generated.
+
+Analyzing Entity <p_p1> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p_p1.vhdl line 296: The following signals are missing in the process sensitivity list:
+   PORT_pt_GD.
+WARNING:Xst:790 - /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p_p1.vhdl line 361: Index value(s) does not match array range, simulation mismatch.
+Entity <p_p1> analyzed. Unit <p_p1> generated.
+
+Analyzing Entity <p_main> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p_main.vhdl line 259: The following signals are missing in the process sensitivity list:
+   PORT_pt_GD.
+Entity <p_main> analyzed. Unit <p_main> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <p_main>.
+    Related source file is /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p_main.vhdl.
+    Found finite state machine <FSM_0> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 4                                              |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | conpro_system_reset (negative)                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_main_start                                   |
+    | Power Up State     | s_main_start                                   |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
+Unit <p_main> synthesized.
+
+
+Synthesizing Unit <p_p1>.
+    Related source file is /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p_p1.vhdl.
+INFO:Xst:1799 - State s_p1_end is never reached in FSM <pro_state>.
+    Found finite state machine <FSM_1> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 10                                             |
+    | Transitions        | 14                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 10                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0006 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_p1_start                                     |
+    | Power Up State     | s_p1_start                                     |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 5-bit comparator lessequal for signal <$n0007> created at line 264.
+    Found 5-bit adder for signal <$n0030> created at line 369.
+    Found 26-bit subtractor for signal <$n0031> created at line 367.
+    Found 8-bit register for signal <d>.
+    Found 5-bit register for signal <LOOP_i_0>.
+    Found 26-bit register for signal <TEMP_0>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  39 D-type flip-flop(s).
+	inferred   2 Adder/Subtracter(s).
+	inferred   1 Comparator(s).
+Unit <p_p1> synthesized.
+
+
+Synthesizing Unit <MOD_p>.
+    Related source file is /home/sbosse/proj/conpro2/test/port_leds/out/obj/../p.vhdl.
+WARNING:Xst:646 - Signal <PRO_p1_END> is assigned but never used.
+WARNING:Xst:646 - Signal <PRO_main_END> is assigned but never used.
+WARNING:Xst:646 - Signal <PORT_pt_IN> is assigned but never used.
+    Found 8-bit tristate buffer for signal <top_p_leds>.
+    Found 8-bit register for signal <PORT_pt_DIR>.
+    Found 1-bit register for signal <PORT_pt_main_GD>.
+    Found 8-bit register for signal <PORT_pt_OUT>.
+    Found 1-bit register for signal <PORT_pt_p1_GD>.
+    Found 1-bit register for signal <PRO_p1_ENABLE>.
+    Found 1-bit register for signal <PRO_p1_main_GD>.
+    Summary:
+	inferred  20 D-type flip-flop(s).
+	inferred   8 Tristate(s).
+Unit <MOD_p> synthesized.
+
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Advanced RAM inference ...
+Advanced multiplier inference ...
+Advanced Registered AddSub inference ...
+Optimizing FSM <FSM_1> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_0> on signal <pro_state> with sequential encoding.
+Dynamic shift register inference ...
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# FSMs                             : 2
+# Adders/Subtractors               : 2
+ 26-bit subtractor                 : 1
+ 5-bit adder                       : 1
+# Registers                        : 22
+ 1-bit register                    : 18
+ 8-bit register                    : 2
+ 26-bit register                   : 1
+ 5-bit register                    : 1
+# Comparators                      : 1
+ 5-bit comparator lessequal        : 1
+# Tristates                        : 8
+ 1-bit tristate buffer             : 8
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <MOD_p> ...
+
+Optimizing unit <p_p1> ...
+Loading device for application Xst from file '3s1000.nph' in environment /export/home/Xilinx63.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Register PORT_pt_DIR_7 equivalent to PORT_pt_DIR_2 has been removed
+Register PORT_pt_DIR_6 equivalent to PORT_pt_DIR_2 has been removed
+Register PORT_pt_DIR_5 equivalent to PORT_pt_DIR_2 has been removed
+Register PORT_pt_DIR_3 equivalent to PORT_pt_DIR_2 has been removed
+Register PORT_pt_DIR_4 equivalent to PORT_pt_DIR_2 has been removed
+Register PORT_pt_DIR_1 equivalent to PORT_pt_DIR_0 has been removed
+Register PORT_pt_DIR_2 equivalent to PORT_pt_DIR_0 has been removed
+Found area constraint ratio of 100 (+ 5) on block MOD_p, actual ratio is 1.
+FlipFlop PRO_MAP_p1_pro_state_FFd2 has been replicated 1 time(s)
+FlipFlop PRO_MAP_p1_pro_state_FFd3 has been replicated 1 time(s)
+FlipFlop PRO_MAP_p1_pro_state_FFd1 has been replicated 1 time(s)
+FlipFlop PRO_MAP_p1_pro_state_FFd4 has been replicated 2 time(s)
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+Top Level Output File Name         : p
+Output Format                      : NGC
+Optimization Goal                  : speed
+Keep Hierarchy                     : no
+
+Design Statistics
+# IOs                              : 10
+
+Macro Statistics :
+# Registers                        : 16
+#      1-bit register              : 12
+#      26-bit register             : 1
+#      5-bit register              : 1
+#      8-bit register              : 2
+# Tristates                        : 8
+#      1-bit tristate buffer       : 8
+# Adders/Subtractors               : 1
+#      26-bit subtractor           : 1
+# Comparators                      : 1
+#      5-bit comparator lessequal  : 1
+
+Cell Usage :
+# BELS                             : 201
+#      GND                         : 1
+#      LUT1                        : 3
+#      LUT1_L                      : 25
+#      LUT2                        : 12
+#      LUT2_D                      : 1
+#      LUT2_L                      : 3
+#      LUT3                        : 19
+#      LUT3_D                      : 5
+#      LUT3_L                      : 18
+#      LUT4                        : 35
+#      LUT4_D                      : 4
+#      LUT4_L                      : 21
+#      MUXCY                       : 25
+#      MUXF5                       : 2
+#      VCC                         : 1
+#      XORCY                       : 26
+# FlipFlops/Latches                : 63
+#      FDE                         : 8
+#      FDR                         : 22
+#      FDRE                        : 2
+#      FDRS                        : 26
+#      FDRSE                       : 2
+#      FDS                         : 3
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 9
+#      IBUF                        : 1
+#      OBUFT                       : 8
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1000ft256-5 
+
+ Number of Slices:                      80  out of   7680     1%  
+ Number of Slice Flip Flops:            63  out of  15360     0%  
+ Number of 4 input LUTs:               146  out of  15360     0%  
+ Number of bonded IOBs:                  9  out of    173     5%  
+ Number of GCLKs:                        1  out of      8    12%  
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 63    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 5.130ns (Maximum Frequency: 194.932MHz)
+   Minimum input arrival time before clock: 5.069ns
+   Maximum output required time after clock: 6.543ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+-------------------------------------------------------------------------
+Timing constraint: Default period analysis for Clock 'CLK'
+Delay:               5.130ns (Levels of Logic = 28)
+  Source:            PRO_MAP_p1_TEMP_0_0 (FF)
+  Destination:       PRO_MAP_p1_TEMP_0_25 (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: PRO_MAP_p1_TEMP_0_0 to PRO_MAP_p1_TEMP_0_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.626   0.577  PRO_MAP_p1_TEMP_0_0 (PRO_MAP_p1_TEMP_0_0)
+     LUT1_L:I0->LO         1   0.479   0.000  PRO_MAP_p1_TEMP_0<0>_rt (PRO_MAP_p1_TEMP_0<0>_rt)
+     MUXCY:S->O            1   0.435   0.000  PRO_MAP_p1_p_p1__n0031<0>cy (PRO_MAP_p1_p_p1__n0031<0>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<1>cy (PRO_MAP_p1_p_p1__n0031<1>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<2>cy (PRO_MAP_p1_p_p1__n0031<2>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<3>cy (PRO_MAP_p1_p_p1__n0031<3>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<4>cy (PRO_MAP_p1_p_p1__n0031<4>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<5>cy (PRO_MAP_p1_p_p1__n0031<5>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<6>cy (PRO_MAP_p1_p_p1__n0031<6>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<7>cy (PRO_MAP_p1_p_p1__n0031<7>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<8>cy (PRO_MAP_p1_p_p1__n0031<8>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<9>cy (PRO_MAP_p1_p_p1__n0031<9>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<10>cy (PRO_MAP_p1_p_p1__n0031<10>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<11>cy (PRO_MAP_p1_p_p1__n0031<11>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<12>cy (PRO_MAP_p1_p_p1__n0031<12>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<13>cy (PRO_MAP_p1_p_p1__n0031<13>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<14>cy (PRO_MAP_p1_p_p1__n0031<14>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<15>cy (PRO_MAP_p1_p_p1__n0031<15>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<16>cy (PRO_MAP_p1_p_p1__n0031<16>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<17>cy (PRO_MAP_p1_p_p1__n0031<17>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<18>cy (PRO_MAP_p1_p_p1__n0031<18>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<19>cy (PRO_MAP_p1_p_p1__n0031<19>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<20>cy (PRO_MAP_p1_p_p1__n0031<20>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<21>cy (PRO_MAP_p1_p_p1__n0031<21>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<22>cy (PRO_MAP_p1_p_p1__n0031<22>_cyo)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p1_p_p1__n0031<23>cy (PRO_MAP_p1_p_p1__n0031<23>_cyo)
+     MUXCY:CI->O           0   0.056   0.000  PRO_MAP_p1_p_p1__n0031<24>cy (PRO_MAP_p1_p_p1__n0031<24>_cyo)
+     XORCY:CI->O           1   0.786   0.240  PRO_MAP_p1_p_p1__n0031<25>_xor (PRO_MAP_p1__n0031<25>)
+     LUT4_L:I2->LO         1   0.479   0.000  PRO_MAP_p1__n0021<25>1 (PRO_MAP_p1__n0021<25>)
+     FDR:D                     0.176          PRO_MAP_p1_TEMP_0_25
+    ----------------------------------------
+    Total                      5.130ns (4.313ns logic, 0.817ns route)
+                                       (84.1% logic, 15.9% route)
+
+-------------------------------------------------------------------------
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+Offset:              5.069ns (Levels of Logic = 2)
+  Source:            RESET (PAD)
+  Destination:       PRO_p1_ENABLE (FF)
+  Destination Clock: CLK rising
+
+  Data Path: RESET to PRO_p1_ENABLE
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   1.679   0.688  RESET_IBUF (RESET_IBUF)
+     LUT1:I0->O           42   0.479   1.331  PRO_MAP_main_pro_state_FFd2_N5211 (PRO_MAP_main_pro_state_FFd2_N521)
+     FDR:R                     0.892          PRO_MAP_main_pro_state_FFd2
+    ----------------------------------------
+    Total                      5.069ns (3.050ns logic, 2.019ns route)
+                                       (60.2% logic, 39.8% route)
+
+-------------------------------------------------------------------------
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+Offset:              6.543ns (Levels of Logic = 2)
+  Source:            PORT_pt_DIR_0 (FF)
+  Destination:       top_p_leds<4> (PAD)
+  Source Clock:      CLK rising
+
+  Data Path: PORT_pt_DIR_0 to top_p_leds<4>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             1   0.626   0.240  PORT_pt_DIR_0 (PORT_pt_DIR_0)
+     LUT1:I0->O            8   0.479   0.747  I15_EnableTr_INV1 (I15_N336)
+     OBUFT:T->O                4.451          top_p_leds_7_OBUFT (top_p_leds<7>)
+    ----------------------------------------
+    Total                      6.543ns (5.556ns logic, 0.987ns route)
+                                       (84.9% logic, 15.1% route)
+
+=========================================================================
+CPU : 6.27 / 7.46 s | Elapsed : 7.00 / 8.00 s
+ 
+--> 
+
+
+Total memory usage is 92512 kilobytes
+
+
+Release 6.3.03i - ngdbuild G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+
+Command Line: ngdbuild -p xc3s1000-ft256-5 -uc ../p.ucf -dd . p.ngc p.ngd 
+
+Reading NGO file "/home/sbosse/proj/conpro2/test/port_leds/out/obj/p.ngc" ...
+Reading component libraries for design expansion...
+
+Annotating constraints to design from file "../p.ucf" ...
+
+Checking timing specifications ...
+Checking expanded design ...
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 34232 kilobytes
+
+Writing NGD file "p.ngd" ...
+
+Writing NGDBUILD log file "p.bld"...
+
+NGDBUILD done.
+Release 6.3.03i - Map G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+Using target part "3s1000ft256-5".
+Removing unused or disabled logic...
+Running cover...
+Writing file p_map.ngm...
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+Writing design file "p_map.ncd"...
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    0
+Logic Utilization:
+  Number of Slice Flip Flops:          55 out of  15,360    1%
+  Number of 4 input LUTs:             143 out of  15,360    1%
+Logic Distribution:
+  Number of occupied Slices:                           88 out of   7,680    1%
+    Number of Slices containing only related logic:      88 out of      88  100%
+    Number of Slices containing unrelated logic:          0 out of      88    0%
+      *See NOTES below for an explanation of the effects of unrelated logic
+Total Number 4 input LUTs:            144 out of  15,360    1%
+  Number used as logic:                143
+  Number used as a route-thru:           1
+  Number of bonded IOBs:               10 out of     173    5%
+    IOB Flip Flops:                     8
+  Number of GCLKs:                     1 out of       8   12%
+
+Total equivalent gate count for design:  1,548
+Additional JTAG gate count for IOBs:  480
+Peak Memory Usage:  73 MB
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity -
+   e.g. two LUTs are "related" if they share common inputs.
+   When assembling slices, Map gives priority to combine logic that
+   is related.  Doing so results in the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin
+   packing unrelated logic into a slice once 99% of the slices are
+   occupied through related logic packing.
+
+   Note that once logic distribution reaches the 99% level through
+   related logic packing, this does not mean the device is completely
+   utilized.  Unrelated logic packing will then begin, continuing until
+   all usable LUTs and FFs are occupied.  Depending on your timing
+   budget, increased levels of unrelated logic packing may adversely
+   affect the overall timing performance of your design.
+
+
+Mapping completed.
+See MAP report file "p_map.mrp" for details.
+Release 6.3.03i Map G.38
+Xilinx Mapping Report File for Design 'MOD_p'
+
+Design Information
+------------------
+Command Line   : map -p xc3s1000-ft256-5 -pr b -k 4 -c 100 -tx off -o p_map.ncd
+p.ngd p.pcf 
+Target Device  : x3s1000
+Target Package : ft256
+Target Speed   : -5
+Mapper Version : spartan3 -- $Revision: 1.16.8.2 $
+Mapped Date    : Tue Sep  1 13:51:48 2009
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    0
+Logic Utilization:
+  Number of Slice Flip Flops:          55 out of  15,360    1%
+  Number of 4 input LUTs:             143 out of  15,360    1%
+Logic Distribution:
+  Number of occupied Slices:                           88 out of   7,680    1%
+    Number of Slices containing only related logic:      88 out of      88  100%
+    Number of Slices containing unrelated logic:          0 out of      88    0%
+      *See NOTES below for an explanation of the effects of unrelated logic
+Total Number 4 input LUTs:            144 out of  15,360    1%
+  Number used as logic:                143
+  Number used as a route-thru:           1
+  Number of bonded IOBs:               10 out of     173    5%
+    IOB Flip Flops:                     8
+  Number of GCLKs:                     1 out of       8   12%
+
+Total equivalent gate count for design:  1,548
+Additional JTAG gate count for IOBs:  480
+Peak Memory Usage:  73 MB
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity -
+   e.g. two LUTs are "related" if they share common inputs.
+   When assembling slices, Map gives priority to combine logic that
+   is related.  Doing so results in the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin
+   packing unrelated logic into a slice once 99% of the slices are
+   occupied through related logic packing.
+
+   Note that once logic distribution reaches the 99% level through
+   related logic packing, this does not mean the device is completely
+   utilized.  Unrelated logic packing will then begin, continuing until
+   all usable LUTs and FFs are occupied.  Depending on your timing
+   budget, increased levels of unrelated logic packing may adversely
+   affect the overall timing performance of your design.
+
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group Summary
+Section 10 - Modular Design Summary
+Section 11 - Timing Report
+Section 12 - Configuration String Information
+Section 13 - Additional Device Resource Counts
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+
+Section 3 - Informational
+-------------------------
+INFO:LIT:95 - All of the external outputs in this design are using slew rate
+   limited output drivers. The delay on speed critical outputs can be
+   dramatically reduced by designating them as fast outputs in the schematic.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:MapLib:535 - The following Virtex BUFG(s) is/are being retargetted to
+   Virtex2 BUFGMUX(s) with input tied to I0 and Select pin tied to constant 0:
+   BUFGP symbol "CLK_BUFGP" (output signal=CLK_BUFGP)
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   2 block(s) optimized away
+
+Section 5 - Removed Logic
+-------------------------
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type    | Direction | IO Standard | Drive    | Slew | Reg (s)  | Resistor | IOB   |
+|                                    |         |           |             | Strength | Rate |          |          | Delay |
++------------------------------------------------------------------------------------------------------------------------+
+| CLK                                | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| RESET                              | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| top_p_leds<0>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| top_p_leds<1>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| top_p_leds<2>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| top_p_leds<3>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| top_p_leds<4>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| top_p_leds<5>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| top_p_leds<6>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| top_p_leds<7>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
++------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group Summary
+------------------------------
+No area groups were found in this design.
+
+Section 10 - Modular Design Summary
+-----------------------------------
+Modular Design not used for this design.
+
+Section 11 - Timing Report
+--------------------------
+This design was not run using timing mode.
+
+Section 12 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 13 - Additional Device Resource Counts
+----------------------------------------------
+Number of JTAG Gates for IOBs = 10
+Number of Equivalent Gates for Design = 1,548
+Number of RPM Macros = 0
+Number of Hard Macros = 0
+DCIRESETs = 0
+CAPTUREs = 0
+BSCANs = 0
+STARTUPs = 0
+DCMs = 0
+GCLKs = 1
+ICAPs = 0
+18X18 Multipliers = 0
+Block RAMs = 0
+Total Registers (Flops & Latches in Slices & IOBs) not driven by LUTs = 3
+IOB Dual-Rate Flops not driven by LUTs = 0
+IOB Dual-Rate Flops = 0
+IOB Slave Pads = 0
+IOB Master Pads = 0
+IOB Latches not driven by LUTs = 0
+IOB Latches = 0
+IOB Flip Flops not driven by LUTs = 0
+IOB Flip Flops = 8
+Unbonded IOBs = 0
+Bonded IOBs = 10
+Shift Registers = 0
+Static Shift Registers = 0
+Dynamic Shift Registers = 0
+16x1 ROMs = 0
+16x1 RAMs = 0
+32x1 RAMs = 0
+Dual Port RAMs = 0
+MUXFXs = 2
+MULTANDs = 0
+4 input LUTs used as Route-Thrus = 1
+4 input LUTs = 143
+Slice Latches not driven by LUTs = 0
+Slice Latches = 0
+Slice Flip Flops not driven by LUTs = 3
+Slice Flip Flops = 55
+SliceMs = 0
+SliceLs = 88
+Slices = 88
+Number of LUT signals with 4 loads = 5
+Number of LUT signals with 3 loads = 3
+Number of LUT signals with 2 loads = 31
+Number of LUT signals with 1 load = 97
+NGM Average fanout of LUT = 1.87
+NGM Maximum fanout of LUT = 14
+NGM Average fanin for LUT = 2.9580
+Number of LUT symbols = 143
+Number of IPAD symbols = 2
+Number of IBUF symbols = 2
+Release 6.3.03i - Par G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+
+
+
+
+Constraints file: p.pcf
+
+Loading device database for application Par from file "p_map.ncd".
+   "MOD_p" is an NCD, version 2.38, device xc3s1000, package ft256, speed -5
+Loading device for application Par from file '3s1000.nph' in environment
+/export/home/Xilinx63.
+Device speed data version:  ADVANCED 1.35 2004-11-11.
+
+
+Resolving physical constraints.
+Finished resolving physical constraints.
+
+Device utilization summary:
+
+   Number of External IOBs            10 out of 173     5%
+      Number of LOCed External IOBs   10 out of 10    100%
+
+   Number of Slices                   88 out of 7680    1%
+
+   Number of BUFGMUXs                  1 out of 8      12%
+
+
+
+Overall effort level (-ol):   Standard (default)
+Placer effort level (-pl):    Standard (default)
+Placer cost table entry (-t): 1
+Router effort level (-rl):    Standard (default)
+
+
+Phase 1.1
+Phase 1.1 (Checksum:9897db) REAL time: 2 secs 
+
+.
+Phase 3.8
+..
+Phase 3.8 (Checksum:995808) REAL time: 2 secs 
+
+Phase 4.5
+Phase 4.5 (Checksum:26259fc) REAL time: 2 secs 
+
+Phase 5.18
+Phase 5.18 (Checksum:2faf07b) REAL time: 2 secs 
+
+Writing design to file p.ncd.
+
+Total REAL time to Placer completion: 2 secs 
+Total CPU time to Placer completion: 2 secs 
+
+
+Phase 1: 605 unrouted;       REAL time: 3 secs 
+
+Phase 2: 542 unrouted;       REAL time: 4 secs 
+
+Phase 3: 127 unrouted;       REAL time: 4 secs 
+
+Phase 4: 0 unrouted;       REAL time: 5 secs 
+
+Total REAL time to Router completion: 5 secs 
+Total CPU time to Router completion: 5 secs 
+
+Generating "par" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++-------------------------+----------+------+------+------------+-------------+
+|        Clock Net        | Resource |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++-------------------------+----------+------+------+------------+-------------+
+|         CLK_BUFGP       |  BUFGMUX0| No   |   55 |  0.212     |  0.907      |
++-------------------------+----------+------+------+------------+-------------+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 6 secs 
+Total CPU time to PAR completion: 5 secs 
+
+Peak Memory Usage:  103 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Writing design to file p.ncd.
+
+
+PAR done.
+Release 6.3.03i Par G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+
+sunsil::  Tue Sep  1 13:51:51 2009
+
+
+par -w -t 1 p_map.ncd p.ncd p.pcf 
+
+
+Constraints file: p.pcf
+
+Loading device database for application Par from file "p_map.ncd".
+   "MOD_p" is an NCD, version 2.38, device xc3s1000, package ft256, speed -5
+Loading device for application Par from file '3s1000.nph' in environment
+/export/home/Xilinx63.
+Device speed data version:  ADVANCED 1.35 2004-11-11.
+
+
+Resolved that IOB <top_p_leds<0>> must be placed at site A5.
+Resolved that IOB <top_p_leds<1>> must be placed at site A7.
+Resolved that IOB <top_p_leds<2>> must be placed at site A3.
+Resolved that IOB <top_p_leds<3>> must be placed at site D5.
+Resolved that IOB <top_p_leds<4>> must be placed at site B4.
+Resolved that IOB <CLK> must be placed at site T9.
+Resolved that IOB <top_p_leds<5>> must be placed at site A4.
+Resolved that IOB <top_p_leds<6>> must be placed at site C5.
+Resolved that IOB <RESET> must be placed at site J16.
+Resolved that IOB <top_p_leds<7>> must be placed at site B5.
+
+
+Device utilization summary:
+
+   Number of External IOBs            10 out of 173     5%
+      Number of LOCed External IOBs   10 out of 10    100%
+
+   Number of Slices                   88 out of 7680    1%
+
+   Number of BUFGMUXs                  1 out of 8      12%
+
+
+
+Overall effort level (-ol):   Standard (default)
+Placer effort level (-pl):    Standard (default)
+Placer cost table entry (-t): 1
+Router effort level (-rl):    Standard (default)
+
+
+Phase 1.1
+Phase 1.1 (Checksum:9897db) REAL time: 2 secs 
+
+.
+Phase 3.8
+..
+Phase 3.8 (Checksum:995808) REAL time: 2 secs 
+
+Phase 4.5
+Phase 4.5 (Checksum:26259fc) REAL time: 2 secs 
+
+Phase 5.18
+Phase 5.18 (Checksum:2faf07b) REAL time: 2 secs 
+
+Writing design to file p.ncd.
+
+Total REAL time to Placer completion: 2 secs 
+Total CPU time to Placer completion: 2 secs 
+
+
+Phase 1: 605 unrouted;       REAL time: 3 secs 
+
+Phase 2: 542 unrouted;       REAL time: 4 secs 
+
+Phase 3: 127 unrouted;       REAL time: 4 secs 
+
+Phase 4: 0 unrouted;       REAL time: 5 secs 
+
+Total REAL time to Router completion: 5 secs 
+Total CPU time to Router completion: 5 secs 
+
+Generating "par" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++-------------------------+----------+------+------+------------+-------------+
+|        Clock Net        | Resource |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++-------------------------+----------+------+------+------------+-------------+
+|         CLK_BUFGP       |  BUFGMUX0| No   |   55 |  0.212     |  0.907      |
++-------------------------+----------+------+------+------------+-------------+
+
+
+   The Delay Summary Report
+
+   The SCORE FOR THIS DESIGN is: 151
+
+
+The NUMBER OF SIGNALS NOT COMPLETELY ROUTED for this design is: 0
+
+   The AVERAGE CONNECTION DELAY for this design is:        1.014
+   The MAXIMUM PIN DELAY IS:                               5.697
+   The AVERAGE CONNECTION DELAY on the 10 WORST NETS is:   2.473
+
+   Listing Pin Delays by value: (nsec)
+
+    d < 1.00   < d < 2.00  < d < 3.00  < d < 4.00  < d < 6.00  d >= 6.00
+   ---------   ---------   ---------   ---------   ---------   ---------
+         476          79           3           5          42           0
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 6 secs 
+Total CPU time to PAR completion: 5 secs 
+
+Peak Memory Usage:  103 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Writing design to file p.ncd.
+
+
+PAR done.
+Release 6.3.03i - Bitgen G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+
+Loading device database for application Bitgen from file "p.ncd".
+   "MOD_p" is an NCD, version 2.38, device xc3s1000, package ft256, speed -5
+Loading device for application Bitgen from file '3s1000.nph' in environment
+/export/home/Xilinx63.
+Opened constraints file p.pcf.
+
+Tue Sep  1 13:51:59 2009
+
+Running DRC.
+DRC detected 0 errors and 0 warnings.
+Creating bit map...
+Saving bit stream in "p.bit".
+Bitstream generation is complete.
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setSubmode -pffserial
+// *** BATCH CMD : addPromDevice -position 1 -size -1 -name "xc18v04"
+'1': Added Device xc18v04 successfully.
+----------------------------------------------------------------------
+// *** BATCH CMD : addCollection -name "p"
+// *** BATCH CMD : addDesign -version 0 -name "0000"
+// *** BATCH CMD : addDeviceChain -index 0
+// *** BATCH CMD : addDevice -position 1 -file "p.bit"
+'1': Loading file 'p.bit' ...
+INFO:iMPACT - Elapsed time =      0 sec.
+done.
+INFO:iMPACT:501 - '1': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : generate
+0x625f8 (402936) bytes loaded up from 0x0
+Using user-specified prom size of 512K
+Writing file "/home/sbosse/proj/conpro2/test/port_leds/out/obj/p.mcs".
+Writing file "/home/sbosse/proj/conpro2/test/port_leds/out/obj/p.prm".
+Writing file "/home/sbosse/proj/conpro2/test/port_leds/out/obj/p.sig".
+// *** BATCH CMD : setMode -bsfile
+// *** BATCH CMD : setCable -port svf -file "p_xc18v04.svf"
+// *** BATCH CMD : addDevice -position 1 -part "xc18v04"
+INFO:iMPACT:1777 - 
+   Reading /export/home/Xilinx63/xc18v00/data/xc18v04.bsd...
+INFO:iMPACT:501 - '1': Added Device xc18v04 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : setAttribute -position 1 -attr configFileName -value "p.mcs"
+'1': Loading file 'p.mcs' ...
+done.
+// *** BATCH CMD : identify
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM
+Elapsed time =      0 sec.
+// *** BATCH CMD : program -e -p 1 -v 
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Putting device in ISP mode...done.
+'1': Erasing device...done.
+'1': Erasure completed successfully.
+'1': Putting device in ISP mode...done.
+'1': Programming device...done.
+'1': Putting device in ISP mode...done.
+'1': Putting device in ISP mode...done.
+'1': Verifying device...done.
+'1': Verification completed successfully.
+'1': Calculated checksum matches expected checksum, 001dabda2
+'1': Putting device in ISP mode...done.
+'1': Setting user-programmable bits...
+done.
+'1': Putting device in ISP mode...done.
+'1': Programming completed successfully.
+Elapsed time =      3 sec.
+// *** BATCH CMD : setMode -bsfile
+// *** BATCH CMD : setCable -port svf -file "p_xc3s1000-ft256-5.svf"
+// *** BATCH CMD : addDevice -position 1 -file "p.bit"
+'1': Loading file 'p.bit' ...
+done.
+INFO:iMPACT:1777 - 
+   Reading /export/home/Xilinx63/spartan3/data/xc3s1000.bsd...
+WARNING:iMPACT:1049 - Startup Clock has been changed to 'JtagClk' in the
+   bitstream stored in memory,
+   but the original bitstream file remains unchanged.
+INFO:iMPACT:501 - '1': Added Device xc3s1000 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : identify
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM
+Elapsed time =      0 sec.
+// *** BATCH CMD : program -e -p 1 
+Validating chain...
+Boundary-scan chain validated successfully.
+'1':Programming  device...
+done.
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT:580 - '1':Checking done pin ....done.
+'1': Programmed successfully.
+Elapsed time =      0 sec.

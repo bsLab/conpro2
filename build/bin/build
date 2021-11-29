@@ -1,0 +1,58 @@
+#!/bin/bash
+
+
+source /opt/Vum-2.4/toolset/build.env
+INSTALLDIR=/opt/Conpro2
+
+if [ $# = 0 ]
+then
+    echo "Usage: build <targets>"
+    echo "Targets: all clean install version flexgen"
+    exit 1
+fi
+
+check ()
+{
+    if [ $? != 0 ]
+    then
+        echo "Abort due to errors building target."
+        exit 1
+    fi
+}
+
+
+for TARGET in $@
+do
+    echo "Building target [$TARGET] ..."
+    case $TARGET in
+        install)
+            $INSTALL -d $INSTALLDIR
+            check
+            $INSTALL -d $INSTALLDIR/bin
+            $INSTALL -C ../../scripts/conpro $INSTALLDIR/bin/
+            $INSTALL -C ../../scripts/wconpro $INSTALLDIR/bin/
+            $INSTALL -C ../../scripts/conpro.bat $INSTALLDIR/bin/
+            $INSTALL -C ../../scripts/wconpro.bat $INSTALLDIR/bin/
+            $RM -rf $INSTALLDIR/bin/wine
+            $INSTALL -d $INSTALLDIR/bin/wine
+            $INSTALL -d $INSTALLDIR/bin/win32
+            $CP -r ../../bin/win32/* $INSTALLDIR/bin/win32
+            check
+            $INSTALL -d $INSTALLDIR/bin/sol86
+            check
+            $CP -r ../../bin/sol86/* $INSTALLDIR/bin/sol86
+            check
+            $INSTALL -C ../../scripts/*.au3 $INSTALLDIR/bin/sol86
+            $INSTALL -C ../../scripts/autoitw2k $INSTALLDIR/bin/sol86
+            check
+            $INSTALL -d $INSTALLDIR/bin/lx86
+            check
+            $CP -r ../../bin/lx86/* $INSTALLDIR/bin/lx86
+            check
+            $INSTALL -C ../../scripts/*.au3 $INSTALLDIR/bin/lx86
+            $INSTALL -C ../../scripts/autoitw2k $INSTALLDIR/bin/lx86
+            check
+           ;;
+		
+    esac
+done

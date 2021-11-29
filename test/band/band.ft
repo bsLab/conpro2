@@ -1,0 +1,72 @@
+Block frame trees
+-----------------
+For process <main>:
+  MAIN#7669 {
+    SOURCE: band.cp lines 10..12
+    PARENT: NONE
+    TIME: (5..6) TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      ASSIGN#16603
+      ASSIGN#44358
+      ASSIGN#65705
+      ASSIGN#17429
+      BRANCH#39314
+      ]
+      ASSIGN#16603 {
+        SOURCE: band.cp line 10
+        PARENT: MAIN#7669
+        TIME: 1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      ASSIGN#44358 {
+        SOURCE: band.cp line 10
+        PARENT: MAIN#7669
+        TIME: 1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      ASSIGN#65705 {
+        SOURCE: band.cp line 11
+        PARENT: MAIN#7669
+        TIME: 1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      ASSIGN#17429 {
+        SOURCE: band.cp line 11
+        PARENT: MAIN#7669
+        TIME: 1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+      BRANCH#39314 {
+        SOURCE: band.cp line 12
+        PARENT: MAIN#7669
+        TIME: (1..2) TU
+        TYPE: BRANCH
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          BRANCH_TRUE#2877
+          ]
+          BRANCH_TRUE#2877 {
+            SOURCE: band.cp line 12
+            PARENT: BRANCH#39314
+            TIME: 1 TU
+            TYPE: CONDITIONAL
+            PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+            CHILDS [
+              ASSIGN#85449
+              ]
+              ASSIGN#85449 {
+                SOURCE: band.cp line 12
+                PARENT: BRANCH_TRUE#2877
+                TIME: 1 TU
+                TYPE: BASIC BLOCK
+                PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+              }
+          }
+      }
+  }

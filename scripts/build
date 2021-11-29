@@ -1,0 +1,20 @@
+#!/bin/bash
+source /opt/Vum-2.4/toolset/build.env
+INSTALLDIR=/opt/Conpro2
+TOP=`pwd`
+
+SYNDK=${TOP%/scripts}
+
+for TARGET in $@
+do
+    echo "Building target [$TARGET] ..."
+    case $TARGET in
+      install) 
+        $INSTALL -d $INSTALLDIR/bin
+        $INSTALL -d $INSTALLDIR/scripts
+        $INSTALL -d $INSTALLDIR/help
+        $INSTALL -C conpro.au3 Table.au3 GUIScrollbars*.au3 $INSTALLDIR/scripts 
+        $INSTALL -C wconpro $INSTALLDIR/bin
+        ;;
+    esac
+done

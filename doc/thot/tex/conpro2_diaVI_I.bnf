@@ -1,0 +1,2 @@
+dataobj-definition ::= obj-type ( name // ',' ) ':' data-type
+  [ 'with' parameter-list ] ';' .  

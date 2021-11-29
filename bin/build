@@ -1,0 +1,47 @@
+#!/bin/bash
+
+
+source /opt/Vum-2.4/toolset/build.env
+INSTALLDIR=/opt/Conpro2
+
+if [ $# = 0 ]
+then
+    echo "Usage: build <targets>"
+    echo "Targets: all clean install version"
+    exit 1
+fi
+
+check ()
+{
+    if [ $? != 0 ]
+    then
+        echo "Abort due to errors building target."
+        exit 1
+    fi
+}
+
+
+for TARGET in $@
+do
+    echo "Building target [$TARGET] ..."
+    case $TARGET in
+        all)
+            ;;
+        clean)  
+            ;;
+        version)  
+            ;;
+        install)
+            $INSTALL -d $INSTALLDIR
+            $INSTALL -d $INSTALLDIR/bin
+            $INSTALL -d $INSTALLDIR/bin/win32
+            $INSTALL -d $INSTALLDIR/bin/lx86
+            $INSTALL -d $INSTALLDIR/bin/sol86
+            $INSTALL -C win32/* $INSTALLDIR/bin/win32
+            $INSTALL -C lx86/* $INSTALLDIR/bin/lx86
+            $INSTALL -C sol86/* $INSTALLDIR/bin/sol86
+            check
+            ;;
+		
+    esac
+done

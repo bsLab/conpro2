@@ -1,0 +1,10 @@
+  signal debug: out std_logic_vector(7 downto 0)
+  -- debug(0) <= QUEUE_q_lcd1_tx_LOCKED;
+  debug(0) <= LCD_lcd1_lcd1_tx_LOCKed;
+  debug(1) <= QUEUE_q_lcd1_tx_FUN_print_WE;
+  debug(2) <= QUEUE_q_lcd1_tx_FULL;
+  debug(3) <= QUEUE_q_lcd1_tx_lcd1_tx_RE;
+  debug(4) <= QUEUE_q_lcd1_tx_EMPTY;
+  debug(5) <= LCD_lcd1_lcd1_tx_WE;
+  debug(6) <= LCD_lcd1_TX_BUSY;
+  debug(7) <= LCD_lcd1_TX_COMPL;

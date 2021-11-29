@@ -1,0 +1,1 @@
+argument-type ::= dir name ':' object-type '*' data-type .

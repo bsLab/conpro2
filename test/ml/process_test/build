@@ -1,0 +1,13 @@
+#!/bin/bash
+
+dov ()
+{
+  echo $@
+  $@
+}
+
+CMD="vumc -g -I /opt/Conpro2/lib -c pro.ml"
+dov $CMD
+CMD="vumc -g -I /opt/Conpro2/lib -o pro threads.cma buffer.cma unix.cma conpro.cma pro.cmo"
+dov $CMD
+

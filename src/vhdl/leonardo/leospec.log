@@ -1,0 +1,189 @@
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Session history will be logged to file '/home/sbosse/proj/conpro2/src/vhdl/leonardo/leospec.his'
+--
+-- Welcome to LeonardoSpectrum Level 3
+-- Run Started On Fri Dec 19 11:31:38 AM CET 2008
+--
+No constraint for register2register
+No constraint for input2register
+No constraint for input2output
+No constraint for register2output
+Info: setting bubble_tristates to FALSE
+FALSE
+Reading library file `/export/home/leonardo/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading file /export/home/leonardo/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl into library work
+-- Reading file /export/home/leonardo/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/leonardo/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/leonardo/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/leonardo/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading entity MOD_type_conv into library work
+-- Loading architecture main of MOD_type_conv into library work
+Info: Finished reading design
+.
+-- Reading vhdl file /home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl into library work
+-- Loading entity MOD_type_conv into library work
+"/home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl",line 6: Warning, replacing MOD_type_conv in HDL library work.
+-- Loading architecture main of MOD_type_conv into library work
+"/home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl",line 112: Warning, replacing main of entity MOD_type_conv.
+-- Compiling root entity MOD_type_conv(main)
+Info, Command 'read' finished successfully
+-- Boundary optimization.
+-- Start pre-optimization for design .work.MOD_type_conv.main
+Info, Command 'pre_optimize' finished successfully
+-- Start pre-optimization for design .work.MOD_type_conv.main
+Info, Command 'pre_optimize' finished successfully
+Info, Library sxlib is already loaded. Setting it as target
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading vhdl file /home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl into library work
+-- Loading entity MOD_type_conv into library work
+"/home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl",line 6: Warning, replacing MOD_type_conv in HDL library work.
+-- Loading architecture main of MOD_type_conv into library work
+"/home/sbosse/proj/conpro2/src/vhdl/leonardo/type_conv.vhdl",line 112: Warning, replacing main of entity MOD_type_conv.
+-- Compiling root entity MOD_type_conv(main)
+-- Info, replacing MOD_type_conv(main)
+Info, Command 'read' finished successfully
+-- Boundary optimization.
+-- Start pre-optimization for design .work.MOD_type_conv.main
+Info, Command 'pre_optimize' finished successfully
+-- Start pre-optimization for design .work.MOD_type_conv.main
+Info, Command 'pre_optimize' finished successfully
+Info: Finished reading design
+.work.MOD_type_conv.main
+-- Optimizing netlist .work.MOD_type_conv.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+-- Final Design Rule Check..
+Info, Command 'optimize' finished successfully
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_type_conv.main
+No critical paths to optimize at this level
+Info, Command 'optimize_timing' finished successfully
+
+*******************************************************
+
+Cell: MOD_type_conv    View: main    Library: work
+
+*******************************************************
+
+
+ Cell         Library  References     Total Area
+
+an12_x1       sxlib     7 x      2     12 gates
+inv_x1        sxlib     9 x      1      9 gates
+na2_x1        sxlib     2 x      1      3 gates
+na3_x1        sxlib     2 x      2      3 gates
+na4_x1        sxlib     1 x      2      2 gates
+nao22_x1      sxlib     1 x      2      2 gates
+nmx2_x1       sxlib     4 x      2      9 gates
+no2_x1        sxlib     5 x      1      6 gates
+no4_x1        sxlib     2 x      2      4 gates
+noa22_x1      sxlib     1 x      2      2 gates
+noa2a22_x1    sxlib     2 x      2      5 gates
+nxr2_x1       sxlib    25 x      3     75 gates
+oa22_x2       sxlib     1 x      2      2 gates
+on12_x1       sxlib     2 x      2      3 gates
+sff1_x4       sxlib     4 x      6     24 gates
+xr2_x1        sxlib     3 x      3      9 gates
+zero_x0       sxlib     1 x      1      1 gates
+
+ Number of ports :                       5
+ Number of nets :                       74
+ Number of instances :                  72
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     172
+ Number of accumulated instances :      72
+Info, Command 'report_area' finished successfully
+Info: setting report_delay_slack_threshold to 0.000000
+0.000000
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK                  : 409.4 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                               GATE              ARRIVAL              LOAD
+------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                             0.00 (ideal)
+
+
+reg_I4(1)/q                        sff1_x4     0.00  0.70 dn             0.22
+ix89/nq                            nxr2_x1     0.45  1.15 dn             0.04
+ix324/nq                           nxr2_x1     0.74  1.89 dn             0.14
+ix153/nq                           nxr2_x1     0.58  2.47 dn             0.07
+ix320/nq                           nxr2_x1     0.60  3.07 dn             0.09
+ix346/q                            xr2_x1      0.50  3.56 dn             0.06
+ix344/nq                           nxr2_x1     0.48  4.05 dn             0.06
+ix203/nq                           nxr2_x1     0.53  4.58 dn             0.07
+ix374/nq                           nxr2_x1     0.58  5.16 dn             0.08
+ix372/nq                           nxr2_x1     0.50  5.66 dn             0.06
+ix370/q                            xr2_x1      0.50  6.16 dn             0.07
+ix243/nq                           nxr2_x1     0.55  6.71 dn             0.07
+ix245/nq                           nxr2_x1     0.56  7.27 dn             0.07
+ix223/q                            on12_x1     0.73  8.00 dn             0.15
+ix229/nq                           nao22_x1    0.25  8.25 up             0.03
+ix394/q                            on12_x1     0.34  8.60 dn             0.04
+ix390/nq                           nxr2_x1     0.48  9.08 dn             0.06
+ix289/nq                           nxr2_x1     0.50  9.58 dn             0.07
+ix386/nq                           nxr2_x1     0.55  10.13 dn             0.07
+ix293/nq                           nxr2_x1     0.57  10.71 dn             0.08
+ix425/nq                           no2_x1      0.55  11.25 up             0.10
+ix422/nq                           noa22_x1    0.32  11.57 dn             0.03
+ix305/q                            an12_x1     0.32  11.90 up             0.04
+ix419/nq                           nxr2_x1     0.50  12.40 up             0.06
+ix329/nq                           nxr2_x1     0.50  12.90 up             0.06
+ix416/nq                           nxr2_x1     0.41  13.31 up             0.07
+ix412/nq                           nxr2_x1     0.38  13.69 up             0.06
+ix361/nq                           nxr2_x1     0.42  14.11 up             0.04
+ix438/nq                           nxr2_x1     0.49  14.60 up             0.06
+ix365/nq                           nxr2_x1     0.53  14.29 dn             0.07
+ix445/nq                           noa2a22_x1  0.35  14.64 up             0.04
+ix387/q                            xr2_x1      0.39  15.03 up             0.03
+ix380/nq                           na4_x1      0.46  15.48 dn             0.03
+ix395/nq                           no4_x1      0.61  16.09 up             0.01
+TEST2/                                         0.00  16.09 up             0.00
+data arrival time                                    16.50
+
+data required time                                not specified
+------------------------------------------------------------------------------
+data required time                                not specified
+data arrival time                                    16.50
+                                                  ----------
+                                               unconstrained path
+------------------------------------------------------------------------------
+
+
+Info, Command 'report_delay' finished successfully
+FALSE
+AutoWrite args are : type_conv_0.vhd
+-- Writing file type_conv_0.vhd
+Info, Command 'auto_write' finished successfully
+Info: Finished Synthesis run

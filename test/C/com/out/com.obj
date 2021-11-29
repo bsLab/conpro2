@@ -1,0 +1,65 @@
+-- CONPRO: Hardware Synthesis with an Imperative High Level Multiprocess Approach
+--         (c) 2006-2010 by BSSLAB, Dr. Stefan Bosse
+--         Version: 2.1 Revision: D149 Genetic size: 2681845
+--         Compile date: Wed Apr 28 18:22:40 CEST 2010
+--         Compiled by:  sbosse
+--         Compiled on:  SunOS sunsil 5.10 Generic_137137-09 sun4u sparc SUNW,Sun-Blade-2500
+
+export:
+begin
+  register stat_led: L1
+  component dev_io: dev_io_t
+end
+
+data:
+begin
+  type uart
+  const STATUS_ACT: 3
+  object interpreter: Process.process
+  type mutex
+  register sys_status: L3
+  register stat_led: L1
+  register sys_status_next: L3
+  process sys_status_proc
+  type timer
+  type system
+  process com_tx
+  object watch_timer: Timer.timer
+  object sys: System.system
+  signal dev_io_TX: L1
+  const STATUS_ERR: 2
+  object sys_status_proc: Process.process
+  process interpreter
+  process com_tmo
+  register RET_FUN_request_d2: L8
+  object com_rx: Process.process
+  register ARG_FUN_request_d1: L8
+  register com_timeout: B
+  type event
+  process main
+  function request(d1)
+  object main: Process.process
+  object com: Uart.uart
+  type dev_io_t
+  value CLOCK: 20
+  object com_tmo: Process.process
+  queue rx_q: L8
+  object LOCK_FUN_request: Mutex.mutex
+  type status_types
+  object FUN_request: Process.process
+  type process
+  const STATUS_OK: 1
+  process FUN_request
+  object com_tx: Process.process
+  queue tx_q: L8
+  component dev_io: dev_io_t
+  object rep: Event.event
+  process com_rx
+  register rep_d: L8
+  signal dev_io_RX: L1
+  value REP: P
+  const STATUS_EV: 4
+  value REQ: R
+  const STATUS_DOWN: 5
+end
+

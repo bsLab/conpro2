@@ -1,0 +1,53 @@
+open Str
+
+let err str = print_string str; print_newline (); Pervasives.exit 0
+
+let read path =
+  let f_open path =
+    try open_in path
+    with _ -> err "Can't open file." in
+  let ic = f_open path in
+  let mutable more = true in
+  let mutable code = [] in
+  while more 
+  do
+    more <- protects (code <- code @ [input_line ic]);    
+  done;
+  close_in ic;
+  code
+
+let write path code =
+  let f_open path =
+    try open_out path
+    with _ -> err "Can't open file." in
+  let oc = f_open path in
+  List.iter (fun line ->
+    output_string oc line; output_string oc "\n";
+    ) code;
+  close_out oc
+
+
+let conv code =
+  List.map (fun line ->
+    let r1 = regexp "let[ ]*\([a-zA-Z0-9_']+\)[ ]*=[ ]*ref " in
+    let line' = global_replace r1 "let mutable \1= " line in
+    let r2 = regexp ":=" in
+    let line' = global_replace r2 "<-" line' in
+    let r3 = regexp "!\([a-zA-Z0-9_'()]+\)" in
+    let line' = global_replace r3 "\1" line' in
+    line'
+    ) code
+ 
+let print code =
+  List.iter (fun line ->
+    print_string line; print_newline ()
+    ) code
+       
+let _ =
+  let args = List.tl (Array.to_list Sys.argv) in
+  List.iter (fun file ->
+    let code = read file in
+    let code' = conv code in
+    write file code'
+    ) args
+  

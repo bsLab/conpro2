@@ -1,0 +1,3 @@
+process-array ::= ( 'array' name ':' 'process' '[' number ']' 'of' ) \>
+                  ( 'begin' process-body 'end' ) \>
+                  ( [ 'with' parameter-list ] ';' ) .

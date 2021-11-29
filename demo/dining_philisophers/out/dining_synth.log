@@ -1,0 +1,533 @@
+/export/home/leonardo/bin/SunOS5/spectrum -f dining.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj'
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/leonardo/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/leonardo/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl into library work
+-- Reading file /export/home/leonardo/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/leonardo/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/leonardo/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/leonardo/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading entity dining_main into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl",line 38: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  001
+  S_i2_for_loop  010
+S_i2_for_loop_cond  011
+       S_i3_fun  100
+S_i2_for_loop_incr  101
+       S_i4_fun  110
+     S_main_end  111
+
+-- Loading architecture main of dining_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl into library work
+-- Loading entity dining_init into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl",line 36: Info, Enumerated type pro_states with 7 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_init_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  -11
+S_i1_for_loop_incr  100
+       S_i3_fun  101
+     S_init_end  110
+
+-- Loading architecture main of dining_init into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl into library work
+-- Loading entity dining_philosopher_4 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl",line 39: Info, Enumerated type pro_states with 10 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_4_start  0000
+       S_i2_fun  0001
+       S_i3_fun  -010
+ S_i4_bind_to_5  -011
+   S_i6_waitfor  -100
+S_i6_waitfor_loop  -101
+ S_i7_bind_to_8  -110
+       S_i9_fun  -111
+      S_i10_fun  1000
+S_philosopher_4_end  1001
+
+-- Loading architecture main of dining_philosopher_4 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl into library work
+-- Loading entity dining_philosopher_3 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl",line 41: Info, Enumerated type pro_states with 11 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_3_start  0000
+       S_i1_fun  0001
+       S_i3_fun  0010
+       S_i4_fun  -011
+ S_i5_bind_to_6  -100
+   S_i7_waitfor  -101
+S_i7_waitfor_loop  -110
+ S_i8_bind_to_9  -111
+      S_i10_fun  1000
+      S_i11_fun  1001
+S_philosopher_3_end  1010
+
+-- Loading architecture main of dining_philosopher_3 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl into library work
+-- Loading entity dining_philosopher_2 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl",line 41: Info, Enumerated type pro_states with 11 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_2_start  0000
+       S_i1_fun  0001
+       S_i3_fun  0010
+       S_i4_fun  -011
+ S_i5_bind_to_6  -100
+   S_i7_waitfor  -101
+S_i7_waitfor_loop  -110
+ S_i8_bind_to_9  -111
+      S_i10_fun  1000
+      S_i11_fun  1001
+S_philosopher_2_end  1010
+
+-- Loading architecture main of dining_philosopher_2 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl into library work
+-- Loading entity dining_philosopher_1 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl",line 41: Info, Enumerated type pro_states with 11 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_1_start  0000
+       S_i1_fun  0001
+       S_i3_fun  0010
+       S_i4_fun  -011
+ S_i5_bind_to_6  -100
+   S_i7_waitfor  -101
+S_i7_waitfor_loop  -110
+ S_i8_bind_to_9  -111
+      S_i10_fun  1000
+      S_i11_fun  1001
+S_philosopher_1_end  1010
+
+-- Loading architecture main of dining_philosopher_1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl into library work
+-- Loading entity dining_philosopher_0 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl",line 41: Info, Enumerated type pro_states with 11 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_0_start  0000
+       S_i1_fun  0001
+       S_i3_fun  0010
+       S_i4_fun  -011
+ S_i5_bind_to_6  -100
+   S_i7_waitfor  -101
+S_i7_waitfor_loop  -110
+ S_i8_bind_to_9  -111
+      S_i10_fun  1000
+      S_i11_fun  1001
+S_philosopher_0_end  1010
+
+-- Loading architecture main of dining_philosopher_0 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl into library work
+-- Loading entity MOD_dining into library work
+-- Loading architecture main of MOD_dining into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 168: Warning, signal PRO_philosopher_0_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 172: Warning, signal PRO_philosopher_1_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 176: Warning, signal PRO_philosopher_2_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 180: Warning, signal PRO_philosopher_3_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 184: Warning, signal PRO_philosopher_4_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 219: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 238: Warning, signal SEMA_fork_0_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 239: Warning, signal SEMA_fork_0_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 271: Warning, signal SEMA_fork_1_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 272: Warning, signal SEMA_fork_1_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 304: Warning, signal SEMA_fork_2_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 305: Warning, signal SEMA_fork_2_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 337: Warning, signal SEMA_fork_3_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 338: Warning, signal SEMA_fork_3_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 370: Warning, signal SEMA_fork_4_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 371: Warning, signal SEMA_fork_4_init_PRIO is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl into library work
+-- Loading entity dining_main into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl",line 17: Warning, replacing dining_main in HDL library work.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl",line 38: Info, Enumerated type pro_states with 8 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_main_start  000
+       S_i1_fun  001
+  S_i2_for_loop  010
+S_i2_for_loop_cond  011
+       S_i3_fun  100
+S_i2_for_loop_incr  101
+       S_i4_fun  110
+     S_main_end  111
+
+-- Loading architecture main of dining_main into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl",line 33: Warning, replacing main of entity dining_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl into library work
+-- Loading entity dining_init into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl",line 17: Warning, replacing dining_init in HDL library work.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl",line 36: Info, Enumerated type pro_states with 7 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[2-0]
+================================
+   S_init_start  000
+  S_i1_for_loop  001
+S_i1_for_loop_cond  010
+       S_i2_fun  -11
+S_i1_for_loop_incr  100
+       S_i3_fun  101
+     S_init_end  110
+
+-- Loading architecture main of dining_init into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl",line 31: Warning, replacing main of entity dining_init.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl into library work
+-- Loading entity dining_philosopher_4 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl",line 17: Warning, replacing dining_philosopher_4 in HDL library work.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl",line 39: Info, Enumerated type pro_states with 10 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_4_start  0000
+       S_i2_fun  0001
+       S_i3_fun  -010
+ S_i4_bind_to_5  -011
+   S_i6_waitfor  -100
+S_i6_waitfor_loop  -101
+ S_i7_bind_to_8  -110
+       S_i9_fun  -111
+      S_i10_fun  1000
+S_philosopher_4_end  1001
+
+-- Loading architecture main of dining_philosopher_4 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl",line 34: Warning, replacing main of entity dining_philosopher_4.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl into library work
+-- Loading entity dining_philosopher_3 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl",line 17: Warning, replacing dining_philosopher_3 in HDL library work.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl",line 41: Info, Enumerated type pro_states with 11 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_3_start  0000
+       S_i1_fun  0001
+       S_i3_fun  0010
+       S_i4_fun  -011
+ S_i5_bind_to_6  -100
+   S_i7_waitfor  -101
+S_i7_waitfor_loop  -110
+ S_i8_bind_to_9  -111
+      S_i10_fun  1000
+      S_i11_fun  1001
+S_philosopher_3_end  1010
+
+-- Loading architecture main of dining_philosopher_3 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl",line 36: Warning, replacing main of entity dining_philosopher_3.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl into library work
+-- Loading entity dining_philosopher_2 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl",line 17: Warning, replacing dining_philosopher_2 in HDL library work.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl",line 41: Info, Enumerated type pro_states with 11 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_2_start  0000
+       S_i1_fun  0001
+       S_i3_fun  0010
+       S_i4_fun  -011
+ S_i5_bind_to_6  -100
+   S_i7_waitfor  -101
+S_i7_waitfor_loop  -110
+ S_i8_bind_to_9  -111
+      S_i10_fun  1000
+      S_i11_fun  1001
+S_philosopher_2_end  1010
+
+-- Loading architecture main of dining_philosopher_2 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl",line 36: Warning, replacing main of entity dining_philosopher_2.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl into library work
+-- Loading entity dining_philosopher_1 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl",line 17: Warning, replacing dining_philosopher_1 in HDL library work.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl",line 41: Info, Enumerated type pro_states with 11 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_1_start  0000
+       S_i1_fun  0001
+       S_i3_fun  0010
+       S_i4_fun  -011
+ S_i5_bind_to_6  -100
+   S_i7_waitfor  -101
+S_i7_waitfor_loop  -110
+ S_i8_bind_to_9  -111
+      S_i10_fun  1000
+      S_i11_fun  1001
+S_philosopher_1_end  1010
+
+-- Loading architecture main of dining_philosopher_1 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl",line 36: Warning, replacing main of entity dining_philosopher_1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl into library work
+-- Loading entity dining_philosopher_0 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl",line 17: Warning, replacing dining_philosopher_0 in HDL library work.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl",line 41: Info, Enumerated type pro_states with 11 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+S_philosopher_0_start  0000
+       S_i1_fun  0001
+       S_i3_fun  0010
+       S_i4_fun  -011
+ S_i5_bind_to_6  -100
+   S_i7_waitfor  -101
+S_i7_waitfor_loop  -110
+ S_i8_bind_to_9  -111
+      S_i10_fun  1000
+      S_i11_fun  1001
+S_philosopher_0_end  1010
+
+-- Loading architecture main of dining_philosopher_0 into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl",line 36: Warning, replacing main of entity dining_philosopher_0.
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl into library work
+-- Loading entity MOD_dining into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 17: Warning, replacing MOD_dining in HDL library work.
+-- Loading architecture main of MOD_dining into library work
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 168: Warning, signal PRO_philosopher_0_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 172: Warning, signal PRO_philosopher_1_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 176: Warning, signal PRO_philosopher_2_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 180: Warning, signal PRO_philosopher_3_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 184: Warning, signal PRO_philosopher_4_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 219: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 238: Warning, signal SEMA_fork_0_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 239: Warning, signal SEMA_fork_0_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 271: Warning, signal SEMA_fork_1_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 272: Warning, signal SEMA_fork_1_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 304: Warning, signal SEMA_fork_2_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 305: Warning, signal SEMA_fork_2_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 337: Warning, signal SEMA_fork_3_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 338: Warning, signal SEMA_fork_3_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 370: Warning, signal SEMA_fork_4_init_QUEUED is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 371: Warning, signal SEMA_fork_4_init_PRIO is never used.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 34: Warning, replacing main of entity MOD_dining.
+-- Compiling root entity MOD_dining(main)
+-- Compiling entity dining_philosopher_0(main)
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl",line 54: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl",line 55: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl",line 152: Warning, EVENT_ev_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl",line 154: Warning, SEMA_fork_GD should be declared on the sensitivity list of the process.
+-- Compiling entity dining_philosopher_1(main)
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl",line 54: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl",line 55: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl",line 152: Warning, EVENT_ev_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl",line 154: Warning, SEMA_fork_GD should be declared on the sensitivity list of the process.
+-- Compiling entity dining_philosopher_2(main)
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl",line 54: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl",line 55: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl",line 152: Warning, EVENT_ev_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl",line 154: Warning, SEMA_fork_GD should be declared on the sensitivity list of the process.
+-- Compiling entity dining_philosopher_3(main)
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl",line 54: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl",line 55: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl",line 152: Warning, EVENT_ev_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl",line 154: Warning, SEMA_fork_GD should be declared on the sensitivity list of the process.
+-- Compiling entity dining_philosopher_4(main)
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl",line 51: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl",line 52: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl",line 141: Warning, SEMA_fork_GD should be declared on the sensitivity list of the process.
+-- Compiling entity dining_init(main)
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl",line 45: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl",line 46: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl",line 127: Warning, SEMA_fork_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl",line 132: Warning, EVENT_ev_GD should be declared on the sensitivity list of the process.
+-- Compiling entity dining_main(main)
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl",line 48: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl",line 49: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl",line 145: Warning, EVENT_ev_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 1875: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 1882: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 1889: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 1896: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 1903: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining.vhdl",line 1910: Info, conditions are mutually exclusive; resolve without priority.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.dining_philosopher_0.main_unfold_2372
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_0.vhdl", line 210:Info, Inferred counter instance 'TEMP_0' of type 'counter_dn_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.dining_philosopher_1.main_unfold_2373
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_1.vhdl", line 210:Info, Inferred counter instance 'TEMP_0' of type 'counter_dn_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.dining_philosopher_2.main_unfold_2374
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_2.vhdl", line 210:Info, Inferred counter instance 'TEMP_0' of type 'counter_dn_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.dining_philosopher_3.main_unfold_2375
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_3.vhdl", line 210:Info, Inferred counter instance 'TEMP_0' of type 'counter_dn_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.dining_philosopher_4.main_unfold_2376
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_philosopher_4.vhdl", line 195:Info, Inferred counter instance 'TEMP_0' of type 'counter_dn_sload_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.dining_init.main
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_init.vhdl", line 160:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.dining_main.main_unfold_1741
+"/home/sbosse/proj/conpro2/demo/dining_philisophers/out/obj/../dining_main.vhdl", line 175:Info, Inferred counter instance 'LOOP_i_1' of type 'counter_up_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.MOD_dining.main
+-- Start pre-optimization for design .work.dining_philosopher_0.main_unfold_2372
+-- Start pre-optimization for design .work.dining_philosopher_1.main_unfold_2373
+-- Start pre-optimization for design .work.dining_philosopher_2.main_unfold_2374
+-- Start pre-optimization for design .work.dining_philosopher_3.main_unfold_2375
+-- Start pre-optimization for design .work.dining_philosopher_4.main_unfold_2376
+-- Start pre-optimization for design .work.dining_init.main
+-- Start pre-optimization for design .work.dining_main.main_unfold_1741
+-- Start pre-optimization for design .work.MOD_dining.main
+-- Optimizing netlist .work.MOD_dining.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:04 Mapping
+Re-checking DRC after adjustments
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_dining.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_dining    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib     3 x      2      5 gates
+a3_x2           sxlib     2 x      2      4 gates
+a4_x2           sxlib     3 x      2      7 gates
+an12_x1         sxlib    71 x      2    121 gates
+an12_x4         sxlib     1 x      3      3 gates
+ao22_x2         sxlib    15 x      2     30 gates
+inv_x1          sxlib   217 x      1    217 gates
+inv_x2          sxlib     6 x      1      6 gates
+inv_x4          sxlib     2 x      1      3 gates
+na2_x1          sxlib    76 x      1     99 gates
+na2_x4          sxlib     4 x      2      9 gates
+na3_x1          sxlib    71 x      2    121 gates
+na3_x4          sxlib     4 x      3     11 gates
+na4_x1          sxlib    44 x      2     88 gates
+na4_x4          sxlib     2 x      3      7 gates
+nao22_x1        sxlib    26 x      2     52 gates
+nao22_x4        sxlib     1 x      3      3 gates
+nao2o22_x1      sxlib    12 x      2     28 gates
+nmx2_x1         sxlib    57 x      2    131 gates
+no2_x1          sxlib   141 x      1    183 gates
+no3_x1          sxlib    61 x      2    104 gates
+no3_x4          sxlib     1 x      3      3 gates
+no4_x1          sxlib    44 x      2     88 gates
+no4_x4          sxlib     1 x      3      3 gates
+noa22_x1        sxlib    57 x      2    114 gates
+noa22_x4        sxlib     3 x      3     10 gates
+noa2a22_x1      sxlib    18 x      2     41 gates
+noa2a2a23_x1    sxlib     1 x      3      3 gates
+noa2ao222_x1    sxlib    16 x      2     37 gates
+noa3ao322_x1    sxlib     1 x      3      3 gates
+noa3ao322_x4    sxlib     1 x      4      4 gates
+nxr2_x1         sxlib   114 x      3    342 gates
+o2_x2           sxlib    10 x      2     17 gates
+o3_x2           sxlib     4 x      2      8 gates
+o4_x2           sxlib     3 x      2      7 gates
+oa22_x2         sxlib    22 x      2     44 gates
+oa3ao322_x2     sxlib     2 x      4      7 gates
+on12_x1         sxlib    62 x      2    105 gates
+on12_x4         sxlib     2 x      3      5 gates
+one_x0          sxlib     1 x      1      1 gates
+sff1_x4         sxlib    74 x      6    444 gates
+sff2_x4         sxlib   161 x      8   1288 gates
+xr2_x1          sxlib    34 x      3    102 gates
+zero_x0         sxlib     1 x      1      1 gates
+
+ Number of ports :                      12
+ Number of nets :                     1454
+ Number of instances :                1452
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    3909
+ Number of accumulated instances :    1452
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK                  : 57.8 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                                  GATE              ARRIVAL              LOAD
+-------------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                                0.00 (ideal)
+
+
+PRO_MAP_init_reg_pro_state(0)/q                       sff1_x4     0.00  0.67 up             0.19
+ix99/nq                                               na2_x1      0.83  1.50 dn             0.18
+ix15512/nq                                            inv_x1      0.75  2.24 up             0.16
+ix15522/nq                                            nao22_x1    0.59  2.83 dn             0.10
+ix15544/q                                             a4_x2       0.69  3.52 dn             0.05
+ix15480/nq                                            noa3ao322_x4  1.03  4.55 up             0.13
+ix203/q                                               an12_x1     0.67  5.22 dn             0.13
+ix16752/nq                                            noa2a22_x1  0.50  5.72 up             0.05
+ix15641/nq                                            na3_x1      0.71  6.42 dn             0.10
+ix4837/nq                                             na2_x1      0.44  6.86 up             0.08
+ix16750/nq                                            inv_x1      0.26  7.13 dn             0.03
+ix16630/nq                                            na4_x1      0.43  7.55 up             0.05
+ix4847/nq                                             inv_x1      0.26  7.81 dn             0.03
+ix16747/nq                                            no3_x1      0.81  8.62 up             0.10
+ix16594/q                                             an12_x1     0.58  9.20 up             0.08
+ix5061/q                                              on12_x1     0.34  9.54 dn             0.03
+ix16567/nq                                            no2_x1      0.44  9.98 up             0.07
+ix16724/q                                             an12_x1     0.55  10.53 up             0.08
+ix5117/nq                                             na2_x1      0.34  10.87 dn             0.03
+ix16674/nq                                            no4_x1      0.77  11.64 up             0.06
+ix16672/nq                                            na2_x4      1.05  12.69 dn             0.57
+ix16670/nq                                            nxr2_x1     0.48  13.16 dn             0.04
+ix16668/nq                                            nmx2_x1     0.44  13.60 up             0.07
+ix4933/nq                                             nmx2_x1     0.46  14.06 dn             0.07
+ix16653/nq                                            nmx2_x1     0.44  14.50 up             0.07
+ix4977/nq                                             nmx2_x1     0.46  14.97 dn             0.07
+ix16868/nq                                            nmx2_x1     0.44  15.41 up             0.07
+ix5021/nq                                             nmx2_x1     0.38  15.79 dn             0.04
+ix16874/nq                                            nxr2_x1     0.38  16.17 dn             0.03
+ix5027/nq                                             no2_x1      0.38  16.55 up             0.02
+reg_SEMA_fork_0_LEVEL(7)/i1                           sff2_x4     0.00  16.55 up             0.00
+data arrival time                                                       16.55
+
+
+data required time                                                   not specified
+-------------------------------------------------------------------------------------------------
+data required time                                                   not specified
+data arrival time                                                       16.55
+                                                                     ----------
+                                                                  unconstrained path
+-------------------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD dining.vhd
+-- Writing file dining.vhd

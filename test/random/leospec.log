@@ -1,0 +1,8 @@
+/export/home/leonardo/bin/SunOS5/spectrum -f MOD_r.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Checking Security ...
+Error, cannot find file 'MOD_r.tcl'

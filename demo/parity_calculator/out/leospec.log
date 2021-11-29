@@ -1,0 +1,793 @@
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Session history will be logged to file '/home/sbosse/proj/conpro2/demo/parity_calculator/out/leospec.his'
+--
+-- Welcome to LeonardoSpectrum Level 3
+-- Run Started On Fri Dec 19 11:31:38 CET 2008
+--
+No constraint for register2register
+No constraint for input2register
+No constraint for input2output
+No constraint for register2output
+Info: setting bubble_tristates to FALSE
+FALSE
+Reading library file `/export/home/leonardo/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading file /export/home/leonardo/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl into library work
+-- Reading file /export/home/leonardo/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/leonardo/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/leonardo/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/leonardo/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading entity par_FUN_parity1 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl",line 36: Info, Enumerated type pro_states with 9 elements encoded as onehot.
+Encodings for pro_states values
+        value    pro_states[8-0]
+================================
+S_FUN_parity1_start  --------1
+    S_i1_assign  -------1-
+    S_i2_assign  ------1--
+  S_i3_for_loop  -----1---
+S_i3_for_loop_cond  ----1----
+    S_i4_assign  ---1-----
+S_i3_for_loop_incr  --1------
+    S_i5_assign  -1-------
+S_FUN_parity1_end  1--------
+
+-- Loading architecture main of par_FUN_parity1 into library work
+Info: Finished reading design
+.
+Info, Library sxlib is already loaded. Setting it as target
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl into library work
+-- Loading entity par_FUN_parity1 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl",line 17: Warning, replacing par_FUN_parity1 in HDL library work.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl",line 36: Info, Enumerated type pro_states with 9 elements encoded as onehot.
+Encodings for pro_states values
+        value    pro_states[8-0]
+================================
+S_FUN_parity1_start  --------1
+    S_i1_assign  -------1-
+    S_i2_assign  ------1--
+  S_i3_for_loop  -----1---
+S_i3_for_loop_cond  ----1----
+    S_i4_assign  ---1-----
+S_i3_for_loop_incr  --1------
+    S_i5_assign  -1-------
+S_FUN_parity1_end  1--------
+
+-- Loading architecture main of par_FUN_parity1 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl",line 29: Warning, replacing main of entity par_FUN_parity1.
+-- Compiling root entity par_FUN_parity1(main)
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl",line 47: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl",line 48: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl",line 341: Warning, index value 0 TO 255 could be out of prefix index constraint 63 DOWNTO 0.
+Info, Command 'read' finished successfully
+-- Boundary optimization.
+-- Start pre-optimization for design .work.par_FUN_parity1.main
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity1.vhdl", line 343:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sclear_clock_clk_en_8'
+Info, Command 'pre_optimize' finished successfully
+-- Start pre-optimization for design .work.par_FUN_parity1.main
+Info, Command 'pre_optimize' finished successfully
+Info: Finished reading design
+.work.par_FUN_parity1.main
+-- Optimizing netlist .work.par_FUN_parity1.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Info, Command 'optimize' finished successfully
+Using default wire table: small
+-- Start timing optimization for design .work.par_FUN_parity1.main
+No critical paths to optimize at this level
+Info, Command 'optimize_timing' finished successfully
+
+*******************************************************
+
+Cell: par_FUN_parity1    View: main    Library: work
+
+*******************************************************
+
+
+ Cell             Library  References     Total Area
+
+a2_x2             sxlib     1 x      2      2 gates
+an12_x1           sxlib    75 x      2    128 gates
+ao22_x2           sxlib     2 x      2      4 gates
+inv_x1            sxlib     8 x      1      8 gates
+na2_x1            sxlib     4 x      1      5 gates
+na4_x1            sxlib     4 x      2      8 gates
+nmx2_x1           sxlib     3 x      2      7 gates
+no2_x1            sxlib    11 x      1     14 gates
+no3_x1            sxlib    17 x      2     29 gates
+no4_x1            sxlib     1 x      2      2 gates
+no4_x4            sxlib     2 x      3      7 gates
+noa2a2a2a24_x1    sxlib    16 x      5     75 gates
+nxr2_x1           sxlib     2 x      3      6 gates
+o2_x2             sxlib    16 x      2     27 gates
+o3_x2             sxlib     1 x      2      2 gates
+oa22_x2           sxlib     1 x      2      2 gates
+on12_x1           sxlib     3 x      2      5 gates
+on12_x4           sxlib     2 x      3      5 gates
+sff1_x4           sxlib    10 x      6     60 gates
+sff2_x4           sxlib    72 x      8    576 gates
+
+ Number of ports :                      70
+ Number of nets :                      318
+ Number of instances :                 251
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     972
+ Number of accumulated instances :     251
+Info, Command 'report_area' finished successfully
+Info: setting report_delay_slack_threshold to 0.000000
+0.000000
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	conpro_system_clk    : 158.0 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                               GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                             0.00 (ideal)
+
+
+LOOP_i_0(1)/q                                      sff2_x4     0.00  0.78 dn             0.32
+ix2592/nq                                          na2_x1      0.76  1.55 up             0.18
+ix447/nq                                           no2_x1      0.61  2.16 dn             0.12
+ix2626/nq                                          noa2a2a2a24_x1  0.98  3.14 up             0.03
+ix523/nq                                           na4_x1      0.57  3.70 dn             0.03
+ix2604/nq                                          nmx2_x1     0.33  4.03 up             0.03
+ix1213/nq                                          nmx2_x1     0.37  4.40 dn             0.04
+ix2601/nq                                          nxr2_x1     0.41  4.81 dn             0.03
+ix2497/nq                                          no3_x1      0.44  5.25 up             0.02
+ix2499/q                                           oa22_x2     0.49  5.74 up             0.02
+reg_pl/i                                           sff1_x4     0.00  5.74 up             0.00
+data arrival time                                                    5.74
+
+
+data required time                                                not specified
+----------------------------------------------------------------------------------------------
+data required time                                                not specified
+data arrival time                                                    5.74
+                                                                  ----------
+                                                               unconstrained path
+----------------------------------------------------------------------------------------------
+
+
+Info, Command 'report_delay' finished successfully
+FALSE
+AutoWrite args are : par_FUN_parity1.vhd
+-- Writing file par_FUN_parity1.vhd
+Info, Command 'auto_write' finished successfully
+Info: Finished Synthesis run
+Info, Library sxlib is already loaded. Setting it as target
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity2.vhdl into library work
+-- Loading entity par_FUN_parity2 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity2.vhdl",line 36: Info, Enumerated type pro_states with 6 elements encoded as onehot.
+Encodings for pro_states values
+        value    pro_states[5-0]
+================================
+S_FUN_parity2_start  -----1
+S_BLOCKBOUND5_1  ----1-
+S_i3_for_loop_cond  ---1--
+S_BLOCKBOUND3_1  --1---
+S_BLOCKBOUND1_1  -1----
+S_FUN_parity2_end  1-----
+
+-- Loading architecture main of par_FUN_parity2 into library work
+-- Compiling root entity par_FUN_parity2(main)
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity2.vhdl",line 44: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity2.vhdl",line 45: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity2.vhdl",line 325: Warning, index value 0 TO 255 could be out of prefix index constraint 63 DOWNTO 0.
+Info, Command 'read' finished successfully
+-- Boundary optimization.
+-- Start pre-optimization for design .work.par_FUN_parity2.main
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity2.vhdl", line 324:Info, Inferred counter instance 'LOOP_i_1' of type 'counter_up_sclear_clock_clk_en_8'
+Info, Command 'pre_optimize' finished successfully
+-- Start pre-optimization for design .work.par_FUN_parity2.main
+Info, Command 'pre_optimize' finished successfully
+Info: Finished reading design
+.work.par_FUN_parity2.main
+-- Optimizing netlist .work.par_FUN_parity2.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Info, Command 'optimize' finished successfully
+Using default wire table: small
+-- Start timing optimization for design .work.par_FUN_parity2.main
+No critical paths to optimize at this level
+Info, Command 'optimize_timing' finished successfully
+
+*******************************************************
+
+Cell: par_FUN_parity2    View: main    Library: work
+
+*******************************************************
+
+
+ Cell             Library  References     Total Area
+
+a2_x2             sxlib     1 x      2      2 gates
+an12_x1           sxlib    74 x      2    126 gates
+ao22_x2           sxlib     2 x      2      4 gates
+inv_x1            sxlib    28 x      1     28 gates
+na2_x1            sxlib     4 x      1      5 gates
+na2_x4            sxlib     1 x      2      2 gates
+na4_x1            sxlib     4 x      2      8 gates
+nao2o22_x1        sxlib     2 x      2      5 gates
+nmx2_x1           sxlib     4 x      2      9 gates
+no2_x1            sxlib     7 x      1      9 gates
+no2_x4            sxlib     1 x      2      2 gates
+no3_x1            sxlib    13 x      2     22 gates
+no4_x1            sxlib     1 x      2      2 gates
+no4_x4            sxlib     2 x      3      7 gates
+noa2a2a23_x1      sxlib    12 x      3     40 gates
+noa2a2a2a24_x1    sxlib     4 x      5     19 gates
+nxr2_x1           sxlib     2 x      3      6 gates
+oa2a2a2a24_x2     sxlib     4 x      5     20 gates
+on12_x1           sxlib     3 x      2      5 gates
+on12_x4           sxlib     1 x      3      3 gates
+sff1_x4           sxlib     9 x      6     54 gates
+sff2_x4           sxlib    70 x      8    560 gates
+
+ Number of ports :                      70
+ Number of nets :                      316
+ Number of instances :                 249
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     937
+ Number of accumulated instances :     249
+Info, Command 'report_area' finished successfully
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	conpro_system_clk    : 170.0 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                               GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                             0.00 (ideal)
+
+
+LOOP_i_1(5)/q                                      sff2_x4     0.00  0.71 up             0.23
+ix2571/q                                           on12_x1     0.72  1.43 up             0.10
+ix239/nq                                           inv_x1      0.59  2.01 dn             0.11
+ix277/q                                            oa2a2a2a24_x2  0.95  2.96 dn             0.03
+ix2581/nq                                          noa2a2a2a24_x1  0.37  3.33 up             0.03
+ix483/nq                                           na4_x1      0.47  3.80 dn             0.03
+ix2534/nq                                          nmx2_x1     0.33  4.13 up             0.03
+ix1179/nq                                          nmx2_x1     0.37  4.50 dn             0.04
+ix2531/nq                                          nxr2_x1     0.42  4.92 dn             0.03
+ix2440/nq                                          nao2o22_x1  0.38  5.30 up             0.02
+reg_pl/i                                           sff1_x4     0.00  5.30 up             0.00
+data arrival time                                                    5.30
+
+
+data required time                                                not specified
+----------------------------------------------------------------------------------------------
+data required time                                                not specified
+data arrival time                                                    5.30
+                                                                  ----------
+                                                               unconstrained path
+----------------------------------------------------------------------------------------------
+
+
+Info, Command 'report_delay' finished successfully
+FALSE
+AutoWrite args are : par_FUN_parity2.vhd
+-- Writing file par_FUN_parity2.vhd
+Info, Command 'auto_write' finished successfully
+Info: Finished Synthesis run
+Info, Library sxlib is already loaded. Setting it as target
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity3.vhdl into library work
+-- Loading entity par_FUN_parity3 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity3.vhdl",line 35: Info, Enumerated type pro_states with 69 elements encoded as onehot.
+Encodings for pro_states values
+        value    pro_states[68-0]
+=================================
+The number of elements of enumerated type 'pro_states' exceeds state_table_threshold,
+the encoding table will not be printed.
+To get an encoding table for pro_states, increase state_table_threshold.
+
+-- Loading architecture main of par_FUN_parity3 into library work
+-- Compiling root entity par_FUN_parity3(main)
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity3.vhdl",line 106: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity3.vhdl",line 107: Warning, initial value for pro_state_next is ignored for synthesis.
+Info, Command 'read' finished successfully
+-- Boundary optimization.
+-- Start pre-optimization for design .work.par_FUN_parity3.main
+Info, Command 'pre_optimize' finished successfully
+-- Start pre-optimization for design .work.par_FUN_parity3.main
+Info, Command 'pre_optimize' finished successfully
+Info: Finished reading design
+.work.par_FUN_parity3.main
+-- Optimizing netlist .work.par_FUN_parity3.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Info, Command 'optimize' finished successfully
+Using default wire table: small
+-- Start timing optimization for design .work.par_FUN_parity3.main
+No critical paths to optimize at this level
+Info, Command 'optimize_timing' finished successfully
+
+*******************************************************
+
+Cell: par_FUN_parity3    View: main    Library: work
+
+*******************************************************
+
+
+ Cell             Library  References     Total Area
+
+a2_x2             sxlib     1 x      2      2 gates
+an12_x1           sxlib   131 x      2    223 gates
+ao22_x2           sxlib     1 x      2      2 gates
+inv_x1            sxlib     1 x      1      1 gates
+na4_x1            sxlib     4 x      2      8 gates
+no2_x1            sxlib     1 x      1      1 gates
+no4_x1            sxlib     1 x      2      2 gates
+noa2a2a2a24_x1    sxlib    16 x      5     75 gates
+o2_x2             sxlib    16 x      2     27 gates
+o4_x2             sxlib     1 x      2      2 gates
+on12_x1           sxlib    12 x      2     20 gates
+on12_x4           sxlib     1 x      3      3 gates
+sff1_x4           sxlib    69 x      6    414 gates
+sff2_x4           sxlib    69 x      8    552 gates
+xr2_x1            sxlib    64 x      3    192 gates
+
+ Number of ports :                      70
+ Number of nets :                      455
+ Number of instances :                 388
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    1525
+ Number of accumulated instances :     388
+Info, Command 'report_area' finished successfully
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	conpro_system_clk    : 202.9 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                               GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                             0.00 (ideal)
+
+
+reg_pl_rep_4/q                                     sff2_x4     0.00  0.95 dn             0.50
+ix953/q                                            xr2_x1      0.42  1.37 dn             0.03
+ix3522/nq                                          noa2a2a2a24_x1  0.94  2.31 up             0.03
+ix963/nq                                           na4_x1      0.60  2.91 dn             0.03
+ix3347/nq                                          no4_x1      0.68  3.59 up             0.03
+ix1735/nq                                          no2_x1      0.58  4.16 dn             0.11
+reg_pl_rep_2/i1                                    sff2_x4     0.00  4.16 dn             0.00
+data arrival time                                                    4.16
+
+
+data required time                                                not specified
+----------------------------------------------------------------------------------------------
+data required time                                                not specified
+data arrival time                                                    4.16
+                                                                  ----------
+                                                               unconstrained path
+----------------------------------------------------------------------------------------------
+
+
+Info, Command 'report_delay' finished successfully
+FALSE
+AutoWrite args are : par_FUN_parity3.vhd
+-- Writing file par_FUN_parity3.vhd
+Info, Command 'auto_write' finished successfully
+Info: Finished Synthesis run
+Info, Library sxlib is already loaded. Setting it as target
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity4.vhdl into library work
+-- Loading entity par_FUN_parity4 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity4.vhdl",line 35: Info, Enumerated type pro_states with 5 elements encoded as onehot.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+S_FUN_parity4_start  ----1
+    S_i1_assign  ---1-
+    S_i2_assign  --1--
+    S_i3_assign  -1---
+S_FUN_parity4_end  1----
+
+-- Loading architecture main of par_FUN_parity4 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity4.vhdl",line 31: Warning, signal pl is never used.
+-- Compiling root entity par_FUN_parity4(main)
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity4.vhdl",line 42: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity4.vhdl",line 43: Warning, initial value for pro_state_next is ignored for synthesis.
+Info, Command 'read' finished successfully
+-- Boundary optimization.
+-- Start pre-optimization for design .work.par_FUN_parity4.main
+Info, Command 'pre_optimize' finished successfully
+-- Start pre-optimization for design .work.par_FUN_parity4.main
+Info, Command 'pre_optimize' finished successfully
+Info: Finished reading design
+.work.par_FUN_parity4.main
+-- Optimizing netlist .work.par_FUN_parity4.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Info, Command 'optimize' finished successfully
+Using default wire table: small
+-- Start timing optimization for design .work.par_FUN_parity4.main
+No critical paths to optimize at this level
+Info, Command 'optimize_timing' finished successfully
+
+*******************************************************
+
+Cell: par_FUN_parity4    View: main    Library: work
+
+*******************************************************
+
+
+ Cell      Library  References     Total Area
+
+an12_x1    sxlib    68 x      2    116 gates
+ao22_x2    sxlib     1 x      2      2 gates
+inv_x1     sxlib     1 x      1      1 gates
+nxr2_x1    sxlib    63 x      3    189 gates
+o2_x2      sxlib    16 x      2     27 gates
+on12_x1    sxlib     1 x      2      2 gates
+sff1_x4    sxlib     5 x      6     30 gates
+sff2_x4    sxlib    64 x      8    512 gates
+
+ Number of ports :                      70
+ Number of nets :                      286
+ Number of instances :                 219
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     879
+ Number of accumulated instances :     219
+Info, Command 'report_area' finished successfully
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	conpro_system_clk    : 420.9 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                               GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                             0.00 (ideal)
+
+
+reg_xl(63)/q                                       sff2_x4     0.00  0.55 dn             0.06
+ix2538/nq                                          nxr2_x1     0.44  0.99 dn             0.04
+ix2530/nq                                          nxr2_x1     0.44  1.43 dn             0.04
+ix2514/nq                                          nxr2_x1     0.44  1.88 dn             0.04
+ix2482/nq                                          nxr2_x1     0.44  2.32 dn             0.04
+ix2418/nq                                          nxr2_x1     0.44  2.76 dn             0.04
+ix2281/nq                                          nxr2_x1     0.41  3.18 dn             0.03
+ix799/q                                            an12_x1     0.26  3.43 up             0.01
+REG_RET_FUN_parity4_p_WR/                                      0.00  3.43 up             0.00
+data arrival time                                                    3.43
+
+data required time                                                not specified
+----------------------------------------------------------------------------------------------
+data required time                                                not specified
+data arrival time                                                    3.43
+                                                                  ----------
+                                                               unconstrained path
+----------------------------------------------------------------------------------------------
+
+
+Info, Command 'report_delay' finished successfully
+FALSE
+AutoWrite args are : par_FUN_parity4.vhd
+-- Writing file par_FUN_parity4.vhd
+Info, Command 'auto_write' finished successfully
+Info: Finished Synthesis run
+Info, Library sxlib is already loaded. Setting it as target
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity5.vhdl into library work
+-- Loading entity par_FUN_parity5 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity5.vhdl",line 35: Info, Enumerated type pro_states with 68 elements encoded as onehot.
+Encodings for pro_states values
+        value    pro_states[67-0]
+=================================
+The number of elements of enumerated type 'pro_states' exceeds state_table_threshold,
+the encoding table will not be printed.
+To get an encoding table for pro_states, increase state_table_threshold.
+
+-- Loading architecture main of par_FUN_parity5 into library work
+-- Compiling root entity par_FUN_parity5(main)
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity5.vhdl",line 105: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity5.vhdl",line 106: Warning, initial value for pro_state_next is ignored for synthesis.
+Info, Command 'read' finished successfully
+-- Boundary optimization.
+-- Start pre-optimization for design .work.par_FUN_parity5.main
+Info, Command 'pre_optimize' finished successfully
+-- Start pre-optimization for design .work.par_FUN_parity5.main
+Info, Command 'pre_optimize' finished successfully
+Info: Finished reading design
+.work.par_FUN_parity5.main
+-- Optimizing netlist .work.par_FUN_parity5.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Info, Command 'optimize' finished successfully
+Using default wire table: small
+-- Start timing optimization for design .work.par_FUN_parity5.main
+No critical paths to optimize at this level
+Info, Command 'optimize_timing' finished successfully
+
+*******************************************************
+
+Cell: par_FUN_parity5    View: main    Library: work
+
+*******************************************************
+
+
+ Cell             Library  References     Total Area
+
+a2_x2             sxlib     1 x      2      2 gates
+an12_x1           sxlib   130 x      2    221 gates
+ao22_x2           sxlib     1 x      2      2 gates
+inv_x1            sxlib     1 x      1      1 gates
+na4_x1            sxlib     6 x      2     12 gates
+no2_x1            sxlib     1 x      1      1 gates
+no4_x1            sxlib     9 x      2     18 gates
+noa2a2a2a24_x1    sxlib    16 x      5     75 gates
+o2_x2             sxlib    17 x      2     29 gates
+o3_x2             sxlib     1 x      2      2 gates
+on12_x1           sxlib    12 x      2     20 gates
+on12_x4           sxlib     1 x      3      3 gates
+sff1_x4           sxlib    68 x      6    408 gates
+sff2_x4           sxlib    69 x      8    552 gates
+xr2_x1            sxlib    64 x      3    192 gates
+
+ Number of ports :                      70
+ Number of nets :                      464
+ Number of instances :                 397
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    1538
+ Number of accumulated instances :     397
+Info, Command 'report_area' finished successfully
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	conpro_system_clk    : 202.9 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                               GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                             0.00 (ideal)
+
+
+reg_pl_rep_4/q                                     sff2_x4     0.00  0.95 dn             0.50
+ix939/q                                            xr2_x1      0.42  1.37 dn             0.03
+ix5611/nq                                          noa2a2a2a24_x1  0.94  2.31 up             0.03
+ix949/nq                                           na4_x1      0.60  2.91 dn             0.03
+ix5172/nq                                          no4_x1      0.68  3.59 up             0.03
+ix1721/nq                                          no2_x1      0.58  4.16 dn             0.11
+reg_pl_rep_2/i1                                    sff2_x4     0.00  4.16 dn             0.00
+data arrival time                                                    4.16
+
+
+data required time                                                not specified
+----------------------------------------------------------------------------------------------
+data required time                                                not specified
+data arrival time                                                    4.16
+                                                                  ----------
+                                                               unconstrained path
+----------------------------------------------------------------------------------------------
+
+
+Info, Command 'report_delay' finished successfully
+FALSE
+AutoWrite args are : par_FUN_parity5.vhd
+-- Writing file par_FUN_parity5.vhd
+Info, Command 'auto_write' finished successfully
+Info: Finished Synthesis run
+Info, Library sxlib is already loaded. Setting it as target
+Info: setting encoding to auto
+Info, Command 'load_library' finished successfully
+-- Reading vhdl file /home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity6.vhdl into library work
+-- Loading entity par_FUN_parity6 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity6.vhdl",line 35: Info, Enumerated type pro_states with 4 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[1-0]
+================================
+S_FUN_parity6_start  00
+S_BLOCKBOUND1_1  01
+S_BLOCKBOUND1_2  10
+S_FUN_parity6_end  11
+
+-- Loading architecture main of par_FUN_parity6 into library work
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity6.vhdl",line 31: Warning, signal pl is never used.
+-- Compiling root entity par_FUN_parity6(main)
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity6.vhdl",line 41: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/demo/parity_calculator/out/par_FUN_parity6.vhdl",line 42: Warning, initial value for pro_state_next is ignored for synthesis.
+Info, Command 'read' finished successfully
+-- Boundary optimization.
+-- Start pre-optimization for design .work.par_FUN_parity6.main
+Info, Command 'pre_optimize' finished successfully
+-- Start pre-optimization for design .work.par_FUN_parity6.main
+Info, Command 'pre_optimize' finished successfully
+Info: Finished reading design
+.work.par_FUN_parity6.main
+-- Optimizing netlist .work.par_FUN_parity6.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:00 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Info, Command 'optimize' finished successfully
+Using default wire table: small
+-- Start timing optimization for design .work.par_FUN_parity6.main
+No critical paths to optimize at this level
+Info, Command 'optimize_timing' finished successfully
+
+*******************************************************
+
+Cell: par_FUN_parity6    View: main    Library: work
+
+*******************************************************
+
+
+ Cell       Library  References     Total Area
+
+a2_x2       sxlib     2 x      2      3 gates
+an12_x1     sxlib    66 x      2    112 gates
+inv_x1      sxlib    18 x      1     18 gates
+no2_x1      sxlib     1 x      1      1 gates
+no3_x1      sxlib     1 x      2      2 gates
+noa22_x4    sxlib     1 x      3      3 gates
+nxr2_x1     sxlib    63 x      3    189 gates
+sff1_x4     sxlib     2 x      6     12 gates
+sff2_x4     sxlib    64 x      8    512 gates
+
+ Number of ports :                      70
+ Number of nets :                      285
+ Number of instances :                 218
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                     853
+ Number of accumulated instances :     218
+Info, Command 'report_area' finished successfully
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	conpro_system_clk    : 305.1 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                               GATE              ARRIVAL              LOAD
+----------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                             0.00 (ideal)
+
+
+reg_xl(63)/q                                       sff2_x4     0.00  0.55 dn             0.06
+ix2513/nq                                          nxr2_x1     0.44  0.99 dn             0.04
+ix2505/nq                                          nxr2_x1     0.44  1.43 dn             0.04
+ix2489/nq                                          nxr2_x1     0.44  1.88 dn             0.04
+ix2457/nq                                          nxr2_x1     0.44  2.32 dn             0.04
+ix2393/nq                                          nxr2_x1     0.44  2.76 dn             0.04
+ix2252/nq                                          nxr2_x1     0.41  3.18 dn             0.03
+ix803/q                                            an12_x1     0.26  3.43 up             0.01
+REG_RET_FUN_parity6_p_WR/                                      0.00  3.43 up             0.00
+data arrival time                                                    3.43
+
+data required time                                                not specified
+----------------------------------------------------------------------------------------------
+data required time                                                not specified
+data arrival time                                                    3.43
+                                                                  ----------
+                                                               unconstrained path
+----------------------------------------------------------------------------------------------
+
+
+Info, Command 'report_delay' finished successfully
+FALSE
+AutoWrite args are : par_FUN_parity6.vhd
+-- Writing file par_FUN_parity6.vhd
+Info, Command 'auto_write' finished successfully
+Info: Finished Synthesis run

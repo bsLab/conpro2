@@ -1,0 +1,10 @@
+NET "top_p_leds<0>" LOC = "A5";
+    NET "top_p_leds<1>" LOC = "A7";
+    NET "top_p_leds<2>" LOC = "A3";
+    NET "top_p_leds<3>" LOC = "D5";
+    NET "top_p_leds<4>" LOC = "B4";
+    NET "top_p_leds<5>" LOC = "A4";
+    NET "top_p_leds<6>" LOC = "C5";
+    NET "top_p_leds<7>" LOC = "B5";
+NET "CLK" LOC = "T9";
+NET "RESET" LOC = "J16";

@@ -1,0 +1,121 @@
+#!/bin/bash
+
+#########################
+# Project configuration #
+#########################
+
+PROJ=/home/sbosse/proj/conpro2/test/link4
+TOP_CP=l2
+TOP_VHDL=l2_simu
+export CONPRO=/opt/Conpro2
+CPSRC=$PROJ/src
+VHDLSRC=$PROJ/src
+INCL="-I $CPSRC"
+INCL="$INCL -I $VHDLSRC"
+FLAGS="-O out -tool leonardo"
+RM=/bin/rm
+
+FLAGS="$FLAGS $OPT"
+TOOL=""$TOP_VHDL".leonardo.tool.sh"
+if [ $# = 0 ]
+then
+    echo "Usage: build <targets>"
+    echo "Targets: all clean conpro uc synth simu"
+    exit 1
+fi
+
+check ()
+{
+    if [ $? != 0 ]
+    then
+        echo "Abort due to errors building target."
+        exit 1
+    fi
+}
+
+do_conpro()
+{
+    echo "Starting highlevel synthesis..."
+    echo "conpro $INCL $FLAGS $TOP.cp"
+    $CONPRO/bin/conpro $OPT $INCL $FLAGS $TOP_CP.cp
+}
+
+
+do_synth()
+{
+    echo "Starting lowlevel synthesis..."
+    cd out
+    bash $TOOL synth
+    cd -
+    check
+}
+
+do_simu()
+{
+    echo "Starting simulation..."
+    /opt/Sica-1/bin/sica simu.sc
+    check
+}
+
+do_xpat()
+{
+    echo "Starting xpat..."
+    cd out
+    bash $TOOL xpat
+    cd -
+    check
+}
+
+
+init()   
+{
+  if [ ! -d out ]
+  then
+    mkdir out
+  fi
+  if [ ! -d out/obj ]
+  then
+    mkdir out/obj
+  fi
+}
+                    
+                    
+init
+                    
+for TARGET in $@
+do
+    echo "Building target [$TARGET] ..."
+    case $TARGET in
+        all)
+            do_conpro
+            check
+            do_synth
+            check
+            do_tech
+            check
+            ;;
+        synth)
+            do_synth
+            check
+            ;;
+        simu)
+            do_simu
+            check
+            ;;
+        xpat)
+            do_xpat
+            check
+            ;;
+        conpro)
+            do_conpro
+            check
+            ;;
+        clean)  
+            cd out
+       	    $RM -rf obj/*
+            $RM -f *.ft *.obj *.uc *.ui *.ast *.pi *.st *.vhdl *.c *.pat *.bit *.svf *.xsvf *.log *.sh *.mcs
+            cd -
+            ;;
+		
+    esac
+done

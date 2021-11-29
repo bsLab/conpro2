@@ -1,0 +1,54 @@
+Block frame trees
+-----------------
+For process <main>:
+  MAIN#2877 {
+    SOURCE: dt.cp lines 13..14
+    PARENT: NONE
+    TIME: 2 TU
+    TYPE: COMPOUND
+    PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+    CHILDS [
+      BLOCK#16603
+      ASSIGN#39314
+      ]
+      BLOCK#16603 {
+        SOURCE: dt.cp line 13
+        PARENT: MAIN#2877
+        TIME: 1 TU
+        TYPE: COMPOUND
+        PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+        CHILDS [
+          ASSIGN#44358
+          ASSIGN#65705
+          ASSIGN#17429
+          ]
+          ASSIGN#44358 {
+            SOURCE: dt.cp line 13
+            PARENT: BLOCK#16603
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#65705 {
+            SOURCE: dt.cp line 13
+            PARENT: BLOCK#16603
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+          ASSIGN#17429 {
+            SOURCE: dt.cp line 13
+            PARENT: BLOCK#16603
+            TIME: 1 TU
+            TYPE: BASIC BLOCK
+            PARAMS=<BIND><EXPR=flat><ALUMIN=8><TEMP=shared>.
+          }
+      }
+      ASSIGN#39314 {
+        SOURCE: dt.cp line 14
+        PARENT: MAIN#2877
+        TIME: 1 TU
+        TYPE: BASIC BLOCK
+        PARAMS=<EXPR=flat><ALUMIN=8><TEMP=shared>.
+      }
+  }

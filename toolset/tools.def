@@ -1,0 +1,639 @@
+#version "1.07";
+
+[
+  {
+      syn_tool="generic";
+      syn_ver=0;
+      syn_top="";
+      syn_vhdl_map = [
+        "to_integer","to_integer";
+        "logic","std_logic";
+        "resize","resize";
+        "to_signed","to_signed";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","use IEEE.std_logic_unsigned.all;";
+        "useIEEE4","use IEEE.numeric_std.all;";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      syn_vhdl_lib=[];
+  };
+  {
+      syn_tool="xilinx6";
+      syn_top="/export/home/Xilinx";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","conv_integer";
+        "logic","std_logic";
+        "resize","conv_signed";
+        "to_signed","conv_signed";
+        "shift_left","shl";
+        "shift_right","shr";
+        "*","cmult";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","use IEEE.numeric_std.all;";
+        "useIEEE4","use IEEE.std_logic_unsigned.all;";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      --
+      -- <dev>,[<opt>,<val>;...]
+      --  dev: regular expression
+      --  opt: [a-zA-Z0-9_]*: programm option <popt>
+      --  opt: $[a-zA-Z0-9_]*: build script variable <sopt>
+      --  opt: <prog>:<popt>
+      --       
+      --
+      -- 
+      syn_synth_set = [
+        -- applied to all devices
+        "*",
+        [
+        "fsm_extract","YES";
+        -- FSM Encoding Algorithm and style
+        "fsm_encoding","Sequential";
+        "fsm_style","lut";
+        -- Mux Extraction and style
+        "mux_extract","YES";
+        "mux_style","Auto";
+        -- RAM/ROM settings
+        "ram_extract","Yes";
+        "ram_style","Block";
+        "rom_extract","Yes";
+        "rom_style","Auto";
+        -- cmultiplier style
+        "mult_style","lut";
+        -- Some more extractions
+        "priority_extract","Yes";
+        "shreg_extract","Yes";
+        "decoder_extract","Yes";
+        "shift_extract","Yes";
+        -- Optimization Goal
+        "opt_mode","speed";
+        -- Optimization Effort
+        "opt_level","1";
+        -- Add IO Buffers
+        "iobuf","YES";
+        "iob","Auto";
+        "max_fanout","100";
+        -- Misc.
+        "xor_collapse","Yes";
+        "resource_sharing","Yes";
+        -- Slice management
+        "slice_packing","Yes";
+        "slice_utilization_ratio","100";
+        "slice_utilization_ratio_maxmargin","5";
+        "bufg","4";
+        -- Register logic
+        "register_duplication","Yes";
+        "register_balancing","No";
+        "equivalent_register_removal","Yes";
+        "optimize_primitives","No";
+        "tristate2logic","No";
+        "glob_opt","AllClockNets";
+        "iuc","NO";
+        ];
+      ]; 
+      syn_tech_set = [
+        "*",
+        [
+        -- Mapping constrains
+        "map:cm","area";          -- COVER_MODE
+        "map:pr","b";             -- PACK_REG
+        "map:k","4";              -- MAP_IN_FUN
+        "map:c","100";            -- PACK_CLB
+        "map:tx","off";           -- TRANS_BUSES
+        -- Place and route constraints
+        "par:ol","std";           -- PAR_OPT
+        "par:t","1";              -- PLACE_COST
+        -- MISC
+        -- XSVF maximal bit length
+        "$reclen","1024";
+        ]; 
+        "xc2*",
+        [
+        -- Bitgen FPGA configuration settings
+        "$bitgen_conf", 
+          "-g Gclkdel0:11111 "+
+          "-g Gclkdel1:11111 "+
+          "-g Gclkdel2:11111 "+
+          "-g Gclkdel3:11111 "+
+          "-g ConfigRate:4 "+
+          "-g DebugBitstream:No "+
+          "-g Binary:no "+
+          "-g CclkPin:PullUp "+
+          "-g M0Pin:PullUp "+
+          "-g M1Pin:PullUp "+
+          "-g M2Pin:PullUp "+
+          "-g ProgPin:PullUp "+ 
+          "-g DonePin:PullUp "+
+          "-g TckPin:PullUp "+
+          "-g TdiPin:PullUp "+
+          "-g TdoPin:PullUp "+
+          "-g TmsPin:PullUp "+
+          "-g UnusedPin:PullDown "+
+          "-g UserID:0xFFFFFFFF "+
+          "-g StartUpClk:CClk "+
+          "-g DONE_cycle:4";
+        ]; 
+        "xc3*",
+        [
+        -- Bitgen FPGA configuration settings
+        "$bitgen_conf", 
+          "-g DebugBitstream:No "+
+          "-g Binary:no "+
+          "-g CclkPin:PullUp "+
+          "-g M0Pin:PullUp "+
+          "-g M1Pin:PullUp "+
+          "-g M2Pin:PullUp "+
+          "-g ProgPin:PullUp "+ 
+          "-g DonePin:PullUp "+
+          "-g TckPin:PullUp "+
+          "-g TdiPin:PullUp "+
+          "-g TdoPin:PullUp "+
+          "-g TmsPin:PullUp "+
+          "-g UnusedPin:PullDown "+
+          "-g UserID:0xFFFFFFFF "+
+          "-g StartUpClk:CClk "+
+          "-g DONE_cycle:4";
+        ]; 
+      ]; 
+      syn_vhdl_lib = [];
+  };
+  {
+      syn_tool="xilinx9";
+      syn_top="/export/home/Xilinx";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","conv_integer";
+        "logic","std_logic";
+        "resize","conv_signed";
+        "to_signed","conv_signed";
+        "shift_left","shl";
+        "shift_right","shr";
+        "*","cmult";
+        "max","cmax";
+        "min","cmin";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","use IEEE.numeric_std.all;";
+        "useIEEE4","use IEEE.std_logic_unsigned.all;";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      --
+      -- <dev>,[<opt>,<val>;...]
+      --  dev: regular expression
+      --  opt: [a-zA-Z0-9_]*: programm option <popt>
+      --  opt: $[a-zA-Z0-9_]*: build script variable <sopt>
+      --  opt: <prog>:<popt>
+      --       
+      --
+      -- 
+      syn_synth_set = [
+        -- applied to all devices
+        "*",
+        [
+        "fsm_extract","YES";
+        -- FSM Encoding Algorithm and style
+        "fsm_encoding","Sequential";
+        "fsm_style","lut";
+        -- Mux Extraction and style
+        "mux_extract","YES";
+        "mux_style","Auto";
+        -- RAM/ROM settings
+        "ram_extract","Yes";
+        "ram_style","Block";
+        "rom_extract","Yes";
+        "rom_style","Auto";
+        -- cmultiplier style
+        "mult_style","lut";
+        -- Some more extractions
+        "priority_extract","Yes";
+        "shreg_extract","Yes";
+        "decoder_extract","Yes";
+        "shift_extract","Yes";
+        -- Optimization Goal
+        "opt_mode","speed";
+        -- Optimization Effort
+        "opt_level","1";
+        -- Add IO Buffers
+        "iobuf","YES";
+        "iob","Auto";
+        "max_fanout","100";
+        -- Misc.
+        "xor_collapse","Yes";
+        "resource_sharing","Yes";
+        -- Slice management
+        "slice_packing","Yes";
+        "slice_utilization_ratio","100";
+        "slice_utilization_ratio_maxmargin","5";
+        "bufg","4";
+        -- Register logic
+        "register_duplication","Yes";
+        "register_balancing","No";
+        "equivalent_register_removal","Yes";
+        "optimize_primitives","No";
+        "tristate2logic","No";
+        "glob_opt","AllClockNets";
+        "iuc","NO";
+        ];
+      ]; 
+      syn_tech_set = [
+        "*",
+        [
+        -- Mapping constrains
+        "map:cm","area";          -- COVER_MODE
+        "map:pr","b";             -- PACK_REG
+        "map:k","4";              -- MAP_IN_FUN
+        "map:c","100";            -- PACK_CLB
+        "map:tx","off";           -- TRANS_BUSES
+        -- Place and route constraints
+        "par:ol","std";           -- PAR_OPT
+        "par:t","1";              -- PLACE_COST
+        -- MISC
+        -- XSVF maximal bit length
+        "$reclen","1024";
+        ]; 
+        "xc2*",
+        [
+        -- Bitgen FPGA configuration settings
+        "$bitgen_conf", 
+          "-g Gclkdel0:11111 "+
+          "-g Gclkdel1:11111 "+
+          "-g Gclkdel2:11111 "+
+          "-g Gclkdel3:11111 "+
+          "-g ConfigRate:4 "+
+          "-g DebugBitstream:No "+
+          "-g Binary:no "+
+          "-g CclkPin:PullUp "+
+          "-g M0Pin:PullUp "+
+          "-g M1Pin:PullUp "+
+          "-g M2Pin:PullUp "+
+          "-g ProgPin:PullUp "+ 
+          "-g DonePin:PullUp "+
+          "-g TckPin:PullUp "+
+          "-g TdiPin:PullUp "+
+          "-g TdoPin:PullUp "+
+          "-g TmsPin:PullUp "+
+          "-g UnusedPin:PullDown "+
+          "-g UserID:0xFFFFFFFF "+
+          "-g StartUpClk:CClk "+
+          "-g DONE_cycle:4";
+        ]; 
+        "xc3*",
+        [
+        -- Bitgen FPGA configuration settings
+        "$bitgen_conf", 
+          "-g DebugBitstream:No "+
+          "-g Binary:no "+
+          "-g CclkPin:PullUp "+
+          "-g M0Pin:PullUp "+
+          "-g M1Pin:PullUp "+
+          "-g M2Pin:PullUp "+
+          "-g ProgPin:PullUp "+ 
+          "-g DonePin:PullUp "+
+          "-g TckPin:PullUp "+
+          "-g TdiPin:PullUp "+
+          "-g TdoPin:PullUp "+
+          "-g TmsPin:PullUp "+
+          "-g UnusedPin:PullDown "+
+          "-g UserID:0xFFFFFFFF "+
+          "-g StartUpClk:CClk "+
+          "-g DONE_cycle:4";
+        ]; 
+      ]; 
+      syn_vhdl_lib = [];
+  };
+  {
+      syn_tool="xilinx11";
+      syn_top="/export/home/Xilinx";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","conv_integer";
+        "logic","std_logic";
+        "resize","conv_signed";
+        "to_signed","conv_signed";
+        "shift_left","shl";
+        "shift_right","shr";
+        "*","cmult";
+        "max","cmax";
+        "min","cmin";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","-- use IEEE.numeric_std.all;";
+        "useIEEE4","use IEEE.std_logic_unsigned.all;";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      --
+      -- <dev>,[<opt>,<val>;...]
+      --  dev: regular expression
+      --  opt: [a-zA-Z0-9_]*: programm option <popt>
+      --  opt: $[a-zA-Z0-9_]*: build script variable <sopt>
+      --  opt: <prog>:<popt>
+      --       
+      --
+      -- 
+      syn_synth_set = [
+        -- applied to all devices
+        "*",
+        [
+        "fsm_extract","YES";
+        -- FSM Encoding Algorithm and style
+        "fsm_encoding","Sequential";
+        "fsm_style","lut";
+        -- Mux Extraction and style
+        "mux_extract","YES";
+        "mux_style","Auto";
+        -- RAM/ROM settings
+        "ram_extract","Yes";
+        "ram_style","Block";
+        "rom_extract","Yes";
+        "rom_style","Auto";
+        -- cmultiplier style
+        "mult_style","lut";
+        -- Some more extractions
+        "priority_extract","Yes";
+        "shreg_extract","Yes";
+        "decoder_extract","Yes";
+        "shift_extract","Yes";
+        -- Optimization Goal
+        "opt_mode","speed";
+        -- Optimization Effort
+        "opt_level","1";
+        -- Add IO Buffers
+        "iobuf","YES";
+        "iob","Auto";
+        "max_fanout","100";
+        -- Misc.
+        "xor_collapse","Yes";
+        "resource_sharing","Yes";
+        -- Slice management
+        "slice_packing","Yes";
+        "slice_utilization_ratio","100";
+        "slice_utilization_ratio_maxmargin","5";
+        "bufg","4";
+        -- Register logic
+        "register_duplication","Yes";
+        "register_balancing","No";
+        "equivalent_register_removal","Yes";
+        "optimize_primitives","No";
+        "tristate2logic","No";
+        "glob_opt","AllClockNets";
+        "iuc","NO";
+        ];
+      ]; 
+      syn_tech_set = [
+        "*",
+        [
+        -- Mapping constrains
+        "map:cm","area";          -- COVER_MODE
+        "map:pr","b";             -- PACK_REG
+        "map:k","4";              -- MAP_IN_FUN
+        "map:c","100";            -- PACK_CLB
+        "map:tx","off";           -- TRANS_BUSES
+        -- Place and route constraints
+        "par:ol","std";           -- PAR_OPT
+        "par:t","1";              -- PLACE_COST
+        -- MISC
+        -- XSVF maximal bit length
+        "$reclen","1024";
+        ]; 
+        "xc2*",
+        [
+        -- Bitgen FPGA configuration settings
+        "$bitgen_conf", 
+          "-g Gclkdel0:11111 "+
+          "-g Gclkdel1:11111 "+
+          "-g Gclkdel2:11111 "+
+          "-g Gclkdel3:11111 "+
+          "-g ConfigRate:4 "+
+          "-g DebugBitstream:No "+
+          "-g Binary:no "+
+          "-g CclkPin:PullUp "+
+          "-g M0Pin:PullUp "+
+          "-g M1Pin:PullUp "+
+          "-g M2Pin:PullUp "+
+          "-g ProgPin:PullUp "+ 
+          "-g DonePin:PullUp "+
+          "-g TckPin:PullUp "+
+          "-g TdiPin:PullUp "+
+          "-g TdoPin:PullUp "+
+          "-g TmsPin:PullUp "+
+          "-g UnusedPin:PullDown "+
+          "-g UserID:0xFFFFFFFF "+
+          "-g StartUpClk:CClk "+
+          "-g DONE_cycle:4";
+        ]; 
+        "xc3*",
+        [
+        -- Bitgen FPGA configuration settings
+        "$bitgen_conf", 
+          "-g DebugBitstream:No "+
+          "-g Binary:no "+
+          "-g CclkPin:PullUp "+
+          "-g M0Pin:PullUp "+
+          "-g M1Pin:PullUp "+
+          "-g M2Pin:PullUp "+
+          "-g ProgPin:PullUp "+ 
+          "-g DonePin:PullUp "+
+          "-g TckPin:PullUp "+
+          "-g TdiPin:PullUp "+
+          "-g TdoPin:PullUp "+
+          "-g TmsPin:PullUp "+
+          "-g UnusedPin:PullDown "+
+          "-g UserID:0xFFFFFFFF "+
+          "-g StartUpClk:CClk "+
+          "-g DONE_cycle:4";
+        ]; 
+      ]; 
+      syn_vhdl_lib = [];
+  };
+  {
+      syn_tool="alliance";
+      syn_top = "/opt/alliance-5.0";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","to_integer";
+        "logic","std_logic";
+        "resize","resize";
+        "to_signed","to_signed";
+        "max","cmax";
+        "min","cmin";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","use IEEE.std_logic_unsigned.all;";
+        "useIEEE4","use IEEE.numeric_std.all;";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      syn_synth_set = [];
+      syn_tech_set = [];
+      syn_vhdl_lib = [];
+  };
+  {
+      syn_tool="leonardo";
+      syn_top = "/export/home/leonardo";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","to_integer";
+        "logic","std_logic";
+        "resize","resize";
+        "to_signed","to_signed";
+        "*","cmult";
+        "max","cmax";
+        "min","cmin";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","use IEEE.std_logic_unsigned.all;";
+        "useIEEE4","use IEEE.numeric_std.all;";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      syn_synth_set = [];
+      syn_tech_set = [];
+      syn_vhdl_lib = []; -- leonardo.lib
+  };
+  {
+      syn_tool="dc";
+      syn_top = "/export/home/Synopsys";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","to_integer";
+        "logic","std_logic";
+        "resize","resize";
+        "to_signed","to_signed";
+        "*","cmult";
+        "max","cmax";
+        "min","cmin";
+        "libIEEE","library Synopsys;";
+        "useIEEE1","use Synopsys.attributes.all;";
+        "useIEEE2","library IEEE;";
+        "useIEEE3","use IEEE.std_logic_1164.all;";
+        "useIEEE4","use IEEE.std_logic_signed.all;";
+        "useIEEE5","use IEEE.numeric_std.all;";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      syn_synth_set = [];
+      syn_tech_set = [];
+      syn_vhdl_lib = []; -- dc.lib
+  };
+  {
+      syn_tool="actel";
+      syn_top = "/export/home/Actel/Designer70";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","to_integer";
+        "logic","std_logic";
+        "resize","resize";
+        "to_signed","to_signed";
+        "max","cmax";
+        "min","cmin";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","use IEEE.std_logic_unsigned.all;";
+        "useIEEE4","use IEEE.numeric_std.all;";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      syn_synth_set = [];
+      syn_tech_set = [];
+      syn_vhdl_lib = [];
+  };
+  {
+      syn_tool="synplicity89";
+      syn_top = "/export/home/fpga89";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","to_integer";
+        "logic","std_logic";
+        "resize","resize";
+        "to_signed","to_signed";
+        "*","cmult";
+        "max","cmax";
+        "min","cmin";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","use IEEE.std_logic_unsigned.all;";
+        "useIEEE4","use IEEE.numeric_std.all;";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      syn_synth_set = [];
+      syn_tech_set = [];
+      syn_vhdl_lib = [];
+  };
+  {
+      syn_tool="synplicity89_xilinx6";
+      syn_top = "/export/home/fpga89";
+      syn_ver=0;
+      syn_vhdl_map = [
+        "to_integer","to_integer";
+        "logic","std_logic";
+        "resize","resize";
+        "to_signed","to_signed";
+        "max","cmax";
+        "min","cmin";
+        "libIEEE","library IEEE;";
+        "useIEEE1","use IEEE.std_logic_1164.all;";
+        "useIEEE2","use IEEE.std_logic_arith.all;";
+        "useIEEE3","use IEEE.std_logic_unsigned.all;";
+        "useIEEE4","";
+        "useIEEE5","";
+        "useIEEE6","";
+        "useIEEE7","";
+        "useIEEE8","";
+      ];
+      syn_synth_set = [
+        "*",
+        [
+          "part_companion","\"\""; 
+          "frequency","\"auto\"";
+          "default_enum_encoding","\"default\"";
+          "resource_sharing","0";
+          "run_prop_extract","1";
+          "fanout_limit","100"; 
+          "globalthreshold","50";
+          "maxfan_hard","0";
+          "disable_io_insertion","0";
+          "retiming","0";
+          "report_path","4000";
+          "opcond","\"Default\"";
+          "update_models_cp","0";
+          "preserve_registers","0";
+          "symbolic_fsm_compiler","1";
+        ];
+      ];
+      syn_tech_set = [];
+      syn_vhdl_lib = [];
+  };
+];

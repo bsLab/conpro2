@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CMD="gcc -o pro -g pro.c -I../../../lib -lconpro -L../../../lib"
+echo $CMD
+$CMD
+

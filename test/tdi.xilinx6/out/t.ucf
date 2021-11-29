@@ -1,0 +1,6 @@
+#NET "d_RD<0>" LOC = "";
+    #NET "d_RD<1>" LOC = "";
+    #NET "d_RD<2>" LOC = "";
+    #NET "d_RD<3>" LOC = "";
+#NET "CLK" LOC = "";
+#NET "RESET" LOC = "";

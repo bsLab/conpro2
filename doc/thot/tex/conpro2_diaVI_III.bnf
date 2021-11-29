@@ -1,0 +1,5 @@
+data-type ::=  'logic' |
+   'logic' '[' number ']'  |
+   'int' '[' number ']'  |
+   'bool'  |
+   'char'  .

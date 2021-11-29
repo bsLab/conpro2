@@ -1,0 +1,3 @@
+function ::= ('function' name func-params func-ret ':' ) \< 
+              ('begin' function-body 'end') \< 
+              ([ 'with' parameter-list ] ';') .

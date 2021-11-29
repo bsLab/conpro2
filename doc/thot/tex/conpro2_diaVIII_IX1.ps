@@ -1,0 +1,52 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: diagrams
+%%Creator: Diagrams
+%%CreationDate: Fri Jan 22 18:04:07 2010
+%%DocumentFonts: Helvetica
+%%BoundingBox: 60 737 180 781
+%%EndProlog
+
+%%Page: "1" 1
+
+gsave
+/line { moveto lineto stroke } def
+/arctopop { arcto pop pop pop pop } def
+/polygon { 2 index 2 index moveto {lineto} repeat closepath } def
+/triangle { 3 polygon } def
+/rectangle { 4 polygon } def
+/text { moveto show } def
+
+/Helvetica findfont 10 scalefont setfont
+newpath
+gsave 12 156 translate
+gsave 0.80 0.80 scale
+(element-access:) 60 771 text
+70 739 60 739 line
+221 739 201 739 line
+221 739 217 741 217 737 triangle eofill 
+70 739 66 741 66 737 triangle eofill 
+70 751 110 751 110 726 70 726 rectangle stroke
+(obj) 82 741 text
+(name) 80 731 text
+120 739 110 739 line
+120 739 116 741 116 737 triangle eofill 
+127 746 moveto 120 746 120 739 7 arctopop 120 739 lineto stroke
+120 739 moveto 120 731 129 731 7 arctopop 129 731 lineto stroke
+129 731 moveto 136 731 136 739 7 arctopop 136 739 lineto stroke
+136 739 moveto 136 746 127 746 7 arctopop 127 746 lineto stroke
+gsave
+/Courier findfont 10 scalefont setfont
+(.) 125 736 text
+grestore
+146 739 136 739 line
+146 739 142 741 142 737 triangle eofill 
+146 751 201 751 201 726 146 726 rectangle stroke
+(element) 156 741 text
+(name) 163 731 text
+grestore
+grestore
+
+showpage
+%%Page: "1" 1
+grestore
+%%Trailer

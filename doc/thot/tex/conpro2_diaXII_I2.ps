@@ -1,0 +1,49 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: diagrams
+%%Creator: Diagrams
+%%CreationDate: Fri Jan 22 17:15:39 2010
+%%DocumentFonts: Helvetica
+%%BoundingBox: 184 694 285 781
+%%EndProlog
+
+%%Page: "1" 1
+
+gsave
+/line { moveto lineto stroke } def
+/arctopop { arcto pop pop pop pop } def
+/polygon { 2 index 2 index moveto {lineto} repeat closepath } def
+/triangle { 3 polygon } def
+/rectangle { 4 polygon } def
+/text { moveto show } def
+
+/Helvetica findfont 10 scalefont setfont
+newpath
+gsave 6 26 translate
+gsave 0.96 0.96 scale
+(interface:) 184 771 text
+194 739 184 739 line
+299 739 279 739 line
+299 739 295 741 295 737 triangle eofill 
+211 739 194 739 line
+279 739 261 739 line
+194 726 194 739 line
+279 726 279 739 line
+279 739 277 735 281 735 triangle eofill 
+279 739 279 739 line
+211 739 207 741 207 737 triangle eofill 
+211 751 261 751 261 726 211 726 rectangle stroke
+(signal) 221 741 text
+(def) 228 731 text
+194 726 moveto 194 704 204 704 5 arctopop 204 704 lineto stroke
+269 704 moveto 279 704 279 726 5 arctopop 279 726 lineto stroke
+204 704 200 706 200 702 triangle eofill 
+204 716 269 716 269 691 204 691 rectangle stroke
+(method) 221 706 text
+(interface) 214 696 text
+grestore
+grestore
+
+showpage
+%%Page: "2" 2
+grestore
+%%Trailer

@@ -1,0 +1,1 @@
+module-s ::= 'module' name 'begin' module-s-impl 'end' ';' .

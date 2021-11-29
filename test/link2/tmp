@@ -1,0 +1,208 @@
+
+
+--------------------------
+LINK_$O_IN_PROC:#process
+begin
+  if $CLK then
+  begin
+    if $RES or LINK_$O_EN = '0' then
+    begin
+      LINK_$O_state_in <= LINK_$O_S_EMPTY;
+      LINK_$O_DIN_REG <= to_logic(0,$datawidth);
+      LINK_$O_DIN_ACK <= '0';
+      LINK_$O_AVAIL <= '0';
+      LINK_$O_DIN_CNT <= to_logic(0,8);
+    end
+    else
+    begin
+      case LINK_$O_state_in is
+      begin
+        when LINK_$O_S_EMPTY =>
+        begin
+          if LINK_$O_DIN_EMPTY = '1' then
+          begin
+            --
+            -- Wait for empty token - reset state event
+            -- Return to zero phase.
+            --
+            LINK_$O_DIN_ACK <= '0';
+            if LINK_$O_DIN_CNT = to_logic($datawidth,8) then
+              LINK_$O_state_in <= LINK_$O_S_REQ
+            else
+              LINK_$O_state_in <= LINK_$O_S_SET;       
+          end;
+        end;
+        when LINK_$O_S_SET =>
+        begin
+          if LINK_$O_DIN_COMPL = '1' then
+          begin
+            --
+            -- Valid data token received
+            --
+            
+            --
+            -- Shift left, MSB first, LSB last
+            --
+            LINK_$O_DIN_REG[0] <= LINK_$O_DIN;
+            LINK_$O_DIN_REG[($datawidth-1) downto 1] <=
+              LINK_$O_DIN_REG[($datawidth-2) downto 0];            
+            --
+            -- Send acknowledge
+            --
+            LINK_$O_DIN_ACK <= '1';
+            LINK_$O_DIN_CNT <= LINK_$O_DIN_CNT + 1;
+
+            LINK_$O_state_in <= LINK_$O_S_EMPTY;
+          end;
+        end;
+        when LINK_$O_S_REQ =>
+        begin
+          --
+          -- Wait for object read request...
+          --
+          LINK_$O_DIN_CNT <= to_logic(0,8);
+          LINK_$O_AVAIL <= '1';  -- read event
+          
+          if LINK_$O_RE = '1' then
+          begin
+            LINK_$O_AVAIL <= '0';
+            LINK_$O_state_in <= LINK_$O_S_SET;
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+LINK_$O_OUT_PROC:#process
+begin
+  if $CLK then
+  begin
+    if $RES or LINK_$O_EN = '0' then
+    begin
+      LINK_$O_state_out <= LINK_$O_S_EMPTY;
+      LINK_$O_BUSY <= '0';
+      LINK_$O_DOUT_EMPTY <= '0';
+      LINK_$O_DOUT_CNT <= to_logic(0,8);
+      LINK_$O_DOUT_SHIFT <= to_logic(0,$datawidth);
+    end
+    else
+    begin
+      case LINK_$O_state_out is
+      begin
+        when LINK_$O_S_EMPTY =>
+        begin
+          LINK_$O_DOUT_EMPTY <= '1';
+          if LINK_$O_DOUT_ACK_SAMPLED = '0' then
+          begin
+            LINK_$O_state_out <= LINK_$O_S_REQ;
+          end;
+        end;
+        when LINK_$O_S_REQ =>
+        begin
+          if LINK_$O_DOUT_CNT = to_logic(0,8) then
+          begin
+            LINK_$O_BUSY <= '0';
+            if LINK_$O_WE = '1' then
+            begin
+              LINK_$O_DOUT_EMPTY <= '0';
+              LINK_$O_DOUT_SHIFT <= LINK_$O_DOUT_REG;
+              LINK_$O_BUSY <= '1';
+              LINK_$O_state_out <= LINK_$O_S_SET;
+            end;
+          end
+          else
+           begin
+             LINK_$O_DOUT_EMPTY <= '0';
+             LINK_$O_state_out <= LINK_$O_S_SET;
+           end;
+        end;
+        when LINK_$O_S_SET =>
+        begin
+          if LINK_$O_DOUT_ACK_SAMPLED = '1' then
+          begin
+            --
+            -- Got acknowledge from receiver, send empty token
+            --
+            LINK_$O_state_out <= LINK_$O_S_EMPTY;
+            
+            LINK_$O_DOUT_CNT <= LINK_$O_DOUT_CNT + 1;
+            --
+            -- Shift left, MSB first, LSB last
+            --
+            LINK_$O_DOUT_SHIFT[0] <= '0';
+            LINK_$O_DOUT_SHIFT[($datawidth-1) downto 1] <=
+              LINK_$O_DOUT_SHIFT[($datawidth-2) downto 0];            
+            if LINK_$O_DOUT_CNT = to_logic($datawidth-1,8) then 
+            begin
+              LINK_$O_DOUT_CNT <= to_logic(0,8);
+            end;
+          end;
+        end;
+        when others => 
+        begin
+          LINK_$O_state_out <= LINK_$O_S_EMPTY;
+        end;
+      end;
+    end;
+  end;
+end;
+
+
+
+LINK_$O_SAMPLER1:#process
+begin
+  variable samples1 : std_logic_vector[2];
+  variable samples2 : std_logic_vector[2];
+  if $CLK then
+  begin
+    if $RES then
+    begin
+      samples1 := 0b00;
+      samples2 := 0b00;
+      LINK_$O_DIN_SAMPLED <= 0b00;
+    end
+    else
+    begin
+      samples1[1] := samples1[0];
+      samples1[0] := LINK_$O_DIN2[0];
+      samples2[1] := samples2[0];
+      samples2[0] := LINK_$O_DIN2[1];
+    end;
+    
+    if samples1 = 0b00 and samples2 = 0b00 then
+    begin
+      LINK_$O_DIN_SAMPLED <= 0b00;
+    end;
+    if samples1 = 0b00 and samples2 = 0b11 then
+    begin
+      LINK_$O_DIN_SAMPLED <= 0b10;
+    end;
+    if samples1 = 0b11 and samples2 = 0b00 then
+    begin
+      LINK_$O_DIN_SAMPLED <= 0b01;
+    end;
+  end;
+end;
+LINK_$O_SAMPLER2:#process
+begin
+  variable samples : std_logic_vector[2];
+  if $CLK then
+  begin
+    if $RES then
+    begin
+      samples := 0b00;
+      LINK_$O_DOUT_ACK_SAMPLED <= '0';
+    end
+    else
+    begin
+      samples[1] := samples[0];
+      samples[0] := LINK_$O_DOUT_ACK;
+    end;
+    
+    if samples = 0b00  then
+      LINK_$O_DOUT_ACK_SAMPLED <= '0';
+    if samples = 0b11 then
+      LINK_$O_DOUT_ACK_SAMPLED <= '1';
+  end;
+end;

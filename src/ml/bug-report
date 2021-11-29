@@ -1,0 +1,122 @@
+2009.05.13:
+#1 fixed
+  const ASC: value := 4; -- HDT_ASC_4
+  const DSC: value := 8; -- HDT_DSC_8
+
+  type slip_pdt: {
+    pdt_dx: int[ASC];
+    pdt_dy: int[ASC];
+    pdt_dx_hop: int[ASC];
+    pdt_dy_hop: int[ASC];
+    pdt_len: logic[DSC];
+  };
+  array pkt_pool_pdt: var[POOL_SIZE] of slip_pdt;
+  ...
+    reg d: logic[8];
+        pkt_pool_pdt.[ind].pdt_dx <- to_int(d[4 to 7]);
+
+  Workaround:
+        reg pdt_addr: int[ASC];
+
+        pdt_addr <- to_int(d[4 to 7]);
+        pkt_pool_pdt.[ind].pdt_dx <- pdt_addr;
+#2 fixed
+  ...
+        pkt_pool_pdt.[ind].pdt_dx_hop <- pkt_pool_pdt.[ind].pdt_dx_hop - 1;
+
+  Workaround:
+        reg dx: int[ASC];
+
+        dx <- pkt_pool_pdt.[ind].pdt_dx_hop - 1;
+        pkt_pool_pdt.[ind].pdt_dx_hop <- dx;
+
+#3 fixed
+  ...
+        pkt_pool_pdt.[ind].pdt_dx_hop <- -pkt_pool_pdt.[ind].pdt_dx_hop;
+
+  Workaround:
+        reg dx: int[ASC];
+
+        dx <- pkt_pool_pdt.[ind].pdt_dx_hop;
+        dx <- -dx;
+        pkt_pool_pdt.[ind].pdt_dx_hop <- dx;
+
+
+2009.05.11:
+  array pkt_pool_hdt : var[ind] of  hdt_struct;
+  ...                  ===
+  
+          if (pkt_pool_hdt.[ind].hdt_adc <> ADC_CODE) or 
+             (pkt_pool_hdt.[ind].hdt_dsc <> DSC_CODE) or
+             (pkt_pool_hdt.[ind].hdt_asc <> ASC_CODE) then
+            state <- S_discard
+
+        =>
+           i13_branch: 
+                       move ($tmp.[pkt_pool_hdt_hdt_adc],pkt_pool_hdt_hdt_adc.[ind])
+                       move ($tmp.[pkt_pool_hdt_hdt_dsc],pkt_pool_hdt_hdt_dsc.[ind])
+                       move ($tmp.[pkt_pool_hdt_hdt_asc],pkt_pool_hdt_hdt_asc.[ind])
+                       bind (3)
+                       expr ($immed.[4],$tmp.[pkt_pool_hdt_hdt_asc],<>,00)
+                       expr ($immed.[5],$bool.[3],or,$immed.[4])
+                       falsejump ($immed.[5],i15_assign)
+           i14_assign: 
+                       move (state,7) with ET=L[4]
+        -----
+
+          discard <- (pkt_pool_hdt.[ind].hdt_adc <> ADC_CODE) or 
+                     (pkt_pool_hdt.[ind].hdt_dsc <> DSC_CODE) or
+                     (pkt_pool_hdt.[ind].hdt_asc <> ASC_CODE);
+          if discard = true then
+
+        => (-uc -opt no)
+           i17_assign: 
+                       move ($tmp.[pkt_pool_hdt_hdt_adc],pkt_pool_hdt_hdt_adc.[ind])
+                       expr ($immed.[1],$tmp.[pkt_pool_hdt_hdt_adc],<>,01)
+                       move ($tmp.[pkt_pool_hdt_hdt_dsc],pkt_pool_hdt_hdt_dsc.[ind])
+                       expr ($immed.[2],$tmp.[pkt_pool_hdt_hdt_dsc],<>,01)
+                       expr ($immed.[3],$bool.[1],or,$immed.[2])
+                       move ($tmp.[pkt_pool_hdt_hdt_asc],pkt_pool_hdt_hdt_asc.[ind])
+                       expr (discard:CT=L[1],$tmp.[pkt_pool_hdt_hdt_asc],<>,00)
+                       expr (discard:CT=L[1],$bool.[3],or,$immed.[4])
+                       move (discard:CT=L[1],$bool.[5])
+       i17_assign_end: 
+                       jump (i18_branch)
+           i18_branch: 
+                       expr ($immed.[1],discard,=,true)
+                       falsejump ($immed.[1],i20_assign)
+           i19_assign: 
+        
+        
+  Workaround: 
+      local reg adc,dsc,asc: loigc[2];
+      ...
+          adc <- pkt_pool_hdt.[ind].hdt_adc;
+          dsc <- pkt_pool_hdt.[ind].hdt_dsc;
+          asc <- pkt_pool_hdt.[ind].hdt_asc;
+          if adc <> ADC_CODE or
+             dsc <> DSC_CODE or
+             asc <> ASC_CODE then
+            state <- S_discard
+  
+2009.05.07: maybe fixed
+  error: 496553...
+  fix:
+            let rec get_ao ot = 
+                match ot with
+                | OT_queue qu -> qu.qu_ao,ot;
+                | OT_channel ch ->  ch.ch_ao,ot;
+                | OT_object ao -> ao,ot;
+                | OT_array at -> 
+                  if is_sel opl then
+                  begin
+                    let na = obj_sel opl in
+                    get_ao at.at_objs.(na.(0));
+                  end
+                  else
+                      error 0 (sprintf "Array <%s> access without selector found." at.at_name);
+                | _ -> error 750397 "" in
+            let ao,ao_ot = get_ao ot in
+
+ 
+    

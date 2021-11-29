@@ -1,0 +1,625 @@
+%%
+%% Book style modern:
+%% 12pt
+%% english
+%% helvetica font
+%% 
+%% Version 1.6
+%%
+
+\usepackage{txfonts}
+\usepackage[T1]{fontenc}
+\renewcommand*\ttdefault{txtt}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[english]{babel}
+\usepackage[nomessages]{fp}
+\def\theauthor{}
+\def\theaddress{}
+\def\thedate{}
+\def\thesection{}
+\def\nlq{}
+%% Page Layout
+\textwidth 13.5cm
+\textheight 23cm
+\oddsidemargin 3.0cm
+\evensidemargin 3.0cm
+\topmargin 0pt
+\voffset -10mm
+\parindent 0pt
+
+\newdimen\fullwidth \fullwidth=1.05\textwidth
+\newdimen\emptyfoot 	\advance\headsep by 0.5\baselineskip
+\emptyfoot=\topmargin 	\advance\emptyfoot by 1\baselineskip
+\let\smallsize\footnotesize
+\usepackage{graphicx}
+\newsavebox{\savepar}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{pifont}
+\usepackage{float}
+
+\renewenvironment{theindex}
+               {\begin{description}\leftmargin10pt\itemindent-10pt\parskip-2pt}
+               {\end{description}}
+\renewcommand\@idxitem{\par\hangindent 20\p@}
+\renewcommand\subitem{\@idxitem \hspace*{20\p@}}
+\renewcommand\subsubitem{\@idxitem \hspace*{30\p@}}
+\renewcommand\indexspace{}
+\usepackage{makeidx}
+\newcommand{\Index}[1]{{\sl #1}\index{#1}}
+
+\newcounter{defcounter}
+\newcounter{plotcounter} 
+\newcounter{graphcounter} 
+\newcounter{excounter}
+\newcounter{refdefcounter}
+\newcounter{refplotcounter}
+\newcounter{refgraphcounter}
+\newcounter{refexcounter}
+\setcounter{refdefcounter}{1}
+\setcounter{refexcounter}{1}
+
+\definecolor{lightbox}{gray}{.6}
+\definecolor{box-color}{gray}{.6}
+\newcommand\boxcolor{\color{box-color}}
+\definecolor{text-color}{rgb}{0.0,0.0,0.0}
+\definecolor{grey-color}{gray}{.6}
+\definecolor{fill-color}{gray}{.7}
+\newcommand\fillcolor{\color{fill-color}}
+\definecolor{highlight-color}{gray}{.6}
+\definecolor{inverse}{gray}{.6}
+
+\newcommand{\secI}[1]{
+  \clearpage
+  \thispagestyle{mychapter}
+  $ $\vskip-20mm
+  \hskip-30mm\parbox{1.2\textwidth}{
+  \Large\bf #1}
+  \vskip10mm
+}
+\newcommand{\secII}[1]{
+  \vskip10pt\hskip-30mm\parbox{1.2\textwidth}{\large\bf #1}
+  \vskip10pt
+}
+\newcommand{\secIII}[1]{
+  \vskip10pt
+  \colorit{\rule[-1pt]{2em}{1em}\hskip15pt
+  \large\bf\parbox{0.99\textwidth}{#1}}
+  \vskip5pt
+}
+
+\def\fboxdef{\setlength{\fboxrule}{1pt}\setlength{\fboxsep}{3pt}}
+
+\newcommand{\bcol}[1]{\textcolor[gray]{0.6}{#1}}      
+\newcommand{\colorit}[1]{\textcolor{black}{#1}}
+\newcommand{\colortext}[1]{\textcolor{black}{#1}}
+\newcommand{\framecolorbox}[1]{\fbox{#1}}
+\newcommand{\textframecolorbox}[1]{\fbox{#1}}
+
+\newdimen\abovecaptionskip \abovecaptionskip=5pt
+\renewcommand\float@restyle[1]{\expandafter\edef\csname
+  fst@#1\endcsname{\expandafter\noexpand\csname
+    fs@\float@style\endcsname}%
+   \@namedef{#1}{\@nameuse{fst@#1}%
+      \@float@setevery{#1}\@float{#1}}%
+   \@namedef{#1*}{\@nameuse{fst@#1}%
+      \@float@setevery{#1}\@dblfloat{#1}}%
+   \expandafter\let\csname end#1\endcsname\float@end
+   \expandafter\let\csname end#1*\endcsname\float@dblend
+   \expandafter\let\csname @float@c@#1\endcsname=\@caption   
+   \@ifundefined{@float@every@#1}{%
+     \expandafter\newtoks\csname @float@every@#1\endcsname}{}%
+   \@nameuse{@float@every@#1}={}}
+\newcommand\float@restylecap[1]{\expandafter\edef\csname
+  fst@#1\endcsname{\expandafter\noexpand\csname
+    fs@\float@style\endcsname}%
+   \@namedef{#1}{\@nameuse{fst@#1}%
+      \@float@setevery{#1}\@float{#1}}%
+   \@namedef{#1*}{\@nameuse{fst@#1}%
+      \@float@setevery{#1}\@dblfloat{#1}}%
+   \expandafter\let\csname end#1\endcsname\float@end
+   \expandafter\let\csname end#1*\endcsname\float@dblend
+   \expandafter\let\csname @float@c@#1\endcsname=\float@caption
+   \@ifundefined{@float@every@#1}{%
+     \expandafter\newtoks\csname @float@every@#1\endcsname}{}%
+   \@nameuse{@float@every@#1}={}}
+\newcommand\fs@topcapruled{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@ruled
+  \def\@fs@pre{\textcolor{box-color}{\hrule height.8pt depth0pt }\kern2pt}%
+  \def\@fs@post{\kern3pt\textcolor{box-color}{\hrule}\relax}%
+  \def\@fs@mid{\kern2pt\textcolor{box-color}{\hrule}\kern5pt}%
+  \let\@fs@iftopcapt\iftrue}
+\newcommand\fs@topcapplain{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@ruled
+  \def\@fs@pre{\kern5pt}%
+  \def\@fs@post{\kern5pt}%
+  \def\@fs@mid{\kern10pt}%
+  \let\@fs@iftopcapt\iftrue}
+\renewcommand\fs@boxed{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@plain
+  \newdimen\hsizepl
+  \hsizepl=0.9\hsize
+  \def\@fs@pre{\setbox\@currbox\vbox{\hbadness10000
+    \vbox{\advance\hsizepl by21pt
+      \textcolor{box-color}{\hrule height 1pt}\hbox to\hsizepl{\textcolor{box-color}{\vrule width 1pt}\kern10pt
+        \vbox{\kern10pt\box\@currbox\kern10pt}\hskip-12pt\textcolor{box-color}{\vrule width 1pt}}
+          \vskip-14pt\textcolor{box-color}{\hrule height 1pt}}}}%
+  \def\@fs@mid{\kern2pt}%
+  \def\@fs@post{}\let\@fs@iftopcapt\iffalse}
+\renewcommand\fs@ruled{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@plain
+  \newdimen\hsizepl
+  \hsizepl=0.9\hsize
+  \def\@fs@pre{\setbox\@currbox\vbox{\hbadness10000
+    \vbox{\advance\hsizepl by21pt
+      \textcolor{box-color}{\hrule}\kern2.5pt\textcolor{box-color}{\hrule}\hbox to\hsizepl{\kern10pt
+        \vbox{\kern10pt\box\@currbox\kern10pt}\kern9pt}
+          \vskip-11pt\textcolor{box-color}{\hrule}\kern2.5pt\textcolor{box-color}{\hrule}}}}%
+  \def\@fs@mid{\kern2pt}%
+  \def\@fs@post{}\let\@fs@iftopcapt\iffalse}
+\newcommand\fs@bared{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@plain
+  \newdimen\hsizepl
+  \hsizepl=0.9\hsize
+  \def\@fs@pre{\setbox\@currbox\vbox{\hbadness10000
+    \bcol{\strut\vrule width 5pt}\kern10pt\vbox{\advance\hsizepl by21pt
+      \hbox to\hsizepl{
+        \vbox{\kern10pt\box\@currbox\kern10pt}\kern9pt}
+          }}}%
+  \def\@fs@mid{\kern2pt}%
+  \def\@fs@post{}\let\@fs@iftopcapt\iffalse}
+
+\def\baseblock#1#2#3#4#5{
+  \vbox{\setbox0=\hbox{#5}
+    \offinterlineskip
+    \hbox{\copy0
+      \dimen0=\ht0
+      \advance\dimen0 by -#1
+      {\boxcolor\vrule height \dimen0 width#2}}
+    \hbox{\hskip#3\dimen0=\wd0
+      \advance\dimen0 by -#3
+      \advance\dimen0 by #2
+      {\boxcolor\vrule height #4 width \dimen0}}
+    }
+}
+\def\loopblock#1#2{
+\begingroup
+  \dimen2=0.4pt
+  \def\doblock{
+    \setbox2\baseblock
+      {\count1\dimen2}{0.4pt}{\count1\dimen2}{0.4pt}{\box2}}
+    \setbox2=\vbox{#1}
+    \count1=0
+    \loop
+      \advance\count1 by 1
+      \doblock
+      \ifnum\count1<#2
+    \repeat
+    \box2
+\endgroup}
+
+\def\framebox#1#2#3{
+  \vbox{{\boxcolor\hrule height #2}
+    \hbox{{\boxcolor\vrule width #2}
+      \hskip#1
+      \vbox{\vskip#1{}
+        #3
+        \vskip#1}
+      \hskip#1
+      {\boxcolor\vrule width #2}}
+    {\boxcolor\hrule height #2}}
+}
+
+\def\loopblock#1#2{
+\begingroup
+  \dimen2=0.4pt
+  \def\doblock{
+    \setbox2\baseblock
+      {\count1\dimen2}{0.4pt}{\count1\dimen2}{0.4pt}{\box2}}
+    \setbox2=\vbox{#1}
+    \count1=0
+    \loop
+      \advance\count1 by 1
+      \doblock
+      \ifnum\count1<#2
+    \repeat
+    \box2
+\endgroup}
+
+
+\newcommand\fs@blocked{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@plain
+  \newdimen\hsizepl
+  \hsizepl=0.88\hsize
+  \def\@fs@pre{\setbox\@currbox\vbox{\hbadness10000
+    \loopblock{\framebox{5mm}{0.4pt}{
+      \hbox to\hsizepl{
+        \hskip-5pt\vbox{\box\@currbox}}
+          }}{10}}}%
+  \def\@fs@mid{\kern2pt}%
+  \def\@fs@post{}\let\@fs@iftopcapt\iffalse}
+
+\newcommand\fs@shaded{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@plain
+  \newdimen\hsizepl
+  \hsizepl=0.88\hsize
+  \def\@fs@pre{\setbox\@currbox\vbox{\hbadness10000
+    \baseblock{4pt}{4pt}{5pt}{6pt}{\fboxdef\fcolorbox{box-color}{white}{
+      \hbox to\hsizepl{
+        \hskip-10pt\vbox{\box\@currbox\kern5pt}\hskip5pt}
+          }}}}%
+  \def\@fs@mid{\kern2pt}%
+  \def\@fs@post{}\let\@fs@iftopcapt\iffalse}
+
+\long\def\@makecaption#1#2{
+   \vskip 10pt
+   \setbox\@tempboxa\hbox{\textbf{#1 #2}}
+   \ifdim \wd\@tempboxa >0.85\hsize % IF longer than one line:
+       \hskip0.03\hsize\parbox{0.85\hsize}{\textbf{#1 #2}}\par                %   THEN set as ordinary paragraph.
+     \else                      %   ELSE  center.
+       \hbox to 0.85\hsize{\hfil\box\@tempboxa\hfil}
+   \fi}
+\renewcommand\floatc@plain[2]{
+   \vskip 10pt
+   \setbox\@tempboxa\hbox{\textbf{#1 #2}}
+   \ifdim \wd\@tempboxa >0.85\hsize % IF longer than one line:
+       \hskip0.03\hsize\parbox{0.85\hsize}{\textbf{#1 #2}}\par                %   THEN set as ordinary paragraph.
+     \else                      %   ELSE  center.
+       \hbox to 0.85\hsize{\hfil\box\@tempboxa\hfil}
+   \fi}
+\renewcommand\floatc@ruled[2]{
+   \vskip 3pt
+   \setbox\@tempboxa\hbox{\textbf{#1 #2}}
+   \ifdim \wd\@tempboxa >0.85\hsize % IF longer than one line:
+       \hskip0.03\hsize\parbox{0.85\hsize}{\textbf{#1 #2}}\par                %   THEN set as ordinary paragraph.
+     \else                      %   ELSE  center.
+       \hbox to 0.85\hsize{\hfil\box\@tempboxa\hfil}
+   \fi
+   \vskip 3pt}
+\@ifundefined{figure}{\newcounter {figure}} % this is for LaTeX2e
+
+\def\figureNnone{\def\fnum@figure{\hskip0pt}}
+\def\figureNArabic{\def\fnum@figure{{\sc \figlabel \, \arabic{figure}:}}}
+\def\figureNUroman{\def\fnum@figure{{\sc \figlabel \, \Roman{figure}:}}}
+\def\figureNLroman{\def\fnum@figure{{\sc \figlabel \, \roman{figure}:}}}
+\def\figureNUalpha{\def\fnum@figure{{\sc \figlabel \, \Alph{figure}:}}}
+\def\figureNLalpha{\def\fnum@figure{{\sc \figlabel \, \alph{figure}:}}}
+\def\fps@figure{tbp}
+\def\ftype@figure{2}
+\def\ext@figure{lof}
+\def\fnum@figure{{\sc \figlabel \, \arabic{figure}:}}
+\def\figure{\@float{figure}}
+\let\endfigure\end@float
+\@namedef{figure*}{\@dblfloat{figure}}
+\@namedef{endfigure*}{\end@dblfloat}
+
+\def\figureBboxed{\floatstyle{boxed}\float@restyle{figure}}
+\def\figureBruled{\floatstyle{ruled}\float@restyle{figure}}
+\def\figureBbared{\floatstyle{bared}\float@restyle{figure}}
+\def\figureBplain{\floatstyle{plain}\float@restyle{figure}}
+\def\figureBblocked{\floatstyle{blocked}\float@restyle{figure}}
+\def\figureBshaded{\floatstyle{shaded}\float@restyle{figure}}
+\def\figureBtopcapruled{\floatstyle{topcapruled}\float@restylecap{figure}}
+\def\figureBtopcapplain{\floatstyle{topcapplain}\float@restylecap{figure}}
+
+\@ifundefined{table}{\newcounter {table}} % this is for LaTeX2e
+
+\def\tableNnone{\def\fnum@table{\hskip0pt}}
+\def\tableNArabic{\def\fnum@table{{\sc \tablabel \, \thetable:}}}
+\def\tableNUroman{\def\fnum@table{{\sc \tablabel \, \Roman{table}:}}}
+\def\tableNLroman{\def\fnum@table{{\sc \tablabel \, \roman{table}:}}}
+\def\tableNUalpha{\def\fnum@table{{\sc \tablabel \, \Alph{table}:}}}
+\def\tableNLalpha{\def\fnum@table{{\sc \tablabel \, \alph{table}:}}}
+\def\fps@table{tbp}
+\def\ftype@table{2}
+\def\ext@table{lot}
+\def\fnum@table{{\sc \tablabel \, \thetable:}}
+\def\table{\@float{table}}
+\let\endtable\end@float
+\@namedef{table*}{\@dblfloat{table}}
+\@namedef{endtable*}{\end@dblfloat}
+
+\def\tableBboxed{\floatstyle{boxed}\float@restyle{table}}
+\def\tableBruled{\floatstyle{ruled}\float@restyle{table}}
+\def\tableBbared{\floatstyle{bared}\float@restyle{table}}
+\def\tableBplain{\floatstyle{plain}\float@restyle{table}}
+\def\tableBblocked{\floatstyle{blocked}\float@restyle{table}}
+\def\tableBshaded{\floatstyle{shaded}\float@restyle{table}}
+\def\tableBtopcapruled{\floatstyle{topcapruled}\float@restylecap{table}}
+\def\tableBtopcapplain{\floatstyle{topcapplain}\float@restylecap{table}}
+
+\@ifundefined{example}{\newcounter {example}} % this is for LaTeX2e
+
+\def\exampleNnone{\def\fnum@example{\hskip0pt}}
+\def\exampleNArabic{\def\fnum@example{{\sc \exlabel \,  \theexample:}}}
+\def\exampleNUroman{\def\fnum@example{{\sc \exlabel \,  \Roman{example}:}}}
+\def\exampleNLroman{\def\fnum@example{{\sc \exlabel \,  \roman{example}:}}}
+\def\exampleNUalpha{\def\fnum@example{{\sc \exlabel \,  \Alph{example}:}}}
+\def\exampleNLalpha{\def\fnum@example{{\sc \exlabel \,  \alph{example}:}}}
+\def\fps@example{tbp}
+\def\ftype@example{2}
+\def\ext@example{lot}
+\def\fnum@example{{\sc \exlabel \,  \theexample:}}
+\def\example{\@float{example}}
+\let\endexample\end@float
+\@namedef{example*}{\@dblfloat{example}}
+\@namedef{endexample*}{\end@dblfloat}
+
+\def\exampleBboxed{\floatstyle{boxed}\float@restyle{example}}
+\def\exampleBruled{\floatstyle{ruled}\float@restyle{example}}
+\def\exampleBbared{\floatstyle{bared}\float@restyle{example}}
+\def\exampleBplain{\floatstyle{plain}\float@restyle{example}}
+\def\exampleBshaded{\floatstyle{shaded}\float@restyle{example}}
+\def\exampleBblocked{\floatstyle{blocked}\float@restyle{example}}
+\def\exampleBtopcapruled{\floatstyle{topcapruled}\float@restylecap{example}}
+\def\exampleBtopcapplain{\floatstyle{topcapplain}\float@restylecap{example}}
+
+\@ifundefined{graph}{\newcounter {graph}} % this is for LaTeX2e
+
+\def\graphNnone{\def\fnum@graph{\hskip0pt}}
+\def\graphNArabic{\def\fnum@graph{{\sc \graphlabel \, \arabic{graph}:}}}
+\def\graphNUroman{\def\fnum@graph{{\sc \graphlabel \, \Roman{graph}:}}}
+\def\graphNLroman{\def\fnum@graph{{\sc \graphlabel \, \roman{graph}:}}}
+\def\graphNUalpha{\def\fnum@graph{{\sc \graphlabel \, \Alph{graph}:}}}
+\def\graphNLalpha{\def\fnum@graph{{\sc \graphlabel \, \alph{graph}:}}}
+\def\fps@graph{tbp}
+\def\ftype@graph{2}
+\def\ext@graph{lot}
+\def\fnum@graph{{\sc \graphlabel \, \thegraph:}}
+\def\graph{\@float{graph}}
+\let\endgraph\end@float
+\@namedef{graph*}{\@dblfloat{graph}}
+\@namedef{endgraph*}{\end@dblfloat}
+
+\def\graphBboxed{\floatstyle{boxed}\float@restyle{graph}}
+\def\graphBruled{\floatstyle{ruled}\float@restyle{graph}}
+\def\graphBbared{\floatstyle{bared}\float@restyle{graph}}
+\def\graphBplain{\floatstyle{plain}\float@restyle{graph}}
+\def\graphBblocked{\floatstyle{blocked}\float@restyle{graph}}
+\def\graphBshaded{\floatstyle{shaded}\float@restyle{graph}}
+\def\graphBtopcapruled{\floatstyle{topcapruled}\float@restylecap{graph}}
+\def\graphBtopcapplain{\floatstyle{topcapplain}\float@restylecap{graph}}
+
+\@ifundefined{definition}{\newcounter {definition}} % this is for LaTeX2e
+
+\def\definitionNnone{\def\fnum@definition{\hskip0pt}}
+\def\definitionNArabic{\def\fnum@definition{{\sc \deflabel \, \thedefinition:}}}
+\def\definitionNUroman{\def\fnum@definition{{\sc \deflabel \, \Roman{definition}:}}}
+\def\definitionNLroman{\def\fnum@definition{{\sc \deflabel \, \roman{definition}:}}}
+\def\definitionNUalpha{\def\fnum@definition{{\sc \deflabel \, \Alph{definition}:}}}
+\def\definitionNLalpha{\def\fnum@definition{{\sc \deflabel \, \alph{definition}:}}}
+\def\fps@definition{tbp}
+\def\ftype@definition{2}
+\def\ext@definition{lot}
+\def\fnum@definition{{\sc \deflabel \, \thedefinition:}}
+\def\definition{\@float{definition}}
+\let\enddefinition\end@float
+\@namedef{definition*}{\@dblfloat{definition}}
+\@namedef{enddefinition*}{\end@dblfloat}
+
+\def\definitionBboxed{\floatstyle{boxed}\float@restyle{definition}}
+\def\definitionBruled{\floatstyle{ruled}\float@restyle{definition}}
+\def\definitionBbared{\floatstyle{bared}\float@restyle{definition}}
+\def\definitionBplain{\floatstyle{plain}\float@restyle{definition}}
+\def\definitionBblocked{\floatstyle{blocked}\float@restyle{definition}}
+\def\definitionBshaded{\floatstyle{shaded}\float@restyle{definition}}
+\def\definitionBtopcapruled{\floatstyle{topcapruled}\float@restylecap{definition}}
+\def\definitionBtopcapplain{\floatstyle{topcapplain}\float@restylecap{definition}}
+
+\@ifundefined{plot}{\newcounter {plot}} % this is for LaTeX2e
+
+\def\plotNnone{\def\fnum@plot{\hskip0pt}}
+\def\plotNArabic{\def\fnum@plot{{\sc \plotlabel \, \theplot:}}}
+\def\plotNUroman{\def\fnum@plot{{\sc \plotlabel \, \Roman{plot}:}}}
+\def\plotNLroman{\def\fnum@plot{{\sc \plotlabel \, \roman{plot}:}}}
+\def\plotNUalpha{\def\fnum@plot{{\sc \plotlabel \, \Alph{plot}:}}}
+\def\plotNLalpha{\def\fnum@plot{{\sc \plotlabel \, \alph{plot}:}}}
+\def\fps@plot{tbp}
+\def\ftype@plot{2}
+\def\ext@plot{lot}
+\def\fnum@plot{{\sc \plotlabel \, \theplot:}}
+\def\plot{\@float{plot}}
+\let\endplot\end@float
+\@namedef{plot*}{\@dblfloat{plot}}
+\@namedef{endplot*}{\end@dblfloat}
+
+\def\plotBboxed{\floatstyle{boxed}\float@restyle{plot}}
+\def\plotBruled{\floatstyle{ruled}\float@restyle{plot}}
+\def\plotBbared{\floatstyle{ruled}\float@restyle{plot}}
+\def\plotBplain{\floatstyle{plain}\float@restyle{plot}}
+\def\plotBblocked{\floatstyle{blocked}\float@restyle{plot}}
+\def\plotBshaded{\floatstyle{shaded}\float@restyle{plot}}
+\def\plotBtopcapruled{\floatstyle{topcapruled}\float@restylecap{plot}}
+\def\plotBtopcapplain{\floatstyle{topcapplain}\float@restylecap{plot}}
+
+\@ifundefined{algorithm}{\newcounter {algorithm}} % this is for LaTeX2e
+
+\def\algorithmNnone{\def\fnum@algorithm{\hskip0pt}}
+\def\algorithmNArabic{\def\fnum@algorithm{{\sc \alglabel \, \thealgorithm:}}}
+\def\algorithmNUroman{\def\fnum@algorithm{{\sc \alglabel \, \Roman{algorithm}:}}}
+\def\algorithmNLroman{\def\fnum@algorithm{{\sc \alglabel \, \roman{algorithm}:}}}
+\def\algorithmNUalpha{\def\fnum@algorithm{{\sc \alglabel \, \Alph{algorithm}:}}}
+\def\algorithmNLalpha{\def\fnum@algorithm{{\sc \alglabel \, \alph{algorithm}:}}}
+\def\fps@algorithm{tbp}
+\def\ftype@algorithm{2}
+\def\ext@algorithm{lot}
+\def\fnum@algorithm{{\sc \alglabel \, \thealgorithm:}}
+\def\algorithm{\@float{algorithm}}
+\let\endalgorithm\end@float
+\@namedef{algorithm*}{\@dblfloat{algorithm}}
+
+\def\algorithmBboxed{\floatstyle{boxed}\float@restyle{algorithm}}
+\def\algorithmBruled{\floatstyle{ruled}\float@restyle{algorithm}}
+\def\algorithmBbared{\floatstyle{bared}\float@restyle{algorithm}}
+\def\algorithmBplain{\floatstyle{plain}\float@restyle{algorithm}}
+\def\algorithmBblocked{\floatstyle{blocked}\float@restyle{algorithm}}
+\def\algorithmBshaded{\floatstyle{shaded}\float@restyle{algorithm}}
+\def\algorithmBtopcapruled{\floatstyle{topcapruled}\float@restylecap{algorithm}}
+\def\algorithmBtopcapplain{\floatstyle{topcapplain}\float@restylecap{algorithm}}
+
+
+\def\ps@myheadings{\let\@mkboth\markboth 
+        \def\@oddfoot{
+        \hss
+        \ifnum \c@page > 0
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \hfill
+                \textbf{\thepage}
+            }
+        }
+        \else
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \hfill
+                \vrule width 0pt height 1 ex
+            }
+        }
+        \fi
+        \hss
+        }
+        \def\@evenfoot{
+        \hss
+        \ifnum \c@page > 0
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \textbf{\thepage}
+                \hfill
+            }
+        }
+        \else
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \vrule width 0pt height 1 ex
+                \hfill
+            }
+        }
+        \fi
+        \hss
+        }
+        \def\@oddhead{
+        \hss
+        \ifnum \c@page > 0
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \hfill
+                \textbf{\thesection}
+            }
+            \vskip2pt\hrule height 1mm width 1.2\fullwidth
+        }
+        \else
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \vrule width 0 pt height 1 ex
+                \hfill
+            }
+        }
+        \fi
+        \hss
+	    }
+        \def\@evenhead{
+        \hss
+        \ifnum \c@page > 0
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \hfill
+                \textbf{\thesection}
+            }
+            \vskip2pt\hrule height 1mm width 1.2\fullwidth
+        }
+        \else
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \vrule width 0 pt height 1 ex
+                \hfill
+            }
+        }
+        \fi
+        \hss
+	}
+}
+\def\ps@mychapter{\let\@mkboth\markboth
+        \def\@oddfoot{
+        \hss
+        \ifnum \c@page > 0
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \hfill
+                \textbf{\thepage}
+            }
+        }
+        \else
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \hfill
+                \vrule width 0pt height 1 ex
+            }
+        }
+        \fi
+        \hss
+        }
+        \def\@evenfoot{
+        \hss
+        \ifnum \c@page > 0
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \textbf{\thepage}
+                \hfill
+            }
+        }
+        \else
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+            {
+                \large
+                \vrule width 0pt height 1 ex
+                \hfill
+            }
+        }
+        \fi
+        \hss
+        }
+        \def\@oddhead{
+        \hss
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+        }
+        \hss
+	    }
+        \def\@evenhead{
+        \hss
+        \hskip-30mm\vbox
+        {
+            \hsize1.2\fullwidth
+        }
+        \hss
+	    }
+}
+\pagestyle{myheadings}

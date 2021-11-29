@@ -1,0 +1,9 @@
+class reset :
+  (string * string) list ->
+  object
+    method action : int -> unit
+    method add : int -> unit
+    method config : (string * string) list -> unit
+    method source : string -> unit
+    val version : string
+end

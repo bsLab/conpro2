@@ -1,0 +1,41 @@
+digraph H {
+  PORT [shape=record,
+        label="{PORT|\
+                {<s1>DOUT-2|<s2>DOUT-ACK|<s3>DIN-2|<s4>DIN-ACK}}"];
+  subgraph cluster0 {
+    LINKOUT [shape=record,
+            label="{{<e1>DOUT-2|<e2>DOUT-ACK}|\
+                    LINK-OUT|\
+                    {<s1>DOUT|<s2>WE|<s3>BUSY}}"];
+    LINKIN [shape=record,
+            label="{{<e1>DIN-2|<e2>DIN-ACK}|\
+                    LINK-IN|\
+                    {<s1>DIN|<s2>RE|<s3>AVAIL}}"];
+  };
+  SCHED [shape=record,
+         label="{{<s1>DOUT|<s2>WE|<s3>BUSY|<s4>DIN|<s5>RE|<s6>AVAIL}|\
+                 SCHEDULER|\
+                 {<r1>START-i|<r2>STOP-i|\
+                  <r3>READ-i|<r4>WRITE-i|<r5>DATA_RD-i|\
+                  <r6>DATA_WR-i|<g1>GD-i}}"]; 
+  PRO [shape=record,
+       label="{{<rp1>START|<rp2>STOP|<rp3>READ|<rp4>WRITE|\
+                <rp5>DATA_RD|<rp6>DATA_WR|<gp>GD}|PRO-i}"];
+  SCHED:g1 -> PRO:gp;
+  PRO:rp1 -> SCHED:r1;
+  PRO:rp2 -> SCHED:r2;
+  PRO:rp3 -> SCHED:r3;
+  PRO:rp4 -> SCHED:r4;
+  SCHED:r5 -> PRO:rp5; 
+  PRO:rp6 -> SCHED:r6;
+  SCHED:s1 -> LINKOUT:s1;
+  SCHED:s2 -> LINKOUT:s2;
+  LINKOUT:s3 -> SCHED:s3;
+  SCHED:s5 -> LINKIN:s2;
+  LINKIN:s1 -> SCHED:s4;
+  LINKIN:s3 -> SCHED:s6;
+  LINKOUT:e1 -> PORT:s1;
+  PORT:s2 -> LINKOUT:e2;
+  PORT:s3 -> LINKIN:e1;
+  LINKIN:e2 -> PORT:s4;
+}

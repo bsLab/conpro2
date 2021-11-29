@@ -1,0 +1,153 @@
+#!/bin/bash
+
+#########################
+# Project configuration #
+#########################
+
+PROJ=/home/sbosse/proj/conpro2/test/ram2
+TOP=r
+#TOOL=leonardo
+TOOL=xilinx6
+
+export CONPRO=/opt/Conpro2
+CPSRC=$PROJ/src/cp
+VHDLSRC=$PROJ/src/vhdl
+INCL="-I $CPSRC"
+INCL="$INCL -I $VHDLSRC"
+
+FLAGS="-O out -tool "$TOOL
+RM=/bin/rm
+
+FLAGS="$FLAGS $OPT"
+TOOL=""$TOP"."$TOOL".tool.sh"
+if [ $# = 0 ]
+then
+    echo "Usage: build <targets>"
+    echo "Targets: all clean conpro { synth tech ucf } | simu"
+    exit 1
+fi
+
+check ()
+{
+    if [ $? != 0 ]
+    then
+        echo "Abort due to errors building target."
+        exit 1
+    fi
+}
+
+do_conpro()
+{
+    echo "Starting highlevel synthesis..."
+    echo "conpro $INCL $FLAGS $TOP.cp"
+    $CONPRO/bin/conpro $OPT $INCL $FLAGS $TOP.cp
+}
+
+
+do_synth()
+{
+    echo "Starting lowlevel synthesis..."
+    cd out
+    bash $TOOL synth
+    cd -
+    check
+}
+
+do_tech()
+{
+    echo "Starting technology mapping..."
+    cd out
+    bash $TOOL tech
+    cd -
+    check
+}
+
+do_simu()
+{
+    echo "Starting simulation..."
+    cd out
+    bash $TOOL simu
+    cd -
+    check
+}
+
+do_ucf()
+{
+    echo "Starting simulation..."
+    cd out
+    bash $TOOL ucf
+    cd -
+    check
+}
+
+
+do_xpat()
+{
+    echo "Starting xpat..."
+    cd out
+    bash $TOOL xpat
+    cd -
+    check
+}
+
+
+init()   
+{
+  if [ ! -d out ]
+  then
+    mkdir out
+  fi
+  if [ ! -d out/obj ]
+  then
+    mkdir out/obj
+  fi
+}
+                    
+                    
+init
+                    
+for TARGET in $@
+do
+    echo "Building target [$TARGET] ..."
+    case $TARGET in
+        all)
+            do_conpro
+            check
+            do_synth
+            check
+            do_tech
+            check
+            ;;
+        synth)
+            do_synth
+            check
+            ;;
+        tech)
+            do_tech
+            check
+            ;;
+        simu)
+            do_simu
+            check
+            ;;
+        xpat)
+            do_xpat
+            check
+            ;;
+        ucf)
+            do_ucf
+            check
+            ;;
+        conpro)
+            do_conpro
+            check
+            ;;
+        clean)  
+            cd out
+       	    $RM -rf obj/*
+            $RM -f *.ft *.obj *.uc *.ui *.ast *.pi *.st *.vhdl *.c *.pat *.bit *.svf *.xsvf *.log *.sh *.mcs
+            cd -
+            ;;
+		
+    esac
+done

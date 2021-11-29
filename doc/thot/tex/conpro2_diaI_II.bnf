@@ -1,0 +1,4 @@
+module-b-impl ::= { include-source }+ |
+           { open-module }+ |
+           { object-definition }+ |
+           { process }+ . 

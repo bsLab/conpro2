@@ -1,0 +1,12 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<840fd9a4> and feature <CONPRO2>...
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+Parsing ucode file <r_p1.UC>...
+UCI <ucode.uci_in.r_p1.UC>: found modules section...
+
+#######################################################################
+# Unkown location:                                                    #
+# Error: UCI <ucode.uci_in.r_p1.UC>#read_modules: Unknown module <R>. #
+#######################################################################

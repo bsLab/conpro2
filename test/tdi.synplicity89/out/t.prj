@@ -1,0 +1,36 @@
+add_file -vhdl -lib work "./t_main.vhdl"
+add_file -vhdl -lib work "./t_p_3.vhdl"
+add_file -vhdl -lib work "./t_p_2.vhdl"
+add_file -vhdl -lib work "./t_p_1.vhdl"
+add_file -vhdl -lib work "./t_p_0.vhdl"
+add_file -vhdl -lib work "./t.vhdl"
+impl -add obj -type fpga
+set_option -technology proasic3
+set_option -part a3p125
+set_option -package ""
+set_option -speed_grade -2
+set_option -part_companion ""
+set_option -default_enum_encoding default
+set_option -resource_sharing 1
+set_option -top_module "MOD_t"
+set_option -frequency auto
+set_option -run_prop_extract 1
+set_option -fanout_limit 12
+set_option -globalthreshold 50
+set_option -maxfan_hard 0
+set_option -disable_io_insertion 0
+set_option -retiming 0
+set_option -report_path 4000
+set_option -opcond Default
+set_option -update_models_cp 0
+set_option -preserve_registers 0
+set_option -symbolic_fsm_compiler 1
+set_option -write_verilog 0
+set_option -write_vhdl 0
+set_option -write_apr_constraint 1
+project -result_format "edif"
+project -result_file "obj/t.edn"
+set_option -vlog_std v2001
+set_option -synthesis_onoff_pragma 0
+set_option -project_relative_includes 1
+impl -active "obj"

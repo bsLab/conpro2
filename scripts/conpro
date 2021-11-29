@@ -1,0 +1,19 @@
+#!/bin/sh
+
+TOP=/opt/Conpro2
+
+OS=`uname`
+MACH=`uname -m`
+
+case $OS in
+  SunOS)
+    case $MACH in
+      i86pc)
+        $TOP/bin/sol86/vumrun $TOP/bin/gen/conpro "$@"
+        ;;
+    esac
+    ;;
+  Linux)
+    $TOP/bin/lx86/vumrun $TOP/bin/gen/conpro "$@"
+    ;;
+esac

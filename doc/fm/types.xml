@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ManualPage SYSTEM "file:///export/home/FrameMaker/fminit/usenglish/structure/dtd/article.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+
+<!NOTATION png SYSTEM "">
+<!ENTITY EquationBody1 SYSTEM "EquationBody11.png" NDATA png>
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<?Fm Condition Comment Red SINGLE_UNDERLINE show?>
+<?Fm Condition FM8_SYSTEM_HIDEELEMENT AsIs NO_OVERRIDE hide?>
+<?Fm Condition FM8_TRACK_CHANGES_ADDED Forest%20Green SINGLE_UNDERLINE show?>
+<?Fm Condition FM8_TRACK_CHANGES_DELETED Red STRIKETHROUGH show?>
+
+<?Fm BoolCondExpr "" State 0?>
+
+
+<?Fm TrackChange Off PreviewState PREVIEW_OFF_TRACK_CHANGE?>
+<ManualPage><ManualTitle><ParaX>Object and Data Types</ParaX>
+<ParaX>ConPro type system</ParaX></ManualTitle>
+<Section><SectionTitle>Table of Content</SectionTitle>
+<Para><ulink url="/home/sbosse/proj/conpro2/doc/fm/typesTOC.fm"></ulink></Para></Section>
+<Section Hidden = "No"><SectionTitle>Introduction</SectionTitle>
+<Para>Objects are specified by their object type <Symbol>α</Symbol> and
+a data type <Symbol>β</Symbol>. There are data  storage and abstract
+type objects. User defined types providing product types using arrays
+and structures and restricted sum types with enumerated symbolic
+name lists are available.</Para>
+<Para>There are top-level objects shared by a set of processes,
+and local process objects accessed only by one process. Shared objects
+can be accessed concurrently. To guarantee atomic and consistent
+access in this case, a mutual exclusion lock scheduler is used for
+each object.</Para></Section>
+<Section Hidden = "No"><SectionTitle>Object Types</SectionTitle>
+<Para>The set of objects consists of data storage objects <Symbol>&real;</Symbol> with
+different access behaviour and abstract objects <Symbol>&Theta;</Symbol> including
+interprocess-communication objects <Symbol>&image;</Symbol>.
+Data storage objects can be used directly in expressions. Abstract
+objects are accessed and manipulated by a set of methods. Objects
+can be defined  locally in a  process context within the process
+body, or globally in a toplevel module context.</Para>
+<Para>Queues and channels are both data storage and abstract objects
+(part of interprocess-communication).</Para>
+<Environment Type = "Table"><Title>Object Types</Title>
+<TABLE Cols = "2" Widths = "1.968in 2.241in">
+<TableHead>
+<TableHeadRow>
+<TableHeadCell><Para> <Highlight>type</Highlight> <Symbol>α</Symbol>=<Highlight>OT</Highlight></Para></TableHeadCell>
+<TableHeadCell><Para><Highlight>Description</Highlight></Para></TableHeadCell>
+</TableHeadRow>
+</TableHead>
+<TableBody>
+<TableRow>
+<TableCell><Formatted><Line>reg</Line></Formatted></TableCell>
+<TableCell><Para>Single storage register with CREW access behaviour.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>var</Line></Formatted></TableCell>
+<TableCell><Para>Variable storage element stored in a shared RAM block
+with EREW access behaviour.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>sig</Line></Formatted></TableCell>
+<TableCell><Para>Hardware signal used for hardware component interconnect
+and access.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>channel</Line></Formatted></TableCell>
+<TableCell><Para>Synchronized data based IPC communication (buffered
+or unbuffered)</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>queue</Line></Formatted></TableCell>
+<TableCell><Para>Synchronized data based IPC communication with FIFO
+access behaviour</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>object</Line></Formatted></TableCell>
+<TableCell><Para>Abstract data type object accessed and modified
+ with methods</Para></TableCell>
+</TableRow>
+</TableBody>
+</TABLE></Environment></Section>
+<Section Hidden = "No"><SectionTitle>Data Types</SectionTitle>
+<Para>Table <XRef IDRef = "CJAHBECH" format = "Environment"/> lists
+all available data types which can be used with expressions, functions
+and assignments. These data types can be applied to a subset of
+available object types (data storage and some interprocess communication
+objects). There are type conversion functions for each basic type.</Para>
+<Environment ID = "CJAHBECH" Type = "Table"><Title>Data Types</Title>
+<TABLE Cols = "2" Widths = "2.267in 2.267in">
+<TableHead>
+<TableHeadRow>
+<TableHeadCell><Para> <Highlight>type</Highlight> <Symbol>β</Symbol>=<Highlight>DT</Highlight></Para></TableHeadCell>
+<TableHeadCell><Para><Highlight>Description</Highlight></Para></TableHeadCell>
+</TableHeadRow>
+</TableHead>
+<TableBody>
+<TableRow>
+<TableCell><Formatted><Line>logic</Line></Formatted></TableCell>
+<TableCell><Para>Single logic bit</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>logic[<Symbol>ω</Symbol>]</Line></Formatted></TableCell>
+<TableCell><Para>Unsigned integer or logic vector of width <Symbol>ω</Symbol> bit</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>int[<Symbol>ω</Symbol>]</Line></Formatted></TableCell>
+<TableCell><Para>Signed integer type of width <Symbol>ω</Symbol> bit
+(includung sign bit)</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>char</Line></Formatted></TableCell>
+<TableCell><Para>Character byte (<Symbol>&ordm;</Symbol> logic[8] type,
+allocates 8 bits)</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>bool</Line></Formatted></TableCell>
+<TableCell><Para>Boolean type (<Symbol>&ordm;</Symbol> logic
+type, allocates one bit)</Para></TableCell>
+</TableRow>
+</TableBody>
+</TABLE></Environment></Section>
+<Section Hidden = "No"><SectionTitle>Data Storage Objects</SectionTitle>
+<Para>True bit-scaled data types (TYPE <Symbol>β</Symbol>) and storage
+objects (subset <Symbol>&Acirc;</Symbol> of TYPE <Symbol>α</Symbol>) are
+supported. The data width can be choosen in the range <Symbol>ω</Symbol>={1,2,<Symbol>…</Symbol>,64}
+Bit. The formal syntax of scalar object definition is shown in definition <XRef
+    IDRef = "D6" format = "Environment"/>, and is summarized in
+table <XRef IDRef = "CJACBIHC" format = "Environment"/>. </Para>
+<Para>A data storage object <Symbol>&Acirc;</Symbol> is specified
+and defined by a cross product of types (<Symbol>α</Symbol><Symbol>&acute;</Symbol><Symbol>β</Symbol>). Storage
+objects can be read in expressions and can be written in assignments. Definition <XRef
+    IDRef = "CJAGBJIG" format = "Environment"/> gives the formal
+syntax specification.</Para>
+<Para><Highlight>Registers</Highlight> are single storage elements
+either used as a shared global object or as a local object inside
+a process. In the case of a global object, the register provides
+concurrent read access (not requiring a mutex guarderd scheduler)
+and exclusive mutex guarded write access. If there is more than
+one process trying to write to the register, a mutex guarded scheduler
+serializes the write accesses. There are two different schedulers
+available: static priority and dynamic FIFO scheduled (see examples <XRef
+    IDRef = "CJAFIGJF" format = "Environment"/> and <XRef
+    IDRef = "CJAIDBFG" format = "Environment"/>).</Para>
+<Para><Highlight>Variables</Highlight> are storage elements inside
+a memory block either used as a shared global object (the memory
+block itself) or as a local object inside a process (see examples <XRef
+    IDRef = "CJAFIGJF" format = "Environment"/> and <XRef
+    IDRef = "CJAIDBFG" format = "Environment"/>). A variable provides
+always exclusive mutex guarded read and write access. </Para>
+<Para>Different variables concerning both data type and data width
+can be stored in one or several different memory blocks, which are
+mapped to generic RAM blocks. Address management is done automatically
+during synthesis and is transparent to the programmer. Direct address
+references or manipulation (aka pointers) are not supported. </Para>
+<Para>The memory data width, always having a physical type logic/bit-vector,
+is scaled to the largest variable stored in memory. To reduce memory
+data width, variables can be fragmented, that means a variable is
+scattered about several memory cells. </Para>
+<Para>Different memory blocks can be created explicitly, and variables
+can be assigned to different blocks.</Para>
+<Para><Highlight>Queues</Highlight> are storage elements with FIFO
+access order and interprocess communcation objects, too. They are
+always used as a shared global object. Queues and channels can be
+used directly in expressions like any other storage object, see example <XRef
+    IDRef = "CJABBGIC" format = "Environment"/>. </Para>
+<Para><Highlight>Channels</Highlight> are primarily interprocess
+communcation objects, too. They are always used as a shared global
+object. They can be buffered (behaviour like a queue with one cell,
+depth is 1) or unbuffered (providing only a handshaked data transfer).</Para>
+<Para>Register, variables, queues, and channels can be defined for
+product types (arrays and structure), and sum types (enumeration
+type), too, see section <XRef IDRef = "CJAGFCDH" format = "Environment"/> to <XRef
+    IDRef = "CJAFDEBI" format = "Environment"/>.</Para>
+<Environment ID = "D6" XRefLabel = "Environment" Type = "Definition"
+    LineNumbers = "No" Imported = "No"><Title>Formal syntax specification
+of a data object definition.</Title>
+<Line><Emphasis>dataobj-definition</Emphasis>&nbsp;::=&nbsp;<Emphasis>obj-type</Emphasis>&nbsp;(&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'&nbsp;<Emphasis>data-type</Emphasis></Line>
+<Line>&nbsp;&nbsp;[&nbsp;with&nbsp;<Emphasis>parameter-list</Emphasis>&nbsp;]&nbsp;';'&nbsp;.&nbsp;&nbsp;</Line>
+<Line><Emphasis>obj-type</Emphasis>&nbsp;::=&nbsp;reg&nbsp;|&nbsp;var&nbsp;|&nbsp;queue&nbsp;|&nbsp;channel&nbsp;.</Line>
+<Line><Emphasis>data-type</Emphasis>&nbsp;::=&nbsp;&nbsp;logic&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;logic&nbsp;'['&nbsp;<Emphasis>number</Emphasis>&nbsp;']'&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;int&nbsp;'['&nbsp;<Emphasis>number</Emphasis>&nbsp;']'&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;bool&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;.</Line></Environment>
+<Environment ID = "CJAGBJIG" XRefLabel = "Environment"
+    Type = "Definition" LineNumbers = "No" Imported = "No"><Title>Formal
+syntax specification of a data object access in expressions.</Title>
+<Line><Emphasis>dataobj-access</Emphasis>&nbsp;::=&nbsp;<Emphasis>identifier</Emphasis>&nbsp;|&nbsp;<Emphasis>bit-selector</Emphasis> | <Emphasis>type-conversion</Emphasis> .</Line>
+<Line><Emphasis>identifier</Emphasis>&nbsp;::=&nbsp;<Emphasis>name</Emphasis> .</Line>
+<Line><Emphasis>bit-selector</Emphasis>&nbsp;::=&nbsp;&nbsp;<Emphasis>identifier</Emphasis> '['&nbsp;<Emphasis>number</Emphasis> ']'</Line>
+<Line><Emphasis>type-conversion</Emphasis> ::= &nbsp;&nbsp;&nbsp;to_logic&nbsp;'('&nbsp;<Emphasis>dataobj-access</Emphasis>&nbsp;')'&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;to_int&nbsp;'('&nbsp;<Emphasis>dataobj-access</Emphasis>&nbsp;')'&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;to_bool&nbsp;'('&nbsp;<Emphasis>dataobj-access</Emphasis>&nbsp;')'&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;to_char&nbsp;'('&nbsp;<Emphasis>dataobj-access</Emphasis>&nbsp;')'&nbsp;&nbsp;.</Line></Environment>
+<Environment ID = "CJACBIHC" Type = "Table"><Title>Summary of scalar
+data storage object definitions and access in expressions</Title>
+<TABLE Cols = "2" Widths = "3.150in 2.935in">
+<TableHead>
+<TableHeadRow>
+<TableHeadCell><Para><Highlight>Definition</Highlight></Para></TableHeadCell>
+<TableHeadCell><Para><Highlight>Description</Highlight></Para></TableHeadCell>
+</TableHeadRow>
+</TableHead>
+<TableBody>
+<TableRow>
+<TableCell><Formatted><Line>reg <Emphasis>name</Emphasis>: <Emphasis>DT</Emphasis>[<Emphasis>N</Emphasis>];</Line></Formatted></TableCell>
+<TableCell><Para>Defines a new storage object of type register with
+a specified data type <Emphasis>dt</Emphasis> and optional data
+width <Emphasis>N</Emphasis> bits.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>queue <Emphasis>name</Emphasis>: <Emphasis>DT</Emphasis>[<Emphasis>N</Emphasis>];</Line>
+<Line>queue <Emphasis>name</Emphasis>: <Emphasis>DT</Emphasis>[<Emphasis>N</Emphasis>]
+with depth=8;</Line></Formatted></TableCell>
+<TableCell><Para>Defines a new interprocess communication data object
+of type queue with a specified data type <Emphasis>dt</Emphasis> and
+optional data width <Emphasis>N</Emphasis> bits. Optional parameters
+are passed using the <Terminal>with</Terminal> statement.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>block <Emphasis>RAM</Emphasis>;</Line>
+<Line>var <Emphasis>name</Emphasis>: <Emphasis>DT</Emphasis>[<Emphasis>N</Emphasis>]
+in <Emphasis>RAM</Emphasis>;</Line>
+<Line>var <Emphasis>name</Emphasis>: <Emphasis>DT</Emphasis>[<Emphasis>N</Emphasis>];</Line></Formatted></TableCell>
+<TableCell><Para>Defines a new storage object of type variable with
+a specified data type <Emphasis>dt</Emphasis> and optional data
+width <Emphasis>N</Emphasis> bits. The object is stored in a shared
+RAM block (optional).</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>x <Symbol>&larr;</Symbol> y;</Line></Formatted></TableCell>
+<TableCell><Para>Appearence of stoarge objects on left and right
+hand side of an assignment.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>x[<Emphasis>J</Emphasis>] <Symbol>&larr;</Symbol> y[<Emphasis>I</Emphasis>];</Line></Formatted></TableCell>
+<TableCell><Para>Bit index selector used in expression with vector
+objects.</Para></TableCell>
+</TableRow>
+</TableBody>
+</TABLE></Environment>
+<Environment ID = "CJAFIGJF" Type = "Example" LineNumbers = "Yes"
+    Indent = "L1"><Title>Definition of global storage objects and
+access in expressions</Title>
+<Line>reg x,y,z: int[5];</Line>
+<Line>var v: int[8];</Line>
+<Line>process xyz:</Line>
+<Line>begin</Line>
+<Line>  for i = 1 to 10 do</Line>
+<Line>  begin</Line>
+<Line>    x <Symbol>&not;</Symbol> x + 1;</Line>
+<Line>    y <Symbol>&not;</Symbol> x * z - 1;</Line>
+<Line>    if z &lt; 10 and x > 100 then v <Symbol>&not;</Symbol> v
++ z;</Line>
+<Line>  end;</Line>
+<Line>end;</Line></Environment>
+<Environment ID = "CJAIDBFG" Type = "Example" LineNumbers = "Yes"
+    Indent = "L1"><Title>Definition of local storage objects and
+access in expressions</Title>
+<Line>process xyz:</Line>
+<Line>begin</Line>
+<Line>  reg x,y,z: int[5];</Line>
+<Line>  var v: int[10];</Line>
+<Line>  for i = 1 to 10 do</Line>
+<Line>  begin</Line>
+<Line>    x <Symbol>&not;</Symbol> x + 1;</Line>
+<Line>    y <Symbol>&not;</Symbol> x * z - 1;</Line>
+<Line>    if z &lt; 10 and x > 100 then v <Symbol>&not;</Symbol> v
++ z;</Line>
+<Line>  end;</Line>
+<Line>end;</Line></Environment>
+<Environment ID = "CJABBGIC" Type = "Example" LineNumbers = "Yes"
+    Indent = "L1"><Title>Definition of interprocess-communication
+objects (queues) and access in expressions</Title>
+<Line>queue q1,q2: char;</Line>
+<Line>process flip:</Line>
+<Line>begin</Line>
+<Line>  reg c: char;</Line>
+<Line>  c <Symbol>&not;</Symbol> &rsquo;a&rsquo;;</Line>
+<Line>  for i = 1 to 10 do</Line>
+<Line>  begin</Line>
+<Line>    q2 <Symbol>&not;</Symbol> c + 1;</Line>
+<Line>    c <Symbol>&not;</Symbol> q1;</Line>
+<Line>  end;</Line>
+<Line>end;</Line>
+<Line>process flop:</Line>
+<Line>begin</Line>
+<Line>  reg c: char;</Line>
+<Line>  for i = 1 to 10 do</Line>
+<Line>  begin</Line>
+<Line>    c <Symbol>&not;</Symbol> q2;</Line>
+<Line>    q1 <Symbol>&not;</Symbol> c + 1;</Line>
+<Line>  end;</Line>
+<Line>end;</Line></Environment></Section>
+<Section Numbered = "Yes"><SectionTitle>Signals</SectionTitle>
+<Para>Signals are interconnection elements without a storage model.
+They provide an interface to external hardware blocks. Signals are
+used in component structures, too, shown in example <XRef IDRef = "E5"
+    format = "Environment"/>. Lines 1 to 7 define a signal port
+interface of a component, and line 8 instantiates a component of
+this type.</Para>
+<Para><Highlight></Highlight>Signals can be used directly in expressions
+like any other storage object. Signals can be read in expressions,
+and a value can be assigned in assignments, shown in example <XRef
+    IDRef = "E5" format = "Environment"/> (for example line 11 using
+a static map statement, and line 33). Reading a signal returns the
+actual value of a signal, for example line 23, but writing to a
+signal assigns a new value only for the time the assignment is active,
+otherwise a default value is assigned to the signal, for example
+in line 34. Therefore, there may be only one assignment for a signal.</Para>
+<Para>Signals are non-shared objects, and have no access scheduler.
+Only one process may assign values to a signal (usually using the <Terminal>wait
+for</Terminal> statement), but many processes may read a signal
+concurrently. Additionally, signals can be mapped to register outputs
+using the <Terminal>map</Terminal> statement.</Para>
+<Environment XRefLabel = "Environment" Type = "Definition"
+    LineNumbers = "No" Imported = "No"><Title>Formal syntax specification
+of a signal object definition.</Title>
+<Line><Emphasis>signal-definition</Emphasis>&nbsp;::=&nbsp;<Emphasis>obj-type</Emphasis>&nbsp;(&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'&nbsp;<Emphasis>data-type</Emphasis></Line>
+<Line>&nbsp;&nbsp;[&nbsp;with&nbsp;<Emphasis>parameter-list</Emphasis>&nbsp;]&nbsp;';'&nbsp;.&nbsp;&nbsp;</Line>
+<Line><Emphasis>obj-type</Emphasis>&nbsp;::=&nbsp;sig&nbsp;.</Line>
+<Line><Emphasis>data-type</Emphasis>&nbsp;::=&nbsp;&nbsp;logic&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;logic&nbsp;'['&nbsp;<Emphasis>number</Emphasis>&nbsp;']'&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;int&nbsp;'['&nbsp;<Emphasis>number</Emphasis>&nbsp;']'&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;bool&nbsp;&nbsp;|</Line>
+<Line>&nbsp;&nbsp;&nbsp;char&nbsp;.</Line></Environment>
+<Environment ID = "E5" XRefLabel = "Environment" Type = "Example"
+    LineNumbers = "Yes" Imported = "No" Indent = "L1"><Title>Example
+of signal definitions and signal access. Component structure elements
+are signals, too.</Title>
+<Line>type&nbsp;dev_type&nbsp;:&nbsp;{</Line>
+<Line>&nbsp;&nbsp;port&nbsp;leds:&nbsp;output&nbsp;logic[4];</Line>
+<Line>&nbsp;&nbsp;port&nbsp;rd:&nbsp;input&nbsp;logic[8];</Line>
+<Line>&nbsp;&nbsp;port&nbsp;wr:&nbsp;output&nbsp;logic[8];</Line>
+<Line>&nbsp;&nbsp;port&nbsp;we:&nbsp;output&nbsp;logic;</Line>
+<Line>&nbsp;&nbsp;port&nbsp;act:&nbsp;input&nbsp;logic;</Line>
+<Line>};</Line>
+<Line>component&nbsp;DEV:&nbsp;dev_type;</Line>
+<Line>export&nbsp;DEV;</Line>
+<Line>reg&nbsp;stat_leds:&nbsp;logic[4];</Line>
+<Line>DEV.leds&nbsp;&lt;&lt;&nbsp;stat_leds;</Line>
+<Line>signal&nbsp;s1:&nbsp;int[8];</Line>
+<Line>signal&nbsp;s2:&nbsp;logic;</Line>
+<Line>reg&nbsp;xs:&nbsp;int[8];</Line>
+<Line>export&nbsp;s1,s2;</Line>
+<Line>process&nbsp;p1:</Line>
+<Line>begin</Line>
+<Line>&nbsp;&nbsp;reg&nbsp;x:&nbsp;int[8];</Line>
+<Line>&nbsp;&nbsp;x&nbsp;<Symbol>&not;</Symbol>0;</Line>
+<Line>&nbsp;&nbsp;stat_leds[0]&nbsp;<Symbol>&not;</Symbol>&nbsp;1;</Line>
+<Line>&nbsp;&nbsp;for&nbsp;i&nbsp;=&nbsp;1&nbsp;to&nbsp;5&nbsp;do</Line>
+<Line>&nbsp;&nbsp;begin</Line>
+<Line>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;<Symbol>&not;</Symbol>&nbsp;x&nbsp;+&nbsp;s1;</Line>
+<Line>&nbsp;&nbsp;end;</Line>
+<Line>&nbsp;&nbsp;xs&nbsp;<Symbol>&not;</Symbol>&nbsp;x;</Line>
+<Line>&nbsp;&nbsp;stat_leds[0]&nbsp;<Symbol>&not;</Symbol>&nbsp;0;</Line>
+<Line>end;</Line>
+<Line>process&nbsp;p2:</Line>
+<Line>begin</Line>
+<Line>&nbsp;&nbsp;stat_leds[1]&nbsp;<Symbol>&not;</Symbol>&nbsp;0;</Line>
+<Line>&nbsp;&nbsp;for&nbsp;i&nbsp;=&nbsp;1&nbsp;to&nbsp;5&nbsp;do</Line>
+<Line>&nbsp;&nbsp;begin</Line>
+<Line>&nbsp;&nbsp;&nbsp;&nbsp;wait&nbsp;for&nbsp;DEV.act&nbsp;=&nbsp;1&nbsp;with&nbsp;s2&nbsp;<Symbol>&not;</Symbol>&nbsp;1;</Line>
+<Line>&nbsp;&nbsp;&nbsp;&nbsp;DEV.we&nbsp;<Symbol>&not;</Symbol>&nbsp;1,DEV.wr&nbsp;<Symbol>&not;</Symbol>&nbsp;to_logic(xs);</Line>
+<Line>&nbsp;&nbsp;end;</Line>
+<Line>&nbsp;&nbsp;stat_leds[1]&nbsp;<Symbol>&not;</Symbol>&nbsp;0;</Line>
+<Line>end;</Line></Environment></Section>
+<Section Hidden = "No"><SectionTitle>Abstract Object Types</SectionTitle>
+<Para>The set of abstract data type objects <Symbol>&Theta;</Symbol> define
+objects implementing reactive blocks interacting with the processes
+and the environment, for example interprocess-communication or data
+links. They are not directly accessible in expressions like registers
+(with some exceptions). Abstract objects belong to modules, defined by
+the External Module Interface (EMI). A module assigns a type to
+an abstract object.</Para>
+<Para>Before abstract objects of a particular type can be used,
+the appropiate module must be opened first, shown in definition <XRef
+    IDRef = "D10" format = "Environment"/>. </Para>
+<Environment ID = "D10" XRefLabel = "Environment" Type = "Definition"
+    LineNumbers = "No" Imported = "No"><Title>Opening of a module.</Title>
+<Line><Emphasis>open-module</Emphasis>&nbsp;::=&nbsp;open&nbsp;<Emphasis>mod-name</Emphasis>&nbsp;';'&nbsp;.</Line></Environment>
+<Para>ADT objects can be accessed by their appropiate method set <Symbol>θ</Symbol>={<Index>
+<I_Body><Symbol>θ</Symbol></I_Body><I_Subscript>1</I_Subscript></Index>,<Index>
+<I_Body><Symbol>θ</Symbol></I_Body><I_Subscript>2</I_Subscript></Index>,...}.
+A method is applied using the selector <Terminal>&rsquo;.&rsquo;</Terminal> operator
+followed by a list of arguments passed to method parameters, with
+arguments separated by a comma list encapsulated between paranthesis,
+shown in definition <XRef IDRef = "D11" format = "Environment"/>.</Para>
+<Environment ID = "D11" XRefLabel = "Environment" Type = "Definition"
+    LineNumbers = "No" Imported = "No"><Title>Object method calls.
+The object must be first created with the object defintion statement.</Title>
+<Line><Emphasis>object-defintion</Emphasis>&nbsp;::=&nbsp;object&nbsp;<Emphasis>obj-name</Emphasis>&nbsp;':'&nbsp;<Emphasis>obj-type</Emphasis>&nbsp;';'&nbsp;.</Line>
+<Line><Emphasis>object-call</Emphasis>&nbsp;::=&nbsp;<Emphasis>obj-name</Emphasis>&nbsp;'.'&nbsp;<Emphasis>method-name</Emphasis>&nbsp;'('&nbsp;(&nbsp;<Emphasis>argument</Emphasis>&nbsp;\\&nbsp;','&nbsp;)&nbsp;')'&nbsp;';'&nbsp;.&nbsp;</Line></Environment>
+<Para>Methods which do not expect arguments are applied with an
+empty argument list <Terminal>()</Terminal>. Table <XRef IDRef = "T21"
+    format = "Environment"/> summarizes the statements required
+for using abstract object types.</Para>
+<Environment ID = "T21" XRefLabel = "Environment" Type = "Table"
+    LineNumbers = "No" Imported = "No"><Title>Summary of abstract
+object module inclusion, object definition and object access.</Title>
+<TABLE Cols = "2" Widths = "2.945in 2.945in">
+<TableHead>
+<TableHeadRow>
+<TableHeadCell><Para><Highlight>Statement</Highlight></Para></TableHeadCell>
+<TableHeadCell><Para><Highlight>Description</Highlight></Para></TableHeadCell>
+</TableHeadRow>
+</TableHead>
+<TableBody>
+<TableRow>
+<TableCell><Formatted><Line> open <Emphasis>Module</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Open specified ADTO module</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line> object <Emphasis>obj</Emphasis>: <Emphasis>objtype</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Defines and instantiates a new object of specified
+ADT.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line> object <Emphasis>obj</Emphasis>: <Emphasis>objtype</Emphasis> with</Line>
+<Line>             <Emphasis>param</Emphasis>=<Emphasis>valu</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Defines and instantiates a new object of specified
+ADT type with additional parameter settings.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line> <Emphasis>obj</Emphasis>.<Emphasis>meth</Emphasis></Line></Formatted></TableCell>
+<TableCell><Para>Object method access using the selector operator </Para></TableCell>
+</TableRow>
+</TableBody>
+</TABLE></Environment></Section>
+<Section Id = "CJAGFCDH" Hidden = "No"><SectionTitle>Array Types</SectionTitle>
+<Para>Arrays are product types and can be applied to data storage
+objects including queues and channels. Additionally, arrays can
+be applied to abstract objects, too, providing indexed object selection.
+Array elements can be accessed with static selectors (constant values
+or expressions foleded to a constant value), and with dynamic selectors
+(expressions referencing storage objects). </Para>
+<Para><Highlight>Arrays of variables</Highlight> are implented in
+memory blocks. The element access is performed by address calculation
+and access of the memory block. Arrays of any other object type
+are always implemented with single objects. If elements of such an
+array only accessed with static selectors, the array access is replaced
+by the appropiate object. If at least there is one element access
+with a dynamic selector expression, all objects of this array are
+accessed my multi- and demultiplexer blocks (simulated memory block
+implementation).</Para>
+<Para><Highlight>Arrays of processes</Highlight> can be defined,
+too. A process identifier symbol #=[0,N-1] can be used in expressions
+of each process created by the array definition.</Para>
+<Para><Highlight>Multi-dimensional arrays</Highlight> are supported,
+too. But in this case each dimension must be of power 2 (or will
+be aligned during the synthesis). Multi-dimensional arrays are mapped
+to one-dimensional arrays to simplify hardware synthesis. the one-dimensional
+idnex is calculated by the following equation:</Para>
+<Environment Type = "Equation"><Title></Title>
+<Equation>
+<EquationBody entity = "EquationBody1" position = "below"
+    align = "acenter" cropped = "1" float = "0" width = "6.133in"
+    height = "0.750in" angle = "0.000" nsoffset = "0.000in" dpi = "300"/></Equation></Environment>
+<Para>Formal syntax definitions <XRef IDRef = "CJAJGEJE"
+    format = "Environment"/> and <XRef IDRef = "CJAFFCFG"
+    format = "Environment"/> show definition and access of arrays,
+summarized in table <XRef IDRef = "CJAEJHIB" format = "Environment"/>.
+An extended example <XRef IDRef = "CJAJECAD" format = "Environment"/> demonstrates
+object and storage arrays.</Para>
+<Environment ID = "CJAJGEJE" XRefLabel = "Environment"
+    Type = "Definition" LineNumbers = "No" Imported = "No"><Title>Formal
+syntax specification for array definition</Title>
+<Line><Emphasis>array-storage-definition</Emphasis>&nbsp;::=&nbsp;array&nbsp;(&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'&nbsp;</Line>
+<Line>    <Emphasis>object-type</Emphasis> &rsquo;[&rsquo; dim &rsquo;]&rsquo; of <Emphasis>data-type</Emphasis> </Line>
+<Line>    [&nbsp;with&nbsp;<Emphasis>parameter-list</Emphasis>&nbsp;]&nbsp;';'&nbsp;.&nbsp;</Line>
+<Line><Emphasis>array-abstract-object-definition</Emphasis>&nbsp;::=&nbsp;array&nbsp;(&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'&nbsp;</Line>
+<Line>    object <Emphasis>object-type</Emphasis> &rsquo;[&rsquo; dim &rsquo;]&rsquo; </Line>
+<Line>    [&nbsp;with&nbsp;<Emphasis>parameter-list</Emphasis>&nbsp;]&nbsp;';'&nbsp;.</Line>
+<Line><Emphasis>array-process-definition</Emphasis> ::= array (&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'</Line>
+<Line>    process &rsquo;[&rsquo; dim &rsquo;]&rsquo;</Line>
+<Line>    begin</Line>
+<Line>      <Emphasis>instructions</Emphasis> </Line>
+<Line>    end [&nbsp;with&nbsp;<Emphasis>parameter-list</Emphasis>&nbsp;]&nbsp;';'&nbsp;. </Line>
+<Line><Emphasis>dim</Emphasis> ::= ( <Emphasis>number</Emphasis> // &rsquo;,&rsquo; )
+.</Line></Environment>
+<Environment ID = "CJAFFCFG" XRefLabel = "Environment"
+    Type = "Definition" LineNumbers = "No" Imported = "No"><Title>Formal
+syntax specification for array element selection and access</Title>
+<Line><Emphasis>array-selector</Emphasis>&nbsp;::=&nbsp;<Emphasis>identifier</Emphasis>&nbsp;&nbsp;'.'&nbsp;&nbsp;( <Emphasis>static-selector</Emphasis> | <Emphasis>dyanmic-selector</Emphasis> )
+.</Line>
+<Line><Emphasis>static-selector</Emphasis> ::= &rsquo;[&rsquo; ( <Emphasis>number</Emphasis> // &rsquo;,&rsquo; ) &rsquo;]&rsquo; .</Line>
+<Line><Emphasis>dynamic-selector</Emphasis> ::= &rsquo;[&rsquo; ( <Emphasis>expression</Emphasis> // &rsquo;.&rsquo;) &rsquo;]&rsquo; .</Line>
+<Line><Emphasis>expression</Emphasis> ::= <Emphasis>identifier</Emphasis> | <Emphasis>simple-expression</Emphasis> .</Line>
+<Line><Emphasis>dim</Emphasis> ::= ( <Emphasis>number</Emphasis> // &rsquo;,&rsquo; )
+.</Line></Environment>
+<Environment ID = "CJAEJHIB" XRefLabel = "Environment" Type = "Table"
+    LineNumbers = "No" Imported = "No"><Title>Summary of array type
+definition and array element access.</Title>
+<TABLE Cols = "2" Widths = "2.945in 2.945in">
+<TableHead>
+<TableHeadRow>
+<TableHeadCell><Para><Highlight>Statement</Highlight></Para></TableHeadCell>
+<TableHeadCell><Para><Highlight>Description</Highlight></Para></TableHeadCell>
+</TableHeadRow>
+</TableHead>
+<TableBody>
+<TableRow>
+<TableCell><Formatted><Line>array <Emphasis>A</Emphasis>: <Emphasis>OT</Emphasis>[<Emphasis>N</Emphasis>]
+of <Emphasis>DT</Emphasis>;</Line>
+<Line>array <Emphasis>A</Emphasis>: <Emphasis>OT</Emphasis>[<Emphasis>N,M,O</Emphasis>]
+of <Emphasis>DT</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Defines an storage array of size N with object
+type OT and data type DT. Second line defines a multi-dimensional
+array (matrix).</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>array <Emphasis>A</Emphasis>: <Emphasis>OT</Emphasis>[<Emphasis>N</Emphasis>]
+of <Emphasis>DT</Emphasis></Line>
+<Line>         with <Emphasis>param</Emphasis>=<Emphasis>value</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Defines an storage array of size N with object
+type OT and data type DT, with additional parameter settings.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>array <Emphasis>A</Emphasis>: object <Emphasis>obj</Emphasis>[<Emphasis>N</Emphasis>]</Line>
+<Line>         with <Emphasis>param</Emphasis>=<Emphasis>value</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Defines an abstract object array of size N with
+object type obj, with additional parameter settings. Note: object
+parameters must be preceeded by the module name and the dot selector!</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>array <Emphasis>A</Emphasis>: process[<Emphasis>N</Emphasis>]
+of</Line>
+<Line>begin</Line>
+<Line>  <Emphasis>B</Emphasis></Line>
+<Line>end</Line></Formatted></TableCell>
+<TableCell><Para>Defines an array of N processes.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>a.[2] &lt;- a.[i+1] + a.[0];</Line>
+<Line>timer.[1].await ();</Line>
+<Line>timer.[i+1].await ();</Line>
+<Line></Line></Formatted></TableCell>
+<TableCell><Para>Access of storage array elements using the dot
+selector on right-hand and left-hand sides of an expression.  Second
+lines selects an abstract object and applies the method to this
+object.</Para></TableCell>
+</TableRow>
+</TableBody>
+</TABLE></Environment>
+<Environment ID = "CJAJECAD" Type = "Example" LineNumbers = "Yes"
+    Indent = "L1"><Title>Arrays of storage and abstract objects
+(including processes)</Title>
+<Line>open Core;</Line>
+<Line>open Process;</Line>
+<Line>open Semaphore;</Line>
+<Line></Line>
+<Line>array fork: object semaphore[5] with </Line>
+<Line>            Semaphore.depth=8 and Semaphore.scheduler="fifo";</Line>
+<Line>array eating,thinking: reg[5] of logic;</Line>
+<Line></Line>
+<Line>process init:</Line>
+<Line>begin</Line>
+<Line>  for i = 0 to 4 do</Line>
+<Line>  begin</Line>
+<Line>    fork.[i].init (1);</Line>
+<Line>  end; -- with unroll;</Line>
+<Line>  ev.init ();</Line>
+<Line>end;</Line>
+<Line></Line>
+<Line>function eat(n):</Line>
+<Line>begin</Line>
+<Line>  begin</Line>
+<Line>    eating.[n] &lt;- 1;</Line>
+<Line>    thinking.[n] &lt;- 0;</Line>
+<Line>  end with bind;</Line>
+<Line>  wait for 5;</Line>
+<Line>  begin</Line>
+<Line>    eating.[n] &lt;- 0;</Line>
+<Line>    thinking.[n] &lt;- 1;</Line>
+<Line>  end with bind;</Line>
+<Line>end with inline;</Line>
+<Line></Line>
+<Line>array philosopher: process[5] of</Line>
+<Line>begin</Line>
+<Line>  if # &lt; 4 then</Line>
+<Line>  begin</Line>
+<Line>   always do</Line>
+<Line>   begin</Line>
+<Line>     -- get left fork then right</Line>
+<Line>     fork.[#].down ();</Line>
+<Line>     fork.[#+1].down ();</Line>
+<Line>     eat (#);</Line>
+<Line>     fork.[#].up ();</Line>
+<Line>     fork.[#+1].up ();</Line>
+<Line>   end;</Line>
+<Line>  end</Line>
+<Line>  else</Line>
+<Line>  begin</Line>
+<Line>   always do</Line>
+<Line>   begin</Line>
+<Line>     -- get right fork then left</Line>
+<Line>     fork.[4].down ();</Line>
+<Line>     fork.[0].down ();</Line>
+<Line>     eat (#);</Line>
+<Line>     fork.[4].up ();</Line>
+<Line>     fork.[0].up ();</Line>
+<Line>   end;</Line>
+<Line>  end;</Line>
+<Line>end;</Line>
+<Line></Line>
+<Line>process main:</Line>
+<Line>begin</Line>
+<Line>  init.call ();</Line>
+<Line>  for i = 0 to 4 do</Line>
+<Line>  begin</Line>
+<Line>    philosopher.[i].start ();</Line>
+<Line>  end;</Line>
+<Line>end;</Line></Environment></Section>
+<Section Hidden = "No"><SectionTitle>Structure Types</SectionTitle>
+<Para>Structure types are used to define a product of types from
+the set of core data types, providing different data widths, too.
+In contrast to arrays, a structure type must be defined first without
+creation of any data object. After type definition storage data
+objects of this type can be created (instantiated). Supported storage
+object types are: register, variable, queue, channel. Additionally
+structure types can be used to construct signal types and component
+(port) interfaces.</Para>
+<Para>There are three different subclasses of structures for different
+purposes:</Para>
+<DescriptionList Type = "Argument" Indent = "L1" Space = "L2">
+<DescriptionItem><ItemLabel>Type Structure </ItemLabel>
+<Para>The generic structure type binds different named structure
+elements with different data types to a new user defined data type,
+the native product type. </Para></DescriptionItem>
+<DescriptionItem><ItemLabel>Bit-Type Structure</ItemLabel>
+<Para>This structure subclass provides a bit-index-name mapping
+for storage objects. All structure elements have the same data type.
+The bit-index is either one bit number or a range of bits. This
+structure type provides symbolic/named selection of parts of vector
+data type (for example logic vector and integer types) and clarifies
+bit access of objects. </Para></DescriptionItem>
+<DescriptionItem><ItemLabel>Component Structure</ItemLabel>
+<Para>This structure defines hardware component ports, either of
+a ConPro module toplevel port, or of an embedded hardware component
+(modelled on hardware level). This structure type can only be used
+with component object defintions. The component type has equal behaviour
+like the signal type.</Para></DescriptionItem></DescriptionList>
+<Para>The structure type defintion therefore contains only data
+types, with binding of one object type using the generic object
+definition statement. A structure type binds a set of different
+structure elements, distinguished by their names.</Para>
+<Note Label = "Tip" Space = "L2">
+<Para>The member names of structures should begin with a lower case
+letter, the elements of a enumerated symbolic list should begin
+with a uppercase letter. </Para></Note>
+<Para>Elements of a structure can be accessed using the dot selector:
+the object and element name is concatenated with a dot. Further
+selections (array, bit range) can be applied, too.</Para>
+<Para>In the case the object type of a structure is a register,
+a set of independent registers are created. In the case of a variable
+type, structure elements are stored into a memory block.</Para>
+<Para>Arrays from structure types can be created. For each structure
+element a different array is created.</Para>
+<Para>Hardware component port types are defined with structures,
+too, with the difference that for each structure element the direction
+of the signal must be specified. Some care must be taken for the
+direction: if the component is in lower hierarchical order (an embedded
+external hardware component), the direction is seen from the external
+view of the hardware component. If the component is part of the
+toplevel port interface of a ConPro module, it must be seen from
+the internal view.</Para>
+<Para>Formal syntax definitions for structure definitions and structure
+element access can be found in definitions <XRef IDRef = "CJAICDAG"
+    format = "Environment"/> to <XRef IDRef = "CJAFGHFJ"
+    format = "Environment"/>. An extended demonstration of the capabilities of
+structure types can be found in example <XRef IDRef = "E6"
+    format = "Environment"/>. Table <XRef IDRef = "CJAHHCCE"
+    format = "Environment"/> summarizes the definition and usage
+of structure types.</Para>
+<Environment ID = "CJAICDAG" XRefLabel = "Environment"
+    Type = "Definition" LineNumbers = "No" Imported = "No"><Title>Formal
+syntax specification for structure type definition</Title>
+<Line><Emphasis>struct-type-definition</Emphasis>&nbsp;::=&nbsp;type&nbsp;(&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'&nbsp;&rsquo;{&rsquo;</Line>
+<Line>                           ( identifier &rsquo;:&rsquo; <Emphasis>data-type</Emphasis> &rsquo;;&rsquo; //
+)</Line>
+<Line>                           &rsquo;}&rsquo; &rsquo;;&rsquo; . </Line>
+<Line><Emphasis>bit-type-definition</Emphasis>&nbsp;::=&nbsp;type&nbsp;(&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'&nbsp;&rsquo;{&rsquo;</Line>
+<Line>                           ( identifier &rsquo;:&rsquo; <Emphasis>range</Emphasis> &rsquo;;&rsquo; //
+)</Line>
+<Line>                           &rsquo;}&rsquo; &rsquo;;&rsquo; . </Line>
+<Line><Emphasis>component-type-definition</Emphasis>&nbsp;::=&nbsp;type&nbsp;(&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'&nbsp;&rsquo;{&rsquo;</Line>
+<Line>                           ( &rsquo;port&rsquo; identifier &rsquo;:&rsquo; <Emphasis>data-dir</Emphasis> <Emphasis>data-type</Emphasis> &rsquo;;&rsquo; //
+)</Line>
+<Line>                           &rsquo;}&rsquo; &rsquo;;&rsquo; . </Line>
+<Line><Emphasis>object-definition</Emphasis> ::= <Emphasis>object-type</Emphasis> (&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':' <Emphasis>struct-type</Emphasis> .</Line>
+<Line><Emphasis>component-definition</Emphasis> ::=  component (&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':' <Emphasis>component-type</Emphasis> .</Line>
+<Line><Emphasis>range</Emphasis> ::= <Emphasis>number</Emphasis> | <Emphasis>number</Emphasis> &rsquo;to&rsquo; <Emphasis>number</Emphasis> | <Emphasis>number</Emphasis> &rsquo;downto&rsquo; <Emphasis>number</Emphasis> .</Line></Environment>
+<Environment ID = "CJAFGHFJ" XRefLabel = "Environment"
+    Type = "Definition" LineNumbers = "No" Imported = "No"><Title>Formal
+syntax specification for structure element selection and access</Title>
+<Line><Emphasis>struct-selector</Emphasis>&nbsp;::=&nbsp;<Emphasis>identifier</Emphasis>&nbsp;&nbsp;'.'&nbsp;&nbsp;<Emphasis>identifier</Emphasis> .</Line></Environment>
+<Environment ID = "E6" XRefLabel = "Environment" Type = "Example"
+    LineNumbers = "Yes" Imported = "No"><Title>Structures with register,
+variable and component object types.</Title>
+<Line>--&nbsp;Multi-type&nbsp;structure&nbsp;type&nbsp;definition</Line>
+<Line><Highlight>type</Highlight>&nbsp;registers&nbsp;:&nbsp;{</Line>
+<Line>&nbsp;&nbsp;ax&nbsp;:&nbsp;logic[32];</Line>
+<Line>&nbsp;&nbsp;bx&nbsp;:&nbsp;logic[32];</Line>
+<Line>&nbsp;&nbsp;sp&nbsp;:&nbsp;logic[16];</Line>
+<Line>&nbsp;};</Line>
+<Line><Highlight>type</Highlight>&nbsp;image&nbsp;:&nbsp;{</Line>
+<Line>&nbsp;&nbsp;row:&nbsp;logic[32%4];</Line>
+<Line>&nbsp;&nbsp;col:&nbsp;logic[32%4];</Line>
+<Line>&nbsp;};</Line>
+<Line>--&nbsp;Component&nbsp;structure&nbsp;type&nbsp;defintion</Line>
+<Line><Highlight>type</Highlight>&nbsp;uart&nbsp;:&nbsp;{</Line>
+<Line>&nbsp;&nbsp;port&nbsp;rx&nbsp;:&nbsp;input&nbsp;logic[2];</Line>
+<Line>&nbsp;&nbsp;port&nbsp;tx&nbsp;:&nbsp;output&nbsp;logic[2];</Line>
+<Line>&nbsp;&nbsp;port&nbsp;re&nbsp;:&nbsp;output&nbsp;logic;</Line>
+<Line>&nbsp;&nbsp;port&nbsp;we&nbsp;:&nbsp;input&nbsp;logic;&nbsp;</Line>
+<Line>&nbsp;};</Line>
+<Line>--&nbsp;Bit-type&nbsp;structure&nbsp;type&nbsp;defintion</Line>
+<Line><Highlight>type</Highlight>&nbsp;command&nbsp;:&nbsp;{</Line>
+<Line>&nbsp;&nbsp;ack:&nbsp;&nbsp;0;</Line>
+<Line>&nbsp;&nbsp;cmd:&nbsp;1&nbsp;to&nbsp;2;</Line>
+<Line>&nbsp;&nbsp;data:&nbsp;3&nbsp;to&nbsp;7;&nbsp;</Line>
+<Line>&nbsp;};</Line>
+<Line></Line>
+<Line>block&nbsp;ram1;</Line>
+<Line><Highlight>reg</Highlight>&nbsp;regs&nbsp;:&nbsp;registers;</Line>
+<Line><Highlight>var</Highlight>&nbsp;vegs&nbsp;:&nbsp;registers&nbsp;in&nbsp;ram1;</Line>
+<Line>var&nbsp;vim&nbsp;:&nbsp;image&nbsp;in&nbsp;ram1;</Line>
+<Line>var&nbsp;after&nbsp;:&nbsp;logic[16]&nbsp;in&nbsp;ram1;</Line>
+<Line><Highlight>component</Highlight>&nbsp;dev1:&nbsp;uart;</Line>
+<Line><Highlight>reg</Highlight>&nbsp;cmd:&nbsp;command;</Line>
+<Line>process&nbsp;p1:</Line>
+<Line>begin</Line>
+<Line>&nbsp;&nbsp;reg&nbsp;x:&nbsp;logic[2];</Line>
+<Line>&nbsp;&nbsp;<Highlight>type</Highlight>&nbsp;cpu_regs&nbsp;:&nbsp;{</Line>
+<Line>&nbsp;&nbsp;&nbsp;ax&nbsp;:&nbsp;logic[8];</Line>
+<Line>&nbsp;&nbsp;&nbsp;bx&nbsp;:&nbsp;logic[8];</Line>
+<Line>&nbsp;&nbsp;&nbsp;sp&nbsp;:&nbsp;logic[8];</Line>
+<Line>&nbsp;&nbsp;};</Line>
+<Line>&nbsp;&nbsp;var&nbsp;cpu&nbsp;:&nbsp;cpu_regs&nbsp;in&nbsp;ram1;</Line>
+<Line>&nbsp;&nbsp;reg&nbsp;row:&nbsp;logic[32];</Line>
+<Line>&nbsp;&nbsp;...</Line>
+<Line>&nbsp;&nbsp;regs.ax&nbsp;<Symbol>&not;</Symbol>&nbsp;row;</Line>
+<Line>&nbsp;&nbsp;regs.ax&nbsp;<Symbol>&not;</Symbol>&nbsp;regs.ax&nbsp;+&nbsp;1;</Line>
+<Line>&nbsp;&nbsp;vegs.ax&nbsp;<Symbol>&not;</Symbol>&nbsp;vegs.ax&nbsp;+&nbsp;intern;</Line>
+<Line>&nbsp;&nbsp;...</Line>
+<Line>&nbsp;&nbsp;wait&nbsp;for&nbsp;dev1.re&nbsp;=&nbsp;1;</Line>
+<Line>&nbsp;&nbsp;x&nbsp;<Symbol>&not;</Symbol>&nbsp;dev1.rx;</Line>
+<Line>&nbsp;&nbsp;dev1.tx&nbsp;<Symbol>&not;</Symbol>&nbsp;x,&nbsp;dev1.we&nbsp;<Symbol>&not;</Symbol>&nbsp;1;</Line>
+<Line>&nbsp;&nbsp;cmd&nbsp;<Symbol>&not;</Symbol>&nbsp;0;</Line>
+<Line>&nbsp;&nbsp;cmd.ack&nbsp;<Symbol>&not;</Symbol>&nbsp;1;</Line>
+<Line>&nbsp;&nbsp;cmd.cmd&nbsp;<Symbol>&not;</Symbol>&nbsp;x;</Line>
+<Line>end;</Line></Environment>
+<Environment ID = "CJAHHCCE" XRefLabel = "Environment" Type = "Table"
+    LineNumbers = "No" Imported = "No"><Title>Summary of structure
+type definition and structure element access.</Title>
+<TABLE Cols = "2" Widths = "2.945in 2.945in">
+<TableHead>
+<TableHeadRow>
+<TableHeadCell><Para><Highlight>Statement</Highlight></Para></TableHeadCell>
+<TableHeadCell><Para><Highlight>Description</Highlight></Para></TableHeadCell>
+</TableHeadRow>
+</TableHead>
+<TableBody>
+<TableRow>
+<TableCell><Formatted><Line>tpye <Emphasis>ST</Emphasis>: {</Line>
+<Line>  <Emphasis>e1</Emphasis>: <Emphasis>DT</Emphasis>1;</Line>
+<Line>  <Emphasis>e2</Emphasis>: <Emphasis>DT</Emphasis>2; ...</Line>
+<Line>};</Line></Formatted></TableCell>
+<TableCell><Para>Defines a new structure type with elements e1,e2,...
+of data types DT1,DT2,...</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>tpye <Emphasis>CT</Emphasis>: {</Line>
+<Line>  port <Emphasis>e1</Emphasis> : DIR1 <Emphasis>DT</Emphasis>1;</Line>
+<Line>  port <Emphasis>e2</Emphasis> : DIR2 <Emphasis>DT</Emphasis>2;
+...</Line>
+<Line>};</Line></Formatted></TableCell>
+<TableCell><Para>Defines a new component port type with port elements
+e1,e2,... of data types DT1,DT2,... with specific signal direction
+DIR1,DIR2,...</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>tpye <Emphasis>BT</Emphasis>: {</Line>
+<Line>  <Emphasis>e1</Emphasis>: <Emphasis>BN</Emphasis>1;</Line>
+<Line>  <Emphasis>e2</Emphasis>: <Emphasis>BN</Emphasis>2A to <Emphasis>BN2B</Emphasis>;
+...</Line>
+<Line>};</Line></Formatted></TableCell>
+<TableCell><Para>Defines a new bit type structure with elements
+e1,e2,... and bit-widths BN1, BN2...</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>reg <Emphasis>R</Emphasis>: ST;</Line>
+<Line>var <Emphasis>R</Emphasis>: ST;</Line>
+<Line>reg <Emphasis>R</Emphasis>; <Emphasis>BT</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Defines scalar storage objects of structure type
+ST and bit type BT.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>array A<Emphasis>S</Emphasis>: <Emphasis>OT</Emphasis>[<Emphasis>N</Emphasis>]
+of <Emphasis>ST</Emphasis></Line>
+<Line>          with <Emphasis>PARAMS</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Defines an array of storage objects with object
+type OT and structure type ST.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line>component <Emphasis>C</Emphasis>: CT;</Line>
+<Line>export <Emphasis>C</Emphasis>;</Line></Formatted></TableCell>
+<TableCell><Para>Defines a new component structure and exports the
+component structure.</Para></TableCell>
+</TableRow>
+<TableRow>
+<TableCell><Formatted><Line><Emphasis>ST</Emphasis>.<Emphasis>e1</Emphasis> &lt;- <Emphasis>ST</Emphasis>.<Emphasis>e2</Emphasis>;</Line>
+<Line></Line></Formatted></TableCell>
+<TableCell><Para>Access of structure elements in assignments and
+expressions.</Para></TableCell>
+</TableRow>
+</TableBody>
+</TABLE></Environment></Section>
+<Section Id = "CJAFDEBI" Hidden = "No"><SectionTitle>Enumeration
+Types</SectionTitle>
+<Para>Enumeration types define a mapping of symbolic names to constant
+integer numbers, with formal syntax definition <XRef IDRef = "CJACFIGD"
+    format = "Environment"/>. Elements of a enumerated type can
+be used in expressions like any other storage objects. Object of
+a enumerated type can be created like any other storage object definition,
+shown in example <XRef IDRef = "CJAHAIBF" format = "Environment"/>.</Para>
+<Environment ID = "CJACFIGD" XRefLabel = "Environment"
+    Type = "Definition" LineNumbers = "No" Imported = "No"><Title>Formal
+syntax specification for enumeration type definition</Title>
+<Line><Emphasis>enum-type-definition</Emphasis>&nbsp;::=&nbsp;type&nbsp;(&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':'&nbsp;&rsquo;{&rsquo;</Line>
+<Line>                           ( identifier  &rsquo;;&rsquo; //
+)</Line>
+<Line>                           &rsquo;}&rsquo; &rsquo;;&rsquo; . </Line>
+<Line><Emphasis>object-definition</Emphasis> ::= <Emphasis>object-type</Emphasis> (&nbsp;<Emphasis>identifier</Emphasis>&nbsp;//&nbsp;','&nbsp;)&nbsp;':' <Emphasis>enum-type</Emphasis> .</Line></Environment>
+<Environment ID = "CJAHAIBF" Type = "Example" LineNumbers = "Yes">
+<Title>Enumeration types</Title>
+<Line>type states : {</Line>
+<Line>  S_START;</Line>
+<Line>  S_1;</Line>
+<Line>  S_2;</Line>
+<Line>  S_END;</Line>
+<Line>};</Line>
+<Line>reg state,next_state: states;</Line>
+<Line>process fsm:</Line>
+<Line>begin</Line>
+<Line>  while state &lt;> S_END do</Line>
+<Line>  begin</Line>
+<Line>    match state with</Line>
+<Line>    begin</Line>
+<Line>      when S_START: state <Symbol>&not;</Symbol> S_1;</Line>
+<Line>      when S_1: state <Symbol>&not;</Symbol> S_2;</Line>
+<Line>      when S_2: state <Symbol>&not;</Symbol> S_END;</Line>
+<Line>    end;</Line>
+<Line>  end;</Line>
+<Line>end;</Line></Environment></Section></ManualPage>

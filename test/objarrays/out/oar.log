@@ -1,0 +1,1126 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<840fd9a4> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  /home/sbosse/proj/conpro/test/random/src/cp
+    Source:  /home/sbosse/proj/conpro/test/random/src/vhdl
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+TDI: Opening tools file <tools>...
+  Searching tools file <tools.def>...
+  Opening tools file </opt/Conpro2/toolset/tools.def>...
+  Opening tool library file </opt/Conpro2/toolset/generic.lib>...
+  Info [file <tools.def>, line 7]: Added synthesis tool defintion <generic>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/xilinx6.lib>...
+  Info [file <tools.def>, line 27]: Added synthesis tool defintion <xilinx6>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/xilinx9.lib>...
+  Info [file <tools.def>, line 173]: Added synthesis tool defintion <xilinx9>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/alliance.lib>...
+  Info [file <tools.def>, line 319]: Added synthesis tool defintion <alliance>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/leonardo.lib>...
+  Info [file <tools.def>, line 342]: Added synthesis tool defintion <leonardo>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/actel.lib>...
+  Info [file <tools.def>, line 366]: Added synthesis tool defintion <actel>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89.lib>...
+  Info [file <tools.def>, line 389]: Added synthesis tool defintion <synplicity89>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89_xilinx6.lib>...
+  Info [file <tools.def>, line 412]: Added synthesis tool defintion <synplicity89_xilinx6>, version 1.05.
+TDI: Opening tool <leonardo>...
+  Searching tool file <leonardo.tool>...
+  Opening tool file </opt/Conpro2/toolset/leonardo.tool>...
+Searching Conpro file <oar.cp>...
+Opening file <oar.cp>...
+Compiling module <oar>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+    Opening module <Mutex>...
+      Searching module file <mutex.mod>...
+      Opening module file </opt/Conpro2/lib/mutex.mod>...
+      EMI [Object Mutex.mutex.root]#init: Initializing module ...
+      EMI <Object Mutex.mutex.root>: creating rules for module...
+      Added module <Mutex>.
+        EMI <Mutex>: adding object type <mutex>...
+    Opening module <Ioport>...
+      Searching module file <ioport.mod>...
+      Opening module file </opt/Conpro2/lib/ioport.mod>...
+      EMI [Object Ioport.ioport.root]#init: Initializing module ...
+      EMI <Object Ioport.ioport.root>: creating rules for module...
+      Added module <Ioport>.
+        EMI <Ioport>: adding object type <ioport>...
+    EMI <Object Mutex.mutex.root>: creating object <ma_0>...
+      EMI [Object Mutex.mutex.ma_0]: added method <init>.
+      EMI [Object Mutex.mutex.ma_0]: added method <lock>.
+      EMI [Object Mutex.mutex.ma_0]: added method <unlock>.
+    EMI <Object Mutex.mutex.ma_0>: creating rules for module...
+    EMI <Object Mutex.mutex.root>: creating object <ma_1>...
+      EMI [Object Mutex.mutex.ma_1]: added method <init>.
+      EMI [Object Mutex.mutex.ma_1]: added method <lock>.
+      EMI [Object Mutex.mutex.ma_1]: added method <unlock>.
+    EMI <Object Mutex.mutex.ma_1>: creating rules for module...
+    EMI <Object Ioport.ioport.root>: creating object <iop_0>...
+      EMI [Object Ioport.ioport.iop_0]: added method <init>.
+      EMI [Object Ioport.ioport.iop_0]: added method <read>.
+      EMI [Object Ioport.ioport.iop_0]: added method <write>.
+      EMI [Object Ioport.ioport.iop_0]: added method <dir>.
+      EMI [Object Ioport.ioport.iop_0]: added method <interface>.
+    EMI <Object Ioport.ioport.iop_0>: creating rules for module...
+    EMI <Object Ioport.ioport.root>: creating object <iop_1>...
+      EMI [Object Ioport.ioport.iop_1]: added method <init>.
+      EMI [Object Ioport.ioport.iop_1]: added method <read>.
+      EMI [Object Ioport.ioport.iop_1]: added method <write>.
+      EMI [Object Ioport.ioport.iop_1]: added method <dir>.
+      EMI [Object Ioport.ioport.iop_1]: added method <interface>.
+    EMI <Object Ioport.ioport.iop_1>: creating rules for module...
+    Opening module <Ram>...
+      Searching module file <ram.mod>...
+      Opening module file </opt/Conpro2/lib/ram.mod>...
+      EMI [Object Ram.ram.root]#init: Initializing module ...
+      EMI <Object Ram.ram.root>: creating rules for module...
+      Added module <Ram>.
+        EMI <Ram>: adding object type <ram>...
+    EMI <Object Ram.ram.root>: creating object <var_array_pkt_pool>...
+      EMI [Object Ram.ram.var_array_pkt_pool]: added method <write>.
+      EMI [Object Ram.ram.var_array_pkt_pool]: added method <read>.
+    EMI <Object Ram.ram.var_array_pkt_pool>: creating rules for module...
+    EMI <Object Ram.ram.root>: creating object <var_array_pkt_pool>...
+      EMI [Object Ram.ram.var_array_pkt_pool]: added method <write>.
+      EMI [Object Ram.ram.var_array_pkt_pool]: added method <read>.
+    EMI <Object Ram.ram.var_array_pkt_pool>: creating rules for module...
+    Info [file <oar.cp>, line 72]: Expanding toplevel conditional branch: true
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [file <oar.cp>, line 18]: EMI#fun_compile <Object Ioport.ioport.iop_0>: importing signal <top_d1> and assigning it to parameter <port_db>.
+    Info [file <oar.cp>, line 19]: EMI#fun_compile <Object Ioport.ioport.iop_1>: importing signal <top_d2> and assigning it to parameter <port_db>.
+    Info [file <oar.cp>, line 32]: Analyzing process <p1>...
+      Analyzing process <p1>...
+    Info [file <oar.cp>, line 56]: Analyzing process <p2>...
+      Analyzing process <p2>...
+    Info [file <oar.cp>, line 73]: Analyzing process <p3>...
+      Analyzing process <p3>...
+        Warning [file <oar.cp>, line 80]: Changing non block array <ma> to dynamic selection mode.
+        Info [file <oar.cp>, line 81]: found dynamic selector in non block array <xa>
+        Warning [file <oar.cp>, line 81]: Changing non block array <xa> to dynamic selection mode.
+        Info [file <oar.cp>, line 81]: found dynamic selector in non block array <xa>
+        Warning [file <oar.cp>, line 86]: Changing non block array <iop> to dynamic selection mode.
+    Info [file <oar.cp>, line 97]: Analyzing process <main>...
+      Analyzing process <main>...
+        Info [file <oar.cp>, line 105]: Replacing branch with conditionial true block due to constant expression.
+  Performing program graph transformations and optimization for module <Oar>...
+    in process <p1>...
+      Performing program transformations for process <p1>...
+      Info [file <oar.cp>, line 38]: Replaced 2 array object(s) with temporary expression(s).
+      Info [file <oar.cp>, line 41]: Replaced 2 array object(s) with temporary expression(s).
+      Resolving object dependencies for process <p1>...
+    in process <p2>...
+      Performing program transformations for process <p2>...
+      Info [file <oar.cp>, line 61]: Replaced 2 array object(s) with temporary expression(s).
+      Info [file <oar.cp>, line 64]: Replaced 2 array object(s) with temporary expression(s).
+      Resolving object dependencies for process <p2>...
+    in process <p3>...
+      Performing program transformations for process <p3>...
+      Info [file <oar.cp>, line 81]: Replaced 2 array object(s) with temporary expression(s).
+      Resolving object dependencies for process <p3>...
+    in process <main>...
+      Performing program transformations for process <main>...
+      Resolving object dependencies for process <main>...
+  Resolving object dependencies for process <MOD_Oar>...
+  Found 29 primary toplevel symbols.
+  Found 4 processes.
+  Found 0 shared function blocks.
+Synthesizing main module <Oar>...
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <Oar.p1>
+        Removed 0 instructions(s).
+      in process <Oar.p2>
+        Removed 0 instructions(s).
+      in process <Oar.p3>
+        Removed 0 instructions(s).
+      in process <Oar.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      [Oar.MOD_Oar]: Removing Register <Oar.PRO_p1_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      [Oar.MOD_Oar]: Removing Register <Oar.PRO_p3_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <main> ...
+      [Oar.MOD_Oar]: Removing Register <Oar.PRO_p2_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <p1> ...
+      ... in process <p2> ...
+      ... in process <p3> ...
+      [Oar.MOD_Oar]: Removing Register <Oar.PRO_main_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      Removed 4 object(s).
+    Optimizer: folding constants in expressions...
+      in process <Oar.p1>
+        Removed 0 operand(s).
+      in process <Oar.p2>
+        Removed 0 operand(s).
+      in process <Oar.p3>
+        Removed 0 operand(s).
+      in process <Oar.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 4.
+  Optimizing and pre-scheduling, pass 2...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <Oar.p1>
+        Removed 0 instructions(s).
+      in process <Oar.p2>
+        Removed 0 instructions(s).
+      in process <Oar.p3>
+        Removed 0 instructions(s).
+      in process <Oar.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      ... in process <p1> ...
+      ... in process <p2> ...
+      ... in process <p3> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <Oar.p1>
+        Removed 0 operand(s).
+      in process <Oar.p2>
+        Removed 0 operand(s).
+      in process <Oar.p3>
+        Removed 0 operand(s).
+      in process <Oar.main>
+        Removed 0 operand(s).
+    ... Progress of pass 2: 0.
+  Resolving object guards...
+    Found 4 guard(s).
+  Resolving RAM blocks...
+    Found 1 RAM block(s).
+    <var_array_pkt_pool>: width=8 size=16  OUTLINE  PORT1  SYNCREAD 
+    Performing post-analysis transformations for process <p1>...
+    Performing post-analysis transformations for process <p2>...
+    Performing post-analysis transformations for process <p3>...
+    Performing post-analysis transformations for process <main>...
+  EMI [Object Ioport.ioport.iop_0]: compiling external module interface...
+  EMI [Object Ioport.ioport.iop_0]: Environment is:
+    NAME(s)=["IOPORT"],
+    width(i)=[8],
+    dir(i)=[0],
+    port_db(U)=["top_d1"],
+    ARRAY(i)=[1;0],
+    O(s)=["iop_0"],
+    P(s)=["main";"p3";"p1";"MOD_Oar";"p2";"MOD_Oar"],
+    P.init(s)=["main"],
+    P.read(s)=["p3";"p1";"p2"],
+    P.write(s)=["p3";"p1";"p2"],
+    P.dir(s)=[],
+    P.interface(s)=["MOD_Oar";"MOD_Oar"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b1)],
+    ACC(b)=[true],
+    clock(i)=[10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(?)=[],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  EMI [Object Ioport.ioport.iop_1]: compiling external module interface...
+  EMI [Object Ioport.ioport.iop_1]: Environment is:
+    NAME(s)=["IOPORT"],
+    width(i)=[8],
+    dir(i)=[0],
+    port_db(U)=["top_d2"],
+    ARRAY(i)=[1;0],
+    O(s)=["iop_1"],
+    P(s)=["main";"p3";"MOD_Oar";"p2";"p1";"MOD_Oar"],
+    P.init(s)=["main"],
+    P.read(s)=["p3";"p2";"p1"],
+    P.write(s)=["p3";"p2";"p1"],
+    P.dir(s)=[],
+    P.interface(s)=["MOD_Oar";"MOD_Oar"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b1)],
+    ACC(b)=[true],
+    clock(i)=[10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(?)=[],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  EMI [Object Mutex.mutex.ma_0]: compiling external module interface...
+  EMI [Object Mutex.mutex.ma_0]: Environment is:
+    scheduler(s)=["static"],
+    arch001(i)=[1],
+    model(s)=["owner"],
+    ARRAY(i)=[1;0],
+    O(s)=["ma_0"],
+    P(s)=["main";"p3";"p2";"p1"],
+    P.init(s)=["main"],
+    P.lock(s)=["p3";"p2";"p1"],
+    P.unlock(s)=["p3";"p2";"p1"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b1)],
+    ACC(b)=[true],
+    clock(i)=[10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(?)=[],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  EMI [Object Mutex.mutex.ma_1]: compiling external module interface...
+  EMI [Object Mutex.mutex.ma_1]: Environment is:
+    scheduler(s)=["static"],
+    arch001(i)=[1],
+    model(s)=["owner"],
+    ARRAY(i)=[1;0],
+    O(s)=["ma_1"],
+    P(s)=["main";"p3";"p2";"p1"],
+    P.init(s)=["main"],
+    P.lock(s)=["p3";"p2";"p1"],
+    P.unlock(s)=["p3";"p2";"p1"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b1)],
+    ACC(b)=[true],
+    clock(i)=[10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(?)=[],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  Synthesizing process instructions...
+    in process <Oar.p1>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p1>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p1>...
+      Post type alignment of expressions for process <p1>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p1>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p1>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p1>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p1>...
+        21 states created.
+      Calculating block frame time estimations for process <p1>...
+    in process <Oar.p2>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p2>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p2>...
+      Post type alignment of expressions for process <p2>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p2>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p2>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p2>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p2>...
+        13 states created.
+      Calculating block frame time estimations for process <p2>...
+    in process <Oar.p3>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p3>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p3>...
+      Post type alignment of expressions for process <p3>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p3>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p3>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p3>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 6 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p3>...
+        24 states created.
+      Calculating block frame time estimations for process <p3>...
+    in process <Oar.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Post type alignment of expressions for process <main>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        9 states created.
+      Calculating block frame time estimations for process <main>...
+  Creating entity <oar_p1>...
+    Emitting state list for process <p1>...
+    Emitting state machine for process <p1>...
+    Port width: 69 bits
+  Creating entity <oar_p2>...
+    Emitting state list for process <p2>...
+    Emitting state machine for process <p2>...
+    Port width: 46 bits
+  Creating entity <oar_p3>...
+    Emitting state list for process <p3>...
+    Emitting state machine for process <p3>...
+    Port width: 69 bits
+  Creating entity <oar_main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 15 bits
+  Creating entity <oar>...
+    EMI [Object Ram.ram.var_array_pkt_pool]: compiling external module interface...
+    EMI [Object Ram.ram.var_array_pkt_pool]: Environment is:
+      class(s)=["internal"],
+      datawidth(i)=[8;8],
+      addrwidth(i)=[4;19],
+      arch(s)=["singleport"],
+      mode(s)=["read-first"],
+      scheduler(s)=["static"],
+      ce(i)=[2],
+      re(i)=[2],
+      we(i)=[2],
+      addrload(i)=[1],
+      dataload(i)=[0],
+      addrhold(i)=[0],
+      datahold(i)=[0],
+      cmdhold(i)=[1],
+      delayhold(i)=[0],
+      ram_db(?)=[],
+      ram_addr(?)=[],
+      ram_we(?)=[],
+      ram_re(?)=[],
+      ram_cs(?)=[],
+      O(s)=["var_array_pkt_pool"],
+      P(s)=["p1";"p3"],
+      P.write(s)=["p1";"p3"],
+      P.read(s)=["p1";"p3"],
+      CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+      RES(b)=[(§conpro_system_reset) = (0b1)],
+      ACC(b)=[true],
+      clock(i)=[10000000],
+      clock_level(i)=[1],
+      reset_level(i)=[1],
+      reset_internal(i)=[0],
+      state_enc(s)=["binary"],
+      targets(?)=[],
+      simu_cycles(i)=[50],
+      simu_res(i)=[0],
+      expr_type(s)=["flat"],
+      synth_tool(?)=[],
+      logic_type(s)=["std_logic"],
+      alu_top_expr(i)=[1],
+      alu_thres(i)=[8]
+    EMI [Object Ram.ram.var_array_pkt_pool]: compiling process <RAM_var_array_pkt_pool_RAM_IMPL> ...
+    EMI [Object Ram.ram.var_array_pkt_pool]: compiling process <RAM_var_array_pkt_pool_SCHED> ...
+    EMI [Object Ram.ram.var_array_pkt_pool]: Warning: no #assert section found.
+    EMI [Object Ioport.ioport.iop_0]: compiling process <PORT_iop_0_SCHED> ...
+    EMI [Object Ioport.ioport.iop_0]: compiling process <PORT_iop_0_IO> ...
+    EMI [Object Ioport.ioport.iop_0]: compiling #assert section [NAME(s)=["IOPORT"],
+    width(i)=[8],
+    dir(i)=[0],
+    port_db(U)=["top_d1"],
+    ARRAY(i)=[1;0],
+    O(s)=["iop_0"],
+    P(s)=["main";"p3";"p1";"MOD_Oar";"p2";"MOD_Oar"],
+    P.init(s)=["main"],
+    P.read(s)=["p3";"p1";"p2"],
+    P.write(s)=["p3";"p1";"p2"],
+    P.dir(s)=[],
+    P.interface(s)=["MOD_Oar";"MOD_Oar"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b1)],
+    ACC(b)=[true],
+    clock(i)=[10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(?)=[],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 2 conditions...
+    EMI [Object Ioport.ioport.iop_1]: compiling process <PORT_iop_1_SCHED> ...
+    EMI [Object Ioport.ioport.iop_1]: compiling process <PORT_iop_1_IO> ...
+    EMI [Object Ioport.ioport.iop_1]: compiling #assert section [NAME(s)=["IOPORT"],
+    width(i)=[8],
+    dir(i)=[0],
+    port_db(U)=["top_d2"],
+    ARRAY(i)=[1;0],
+    O(s)=["iop_1"],
+    P(s)=["main";"p3";"MOD_Oar";"p2";"p1";"MOD_Oar"],
+    P.init(s)=["main"],
+    P.read(s)=["p3";"p2";"p1"],
+    P.write(s)=["p3";"p2";"p1"],
+    P.dir(s)=[],
+    P.interface(s)=["MOD_Oar";"MOD_Oar"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b1)],
+    ACC(b)=[true],
+    clock(i)=[10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(?)=[],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 2 conditions...
+    EMI [Object Mutex.mutex.ma_0]: compiling process <MUTEX_ma_0_SCHED> ...
+    EMI [Object Mutex.mutex.ma_0]: compiling #assert section [scheduler(s)=["static"],
+    arch001(i)=[1],
+    model(s)=["owner"],
+    ARRAY(i)=[1;0],
+    O(s)=["ma_0"],
+    P(s)=["main";"p3";"p2";"p1"],
+    P.init(s)=["main"],
+    P.lock(s)=["p3";"p2";"p1"],
+    P.unlock(s)=["p3";"p2";"p1"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b1)],
+    ACC(b)=[true],
+    clock(i)=[10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(?)=[],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 3 conditions...
+    EMI [Object Mutex.mutex.ma_1]: compiling process <MUTEX_ma_1_SCHED> ...
+    EMI [Object Mutex.mutex.ma_1]: compiling #assert section [scheduler(s)=["static"],
+    arch001(i)=[1],
+    model(s)=["owner"],
+    ARRAY(i)=[1;0],
+    O(s)=["ma_1"],
+    P(s)=["main";"p3";"p2";"p1"],
+    P.init(s)=["main"],
+    P.lock(s)=["p3";"p2";"p1"],
+    P.unlock(s)=["p3";"p2";"p1"],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b1)],
+    ACC(b)=[true],
+    clock(i)=[10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(?)=[],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 3 conditions...
+    Creating global register <xa_0> [DT_int 8, scheduler=PRIOstat #rd=3 #wr=3]...
+    Creating global register <xa_1> [DT_int 8, scheduler=PRIOstat #rd=3 #wr=3]...
+  Emitting MicroCode for module Oar...
+  Emitting object file for module Oar...
+  Emitting MicroCode for process p1...
+  Emitting MicroCode for process p2...
+  Emitting MicroCode for process p3...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.p1>: emitting MicroCode for process <p1>.
+  UCI <ucode.uci_out.p2>: emitting MicroCode for process <p2>.
+  UCI <ucode.uci_out.p3>: emitting MicroCode for process <p3>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+Info : Emitting block frame informations in file <oar.ft>...
+TDI [Tool leonardo.root]#new_obj: creating object <oar>...
+TDI [Tool leonardo.oar]#compile_all: Initializing tool ...
+  TDI [Tool leonardo.oar]: found #version 2.05...
+  TDI [Tool leonardo.oar]: compiling #parameter section...
+    TDI [Tool leonardo.oar]: Parameter <encoding> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <simu_period> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <simu_res> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <reset_state> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <reset_state> not found. Using default value.
+  TDI [Tool leonardo.oar]: compiling #parameter section...
+  TDI [Tool leonardo.oar]: compiling function <check>...
+  TDI [Tool leonardo.oar]: compiling function <init>...
+  TDI [Tool leonardo.oar]: compiling function <finish>...
+  TDI [Tool leonardo.oar]: compiling function <do_patc>...
+    TDI [Tool leonardo.oar]: Parameter <simu_period> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <simu_res> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <clock_edge> not found. Using default value.
+    TDI [Tool leonardo.oar]: Parameter <reset_state> not found. Using default value.
+  TDI [Tool leonardo.oar]: compiling function <do_scram>...
+  TDI [Tool leonardo.oar]: compiling function <do_synth>...
+    TDI [Tool leonardo.oar]: Parameter <encoding> not found. Using default value.
+  TDI [Tool leonardo.oar]: compiling function <do_vst>...
+  TDI [Tool leonardo.oar]: compiling function <do_pat>...
+  TDI [Tool leonardo.oar]: compiling function <do_asimut>...
+  TDI [Tool leonardo.oar]: compiling function <do_xpat>...
+  TDI [Tool leonardo.oar]: compiling target <init>...
+  TDI [Tool leonardo.oar]: compiling target <vhdl>...
+  TDI [Tool leonardo.oar]: compiling target <synth>...
+  TDI [Tool leonardo.oar]: compiling target <simu>...
+  TDI [Tool leonardo.oar]: compiling target <xpat>...
+  TDI [Tool leonardo.oar]: compiling target <patc>...
+TDI [Tool leonardo.oar]#compiler_all: Compiling tool ...
+  TDI [Tool leonardo.oar]#emit: Creating build script <oar.leonardo.tool.sh>...
+    TDI [Tool leonardo.oar]: Environment is:
+      PWD=[$],
+      TOP=[$proj],
+      VHD2=[$],
+      LOG=[($TOP) + (".log")],
+      SRCDIR=["."],
+      SCRAM=[$],
+      clock=["10000000"],
+      vhdl=[|"oar",
+             "oar_p1",
+             "oar_p2",
+             "oar_p3",
+             "oar_main"|],
+      LEONARDO_TOP=[$],
+      MBK_CATA_LIB=[$],
+      CLOCK_EDGE_NEG=[$],
+      CLOCK_EDGE=[get_opt()],
+      VHDL=[|$|],
+      SXLIB_COMP=[$],
+      CELLS=[$],
+      DUP=["tee"],
+      RESET_STATE=[get_opt()],
+      LIBRARY=["sxlib"],
+      SIM_CYCLES=[get_opt()],
+      period=["100"],
+      PATH=[$],
+      ENCODING=[get_opt()],
+      DESIGN=[$proj],
+      port=[|"ARRAY_xa_0_RD:out:std_logic_vector:7 downto 0",
+             "ARRAY_xa_1_RD:out:std_logic_vector:7 downto 0",
+             "top_d1:inout:std_logic_vector:7 downto 0",
+             "top_d2:inout:std_logic_vector:7 downto 0",
+             "CLK:in:std_logic",
+             "RESET:in:std_logic"|],
+      ALLIANCE_TOP=[$],
+      RESET_STATE_NEG=[$],
+      EXEMPLAR=[$],
+      SPECTRUM=[$],
+      proj=["oar"],
+      res=[$],
+      OBJDIR=["obj"],
+      BIN=[$],
+      SIM_PERIOD=[get_opt()],
+      SIM_RES=[get_opt()],
+      simu_cycles=["50"]
+Total CPU time consumed: 4.1 seconds.
+Total time elapsed: 5.0 seconds.
+  
+  +------------------------ SYNTHESIS RESULT SUMMARY -------------------------+
+  +---------------------------------------------------------------------------+
+  | DESCRIPTION                                  VALUE                        |
+  +---------------------------------------------------------------------------+
+  | arithmetic unit                              16                           |
+  |  -> adder                                    (10)                         |
+  |  -> comparator                               (3)                          |
+  |  -> subtractor                               (3)                          |
+  | object                                       6                            |
+  |  -> ioport                                   (2)                          |
+  |  -> mutex                                    (2)                          |
+  |  -> ram                                      (2)                          |
+  | process                                      4                            |
+  | process.main                                                              |
+  |  -> port-width [bit]                         15                           |
+  |  -> states                                   9                            |
+  | process.p1                                                                |
+  |  -> port-width [bit]                         69                           |
+  |  -> register                                 6                            |
+  |  -> states                                   21                           |
+  | process.p2                                                                |
+  |  -> port-width [bit]                         46                           |
+  |  -> register                                 2                            |
+  |  -> states                                   13                           |
+  | process.p3                                                                |
+  |  -> port-width [bit]                         69                           |
+  |  -> register                                 7                            |
+  |  -> states                                   24                           |
+  | register-local                               15                           |
+  |  -> signed(2 downto 0)                       (2)                          |
+  |  -> signed(3 downto 0)                       (1)                          |
+  |  -> signed(7 downto 0)                       (3)                          |
+  |  -> std_logic_vector(7 downto 0)             (9)                          |
+  | synthesis time [sec]                         5                            |
+  +---------------------------------------------------------------------------+
+  
+[/export/home/leonardo/bin/spectrum -f oar.tcl]
+/export/home/leonardo/bin/SunOS5/spectrum -f oar.tcl 
+-------------------------------------------------
+LeonardoSpectrum Level 3 - 2005b.24 (Release Production Release, compiled Nov 10 2005 at 16:45:57)
+Copyright 1990-2005 Mentor Graphics.  All rights reserved.
+Portions copyright 1991-2005 Compuware Corporation
+
+Checking Security ...
+Info, Working Directory is now '/home/sbosse/proj/conpro2/test/objarrays/out/obj'
+Info: setting bubble_tristates to FALSE
+Info: setting encoding to binary
+Reading library file `/export/home/leonardo/lib/sxlib.syn`...
+Delays assume: Process=typical Temp= 70.0 C  Voltage=3.00 V  
+-- Reading file /export/home/leonardo/data/standard.vhd for unit standard
+-- Loading package standard into library std
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl into library work
+-- Reading file /export/home/leonardo/data/std_1164.vhd for unit std_logic_1164
+-- Loading package std_logic_1164 into library IEEE
+-- Searching for SYNOPSYS package std_logic_arith..
+-- Reading file /export/home/leonardo/data/syn_arit.vhd for unit std_logic_arith
+-- Loading package std_logic_arith into library IEEE
+-- Searching for SYNOPSYS package std_logic_unsigned..
+-- Reading file /export/home/leonardo/data/syn_unsi.vhd for unit std_logic_unsigned
+-- Loading package STD_LOGIC_UNSIGNED into library IEEE
+-- Reading file /export/home/leonardo/data/numeric_std.vhd for unit numeric_std
+-- Loading package NUMERIC_STD into library IEEE
+-- Loading entity oar_main into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl",line 42: Info, Enumerated type pro_states with 9 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+   S_main_start  0000
+       S_i1_fun  -001
+       S_i2_fun  -010
+       S_i3_fun  -011
+       S_i4_fun  -100
+       S_i5_fun  -101
+       S_i6_fun  -110
+       S_i7_fun  -111
+     S_main_end  1000
+
+-- Loading architecture main of oar_main into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl into library work
+-- Loading entity oar_p3 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 58: Info, Enumerated type pro_states with 24 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p3_start  00000
+  S_i1_for_loop  00001
+S_i1_for_loop_cond  00010
+       S_i2_fun  00011
+    S_i3_assign  00100
+    S_i4_assign  00101
+       S_i5_fun  00110
+S_i1_for_loop_incr  00111
+  S_i6_for_loop  -1000
+S_i6_for_loop_cond  -1001
+       S_i7_fun  -1010
+    S_i8_assign  -1011
+       S_i9_fun  -1100
+S_i6_for_loop_incr  -1101
+ S_i10_for_loop  -1110
+S_i10_for_loop_cond  -1111
+   S_i11_assign  10000
+   S_i12_assign  10001
+   S_i13_assign  10010
+   S_i14_assign  10011
+   S_i15_assign  10100
+   S_i16_assign  10101
+S_i10_for_loop_incr  10110
+       S_p3_end  10111
+
+-- Loading architecture main of oar_p3 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl into library work
+-- Loading entity oar_p2 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl",line 47: Info, Enumerated type pro_states with 13 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+     S_p2_start  0000
+       S_i1_fun  0001
+    S_i2_assign  0010
+    S_i3_assign  0011
+       S_i4_fun  0100
+       S_i5_fun  -101
+    S_i6_assign  -110
+    S_i7_assign  -111
+       S_i8_fun  1000
+       S_i9_fun  1001
+   S_i10_assign  1010
+      S_i11_fun  1011
+       S_p2_end  1100
+
+-- Loading architecture main of oar_p2 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl into library work
+-- Loading entity oar_p1 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 57: Info, Enumerated type pro_states with 21 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+       S_i1_fun  00001
+    S_i2_assign  00010
+    S_i3_assign  00011
+       S_i4_fun  00100
+       S_i5_fun  -0101
+    S_i6_assign  -0110
+    S_i7_assign  -0111
+       S_i8_fun  -1000
+       S_i9_fun  -1001
+   S_i10_assign  -1010
+      S_i11_fun  -1011
+   S_i12_assign  -1100
+   S_i13_assign  -1101
+   S_i14_assign  -1110
+   S_i15_assign  -1111
+   S_i16_assign  10000
+   S_i17_assign  10001
+   S_i18_assign  10010
+   S_i19_assign  10011
+       S_p1_end  10100
+
+-- Loading architecture main of oar_p1 into library work
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl into library work
+-- Loading entity MOD_oar into library work
+-- Loading architecture main of MOD_oar into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 419: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 466: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 470: Warning, signal PRO_p2_END is never used.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 474: Warning, signal PRO_p3_END is never used.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl into library work
+-- Loading entity oar_main into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl",line 17: Warning, replacing oar_main in HDL library work.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl",line 42: Info, Enumerated type pro_states with 9 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+   S_main_start  0000
+       S_i1_fun  -001
+       S_i2_fun  -010
+       S_i3_fun  -011
+       S_i4_fun  -100
+       S_i5_fun  -101
+       S_i6_fun  -110
+       S_i7_fun  -111
+     S_main_end  1000
+
+-- Loading architecture main of oar_main into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl",line 38: Warning, replacing main of entity oar_main.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl into library work
+-- Loading entity oar_p3 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 17: Warning, replacing oar_p3 in HDL library work.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 58: Info, Enumerated type pro_states with 24 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p3_start  00000
+  S_i1_for_loop  00001
+S_i1_for_loop_cond  00010
+       S_i2_fun  00011
+    S_i3_assign  00100
+    S_i4_assign  00101
+       S_i5_fun  00110
+S_i1_for_loop_incr  00111
+  S_i6_for_loop  -1000
+S_i6_for_loop_cond  -1001
+       S_i7_fun  -1010
+    S_i8_assign  -1011
+       S_i9_fun  -1100
+S_i6_for_loop_incr  -1101
+ S_i10_for_loop  -1110
+S_i10_for_loop_cond  -1111
+   S_i11_assign  10000
+   S_i12_assign  10001
+   S_i13_assign  10010
+   S_i14_assign  10011
+   S_i15_assign  10100
+   S_i16_assign  10101
+S_i10_for_loop_incr  10110
+       S_p3_end  10111
+
+-- Loading architecture main of oar_p3 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 47: Warning, replacing main of entity oar_p3.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl into library work
+-- Loading entity oar_p2 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl",line 17: Warning, replacing oar_p2 in HDL library work.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl",line 47: Info, Enumerated type pro_states with 13 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[3-0]
+================================
+     S_p2_start  0000
+       S_i1_fun  0001
+    S_i2_assign  0010
+    S_i3_assign  0011
+       S_i4_fun  0100
+       S_i5_fun  -101
+    S_i6_assign  -110
+    S_i7_assign  -111
+       S_i8_fun  1000
+       S_i9_fun  1001
+   S_i10_assign  1010
+      S_i11_fun  1011
+       S_p2_end  1100
+
+-- Loading architecture main of oar_p2 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl",line 41: Warning, replacing main of entity oar_p2.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl into library work
+-- Loading entity oar_p1 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 17: Warning, replacing oar_p1 in HDL library work.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 57: Info, Enumerated type pro_states with 21 elements encoded as binary.
+Encodings for pro_states values
+        value    pro_states[4-0]
+================================
+     S_p1_start  00000
+       S_i1_fun  00001
+    S_i2_assign  00010
+    S_i3_assign  00011
+       S_i4_fun  00100
+       S_i5_fun  -0101
+    S_i6_assign  -0110
+    S_i7_assign  -0111
+       S_i8_fun  -1000
+       S_i9_fun  -1001
+   S_i10_assign  -1010
+      S_i11_fun  -1011
+   S_i12_assign  -1100
+   S_i13_assign  -1101
+   S_i14_assign  -1110
+   S_i15_assign  -1111
+   S_i16_assign  10000
+   S_i17_assign  10001
+   S_i18_assign  10010
+   S_i19_assign  10011
+       S_p1_end  10100
+
+-- Loading architecture main of oar_p1 into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 47: Warning, replacing main of entity oar_p1.
+-- Reading vhdl file /home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl into library work
+-- Loading entity MOD_oar into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 17: Warning, replacing MOD_oar in HDL library work.
+-- Loading architecture main of MOD_oar into library work
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 419: Warning, signal PRO_main_END is never used.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 466: Warning, signal PRO_p1_END is never used.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 470: Warning, signal PRO_p2_END is never used.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 474: Warning, signal PRO_p3_END is never used.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 226: Warning, replacing main of entity MOD_oar.
+-- Compiling root entity MOD_oar(main)
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 353: Info, RAM detected for 'RAM_var_array_pkt_pool'.
+-- Compiling entity oar_p1(main)
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 80: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 81: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 432: Warning, MUTEX_ma_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 456: Warning, PORT_iop_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p1.vhdl",line 473: Warning, RAM_var_array_pkt_pool_GD should be declared on the sensitivity list of the process.
+-- Compiling entity oar_p2(main)
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl",line 62: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl",line 63: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl",line 375: Warning, MUTEX_ma_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p2.vhdl",line 399: Warning, PORT_iop_GD should be declared on the sensitivity list of the process.
+-- Compiling entity oar_p3(main)
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 84: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 85: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 456: Warning, MUTEX_ma_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 474: Warning, PORT_iop_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 489: Warning, RAM_var_array_pkt_pool_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl",line 490: Warning, LOOP_i_2 should be declared on the sensitivity list of the process.
+-- Compiling entity oar_main(main)
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl",line 53: Warning, initial value for pro_state is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl",line 54: Warning, initial value for pro_state_next is ignored for synthesis.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl",line 350: Warning, MUTEX_ma_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_main.vhdl",line 356: Warning, PORT_iop_GD should be declared on the sensitivity list of the process.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1237: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1243: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1249: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1265: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1269: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1273: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1277: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1295: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1299: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1303: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 1307: Info, conditions are mutually exclusive; resolve without priority.
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar.vhdl",line 353: Info, created RAM instance 'modgen_ram_ix4212' for 'RAM_var_array_pkt_pool'.
+.
+-- Boundary optimization.
+-- Boundary optimization.
+-- Start pre-optimization for design .work.oar_p1.main_unfold_1330
+-- Start pre-optimization for design .work.oar_p2.main_unfold_1331
+-- Start pre-optimization for design .work.oar_p3.main_unfold_1332
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl", line 553:Info, Inferred counter instance 'LOOP_i_0' of type 'counter_up_sclear_clock_clk_en_3'
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl", line 565:Info, Inferred counter instance 'LOOP_i_1' of type 'counter_up_sclear_clock_clk_en_3'
+"/home/sbosse/proj/conpro2/test/objarrays/out/obj/../oar_p3.vhdl", line 583:Info, Inferred counter instance 'LOOP_i_2' of type 'counter_up_sclear_clock_clk_en_4'
+-- Start pre-optimization for design .work.oar_main.main_unfold_1526
+-- Start pre-optimization for design .work.MOD_oar.main
+-- Start pre-optimization for design .work.oar_p1.main_unfold_1330
+-- Start pre-optimization for design .work.oar_p2.main_unfold_1331
+-- Start pre-optimization for design .work.oar_p3.main_unfold_1332
+-- Start pre-optimization for design .work.oar_main.main_unfold_1526
+-- Start pre-optimization for design .work.MOD_oar.main
+-- Optimizing netlist .work.MOD_oar.main
+-- Matching combinational logic..
+-- Matching non-combinational logic..
+-- Covering..
+-- CPU Time used :   00:01 Mapping
+Re-checking DRC after adjustments
+-- Final Design Rule Check..
+Re-checking DRC after adjustments
+Using default wire table: small
+-- Start timing optimization for design .work.MOD_oar.main
+No critical paths to optimize at this level
+
+*******************************************************
+
+Cell: MOD_oar    View: main    Library: work
+
+*******************************************************
+
+
+ Cell           Library  References     Total Area
+
+a2_x2           sxlib     2 x      2      3 gates
+a3_x2           sxlib     2 x      2      4 gates
+a4_x2           sxlib     2 x      2      5 gates
+an12_x1         sxlib    42 x      2     71 gates
+an12_x4         sxlib     2 x      3      5 gates
+ao22_x2         sxlib    10 x      2     20 gates
+ao2o22_x2       sxlib     1 x      3      3 gates
+inv_x1          sxlib   140 x      1    140 gates
+inv_x2          sxlib     6 x      1      6 gates
+inv_x4          sxlib     1 x      1      1 gates
+inv_x8          sxlib     1 x      2      2 gates
+mx2_x2          sxlib     1 x      3      3 gates
+mx3_x2          sxlib     1 x      4      4 gates
+na2_x1          sxlib    28 x      1     36 gates
+na3_x1          sxlib    36 x      2     61 gates
+na3_x4          sxlib     2 x      3      5 gates
+na4_x1          sxlib    25 x      2     50 gates
+na4_x4          sxlib     1 x      3      3 gates
+nao22_x1        sxlib    24 x      2     48 gates
+nao22_x4        sxlib     3 x      3     10 gates
+nao2o22_x1      sxlib    19 x      2     44 gates
+nmx2_x1         sxlib    37 x      2     85 gates
+no2_x1          sxlib    47 x      1     61 gates
+no2_x4          sxlib     2 x      2      5 gates
+no3_x1          sxlib    60 x      2    102 gates
+no3_x4          sxlib     2 x      3      5 gates
+no4_x1          sxlib    16 x      2     32 gates
+noa22_x1        sxlib    18 x      2     36 gates
+noa2a22_x1      sxlib    23 x      2     53 gates
+noa2a2a23_x1    sxlib     6 x      3     20 gates
+noa2ao222_x1    sxlib    11 x      2     25 gates
+noa3ao322_x1    sxlib     4 x      3     12 gates
+noa3ao322_x4    sxlib     1 x      4      4 gates
+nxr2_x1         sxlib     7 x      3     21 gates
+o2_x2           sxlib     9 x      2     15 gates
+o3_x2           sxlib     4 x      2      8 gates
+o4_x2           sxlib     8 x      2     18 gates
+oa22_x2         sxlib     9 x      2     18 gates
+oa2a2a23_x2     sxlib    10 x      4     40 gates
+oa3ao322_x2     sxlib     1 x      4      4 gates
+on12_x1         sxlib    38 x      2     65 gates
+on12_x4         sxlib     5 x      3     14 gates
+sff1_x4         sxlib    76 x      6    456 gates
+sff2_x4         sxlib    36 x      8    288 gates
+xr2_x1          sxlib     3 x      3      9 gates
+
+ Number of ports :                      34
+ Number of nets :                      784
+ Number of instances :                 782
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                    1923
+ Number of accumulated instances :     782
+Using default wire table: small
+
+
+
+                        Clock Frequency Report
+
+	Clock                : Frequency
+      ------------------------------------
+
+	CLK                  : 118.1 MHz
+
+
+                        Critical Path Report
+
+Critical path #1, (unconstrained path)
+NAME                                                GATE              ARRIVAL              LOAD
+-----------------------------------------------------------------------------------------------
+clock information not specified
+delay thru clock network                                              0.00 (ideal)
+
+
+PRO_MAP_p3_reg_pro_state(2)/q                       sff1_x4     0.00  0.81 dn             0.34
+ix7842/q                                            an12_x1     1.00  1.80 dn             0.15
+ix817/q                                             on12_x1     0.55  2.35 up             0.10
+ix7839/nq                                           no3_x1      0.52  2.87 dn             0.08
+ix7932/nq                                           nao2o22_x1  0.49  3.37 up             0.05
+ix8088/nq                                           no3_x1      0.30  3.67 dn             0.03
+ix7429/nq                                           na4_x1      0.48  4.15 up             0.05
+ix1287/nq                                           na2_x1      0.53  4.68 dn             0.08
+ix7889/nq                                           no2_x1      0.48  5.15 up             0.05
+ix1149/nq                                           inv_x1      0.25  5.41 dn             0.03
+ix7939/nq                                           no3_x1      0.79  6.20 up             0.08
+ix1173/nq                                           inv_x1      0.37  6.57 dn             0.05
+ix7875/nq                                           no4_x1      0.43  7.00 up             0.03
+ix2289/nq                                           nao2o22_x1  0.39  7.39 dn             0.05
+ix2291/q                                            o2_x2       0.36  7.75 dn             0.02
+reg_MUTEX_ma_1_p1_GD/i                              sff1_x4     0.00  7.75 dn             0.00
+data arrival time                                                     7.75
+
+
+data required time                                                 not specified
+-----------------------------------------------------------------------------------------------
+data required time                                                 not specified
+data arrival time                                                     7.75
+                                                                   ----------
+                                                                unconstrained path
+-----------------------------------------------------------------------------------------------
+
+
+AutoWrite args are : -format VHD oar.vhd
+-- Writing file oar.vhd

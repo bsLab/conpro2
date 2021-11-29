@@ -1,0 +1,20 @@
+PI_block([
+  PI_block([
+    PI_forloop(L50,PI_obj([]:OT_reg(LOOP_i_0)),PI_obj([]:OT_value(V_int(1))),TO,PI_obj([]:OT_value(V_int(10))),
+      PI_block([
+        PI_block([
+          PI_fun(L52,[]:OT_object(mu),lock,)],
+          {bf_name=FUN;bf_id=44358;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]});
+        PI_block([
+          PI_assign(L53,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))],
+          {bf_name=ASSIGN;bf_id=65705;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]});
+        PI_block([
+          PI_assign(,PI_obj([]:OT_reg(TEMPS_0)),PI_obj([OD_sel_obj(PI_obj([]:OT_named_value(#,V_int(0))))]:OT_array(a)));
+          PI_assign(L54,PI_obj([OD_sel_obj(PI_obj([]:OT_reg(LOOP_i_0)))]:OT_array(a)),PI_arithm(PI_obj([]:OT_reg(TEMPS_0)),+,PI_obj([]:OT_named_value(#,V_int(0)))))],
+          {bf_name=ASSIGN;bf_id=17429;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]});
+        PI_block([
+          PI_fun(L55,[]:OT_object(mu),unlock,)],
+          {bf_name=FUN;bf_id=39314;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]})],
+        {bf_name=LOOP_BODY;bf_id=8650;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]}))],
+    {bf_name=COUNT_LOOP;bf_id=16603;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]})],
+  {bf_name=MAIN;bf_id=2877;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]})

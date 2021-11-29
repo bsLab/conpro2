@@ -1,0 +1,16 @@
+;DCL project file for C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+
+[State]
+Last=1
+Total=1
+
+[Projects]
+1=help
+
+[Paths]
+help=C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\
+
+[Types]
+help=W
+
+[End]

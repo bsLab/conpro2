@@ -1,0 +1,44 @@
+
+Starting:    /export/home/fpga_89/solaris/mbin/synbatch
+Install:     /export/home/fpga_89
+Date:        Thu Feb 26 15:44:58 2009
+Version:     8.9
+
+
+Arguments:   -synplify -pro -batch t.prj
+ProductType: synplify_pro
+
+License checkout: synplifypro
+License: synplifypro from server sun203 
+
+
+
+Running synthesis on t:obj
+
+log file: "/home/sbosse/proj/conpro2/test/tdi.synplicity89/out/obj/t.srr"
+
+
+Running Vhdl Compiler...
+
+Vhdl Compiler Completed
+
+
+Running Analysis Property Generator...
+
+Launching mapper in pro mode
+
+Analysis Property Generator Completed
+
+
+Analysis Property Generator Complete
+
+Running proasic3 Mapper...
+
+Launching mapper in pro mode
+
+proasic3 Mapper Completed with warnings
+
+
+exit status=0
+
+

@@ -1,0 +1,252 @@
+
+
+Wed Dec 17 17:09:08 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 17:09:11 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 17:09:12 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:09:13 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:09:14 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.
+Wed Dec 17 17:38:56 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:38:56 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:41:20 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:41:20 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:44:21 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:44:21 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:45:11 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:45:11 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:45:45 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:45:45 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:46:26 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:46:26 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:48:50 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:48:50 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:50:06 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:50:06 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:50:54 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:50:54 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 17:51:25 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 17:51:25 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 18:03:13 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 18:03:13 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 18:05:21 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 18:05:21 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+Wed Dec 17 18:05:22 2014
+I1: Processing completed by dwrtf.
+Wed Dec 17 18:08:23 2014
+I1: Starting log for drmif, m210
+I1: Opened file "help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 18:08:23 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+Wed Dec 17 18:08:24 2014
+I1: Processing completed by dwrtf.

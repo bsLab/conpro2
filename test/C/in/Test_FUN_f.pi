@@ -1,0 +1,5 @@
+PI_block([
+  PI_block([
+    PI_assign(L20,PI_obj([]:OT_reg(RET_FUN_f_z)),PI_arithm(PI_obj([]:OT_reg(ARG_FUN_f_x)),+,PI_obj([]:OT_reg(ARG_FUN_f_y))))],
+    {bf_name=ASSIGN;bf_id=87757;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]})],
+  {bf_name=MAIN;bf_id=59662;bf_flags=[BP_expr(flat);BP_alu_min_width(8);BP_temp(shared)]})

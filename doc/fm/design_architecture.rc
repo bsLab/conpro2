@@ -1,0 +1,391 @@
+RCV9 0 1 1239 915
+font 65 8 4
+Times 0 10
+Times 2 10
+Times 1 10
+Times 3 10
+Times 0 12
+Times 2 12
+Times 1 12
+Times 3 12
+Times 0 14
+Times 2 14
+Times 1 14
+Times 3 14
+Times 0 18
+Times 2 18
+Times 1 18
+Times 3 18
+Times 0 24
+Times 2 24
+Times 1 24
+Times 3 24
+Courier 0 10
+Courier 2 10
+Courier 1 10
+Courier 3 10
+Courier 0 12
+Courier 2 12
+Courier 1 12
+Courier 3 12
+Courier 0 14
+Courier 2 14
+Courier 1 14
+Courier 3 14
+Courier 0 18
+Courier 2 18
+Courier 1 18
+Courier 3 18
+Courier 0 24
+Courier 2 24
+Courier 1 24
+Courier 3 24
+Helvetica 0 10
+Helvetica 2 10
+Helvetica 1 10
+Helvetica 3 10
+Helvetica 0 12
+Helvetica 2 12
+Helvetica 1 12
+Helvetica 3 12
+Helvetica 0 14
+Helvetica 2 14
+Helvetica 1 14
+Helvetica 3 14
+Helvetica 0 18
+Helvetica 2 18
+Helvetica 1 18
+Helvetica 3 18
+Helvetica 0 24
+Helvetica 2 24
+Helvetica 1 24
+Helvetica 3 24
+Symbol 0 10
+Symbol 0 12
+Symbol 0 14
+Symbol 0 18
+Symbol 0 24
+pmap 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+shape 241 i a 32 32  
+98199819000003C0F3CF1008100813C813C810081008F3CF03C0000098199819
+#
+/home/sbosse/publications/emrs2010/soc.icon
+color fill 0 white 0
+color fill 1 yellow 5
+color fill 2 PaleGreen 4
+color fill 3 LightBlue 3
+color fill 4 gray 1
+color fill 5 red 2
+color fill 6 blue 3
+color fill 7 black 1
+color line 0 gray 1
+color line 1 cyan 6
+color line 2 violet 6
+color line 3 green 4
+color line 4 red 2
+color line 5 blue 3
+color line 6 SlateGray 1
+color line 7 black 1
+color text 0 white 0
+color text 1 LightGray 1
+color text 2 yellow 5
+color text 3 orange 6
+color text 4 red 2
+color text 5 SlateGray 1
+color text 6 MediumBlue 3
+color text 7 black 1
+pool 45 43 51 51
+page 1
+3 44 42 43 0
+n 42 41 44 2176 424 2352 472 0 0
+n 41 40 43 2168 208 2344 256 0 0
+n 40 1 1 1660 88 1836 168 0 0
+n 1 3 5 1840 720 1920 784 0 0
+n 3 4 6 1744 720 1824 784 0 0
+n 4 5 7 1648 720 1728 784 0 0
+n 5 6 8 1680 632 1760 696 0 0
+n 6 7 9 1864 632 1944 696 0 0
+n 7 8 10 1776 632 1856 696 0 0
+n 8 9 11 1584 632 1664 696 0 0
+n 9 10 12 1844 1184 2020 1232 0 0
+n 10 12 14 1896 876 2104 980 0 0
+n 12 13 15 2112 24 2344 72 0 0
+n 13 14 16 1784 8 1960 72 0 0
+n 14 15 17 2088 1184 2264 1232 0 0
+n 15 11 13 1600 1184 1776 1232 0 0
+n 11 16 18 2176 1016 2256 1080 0 0
+n 16 20 22 2064 1016 2144 1080 0 0
+n 20 21 23 1920 1016 2000 1080 0 0
+n 21 22 24 1544 1016 1624 1080 0 0
+n 22 19 21 1656 1016 1736 1080 0 0
+n 19 18 20 1760 1016 1904 1080 0 0
+n 18 23 19 1912 760 2088 824 0 0
+n 23 24 26 2140 816 2284 896 0 0
+n 24 25 27 1720 816 1864 896 0 0
+n 25 26 28 2008 632 2328 712 0 0
+n 26 27 29 2160 1112 2224 1176 0 0
+n 27 28 30 1664 1104 1728 1168 0 0
+n 28 29 31 2176 528 2336 608 0 0
+n 29 30 32 2008 528 2176 608 0 0
+n 30 31 33 1616 528 1984 608 0 0
+n 31 32 34 2180 748 2356 796 0 0
+n 32 33 35 1856 424 2032 504 0 0
+n 33 34 36 2168 112 2344 144 0 0
+n 34 35 37 1840 304 1984 384 0 0
+n 35 36 38 2016 304 2160 384 0 0
+n 36 37 39 1696 192 1840 272 0 0
+n 37 38 40 1992 192 2136 272 0 0
+n 38 39 41 1672 304 1816 384 0 0
+n 39 0 42 1904 88 2120 168 0 0
+F 43 0 1 39 128 8 80 1
+\e
+f 43 50 43 37 38 1 53 14 0 0
+ 1816 288
+F 50 0 1 39 128 8 80 1
+\e
+f 50 49 50 5 3 0 3 7 0 0
+F 49 0 1 39 128 8 80 1
+\e
+f 49 47 49 5 4 0 4 0 0 0
+F 47 0 1 39 128 8 80 1
+\e
+f 47 46 47 13 39 0 3 7 0 0
+F 46 1 1 39 128 8 80 1
+\e
+f 46 44 46 40 39 0 2 6 0 0
+F 44 0 1 39 128 8 80 1
+\e
+f 44 7 44 13 40 0 5 1 0 0
+F 7 0 1 63 128 8 80 1
+\e
+f 7 6 7 6 1 0 4 0 0 0
+F 6 0 1 63 128 8 80 1
+\e
+f 6 1 6 6 3 1 5 1 0 0
+ 1864 712
+F 1 0 1 63 128 8 80 1
+\e
+f 1 8 1 6 4 1 5 1 0 0
+ 1832 704
+F 8 0 1 63 128 8 80 1
+\e
+f 8 5 8 30 6 0 38 7 0 0
+F 5 0 1 63 128 8 80 1
+\e
+f 5 4 5 30 7 0 40 0 0 0
+F 4 0 1 63 128 8 80 1
+\e
+f 4 2 4 30 5 0 41 1 0 0
+F 2 0 1 63 128 8 80 1
+\e
+f 2 3 2 30 8 0 43 1 0 0
+F 3 1 1 63 128 8 80 1
+\e
+f 3 9 3 18 10 0 4 0 0 0
+F 9 0 1 63 128 8 80 1
+\e
+f 9 10 9 10 23 0 1 51 0 0
+F 10 0 1 63 128 8 80 1
+\e
+f 10 12 10 10 24 0 7 29 0 0
+F 12 0 1 63 128 8 80 1
+\e
+f 12 13 12 20 27 1 5 24 0 0
+ 1880 1136
+F 13 0 1 63 128 8 80 1
+\e
+f 13 14 13 20 26 1 3 56 0 0
+ 2056 1144
+F 14 0 1 63 128 8 80 1
+\e
+f 14 15 14 11 26 0 4 10 0 0
+F 15 0 1 63 128 8 80 1
+\e
+f 15 16 15 16 26 0 3 1 0 0
+F 16 0 1 63 128 8 80 1
+\e
+f 16 17 16 23 11 0 40 0 0 0
+F 17 0 1 63 128 8 80 1
+\e
+f 17 18 17 23 16 0 42 1 0 0
+F 18 0 1 63 128 8 80 1
+\e
+f 18 19 18 23 20 1 45 1 0 0
+ 2088 976
+F 19 0 1 63 128 8 80 1
+\e
+f 19 20 19 24 20 0 36 7 0 0
+F 20 0 1 63 128 8 80 1
+\e
+f 20 21 20 24 19 0 39 0 0 0
+F 21 0 1 63 128 8 80 1
+\e
+f 21 22 21 24 22 0 42 0 0 0
+F 22 0 1 63 128 8 80 1
+\e
+f 22 23 22 24 21 0 45 1 0 0
+F 23 0 1 63 128 8 80 1
+\e
+f 23 24 23 19 27 0 5 19 0 0
+F 24 0 1 63 128 8 80 1
+\e
+f 24 25 24 22 27 0 4 8 0 0
+F 25 0 1 63 128 8 80 1
+\e
+f 25 26 25 21 27 0 3 62 0 0
+F 26 0 1 63 128 8 80 1
+\e
+f 26 27 26 18 23 0 3 60 0 0
+F 27 0 1 63 128 8 80 1
+\e
+f 27 28 27 18 24 0 5 20 0 0
+F 28 0 1 63 128 8 80 1
+\e
+f 28 29 28 25 18 1 43 1 0 0
+ 2080 728
+F 29 0 1 63 128 8 80 1
+\e
+f 29 30 29 28 25 0 43 10 0 0
+F 30 0 1 63 128 8 80 1
+\e
+f 30 31 30 29 25 0 37 7 0 0
+F 31 0 1 63 128 8 80 1
+\e
+f 31 33 31 32 29 1 4 8 0 0
+ 2092 500
+F 33 0 1 63 128 8 80 1
+\e
+f 33 34 33 32 30 1 8 8 0 0
+ 1800 500
+F 34 0 1 63 128 8 80 1
+\e
+f 34 35 34 35 32 0 45 1 0 0
+F 35 0 1 63 128 8 80 1
+\e
+f 35 36 35 34 32 0 39 0 0 0
+F 36 0 1 63 128 8 80 1
+\e
+f 36 37 36 38 32 0 33 11 0 0
+F 37 0 1 63 128 8 80 1
+\e
+f 37 38 37 37 34 0 46 14 0 0
+F 38 0 1 63 128 8 80 1
+\e
+f 38 39 38 36 34 0 34 2 0 0
+F 39 0 1 63 128 8 80 1
+\e
+f 39 40 39 36 38 0 41 9 0 0
+F 40 0 1 63 128 8 80 1
+\e
+f 40 41 40 39 36 0 5 18 0 0
+F 41 0 1 63 128 8 80 1
+\e
+f 41 42 41 37 35 0 39 7 0 0
+F 42 0 1 63 128 8 80 1
+\e
+f 42 0 42 39 37 0 4 6 0 0
+N 44 43 3 53 146 53 80 1 3 0 0 0 0 0
+Building
+Blocks\e
+N 43 1 3 53 146 53 80 1 3 0 0 0 0 0
+Computation &
+Execution Model\e
+N 1 5 51 63 154 53 80 1 3 0 0 0 0 0
+Guarded
+Atomic
+Actions\e
+N 5 6 51 63 154 53 80 1 3 0 0 0 0 0
+Abstract\e
+N 6 7 51 63 154 53 80 1 3 0 0 0 0 0
+Control\e
+N 7 8 51 63 154 53 80 1 3 0 0 0 0 0
+Data\e
+N 8 9 51 63 154 53 80 1 3 0 0 0 0 0
+Statement\e
+N 9 10 51 63 154 53 80 1 3 0 0 0 0 0
+Objects\e
+N 10 11 51 63 154 53 80 1 3 0 0 0 0 0
+Types\e
+N 11 12 51 63 154 53 80 1 3 0 0 0 0 0
+Process\e
+N 12 14 3 53 146 53 80 1 3 0 0 0 0 0
+Intermediate
+Representation\e
+N 14 15 51 63 154 53 80 1 3 0 0 0 0 0
+External Module 
+Interface
+EMI\e
+N 15 16 3 53 146 53 80 1 3 0 0 0 0 0
+Algorithmic Level
+Programming Language\e
+N 16 17 51 63 156 53 80 1 3 0 0 0 0 0
+Algorithm\e
+N 17 13 3 53 146 53 80 1 3 0 0 0 0 0
+Processor
+Software\e
+N 13 18 3 53 146 53 80 1 3 0 0 0 0 0
+SoC
+Hardware\e
+N 18 22 51 63 154 53 80 1 3 0 0 0 0 0
+ML\e
+N 22 23 51 63 154 53 80 1 3 0 0 0 0 0
+C\e
+N 23 24 51 63 154 63 80 1 3 0 0 0 0 0
+m\f35Code\e
+N 24 21 51 63 154 53 80 1 3 0 0 0 0 0
+VHDL\e
+N 21 20 51 63 154 53 80 1 3 0 0 0 0 0
+RTL\e
+N 20 19 51 63 154 53 80 1 3 0 0 0 0 0
+Data& 
+Control Path \e
+N 19 26 51 63 154 53 80 1 3 0 0 0 0 0
+Synthesis\e
+N 26 27 2 63 155 53 80 1 3 0 0 0 0 0
+Software
+Model\e
+N 27 28 2 63 155 53 80 1 3 0 0 0 0 0
+Hardware
+Model\e
+N 28 29 2 63 155 53 80 1 3 0 0 0 0 0
+Analysis
+Optimization\e
+N 29 30 30 39 144 8 80 1 3 0 0 0 0 0
+\e
+N 30 31 241 39 149 8 80 1 3 0 0 0 0 0
+\e
+N 31 32 2 63 155 53 80 1 3 0 0 0 0 0
+Software
+Compiler\e
+N 32 33 2 63 155 53 80 1 3 0 0 0 0 0
+Hardware
+Compiler\e
+N 33 34 2 63 155 53 80 1 3 0 0 0 0 0
+Imperative Constrained
+Parallel Programming Language\e
+N 34 35 3 53 146 53 80 1 3 0 0 0 0 0
+Implementation &
+Designflow\e
+N 35 36 13 63 154 53 80 1 3 0 0 0 0 0
+ConPro\e
+N 36 37 3 53 146 53 80 1 3 0 0 0 0 0
+Behavioural Model\e
+N 37 38 2 63 155 53 80 1 3 0 0 0 0 0
+Interprocess-
+Communication\e
+N 38 39 2 63 155 53 80 1 3 0 0 0 0 0
+Multi-
+Processing\e
+N 39 40 2 63 155 53 80 1 3 0 0 0 0 0
+Imperative &
+Sequential\e
+N 40 41 2 63 155 53 80 1 3 0 0 0 0 0
+Concurrency
+Parallelism\e
+N 41 42 2 63 155 53 80 1 3 0 0 0 0 0
+Instruction
+Processing\e
+N 42 0 51 63 154 53 80 1 3 0 0 0 0 0
+Communicating
+Sequential
+Processes\e

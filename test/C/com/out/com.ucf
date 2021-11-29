@@ -1,0 +1,5 @@
+NET "stat_led_RD" LOC = "G16";
+NET "dev_io_RX" LOC = "E14";
+NET "dev_io_TX" LOC = "E15";
+NET "CLK" LOC = "T9";
+NET "RESET" LOC = "J16";

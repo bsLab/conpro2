@@ -1,0 +1,1 @@
+obj-type ::= 'reg' | 'var' | 'sig' | 'queue' | 'channel' .

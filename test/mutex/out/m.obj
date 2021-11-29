@@ -1,0 +1,35 @@
+-- CONPRO: Hardware Synthesis with an Imperative High Level Multiprocess Approach
+--         (C) 2006-2008 ** BSSLAB, Dr. Stefan Bosse
+--         Version 2.1 A16 **  2049142 total genes
+--         Compiled on Thu Nov 27 11:07:26 CET 2008
+--         Compiled by sbosse
+--         Compiled on SunOS sun203 5.10 Generic_118833-33 sun4u sparc SUNW,A70
+
+export:
+begin
+  reg x: I8
+  reg y: I8
+  reg z: I8
+  reg d: I8
+end
+
+data:
+begin
+  reg d: I8
+  type mutex
+  object m: Mutex.mutex
+  array p: object[4] of Process.process
+  type system
+  reg x: I8
+  reg y: I8
+  reg z: I8
+  object sys: System.system
+  process main
+  object main: Process.Process
+  type process
+  process p_0
+  process p_1
+  process p_2
+  process p_3
+end
+

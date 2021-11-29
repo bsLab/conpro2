@@ -1,0 +1,348 @@
+Opened message file <band.log>. Detailed informations can be found in this file.
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<83f2ea7a> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+Analyzing ConPro source <band.cp>...
+Searching Conpro file <band.cp>...
+Opening file <band.cp>...
+Compiling ConPro source <band.cp>...
+Compiling module <band>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+  Analyzing toplevel method calls...
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [file <band.cp>, line 6]: Analyzing process <main>...
+      Analyzing process <main>...
+        ND(and)
+          ND(=)
+            V[2]
+            V[2]
+          ND(=)
+            O[x]
+            V[1]
+        ND(and)
+          ND(=)
+            V[2]
+            V[2]
+          ND(=)
+            O[x]
+            V[1]
+        ND(and)
+          ND(=)
+            V[2]
+            V[2]
+          ND(=)
+            O[x]
+            V[1]
+        ND(and)
+          V[1]
+          ND(=)
+            O[x]
+            V[1]
+        ND(and)
+          V[1]
+          ND(=)
+            O[x]
+            V[1]
+        ND(=)
+          O[y]
+          V[0]
+        ND(=)
+          O[y]
+          V[0]
+        ND(=)
+          O[y]
+          V[0]
+        DEBUG[expr_fold]: Bool: op1=false op2=false // PI_bool(PI_bool(PI_bool(PI_obj([]:OT_named_value(ADC,V_int(2))),=,PI_obj([]:OT_value(V_int(2)))),and,PI_bool(PI_obj([]:OT_reg(x)),=,PI_obj([]:OT_value(V_int(1))))),and,PI_bool(PI_obj([]:OT_reg(y)),=,PI_obj([]:OT_value(V_int(0)))))
+        DEBUG[expr_fold]: Bool: op1=false op2=false // PI_bool(PI_bool(PI_bool(PI_obj([]:OT_named_value(ADC,V_int(2))),=,PI_obj([]:OT_value(V_int(2)))),and,PI_bool(PI_obj([]:OT_reg(x)),=,PI_obj([]:OT_value(V_int(1))))),and,PI_bool(PI_obj([]:OT_reg(y)),=,PI_obj([]:OT_value(V_int(0)))))
+  Performing program graph transformations and optimization for module <Band>...
+    in process <main>...
+      Performing program transformations for process <main>...
+      Performing program transformations for process <main>...
+      Resolving object dependencies for process <main>...
+  Analyzing toplevel instructions...
+  Resolving object dependencies for process <MOD_Band>...
+  Default block parameters:  [EXPR=FLAT] [ALU_MIN_N=8] [TEMP=shared]
+  Toplevel symbols: 5
+  Processes: 1
+  Functions: 0
+  Process order: 
+  : main
+  
+  +------------------------------- ANALYSIS SUMMARY -------------------------------+
+  +--------------------------------------------------------------------------------+
+  | DESCRIPTION                   MESSAGE                                          |
+  +--------------------------------------------------------------------------------+
+  | Default block parameters       [EXPR=FLAT] [ALU_MIN_N=8] [TEMP=shared]         |
+  | Toplevel symbols              5                                                |
+  | Processes                     1                                                |
+  | Functions                     0                                                |
+  | Process order                                                                  |
+  |                               main                                             |
+  +--------------------------------------------------------------------------------+
+  
+Performing controll graph analysis for module <Band>...
+call_graph_build: process 'main': start={} stop={} call={} raise={} catch={}
+call_graph_build: exception register'PRO_main_EXCEPTION': read={} write={}
+  
+  +------------------------------ CALL GRAPH SUMMARY ------------------------------+
+  +--------------------------------------------------------------------------------+
+  | PROCESS                                                                        |
+  +--------------------------------------------------------------------------------+
+  | main                                                                           |
+  | .. start                                                                       |
+  | .. stop                                                                        |
+  | .. call                                                                        |
+  | .. raise                                                                       |
+  | .. catch                                                                       |
+  | PRO_main_EXCEPTION                                                             |
+  | .. read                                                                        |
+  | .. write                                                                       |
+  +--------------------------------------------------------------------------------+
+  
+Synthesizing module <Band>...
+Synthesizing main module <Band>...
+  Optimization: [Expression Constant Folder]  [Dead Object Remover]
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <Band.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      [Band.MOD_Band]: Removing Register <Band.PRO_main_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      Removed 1 object(s).
+    Optimizer: folding constants in expressions...
+      in process <Band.main>
+      DEBUG[expr_fold]: Assign: PI_assign(L10,PI_obj([]:OT_reg(x)),PI_obj([]:OT_value(V_int(0))))
+      DEBUG[expr_fold]: Assign: PI_assign(L10,PI_obj([]:OT_reg(x)),PI_obj([]:OT_value(V_int(0))))
+      V[0]
+      V[0]
+      V[0]
+      DEBUG[expr_fold]: Assign: PI_assign(L10,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))
+      DEBUG[expr_fold]: Assign: PI_assign(L10,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))
+      ND(+)
+        O[x]
+        V[1]
+      ND(+)
+        O[x]
+        V[1]
+      ND(+)
+        O[x]
+        V[1]
+      DEBUG[expr_fold]: Assign: PI_assign(L11,PI_obj([]:OT_reg(y)),PI_obj([]:OT_value(V_int(1))))
+      DEBUG[expr_fold]: Assign: PI_assign(L11,PI_obj([]:OT_reg(y)),PI_obj([]:OT_value(V_int(1))))
+      V[1]
+      V[1]
+      V[1]
+      DEBUG[expr_fold]: Assign: PI_assign(L11,PI_obj([]:OT_reg(y)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))
+      DEBUG[expr_fold]: Assign: PI_assign(L11,PI_obj([]:OT_reg(y)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))
+      ND(+)
+        O[x]
+        V[1]
+      ND(+)
+        O[x]
+        V[1]
+      ND(+)
+        O[x]
+        V[1]
+      ND(=)
+        O[x]
+        V[1]
+      ND(=)
+        O[x]
+        V[1]
+      ND(=)
+        O[x]
+        V[1]
+      ND(=)
+        O[y]
+        V[0]
+      ND(=)
+        O[y]
+        V[0]
+      ND(=)
+        O[y]
+        V[0]
+      DEBUG[expr_fold]: Bool: op1=false op2=false // PI_bool(PI_bool(PI_obj([]:OT_reg(x)),=,PI_obj([]:OT_value(V_int(1)))),and,PI_bool(PI_obj([]:OT_reg(y)),=,PI_obj([]:OT_value(V_int(0)))))
+      DEBUG[expr_fold]: Bool: op1=false op2=false // PI_bool(PI_bool(PI_obj([]:OT_reg(x)),=,PI_obj([]:OT_value(V_int(1)))),and,PI_bool(PI_obj([]:OT_reg(y)),=,PI_obj([]:OT_value(V_int(0)))))
+      DEBUG[expr_fold]: Assign: PI_assign(L12,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),-,PI_obj([]:OT_value(V_int(1)))))
+      DEBUG[expr_fold]: Assign: PI_assign(L12,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),-,PI_obj([]:OT_value(V_int(1)))))
+      ND(+)
+        O[x]
+        V[1,-]
+      ND(+)
+        O[x]
+        V[1,-]
+      ND(+)
+        O[x]
+        V[1,-]
+        Removed 0 operand(s).
+    ... Progress of pass 1: 1.
+  Optimizing and pre-scheduling, pass 2...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <Band.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <Band.main>
+      DEBUG[expr_fold]: Assign: PI_assign(L10,PI_obj([]:OT_reg(x)),PI_obj([]:OT_value(V_int(0))))
+      DEBUG[expr_fold]: Assign: PI_assign(L10,PI_obj([]:OT_reg(x)),PI_obj([]:OT_value(V_int(0))))
+      V[0]
+      V[0]
+      V[0]
+      DEBUG[expr_fold]: Assign: PI_assign(L10,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))
+      DEBUG[expr_fold]: Assign: PI_assign(L10,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))
+      ND(+)
+        O[x]
+        V[1]
+      ND(+)
+        O[x]
+        V[1]
+      ND(+)
+        O[x]
+        V[1]
+      DEBUG[expr_fold]: Assign: PI_assign(L11,PI_obj([]:OT_reg(y)),PI_obj([]:OT_value(V_int(1))))
+      DEBUG[expr_fold]: Assign: PI_assign(L11,PI_obj([]:OT_reg(y)),PI_obj([]:OT_value(V_int(1))))
+      V[1]
+      V[1]
+      V[1]
+      DEBUG[expr_fold]: Assign: PI_assign(L11,PI_obj([]:OT_reg(y)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))
+      DEBUG[expr_fold]: Assign: PI_assign(L11,PI_obj([]:OT_reg(y)),PI_arithm(PI_obj([]:OT_reg(x)),+,PI_obj([]:OT_value(V_int(1)))))
+      ND(+)
+        O[x]
+        V[1]
+      ND(+)
+        O[x]
+        V[1]
+      ND(+)
+        O[x]
+        V[1]
+      ND(=)
+        O[x]
+        V[1]
+      ND(=)
+        O[x]
+        V[1]
+      ND(=)
+        O[x]
+        V[1]
+      ND(=)
+        O[y]
+        V[0]
+      ND(=)
+        O[y]
+        V[0]
+      ND(=)
+        O[y]
+        V[0]
+      DEBUG[expr_fold]: Bool: op1=false op2=false // PI_bool(PI_bool(PI_obj([]:OT_reg(x)),=,PI_obj([]:OT_value(V_int(1)))),and,PI_bool(PI_obj([]:OT_reg(y)),=,PI_obj([]:OT_value(V_int(0)))))
+      DEBUG[expr_fold]: Bool: op1=false op2=false // PI_bool(PI_bool(PI_obj([]:OT_reg(x)),=,PI_obj([]:OT_value(V_int(1)))),and,PI_bool(PI_obj([]:OT_reg(y)),=,PI_obj([]:OT_value(V_int(0)))))
+      DEBUG[expr_fold]: Assign: PI_assign(L12,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),-,PI_obj([]:OT_value(V_int(1)))))
+      DEBUG[expr_fold]: Assign: PI_assign(L12,PI_obj([]:OT_reg(x)),PI_arithm(PI_obj([]:OT_reg(x)),-,PI_obj([]:OT_value(V_int(1)))))
+      ND(+)
+        O[x]
+        V[1,-]
+      ND(+)
+        O[x]
+        V[1,-]
+      ND(+)
+        O[x]
+        V[1,-]
+        Removed 0 operand(s).
+    ... Progress of pass 2: 0.
+  
+  +----------------------------- OPTIMIZATION SUMMARY -----------------------------+
+  +--------------------------------------------------------------------------------+
+  | LOCATION                      MESSAGE                                          |
+  +--------------------------------------------------------------------------------+
+  | [Band.MOD_Band]               Removing Register <Band.PRO_main_EXCEPTION> with |
+  |                               0 reader(s) and 0 writer(s).                     |
+  +--------------------------------------------------------------------------------+
+  
+  Extracting features and resources...
+  Resolving object guards...
+    Found 0 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+    Performing post-analysis transformations for process <main>...
+    Performing post-analysis transformations for process <main>...
+  Synthesizing process instructions...
+    Synthesizing uCode for process <main>...
+    in process <Band.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 1 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        8 states created.
+      Calculating block frame time estimations for process <main>...
+  
+  +--------------------------- UCODE SYNTHESIS SUMMARY ----------------------------+
+  +--------------------------------------------------------------------------------+
+  | LOCATION                      MESSAGE                                          |
+  +--------------------------------------------------------------------------------+
+  +--------------------------------------------------------------------------------+
+  
+  Synthesizing VHDL-RTL for module <Band>...
+  Creating entity <band_main>...
+    Synthesizing VHDL-RTL for process <main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 3 bits
+  Creating library <conpro.vhdl>...
+  Creating entity <band.vhdl>...
+    Synthesizing VHDL-RTL for toplevel <Band> ...
+  Emitting MicroCode for module Band...
+  Emitting object file for module Band...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+  
+  +---------------------------- RTL SYNTHESIS SUMMARY -----------------------------+
+  +--------------------------------------------------------------------------------+
+  | LOCATION                      MESSAGE                                          |
+  +--------------------------------------------------------------------------------+
+  +--------------------------------------------------------------------------------+
+  
+Emitting frame time calculations for module <Band>...
+Info : Emitting block frame informations in file <band.ft>...
+Total CPU time consumed: 0.1 seconds.
+Total time elapsed: 0.0 seconds.
+  
+  +------------------------ SYNTHESIS RESULT SUMMARY -------------------------+
+  +---------------------------------------------------------------------------+
+  | DESCRIPTION                                  VALUE                        |
+  +---------------------------------------------------------------------------+
+  | arithmetic unit                              5                            |
+  |  -> adder                                    (2)                          |
+  |  -> comparator                               (2)                          |
+  |  -> subtractor                               (1)                          |
+  | process                                      1                            |
+  | process.main                                                              |
+  |  -> port-width [bit]                         3                            |
+  |  -> register                                 2                            |
+  |  -> states                                   8                            |
+  | register-local                               2                            |
+  |  -> signed(7 downto 0)                       (2)                          |
+  | synthesis time [sec]                                                      |
+  +---------------------------------------------------------------------------+
+  

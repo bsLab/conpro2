@@ -1,0 +1,26 @@
+NET "dev_rx" LOC = "E14";
+NET "dev_tx" LOC = "E15";
+NET "dev_leds<0>" LOC = "G16";
+    NET "dev_leds<1>" LOC = "B16";
+    NET "dev_leds<2>" LOC = "C16";
+    NET "dev_leds<3>" LOC = "C15";
+NET "dev_lcd_db<0>" LOC = "A3";
+    NET "dev_lcd_db<1>" LOC = "D5";
+    NET "dev_lcd_db<2>" LOC = "B4";
+    NET "dev_lcd_db<3>" LOC = "A4";
+NET "dev_lcd_rw" LOC = "B5";
+NET "dev_lcd_rs" LOC = "A5";
+NET "dev_lcd_en" LOC = "A7";
+NET "dev_lcd_reset" LOC = "C5";
+NET "CLK" LOC = "T9";
+NET "RESET" LOC = "J16";
+#NET "debug<0>" LOC = "A9";
+#    NET "debug<1>" LOC = "A12";
+#    NET "debug<2>" LOC = "C10";
+#    NET "debug<3>" LOC = "D12";
+#    NET "debug<4>" LOC = "A14";
+#    NET "debug<5>" LOC = "B14";
+#    NET "debug<6>" LOC = "A13";
+#    NET "debug<7>" LOC = "B13";
+    
+

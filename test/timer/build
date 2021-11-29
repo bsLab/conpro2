@@ -1,0 +1,108 @@
+#!/bin/bash
+
+#########################
+# Project configuration #
+#########################
+
+PROJ=/home/sbosse/proj/conpro/test/random
+TOP=t
+export CONPRO=/opt/Conpro2
+CPSRC=$PROJ/src/cp
+VHDLSRC=$PROJ/src/vhdl
+INCL="-I $CPSRC"
+INCL="$INCL -I $VHDLSRC"
+FLAGS="-O out -tool leonardo"
+RM=/bin/rm
+
+FLAGS="$FLAGS $OPT"
+TOOL=""$TOP".leonardo.tool.sh"
+if [ $# = 0 ]
+then
+    echo "Usage: build <targets>"
+    echo "Targets: all clean conpro uc synth simu"
+    exit 1
+fi
+
+check ()
+{
+    if [ $? != 0 ]
+    then
+        echo "Abort due to errors building target."
+        exit 1
+    fi
+}
+
+do_conpro()
+{
+    echo "Starting highlevel synthesis..."
+    echo "conpro $INCL $FLAGS $TOP.cp"
+    $CONPRO/bin/conpro $OPT $INCL $FLAGS $TOP.cp
+}
+
+
+do_synth()
+{
+    echo "Starting lowlevel synthesis..."
+    cd out
+    bash $TOOL synth
+    cd -
+    check
+}
+
+do_simu()
+{
+    echo "Starting simulation..."
+    cd out
+    bash $TOOL simu
+    cd -
+    check
+}
+
+do_xpat()
+{
+    echo "Starting xpat..."
+    cd out
+    bash $TOOL xpat
+    cd -
+    check
+}
+
+
+
+for TARGET in $@
+do
+    echo "Building target [$TARGET] ..."
+    case $TARGET in
+        all)
+            do_conpro
+            check
+            do_synth
+            check
+            do_tech
+            check
+            ;;
+        synth)
+            do_synth
+            check
+            ;;
+        simu)
+            do_simu
+            check
+            ;;
+        xpat)
+            do_xpat
+            check
+            ;;
+        conpro)
+            do_conpro
+            check
+            ;;
+        clean)  
+            cd out
+       	    $RM -rf obj/*
+            $RM -f *.ft *.obj *.uc *.ui *.ast *.pi *.st *.vhdl *.c *.pat *.bit *.svf *.xsvf leonardo_$TOP.sh *.mcs
+            cd -
+            ;;
+		
+    esac
+done

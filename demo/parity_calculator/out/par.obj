@@ -1,0 +1,60 @@
+-- CONPRO: Hardware Synthesis with an Imperative High Level Multiprocess Approach
+--         (c) 2006-2009 by BSSLAB, Dr. Stefan Bosse
+--         Version: 2.1 Revision: D100 Genetic size: 2261933
+--         Compile date: Thu Aug 13 10:06:37 CEST 2009
+--         Compiled by:  sbosse
+--         Compiled on:  SunOS sunsil 5.10 Generic_137137-09 sun4u sparc SUNW,Sun-Blade-2500
+
+export:
+begin
+  reg d: L64
+  reg p: L1
+end
+
+data:
+begin
+  reg ARG_FUN_parity5_x: L64
+  reg d: L64
+  reg RET_FUN_parity3_p: L1
+  type mutex
+  reg p: L1
+  reg ARG_FUN_parity2_x: L64
+  reg RET_FUN_parity5_p: L1
+  reg ARG_FUN_parity4_x: L64
+  reg RET_FUN_parity2_p: L1
+  val WIDTH: 64
+  process main
+  object main: Process.Process
+  reg ARG_FUN_parity1_x: L64
+  reg ARG_FUN_parity6_x: L64
+  reg RET_FUN_parity4_p: L1
+  function parity1(x)
+  function parity2(x)
+  function parity3(x)
+  function parity4(x)
+  type process
+  function parity5(x)
+  function parity6(x)
+  reg ARG_FUN_parity3_x: L64
+  reg RET_FUN_parity1_p: L1
+  object LOCK_FUN_parity1: Mutex.mutex
+  object LOCK_FUN_parity2: Mutex.mutex
+  object LOCK_FUN_parity3: Mutex.mutex
+  object LOCK_FUN_parity4: Mutex.mutex
+  object FUN_parity1: Process.Process
+  reg RET_FUN_parity6_p: L1
+  object LOCK_FUN_parity5: Mutex.mutex
+  object FUN_parity2: Process.Process
+  object LOCK_FUN_parity6: Mutex.mutex
+  object FUN_parity3: Process.Process
+  object FUN_parity4: Process.Process
+  object FUN_parity5: Process.Process
+  object FUN_parity6: Process.Process
+  process FUN_parity1
+  process FUN_parity2
+  process FUN_parity3
+  process FUN_parity4
+  process FUN_parity5
+  process FUN_parity6
+end
+

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+cd $PWD
+STOP=/opt/Conpro2
+
+
+
+OS=`uname`
+MACH=`uname -m`
+
+case $OS in
+  SunOS)
+    case $MACH in
+      i86pc)
+        $STOP/bin/sol86/autoitw2k $STOP/bin/sol86/conpro.au3 ${@}
+        ;;
+    esac
+    ;;
+  Linux)
+    $STOP//bin/lx86/autoitw2k $STOP/bin/lx86/conpro.au3 ${@}
+    ;;
+esac
+
+

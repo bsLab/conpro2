@@ -1,0 +1,440 @@
+_opt0={-fno-defer-pop, -Wall, -Wno-unused, -MD, -g};
+_opt1={};
+_opt2={-g, -thread};
+_opt3={-I, interface, -I, '/opt/Vum-2.4/ocamlsys/lib/ocaml', -I, '/opt/Vum-2.4/interface', -I, '/opt/Vum-2.4/lib'};
+_66=conpro.mli[cid=1275556467];
+_95=.Amake/version00;
+_39=/opt/Vum-2.4/ocamlsys/bin;
+_40=$_39/ocamlrun[cid=1418215238];
+_=ocaml-c-intf(
+	$_66,
+	$_95/conpro.cmi[cid=1488914986],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/conpro.mli.d[cid=1488914986],
+	{},
+	{}
+)==%true;
+_67=process.mli[cid=1316090486];
+_34=/opt/Vum-2.4/ocamlsys/lib/ocaml;
+_196=$_34/thread.mli[cid=1332767323];
+_=ocaml-c-intf(
+	$_67,
+	$_95/process.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/process.mli.d[cid=1488914987],
+	{$_196},
+	{}
+)==%true;
+_68=cp_event.mli[cid=1274449139];
+_=ocaml-c-intf(
+	$_68,
+	$_95/cp_event.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_event.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_69=cp_ioport.mli[cid=1313417135];
+_=ocaml-c-intf(
+	$_69,
+	$_95/cp_ioport.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_ioport.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_70=cp_link.mli[cid=1274270457];
+_=ocaml-c-intf(
+	$_70,
+	$_95/cp_link.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_link.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_71=cp_mutex.mli[cid=1275554532];
+_=ocaml-c-intf(
+	$_71,
+	$_95/cp_mutex.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_mutex.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_72=cp_queue.mli[cid=1275554543];
+_=ocaml-c-intf(
+	$_72,
+	$_95/cp_queue.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_queue.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_73=cp_semaphore.mli[cid=1275563329];
+_=ocaml-c-intf(
+	$_73,
+	$_95/cp_semaphore.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_semaphore.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_74=cp_timer.mli[cid=1275554562];
+_=ocaml-c-intf(
+	$_74,
+	$_95/cp_timer.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_timer.mli.d[cid=1488914987],
+	{$_67},
+	{}
+)==%true;
+_75=cp_uart.mli[cid=1276676465];
+_=ocaml-c-intf(
+	$_75,
+	$_95/cp_uart.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_uart.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_76=cp_reset.mli[cid=1276759426];
+_=ocaml-c-intf(
+	$_76,
+	$_95/cp_reset.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_reset.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_77=cp_clock.mli[cid=1276707431];
+_=ocaml-c-intf(
+	$_77,
+	$_95/cp_clock.cmi[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_95/cp_clock.mli.d[cid=1488914987],
+	{},
+	{}
+)==%true;
+_78=conpro.ml[cid=1275556462];
+_42=/opt/Vum-2.4/toolset;
+_47=$_42/ocamlmvcmi.sh[cid=1332767383];
+_241=$_34/int64.mli[cid=1332767280];
+_242=$_34/obj.mli[cid=1332767280];
+_243=$_34/pervasives.mli[cid=1375987667];
+_244=$_34/printf.mli[cid=1332767281];
+_245=$_34/string.mli[cid=1396041765];
+_=ocaml-c-impl(
+	$_78,
+	$_95/conpro.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/conpro.ml.d[cid=1488914987],
+	{$_241,$_242,$_243,$_244,$_245,$_196,$_66,$_241,$_242,$_243,$_244,$_245,$_196,$_66},
+	{}
+)==%true;
+_79=process.ml[cid=1316009979];
+_250=$_34/array.mli[cid=1374310547];
+_251=$_34/list.mli[cid=1385198798];
+_=ocaml-c-impl(
+	$_79,
+	$_95/process.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/process.ml.d[cid=1488914987],
+	{$_250,$_66,$_251,$_242,$_243,$_244,$_196,$_67,$_250},
+	{}
+)==%true;
+_80=cp_event.ml[cid=1275479813];
+_=ocaml-c-impl(
+	$_80,
+	$_95/cp_event.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/cp_event.ml.d[cid=1488914987],
+	{$_250,$_66,$_251,$_67,$_68,$_250},
+	{}
+)==%true;
+_81=cp_queue.ml[cid=1316010044];
+_=ocaml-c-impl(
+	$_81,
+	$_95/cp_queue.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/cp_queue.ml.d[cid=1488914987],
+	{$_250,$_66,$_251,$_67,$_72,$_250},
+	{}
+)==%true;
+_82=cp_mutex.ml[cid=1275482394];
+_=ocaml-c-impl(
+	$_82,
+	$_95/cp_mutex.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/cp_mutex.ml.d[cid=1488914987],
+	{$_250,$_66,$_251,$_67,$_71,$_250},
+	{}
+)==%true;
+_83=cp_semaphore.ml[cid=1275563313];
+_=ocaml-c-impl(
+	$_83,
+	$_95/cp_semaphore.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/cp_semaphore.ml.d[cid=1488914987],
+	{$_250,$_66,$_251,$_67,$_73,$_250},
+	{}
+)==%true;
+_84=cp_timer.ml[cid=1276176451];
+_=ocaml-c-impl(
+	$_84,
+	$_95/cp_timer.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/cp_timer.ml.d[cid=1488914987],
+	{$_250,$_66,$_251,$_67,$_74,$_250},
+	{}
+)==%true;
+_85=cp_uart.ml[cid=1316090499];
+_=ocaml-c-impl(
+	$_85,
+	$_95/cp_uart.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/cp_uart.ml.d[cid=1488914987],
+	{$_250,$_66,$_251,$_244,$_67,$_245,$_75,$_250},
+	{}
+)==%true;
+_opt4={-g};
+_=ocaml-ar(
+	{conpro.cmo[cid=1488914987],process.cmo[cid=1488914987],cp_event.cmo[cid=1488914987],cp_queue.cmo[cid=1488914987],cp_mutex.cmo[cid=1488914987],cp_semaphore.cmo[cid=1488914987],cp_timer.cmo[cid=1488914987],cp_uart.cmo[cid=1488914987],cp_reset.cmo[cid=1488914987],cp_clock.cmo[cid=1488914987]},
+	{conpro.cmi[cid=1488914986],process.cmi[cid=1488914987],cp_event.cmi[cid=1488914987],cp_ioport.cmi[cid=1488914987],cp_link.cmi[cid=1488914987],cp_mutex.cmi[cid=1488914987],cp_queue.cmi[cid=1488914987],cp_semaphore.cmi[cid=1488914987],cp_timer.cmi[cid=1488914987],cp_uart.cmi[cid=1488914987],cp_reset.cmi[cid=1488914987],cp_clock.cmi[cid=1488914987]},
+	$_95/conpro.cma[cid=1488914987],
+	{},
+	$_opt4,
+	$_40
+)==%true;
+_87=cp_clock.ml[cid=1276707455];
+_=ocaml-c-impl(
+	$_87,
+	$_95/cp_clock.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/cp_clock.ml.d[cid=1488914987],
+	{$_251,$_77,$_251,$_77},
+	{}
+)==%true;
+_86=cp_reset.ml[cid=1276696835];
+_=ocaml-c-impl(
+	$_86,
+	$_95/cp_reset.cmo[cid=1488914987],
+	$_opt2,
+	{},
+	$_opt3,
+	$_40,
+	$_47,
+	$_95/cp_reset.ml.d[cid=1488914987],
+	{$_251,$_76,$_251,$_76},
+	{}
+)==%true;
+_=comp-cc(
+	clock.c[cid=1294499328],
+	$_95/clock.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/clock.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	reset.c[cid=1294499367],
+	$_95/reset.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/reset.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=ar-cc(
+	{conpro.o[cid=1488914986],process.o[cid=1488914986],event.o[cid=1488914986],queue.o[cid=1488914986],timer.o[cid=1488914986],mutex.o[cid=1488914986],semaphore.o[cid=1488914986],uart.o[cid=1488914986],ioport.o[cid=1488914986],system.o[cid=1488914986],clock.o[cid=1488914986],reset.o[cid=1488914986]},
+	$_95/libconpro.a[cid=1488914986],
+	{rc},
+	/usr/gnu/i386-pc-solaris2.11/bin/ar[cid=1481380039],
+	/usr/gnu/i386-pc-solaris2.11/bin/ranlib[cid=1481380039]
+)==%true;
+_=comp-cc(
+	system.c[cid=1294499379],
+	$_95/system.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/system.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	ioport.c[cid=1294499349],
+	$_95/ioport.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/ioport.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	uart.c[cid=1294499390],
+	$_95/uart.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/uart.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	semaphore.c[cid=1294499374],
+	$_95/semaphore.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/semaphore.c.d[cid=1488914986],
+	{/usr/include/stdio.h[cid=1481380039],/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	mutex.c[cid=1294499354],
+	$_95/mutex.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/mutex.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	timer.c[cid=1294499385],
+	$_95/timer.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/timer.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	queue.c[cid=1294499363],
+	$_95/queue.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/queue.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	event.c[cid=1294499342],
+	$_95/event.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/event.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039],/usr/include/unistd.h[cid=1481380041]}
+)==%true;
+_=comp-cc(
+	process.c[cid=1301326331],
+	$_95/process.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/process.c.d[cid=1488914986],
+	{/usr/include/stdio.h[cid=1481380039],/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039]}
+)==%true;
+_=comp-cc(
+	conpro.c[cid=1294499337],
+	$_95/conpro.o[cid=1488914986],
+	$_opt0,
+	{},
+	$_opt1,
+	/usr/gcc/'4.8/bin/gcc'[cid=1481380041],
+	$_42/mkdep.sh[cid=1332767383],
+	$_95/conpro.c.d[cid=1488914986],
+	{/usr/include/sys/feature_tests.h[cid=1481380039],/usr/include/sys/ccompile.h[cid=1481380038],/usr/include/sys/isa_defs.h[cid=1481380042],/usr/include/iso/stdio_iso.h[cid=1481380039],/usr/include/sys/va_list.h[cid=1481380042],/usr/include/stdio_tag.h[cid=1481380039],/usr/include/stdio_impl.h[cid=1481380039],/usr/include/iso/stdio_c99.h[cid=1481380039],/usr/include/errno.h[cid=1481380042],/usr/include/sys/errno.h[cid=1481380039],/usr/include/stdlib.h[cid=1481380039],/usr/include/iso/stdlib_iso.h[cid=1481380039],/usr/include/iso/stdlib_c99.h[cid=1481380039],/usr/include/ucontext.h[cid=1481380041],/usr/include/sys/ucontext.h[cid=1481380038],/usr/include/sys/types.h[cid=1481380042],/usr/include/sys/machtypes.h[cid=1481380038],/usr/include/ia32/sys/machtypes.h[cid=1481380042],/usr/include/sys/int_types.h[cid=1481380042],/usr/include/sys/select.h[cid=1481380043],/usr/include/sys/time_impl.h[cid=1481380042],/usr/include/sys/time.h[cid=1481380042],/usr/include/time.h[cid=1481380041],/usr/include/iso/time_iso.h[cid=1481380039],/usr/include/sys/regset.h[cid=1481380038],/usr/include/sys/privregs.h[cid=1481380038],/usr/include/ia32/sys/privregs.h[cid=1481380042],/usr/include/sys/controlregs.h[cid=1481380042],/usr/include/sys/signal.h[cid=1481380043],/usr/include/sys/iso/signal_iso.h[cid=1481380042],/usr/include/sys/unistd.h[cid=1481380042],/usr/include/sys/siginfo.h[cid=1481380043],/usr/include/sys/machsig.h[cid=1481380038],/usr/include/vm/faultcode.h[cid=1481380039],/usr/include/sys/stat.h[cid=1481380043],/usr/include/sys/stat_impl.h[cid=1481380038],/usr/include/fcntl.h[cid=1481380039],/usr/include/sys/fcntl.h[cid=1481380039],/usr/include/termios.h[cid=1481380041],/usr/include/sys/termios.h[cid=1481380042],/usr/include/sys/ttydev.h[cid=1481380042],/usr/include/string.h[cid=1481380039],/usr/include/iso/string_iso.h[cid=1481380039]}
+)==%true;

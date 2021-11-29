@@ -1,0 +1,14 @@
+digraph H {
+  node [shape=record];
+    SCHEDULER [shape=record,
+    label="{SCHEDULER|{<r1>REQ-1|<g1>GD-1|<r2>REQ-2|<g2>GD-2|<r3>REQ-N|<g3>GD-N}}"]; 
+    PRO1 [shape=record,label="{{<rp1>REQ|<gp1>GD}|PRO-1}"];
+    PRO2 [shape=record,label="{{<rp2>REQ|<gp2>GD}|PRO-2}"];
+    PRO3 [shape=record,label="{{<rp3>REQ|<gp3>GD}|PRO-N}"];
+    SCHEDULER:g1 -> PRO1:gp1;
+    SCHEDULER:g2 -> PRO2:gp2;
+    SCHEDULER:g3 -> PRO3:gp3;
+    PRO1:rp1 -> SCHEDULER:r1;
+    PRO2:rp2 -> SCHEDULER:r2;
+    PRO3:rp3 -> SCHEDULER:r3;
+}

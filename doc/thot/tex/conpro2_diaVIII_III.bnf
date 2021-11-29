@@ -1,0 +1,3 @@
+bit-type-definition ::= ( 'type' type-name ':' '{' ) \ 
+  ( { element-name ':' bit-index ';' }+ ) \
+  ( '}' ';' ) . 

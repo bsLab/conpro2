@@ -1,0 +1,951 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<83f2ea7a> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  /home/sbosse/proj/conpro2/demo/status_leds/src/cp
+    Source:  /home/sbosse/proj/conpro2/demo/status_leds/src/vhdl
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+TDI: Opening tools file <tools>...
+  Searching tools file <tools.def>...
+  Opening tools file </opt/Conpro2/toolset/tools.def>...
+  Info [line 5]: Added synthesis tool defintion <generic>, version 1.03.
+  Info [line 26]: Added synthesis tool defintion <xilinx6>, version 1.03.
+  Info [line 171]: Added synthesis tool defintion <xilinx9>, version 1.03.
+  Info [line 316]: Added synthesis tool defintion <alliance>, version 1.03.
+  Info [line 339]: Added synthesis tool defintion <leonardo>, version 1.03.
+  Info [line 380]: Added synthesis tool defintion <actel>, version 1.03.
+  Info [line 403]: Added synthesis tool defintion <synplicity89>, version 1.03.
+  Info [line 426]: Added synthesis tool defintion <synplicity89_xilinx6>, version 1.03.
+TDI: Opening tool <xilinx6>...
+  Searching tool file <xilinx6.tool>...
+  Opening tool file </opt/Conpro2/toolset/xilinx6.tool>...
+Searching Conpro file <status.cp>...
+Opening file <status.cp>...
+Compiling module <status>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+    Opening module <Timer>...
+      Searching module file <timer.mod>...
+      Opening module file </opt/Conpro2/lib/timer.mod>...
+      EMI [Object Timer.timer.root]#init: Initializing module ...
+      EMI <Object Timer.timer.root>: creating rules for module...
+      Added module <Timer>.
+        EMI <Timer>: adding object type <timer>...
+    Added module <System>.
+    Opening module <Random>...
+      Searching module file <random.mod>...
+      Opening module file </opt/Conpro2/lib/random.mod>...
+      EMI [Object Random.random.root]#init: Initializing module ...
+      EMI <Object Random.random.root>: creating rules for module...
+      Added module <Random>.
+        EMI <Random>: adding object type <random>...
+    EMI <Object Sys.sys.root>: creating object <sys>...
+      EMI [Object Sys.sys.sys]: added method <clock>.
+      EMI [Object Sys.sys.sys]: added method <clock_level>.
+      EMI [Object Sys.sys.sys]: added method <reset_level>.
+      EMI [Object Sys.sys.sys]: added method <reset_internal>.
+      EMI [Object Sys.sys.sys]: added method <simu_cycles>.
+      EMI [Object Sys.sys.sys]: added method <simu_res>.
+      EMI [Object Sys.sys.sys]: added method <target>.
+      EMI [Object Sys.sys.sys]: added method <expr_type>.
+    EMI <Object Sys.sys.sys>: creating rules for module...
+    EMI <Object Timer.timer.root>: creating object <watch_timer>...
+      EMI [Object Timer.timer.watch_timer]: added method <init>.
+      EMI [Object Timer.timer.watch_timer]: added method <time>.
+      EMI [Object Timer.timer.watch_timer]: added method <await>.
+      EMI [Object Timer.timer.watch_timer]: added method <wakeup>.
+      EMI [Object Timer.timer.watch_timer]: added method <start>.
+      EMI [Object Timer.timer.watch_timer]: added method <stop>.
+      EMI [Object Timer.timer.watch_timer]: added method <mode>.
+      EMI [Object Timer.timer.watch_timer]: added method <sig_action>.
+    EMI <Object Timer.timer.watch_timer>: creating rules for module...
+    EMI <Object Random.random.root>: creating object <rand>...
+      EMI [Object Random.random.rand]: added method <init>.
+      EMI [Object Random.random.rand]: added method <read>.
+      EMI [Object Random.random.rand]: added method <seed>.
+    EMI <Object Random.random.rand>: creating rules for module...
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [line 36]: Analyzing process <watch_set>...
+      Analyzing process <watch_set>...
+    Info [line 63]: Analyzing process <watch_reset>...
+      Analyzing process <watch_reset>...
+    Info [line 88]: Analyzing process <main>...
+      Analyzing process <main>...
+  Performing program graph transformations and optimization for module <Status>...
+    in process <watch_set>...
+      Performing program transformations for process <watch_set>...
+      Resolving object dependencies for process <watch_set>...
+    in process <watch_reset>...
+      Performing program transformations for process <watch_reset>...
+      Resolving object dependencies for process <watch_reset>...
+    in process <main>...
+      Performing program transformations for process <main>...
+      Resolving object dependencies for process <main>...
+  Resolving object dependencies for process <MOD_Status>...
+  Found 22 primary toplevel symbols.
+  Found 3 processes.
+  Found 0 shared function blocks.
+Synthesizing main module <Status>...
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <Status.watch_set>
+        Removed 0 instructions(s).
+      in process <Status.watch_reset>
+        Removed 0 instructions(s).
+      in process <Status.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      [Status.MOD_Status]: Removing Register <Status.PRO_watch_set_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <watch_set> ...
+      ... in process <watch_reset> ...
+      ... in process <main> ...
+      [Status.MOD_Status]: Removing Register <Status.PRO_watch_reset_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      [Status.MOD_Status]: Removing Register <Status.PRO_main_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      Removed 3 object(s).
+    Optimizer: folding constants in expressions...
+      in process <Status.watch_set>
+        Removed 0 operand(s).
+      in process <Status.watch_reset>
+        Removed 0 operand(s).
+      in process <Status.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 3.
+  Optimizing and pre-scheduling, pass 2...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <Status.watch_set>
+        Removed 0 instructions(s).
+      in process <Status.watch_reset>
+        Removed 0 instructions(s).
+      in process <Status.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <watch_set> ...
+      ... in process <watch_reset> ...
+      ... in process <main> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <Status.watch_set>
+        Removed 0 operand(s).
+      in process <Status.watch_reset>
+        Removed 0 operand(s).
+      in process <Status.main>
+        Removed 0 operand(s).
+    ... Progress of pass 2: 0.
+  Resolving object guards...
+    Found 2 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+    Performing post-analysis transformations for process <watch_set>...
+    Performing post-analysis transformations for process <watch_reset>...
+    Performing post-analysis transformations for process <main>...
+  EMI [Object Timer.timer.watch_timer]: compiling external module interface...
+  EMI [Object Timer.timer.watch_timer]: Environment is:
+    arch001(i)=[1],
+    arch002(i)=[2],
+    time(i)=[300000000],
+    sig(?)=[],
+    sig_action_level(?)=[],
+    sig_def_level(?)=[],
+    mode(i)=[0],
+    O(s)=["watch_timer"],
+    P(s)=["watch_reset";"watch_set";"MOD_Status"],
+    P.init(s)=["watch_set"],
+    P.time(s)=["MOD_Status"],
+    P.await(s)=["watch_reset"],
+    P.wakeup(s)=[],
+    P.start(s)=["watch_set"],
+    P.stop(s)=[],
+    P.mode(s)=[],
+    P.sig_action(s)=[],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  EMI [Object Random.random.rand]: compiling external module interface...
+  EMI [Object Random.random.rand]: Environment is:
+    datawidth(i)=[8],
+    seed(i)=[0xffff],
+    O(s)=["rand"],
+    P(s)=["main"],
+    P.init(s)=["main"],
+    P.read(s)=["main"],
+    P.seed(s)=[],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]
+  Synthesizing process instructions...
+    in process <Status.watch_set>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <watch_set>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <watch_set>...
+      Post type alignment of expressions for process <watch_set>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <watch_set>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <watch_set>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <watch_set>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 3 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <watch_set>...
+        14 states created.
+      Calculating block frame time estimations for process <watch_set>...
+    in process <Status.watch_reset>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <watch_reset>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <watch_reset>...
+      Post type alignment of expressions for process <watch_reset>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <watch_reset>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <watch_reset>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <watch_reset>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 6 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <watch_reset>...
+        12 states created.
+      Calculating block frame time estimations for process <watch_reset>...
+    in process <Status.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Post type alignment of expressions for process <main>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 1 register(s):
+          TEMP_0: logic[27]
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 8 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        12 states created.
+      Calculating block frame time estimations for process <main>...
+  Creating entity <status_watch_set>...
+    Emitting state list for process <watch_set>...
+    Emitting state machine for process <watch_set>...
+    Port width: 24 bits
+  Creating entity <status_watch_reset>...
+    Emitting state list for process <watch_reset>...
+    Emitting state machine for process <watch_reset>...
+    Port width: 24 bits
+  Creating entity <status_main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 26 bits
+  Creating entity <status>...
+    EMI [Object Timer.timer.watch_timer]: compiling process <TIMER_watch_timer_SCHED> ...
+    EMI [Object Timer.timer.watch_timer]: compiling #assert section [arch001(i)=[1],
+    arch002(i)=[2],
+    time(i)=[300000000],
+    sig(?)=[],
+    sig_action_level(?)=[],
+    sig_def_level(?)=[],
+    mode(i)=[0],
+    O(s)=["watch_timer"],
+    P(s)=["watch_reset";"watch_set";"MOD_Status"],
+    P.init(s)=["watch_set"],
+    P.time(s)=["MOD_Status"],
+    P.await(s)=["watch_reset"],
+    P.wakeup(s)=[],
+    P.start(s)=["watch_set"],
+    P.stop(s)=[],
+    P.mode(s)=[],
+    P.sig_action(s)=[],
+    CLK(b)=[(§conpro_system_clk'event) and ((§conpro_system_clk) = (0b1))],
+    RES(b)=[(§conpro_system_reset) = (0b0)],
+    ACC(b)=[true],
+    clock(i)=[18500000;10000000],
+    clock_level(i)=[1],
+    reset_level(i)=[0;1],
+    reset_internal(i)=[0],
+    state_enc(s)=["binary"],
+    targets(s)=["xc18v04";"xc3s1000-ft256-5"],
+    simu_cycles(i)=[50],
+    simu_res(i)=[0],
+    expr_type(s)=["flat"],
+    synth_tool(?)=[],
+    logic_type(s)=["std_logic"],
+    alu_top_expr(i)=[1],
+    alu_thres(i)=[8]] with 4 conditions...
+    EMI [Object Random.random.rand]: compiling process <RANDOM_rand_SCHED> ...
+    EMI [Object Random.random.rand]: compiling process <RANDOM_rand> ...
+    EMI [Object Random.random.rand]: Warning: no #assert section found.
+    Creating global register <stat_leds> [DT_logic 4, scheduler=PRIOstat #rd=2 #wr=1]...
+    Creating global register <diag> [DT_logic 3, scheduler=PRIOstat #rd=2 #wr=2]...
+    Creating global register <stat_ev> [DT_logic 4, scheduler=PRIOstat #rd=2 #wr=2]...
+  Emitting MicroCode for module Status...
+  Emitting object file for module Status...
+  Emitting MicroCode for process watch_set...
+  Emitting MicroCode for process watch_reset...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.watch_set>: emitting MicroCode for process <watch_set>.
+  UCI <ucode.uci_out.watch_reset>: emitting MicroCode for process <watch_reset>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+Info : Emitting block frame informations in file <status.ft>...
+Emitting st-list (VHDL State) file <Status_watch_set.st>...
+Emitting st-list (VHDL State) file <Status_watch_reset.st>...
+Emitting st-list (VHDL State) file <Status_main.st>...
+TDI [Tool xilinx6.root]#new_obj: creating object <status>...
+TDI [Tool xilinx6.status]#compile_all: Initializing tool ...
+  TDI [Tool xilinx6.status]: found #version 2.05...
+  TDI [Tool xilinx6.status]: compiling #parameter section...
+  TDI [Tool xilinx6.status]: compiling #parameter section...
+  TDI [Tool xilinx6.status]: compiling #parameter section...
+  TDI [Tool xilinx6.status]: compiling function <check>...
+  TDI [Tool xilinx6.status]: compiling function <init>...
+  TDI [Tool xilinx6.status]: compiling function <finish>...
+  TDI [Tool xilinx6.status]: compiling function <make_xst_runscript>...
+  TDI [Tool xilinx6.status]: compiling function <make_proj>...
+  TDI [Tool xilinx6.status]: compiling function <do_synth>...
+  TDI [Tool xilinx6.status]: compiling function <do_scram>...
+  TDI [Tool xilinx6.status]: compiling function <do_trans>...
+  TDI [Tool xilinx6.status]: compiling function <do_map>...
+  TDI [Tool xilinx6.status]: compiling function <do_place>...
+  TDI [Tool xilinx6.status]: compiling function <do_bitgen>...
+  TDI [Tool xilinx6.status]: compiling function <do_ucf>...
+  TDI [Tool xilinx6.status]: compiling function <do_prom>...
+  TDI [Tool xilinx6.status]: compiling function <do_fpga>...
+  TDI [Tool xilinx6.status]: compiling target <init>...
+  TDI [Tool xilinx6.status]: compiling target <vhdl>...
+  TDI [Tool xilinx6.status]: compiling target <synth>...
+  TDI [Tool xilinx6.status]: compiling target <tech>...
+  TDI [Tool xilinx6.status]: compiling target <svf>...
+  TDI [Tool xilinx6.status]: compiling target <ucf>...
+TDI [Tool xilinx6.status]#compiler_all: Compiling tool ...
+  TDI [Tool xilinx6.status]#emit: Creating build script <status.xilinx6.tool.sh>...
+    TDI [Tool xilinx6.status]: Environment is:
+      PROM=[get_opt()],
+      target_device=[|"xc3s1000",
+                      "xc18v04"|],
+      target_class=[|"xc3s",
+                     "unknown"|],
+      TOP=[("MOD_") + ($proj)],
+      LOG=[($proj) + (".log")],
+      SRCDIR=["."],
+      SCRAM=[$],
+      clock=["18500000"],
+      vhdl=[|"status",
+             "status_watch_set",
+             "status_watch_reset",
+             "status_main"|],
+      syn_synth_set=[|"fsm_extract YES",
+                      "fsm_encoding Sequential",
+                      "fsm_style lut",
+                      "mux_extract YES",
+                      "mux_style Auto",
+                      "ram_extract Yes",
+                      "ram_style Block",
+                      "rom_extract Yes",
+                      "rom_style Auto",
+                      "mult_style lut",
+                      "priority_extract Yes",
+                      "shreg_extract Yes",
+                      "decoder_extract Yes",
+                      "shift_extract Yes",
+                      "opt_mode speed",
+                      "opt_level 1",
+                      "iobuf YES",
+                      "iob Auto",
+                      "max_fanout 100",
+                      "xor_collapse Yes",
+                      "resource_sharing Yes",
+                      "slice_packing Yes",
+                      "slice_utilization_ratio 100",
+                      "slice_utilization_ratio_maxmargin 5",
+                      "bufg 4",
+                      "register_duplication Yes",
+                      "register_balancing No",
+                      "equivalent_register_removal Yes",
+                      "optimize_primitives No",
+                      "tristate2logic No",
+                      "glob_opt AllClockNets",
+                      "iuc NO"|],
+      VHDL=[|$|],
+      target_speed=[|"5"|],
+      syn_tech_set_par=[|"t 1"|],
+      BITGEN_CONF=[get_opt()],
+      target_library=[|"xis3",
+                       "unknown"|],
+      DUP=["tee"],
+      RECLEN=[get_opt()],
+      SYNSET=[$],
+      period=["54"],
+      DEVICE=[get_opt()],
+      SPEED=[get_opt()],
+      XILINX=[$],
+      target_package=[|"ft256"|],
+      syn_tech_set_map=[|"pr b",
+                         "k 4",
+                         "c 100",
+                         "tx off"|],
+      DESIGN=[$proj],
+      port=[|"DEV_leds:out:std_logic_vector:3 downto 0",
+             "CLK:in:std_logic",
+             "RESET:in:std_logic"|],
+      reclen=["1024"],
+      target=[|"xc3s1000-ft256-5",
+               "xc18v04"|],
+      MAPSET=[$],
+      target_family=[|"spartan3",
+                      "unknown"|],
+      proj=["status"],
+      PARSET=[$],
+      res=[$],
+      OBJDIR=["obj"],
+      bitgen_conf=["-g DebugBitstream:No -g Binary:no -g CclkPin:PullUp -g M0Pin:PullUp -g M1Pin:PullUp -g M2Pin:PullUp -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g StartUpClk:CClk -g DONE_cycle:4"],
+      simu_cycles=["50"]
+Total CPU time consumed: 1.8 seconds.
+Total time elapsed: 2.0 seconds.
+  
+  +---------------------------- SYNTHESIS SUMMARY ----------------------------+
+  +---------------------------------------------------------------------------+
+  | DESCRIPTION                                  VALUE                        |
+  +---------------------------------------------------------------------------+
+  | arithmetic unit                              15                           |
+  |  -> adder                                    (2)                          |
+  |  -> comparator                               (11)                         |
+  |  -> subtractor                               (2)                          |
+  | object                                       2                            |
+  |  -> random                                   (1)                          |
+  |  -> timer                                    (1)                          |
+  | process                                      3                            |
+  | process.main                                                              |
+  |  -> port-width [bit]                         26                           |
+  |  -> register                                 2                            |
+  |  -> states                                   12                           |
+  | process.watch_reset                                                       |
+  |  -> port-width [bit]                         24                           |
+  |  -> register                                 1                            |
+  |  -> states                                   12                           |
+  | process.watch_set                                                         |
+  |  -> port-width [bit]                         24                           |
+  |  -> states                                   14                           |
+  | register-local                               3                            |
+  |  -> signed(2 downto 0)                       (1)                          |
+  |  -> std_logic_vector(26 downto 0)            (1)                          |
+  |  -> std_logic_vector(7 downto 0)             (1)                          |
+  | register-shared                              3                            |
+  |  -> std_logic_vector(2 downto 0)             (1)                          |
+  |  -> std_logic_vector(3 downto 0)             (2)                          |
+  | synthesis time [sec]                         2                            |
+  +---------------------------------------------------------------------------+
+  
+Release 6.3.03i - xst G.38
+Copyright (c) 1995-2004 Xilinx, Inc.  All rights reserved.
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+  5) Advanced HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+     7.1) Device utilization summary
+     7.2) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : status.prj
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : status
+Output Format                      : NGC
+Target Device                      : xc3s1000-ft256-5
+
+---- Source Options
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Sequential
+FSM Style                          : lut
+Mux Extraction                     : YES
+Mux Style                          : Auto
+RAM Extraction                     : Yes
+RAM Style                          : Block
+ROM Extraction                     : Yes
+ROM Style                          : Auto
+Multiplier Style                   : lut
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : Yes
+Decoder Extraction                 : Yes
+Logical Shifter Extraction         : Yes
+XOR Collapsing                     : Yes
+Resource Sharing                   : Yes
+Automatic Register Balancing       : No
+Top Module Name                    : MOD_status
+
+---- Target Options
+Add IO Buffers                     : YES
+Pack IO Registers into IOBs        : Auto
+Global Maximum Fanout              : 100
+Slice Packing                      : Yes
+Add Generic Clock Buffer(BUFG)     : 4
+Register Duplication               : Yes
+Equivalent register Removal        : Yes
+
+---- General Options
+Optimization Goal                  : speed
+Optimization Effort                : 1
+Slice Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+Global Optimization                : AllClockNets
+
+---- Other Options
+Optimize Instantiated Primitives   : No
+tristate2logic                     : No
+
+=========================================================================
+
+Setting FSM Encoding Algorithm to : SEQ
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_watch_set.vhdl in Library work.
+Entity <status_watch_set> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_watch_reset.vhdl in Library work.
+Entity <status_watch_reset> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_main.vhdl in Library work.
+Entity <status_main> (Architecture <main>) compiled.
+Compiling vhdl file /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status.vhdl in Library work.
+Entity <MOD_status> (Architecture <main>) compiled.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <MOD_status> (Architecture <main>).
+INFO:Xst:1304 - Contents of register <TIMER_watch_timer_MODE> in unit <MOD_status> never changes during circuit operation. The register is replaced by logic.
+INFO:Xst:1304 - Contents of register <TIMER_watch_timer_COUNT> in unit <MOD_status> never changes during circuit operation. The register is replaced by logic.
+INFO:Xst:1304 - Contents of register <PRO_main_ENABLE> in unit <MOD_status> never changes during circuit operation. The register is replaced by logic.
+Entity <MOD_status> analyzed. Unit <MOD_status> generated.
+
+Analyzing Entity <status_watch_set> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_watch_set.vhdl line 175: The following signals are missing in the process sensitivity list:
+   TIMER_watch_timer_GD, REG_stat_ev_RD<2>, REG_diag_RD<1>, REG_stat_ev_RD, REG_diag_RD.
+Entity <status_watch_set> analyzed. Unit <status_watch_set> generated.
+
+Analyzing Entity <status_watch_reset> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_watch_reset.vhdl line 133: The following signals are missing in the process sensitivity list:
+   REG_stat_leds_RD, TIMER_watch_timer_GD.
+Entity <status_watch_reset> analyzed. Unit <status_watch_reset> generated.
+
+Analyzing Entity <status_main> (Architecture <main>).
+WARNING:Xst:819 - /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_main.vhdl line 197: The following signals are missing in the process sensitivity list:
+   RND_rand_GD, REG_diag_RD<1>, REG_diag_RD.
+Entity <status_main> analyzed. Unit <status_main> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <status_main>.
+    Related source file is /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_main.vhdl.
+INFO:Xst:1799 - State s_main_end is never reached in FSM <pro_state>.
+    Found finite state machine <FSM_0> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 11                                             |
+    | Transitions        | 64                                             |
+    | Inputs             | 51                                             |
+    | Outputs            | 11                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | conpro_system_reset (negative)                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_main_start                                   |
+    | Power Up State     | s_main_start                                   |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 27-bit subtractor for signal <$n0070> created at line 275.
+    Found 8-bit register for signal <d>.
+    Found 27-bit register for signal <TEMP_0>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  35 D-type flip-flop(s).
+	inferred   1 Adder/Subtracter(s).
+Unit <status_main> synthesized.
+
+
+Synthesizing Unit <status_watch_reset>.
+    Related source file is /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_watch_reset.vhdl.
+WARNING:Xst:647 - Input <REG_stat_ev_RD<3>> is never used.
+INFO:Xst:1799 - State s_watch_reset_end is never reached in FSM <pro_state>.
+    Found finite state machine <FSM_1> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 11                                             |
+    | Transitions        | 16                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 11                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0005 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_watch_reset_start                            |
+    | Power Up State     | s_watch_reset_start                            |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 3-bit comparator lessequal for signal <$n0006> created at line 95.
+    Found 3-bit adder for signal <$n0022> created at line 211.
+    Found 3-bit register for signal <LOOP_i_0>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   3 D-type flip-flop(s).
+	inferred   1 Adder/Subtracter(s).
+	inferred   1 Comparator(s).
+Unit <status_watch_reset> synthesized.
+
+
+Synthesizing Unit <status_watch_set>.
+    Related source file is /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status_watch_set.vhdl.
+INFO:Xst:1799 - State s_watch_set_end is never reached in FSM <pro_state>.
+    Found finite state machine <FSM_2> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 13                                             |
+    | Transitions        | 25                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 13                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | $n0013 (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_watch_set_start                              |
+    | Power Up State     | s_watch_set_start                              |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
+Unit <status_watch_set> synthesized.
+
+
+Synthesizing Unit <MOD_status>.
+    Related source file is /home/sbosse/proj/conpro2/demo/status_leds/out/obj/../status.vhdl.
+WARNING:Xst:646 - Signal <PRO_watch_reset_END> is assigned but never used.
+WARNING:Xst:646 - Signal <PRO_main_END> is assigned but never used.
+WARNING:Xst:646 - Signal <PRO_watch_set_END> is assigned but never used.
+    Found 23-bit subtractor for signal <$n0059>.
+    Found 1-bit register for signal <PRO_watch_reset_ENABLE>.
+    Found 1-bit register for signal <PRO_watch_reset_main_GD>.
+    Found 1-bit register for signal <PRO_watch_set_ENABLE>.
+    Found 1-bit register for signal <PRO_watch_set_main_GD>.
+    Found 3-bit register for signal <REG_diag>.
+    Found 1-bit register for signal <REG_diag_LOCKED>.
+    Found 1-bit register for signal <REG_diag_main_GD>.
+    Found 1-bit register for signal <REG_diag_watch_set_GD>.
+    Found 4-bit register for signal <REG_stat_ev>.
+    Found 1-bit register for signal <REG_stat_ev_LOCKED>.
+    Found 1-bit register for signal <REG_stat_ev_watch_reset_GD>.
+    Found 1-bit register for signal <REG_stat_ev_watch_set_GD>.
+    Found 4-bit register for signal <REG_stat_leds>.
+    Found 1-bit register for signal <RND_rand_avail>.
+    Found 3-bit up counter for signal <RND_rand_count>.
+    Found 1-bit xor4 for signal <RND_rand_d_in>.
+    Found 8-bit register for signal <RND_rand_data>.
+    Found 8-bit register for signal <RND_rand_data_shift>.
+    Found 1-bit register for signal <RND_rand_init>.
+    Found 1-bit register for signal <RND_rand_main_GD>.
+    Found 8-bit register for signal <RND_rand_main_RD>.
+    Found 1-bit register for signal <RND_rand_shift>.
+    Found 23-bit register for signal <TIMER_watch_timer_COUNTER>.
+    Found 1-bit register for signal <TIMER_watch_timer_ENABLED>.
+    Found 1-bit register for signal <TIMER_watch_timer_watch_reset_GD>.
+    Found 1-bit register for signal <TIMER_watch_timer_watch_reset_LOCKed>.
+    Found 1-bit register for signal <TIMER_watch_timer_watch_set_GD>.
+    Found 7 1-bit 2-to-1 multiplexers.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  76 D-type flip-flop(s).
+	inferred   1 Adder/Subtracter(s).
+	inferred   7 Multiplexer(s).
+	inferred   1 Xor(s).
+Unit <MOD_status> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Advanced RAM inference ...
+Advanced multiplier inference ...
+Advanced Registered AddSub inference ...
+Optimizing FSM <FSM_2> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_1> on signal <pro_state> with sequential encoding.
+Optimizing FSM <FSM_0> on signal <pro_state> with sequential encoding.
+Dynamic shift register inference ...
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# FSMs                             : 3
+# Adders/Subtractors               : 3
+ 23-bit subtractor                 : 1
+ 27-bit subtractor                 : 1
+ 3-bit adder                       : 1
+# Counters                         : 1
+ 3-bit up counter                  : 1
+# Registers                        : 47
+ 1-bit register                    : 38
+ 3-bit register                    : 2
+ 4-bit register                    : 2
+ 8-bit register                    : 3
+ 23-bit register                   : 1
+ 27-bit register                   : 1
+# Comparators                      : 1
+ 3-bit comparator lessequal        : 1
+# Multiplexers                     : 2
+ 4-bit 2-to-1 multiplexer          : 1
+ 3-bit 2-to-1 multiplexer          : 1
+# Xors                             : 1
+ 1-bit xor4                        : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <MOD_status> ...
+
+Optimizing unit <status_watch_set> ...
+
+Optimizing unit <status_main> ...
+
+Optimizing unit <status_watch_reset> ...
+Loading device for application Xst from file '3s1000.nph' in environment /export/home/Xilinx63.
+
+Mapping all equations...
+WARNING:Xst:1291 - FF/Latch <REG_stat_ev_3> is unconnected in block <MOD_status>.
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block MOD_status, actual ratio is 2.
+FlipFlop PRO_MAP_watch_set_pro_state_FFd4 has been replicated 1 time(s)
+FlipFlop PRO_MAP_watch_reset_pro_state_FFd4 has been replicated 1 time(s)
+FlipFlop PRO_MAP_watch_set_pro_state_FFd1 has been replicated 1 time(s)
+FlipFlop PRO_MAP_watch_set_pro_state_FFd2 has been replicated 1 time(s)
+FlipFlop PRO_MAP_watch_set_pro_state_FFd3 has been replicated 1 time(s)
+FlipFlop PRO_MAP_main_pro_state_FFd4 has been replicated 1 time(s)
+FlipFlop PRO_MAP_main_pro_state_FFd3 has been replicated 1 time(s)
+FlipFlop PRO_MAP_main_pro_state_FFd2 has been replicated 1 time(s)
+FlipFlop PRO_MAP_watch_set_pro_state_FFd4 has been replicated 1 time(s)
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+Top Level Output File Name         : status
+Output Format                      : NGC
+Optimization Goal                  : speed
+Keep Hierarchy                     : no
+
+Design Statistics
+# IOs                              : 6
+
+Macro Statistics :
+# Registers                        : 36
+#      1-bit register              : 26
+#      23-bit register             : 1
+#      27-bit register             : 1
+#      3-bit register              : 3
+#      4-bit register              : 2
+#      8-bit register              : 3
+# Multiplexers                     : 2
+#      2-to-1 multiplexer          : 2
+# Adders/Subtractors               : 2
+#      23-bit subtractor           : 1
+#      27-bit subtractor           : 1
+# Comparators                      : 1
+#      3-bit comparator lessequal  : 1
+# Xors                             : 1
+#      1-bit xor4                  : 1
+
+Cell Usage :
+# BELS                             : 395
+#      GND                         : 1
+#      LUT1                        : 21
+#      LUT1_L                      : 32
+#      LUT2                        : 28
+#      LUT2_D                      : 1
+#      LUT2_L                      : 13
+#      LUT3                        : 45
+#      LUT3_L                      : 25
+#      LUT4                        : 93
+#      LUT4_D                      : 9
+#      LUT4_L                      : 19
+#      MUXCY                       : 48
+#      MUXF5                       : 9
+#      VCC                         : 1
+#      XORCY                       : 50
+# FlipFlops/Latches                : 137
+#      FDE                         : 8
+#      FDR                         : 22
+#      FDRE                        : 51
+#      FDRS                        : 37
+#      FDRSE                       : 2
+#      FDS                         : 9
+#      FDSE                        : 8
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 5
+#      IBUF                        : 1
+#      OBUF                        : 4
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1000ft256-5 
+
+ Number of Slices:                     154  out of   7680     2%  
+ Number of Slice Flip Flops:           137  out of  15360     0%  
+ Number of 4 input LUTs:               286  out of  15360     1%  
+ Number of bonded IOBs:                  5  out of    173     2%  
+ Number of GCLKs:                        1  out of      8    12%  
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 137   |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 5.237ns (Maximum Frequency: 190.949MHz)
+   Minimum input arrival time before clock: 5.327ns
+   Maximum output required time after clock: 5.331ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+-------------------------------------------------------------------------
+Timing constraint: Default period analysis for Clock 'CLK'
+Delay:               5.237ns (Levels of Logic = 4)
+  Source:            TIMER_watch_timer_COUNTER_7 (FF)
+  Destination:       TIMER_watch_timer_watch_reset_LOCKed (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: TIMER_watch_timer_COUNTER_7 to TIMER_watch_timer_watch_reset_LOCKed
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.626   0.465  TIMER_watch_timer_COUNTER_7 (TIMER_watch_timer_COUNTER_7)
+     LUT4:I0->O            1   0.479   0.240  _n006194 (CHOICE2370)
+     LUT2:I1->O            1   0.479   0.240  _n006195 (CHOICE2371)
+     LUT4_D:I3->O         14   0.479   0.925  _n0061124 (_n0061)
+     MUXF5:S->O            1   0.540   0.240  _n011561 (_n0115)
+     FDRE:CE                   0.524          TIMER_watch_timer_watch_reset_LOCKed
+    ----------------------------------------
+    Total                      5.237ns (3.127ns logic, 2.110ns route)
+                                       (59.7% logic, 40.3% route)
+
+-------------------------------------------------------------------------
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+Offset:              5.327ns (Levels of Logic = 2)
+  Source:            RESET (PAD)
+  Destination:       REG_stat_ev_LOCKED (FF)
+  Destination Clock: CLK rising
+
+  Data Path: RESET to REG_stat_ev_LOCKED
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            14   1.679   0.925  RESET_IBUF (RESET_IBUF)
+     LUT1:I0->O           63   0.479   1.352  REG_stat_ev_N7461 (REG_stat_ev_N746)
+     FDRE:R                    0.892          REG_stat_ev_0
+    ----------------------------------------
+    Total                      5.327ns (3.050ns logic, 2.277ns route)
+                                       (57.3% logic, 42.7% route)
+
+-------------------------------------------------------------------------
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+Offset:              5.331ns (Levels of Logic = 1)
+  Source:            REG_stat_leds_3 (FF)
+  Destination:       DEV_leds<3> (PAD)
+  Source Clock:      CLK rising
+
+  Data Path: REG_stat_leds_3 to DEV_leds<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.626   0.465  REG_stat_leds_3 (REG_stat_leds_3)
+     OBUF:I->O                 4.240          DEV_leds_3_OBUF (DEV_leds<3>)
+    ----------------------------------------
+    Total                      5.331ns (4.866ns logic, 0.465ns route)
+                                       (91.3% logic, 8.7% route)
+
+=========================================================================
+CPU : 9.07 / 10.29 s | Elapsed : 9.00 / 10.00 s
+ 
+--> 
+
+
+Total memory usage is 92512 kilobytes
+
+

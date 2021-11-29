@@ -1,0 +1,3 @@
+component-type-definition ::= ( 'type' type-name ':' '{' ) \ 
+  ( { 'port' element-name ':' port-type data-type ';' }+ ) \
+  ( '}' ';' ) . 

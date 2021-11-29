@@ -1,0 +1,28 @@
+-- CONPRO: Hardware Synthesis with an Imperative High Level Multiprocess Approach
+--         (c) 2006-2009 by BSSLAB, Dr. Stefan Bosse
+--         Version: 2.1 Revision: D103 Genetic size: 2277029
+--         Compile date: Mon Aug 24 17:06:07 CEST 2009
+--         Compiled by:  sbosse
+--         Compiled on:  SunOS sunsil 5.10 Generic_137137-09 sun4u sparc SUNW,Sun-Blade-2500
+
+export:
+begin
+  component top: top_port
+end
+
+data:
+begin
+  sig top_p_io1: L8
+  sig top_p_io2: L8
+  type top_port
+  process main
+  object main: Process.Process
+  type process
+  process p1
+  object p1: Process.Process
+  object pt1: Ioport.ioport
+  object pt2: Ioport.ioport
+  type ioport
+  component top: top_port
+end
+

@@ -1,0 +1,306 @@
+
+
+Wed Dec 17 16:02:05 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:02:16 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:02:17 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 16:02:18 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:02:19 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.
+Wed Dec 17 16:02:20 2014
+I1: Project finished
+I1: Closing log for m2rbook
+
+
+
+
+Wed Dec 17 16:10:44 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:10:52 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:10:53 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 16:10:54 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:10:55 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.
+
+
+Wed Dec 17 16:14:05 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:14:13 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:14:14 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 16:14:15 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:14:16 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.
+
+
+Wed Dec 17 16:15:36 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:15:45 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:15:46 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 16:15:46 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+Wed Dec 17 16:15:47 2014
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:15:47 2014
+I1: Starting log for dwrtf, r299
+Wed Dec 17 16:15:51 2014
+I1: Automation processing completed by dwrtf.
+
+
+Wed Dec 17 16:20:31 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:20:35 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:20:36 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 16:20:37 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:20:38 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.
+
+
+Wed Dec 17 16:21:24 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:21:34 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:21:35 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 16:21:35 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+Wed Dec 17 16:21:36 2014
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:21:36 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.
+
+
+Wed Dec 17 16:24:15 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:24:18 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:24:19 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 16:24:20 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:24:21 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.
+
+
+Wed Dec 17 16:26:54 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:26:56 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:26:57 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+Wed Dec 17 16:26:58 2014
+I1: Processing completed by drmif.
+Wed Dec 17 16:26:58 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:26:59 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.
+
+
+Wed Dec 17 16:40:32 2014
+I1: Starting log for m2rbook, b114 and f009, project "help"
+I1: Opened file C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.fm
+I1: File ID is aa
+Wed Dec 17 16:40:34 2014
+I1: Starting log for drmif, m210
+I1: Automation processing completed by drmif.
+Wed Dec 17 16:40:35 2014
+I1: Starting log for drmif, m210
+I1: Opened file "C:\windows\profiles\sbosse\My Documents\proj\conpro2\help\help.mif" from FM 
+I1: File ID is aa
+W1: Paragraph format not defined in catalog: Body
+W1: Paragraph format not defined in catalog: Table_Para
+W1: Paragraph format not defined in catalog: TableTitle
+W1: Paragraph format not defined in catalog: CellBody
+W1: Char format for CTD Definition Title Caption autonumber not in catalog: Default  Font
+W1: Paragraph format not defined in catalog: Para
+W1: Paragraph format not defined in catalog: Line1
+W1: Paragraph format not defined in catalog: Line9
+W1: Paragraph format not defined in catalog: Line10
+W1: Paragraph format not defined in catalog: Line8
+W1: Paragraph format not defined in catalog: Line11
+W1: Paragraph format not defined in catalog: Content_Para
+I1: Processing completed by drmif.
+Wed Dec 17 16:40:36 2014
+I1: Starting log for dwrtf, r299
+I1: Opened file help.rtf
+I1: Processing completed by dwrtf.
+Wed Dec 17 16:40:37 2014
+I1: Starting log for dwrtf, r299
+I1: Automation processing completed by dwrtf.

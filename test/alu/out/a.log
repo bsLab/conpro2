@@ -1,0 +1,829 @@
+Checking license file </opt/Conpro2/license/license.dat> for host with hostid=<840fd9a4> and feature <CONPRO2>...
+Global block constraints:
+  <default>
+  >> Expression type: flat
+  >> ALU data width threshold: 8
+  >> Temporary register: shared
+  Include paths: 
+    Source:  /home/sbosse/proj/conpro/test/alu/src/cp
+    Source:  /home/sbosse/proj/conpro/test/alu/src/vhdl
+    Source:  /opt/Conpro2/incl
+    Library: /opt/Conpro2/lib
+TDI: Opening tools file <tools>...
+  Searching tools file <tools.def>...
+  Opening tools file </opt/Conpro2/toolset/tools.def>...
+  Opening tool library file </opt/Conpro2/toolset/generic.lib>...
+  Info [line 7]: Added synthesis tool defintion <generic>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/xilinx6.lib>...
+  Info [line 27]: Added synthesis tool defintion <xilinx6>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/xilinx9.lib>...
+  Info [line 173]: Added synthesis tool defintion <xilinx9>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/alliance.lib>...
+  Info [line 319]: Added synthesis tool defintion <alliance>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/leonardo.lib>...
+  Info [line 342]: Added synthesis tool defintion <leonardo>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/actel.lib>...
+  Info [line 366]: Added synthesis tool defintion <actel>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89.lib>...
+  Info [line 389]: Added synthesis tool defintion <synplicity89>, version 1.05.
+  Opening tool library file </opt/Conpro2/toolset/synplicity89_xilinx6.lib>...
+  Info [line 412]: Added synthesis tool defintion <synplicity89_xilinx6>, version 1.05.
+TDI: Opening tool <xilinx9>...
+  Searching tool file <xilinx9.tool>...
+  Opening tool file </opt/Conpro2/toolset/xilinx9.tool>...
+Searching Conpro file <a.cp>...
+Opening file <a.cp>...
+Compiling module <a>...
+  Searching toplevel objects and expanding toplevel loops and evaluating conditionals...
+    Added module <Core>.
+    Added module <Process>.
+    Added module <System>.
+    Info [line 9]: Expanding toplevel conditional branch: true
+    EMI <Object Sys.sys.root>: creating object <sys>...
+      EMI [Object Sys.sys.sys]: added method <clock>.
+      EMI [Object Sys.sys.sys]: added method <clock_level>.
+      EMI [Object Sys.sys.sys]: added method <reset_level>.
+      EMI [Object Sys.sys.sys]: added method <reset_internal>.
+      EMI [Object Sys.sys.sys]: added method <simu_cycles>.
+      EMI [Object Sys.sys.sys]: added method <simu_res>.
+      EMI [Object Sys.sys.sys]: added method <target>.
+      EMI [Object Sys.sys.sys]: added method <expr_type>.
+    EMI <Object Sys.sys.sys>: creating rules for module...
+  Analyzing function blocks...
+  Analyzing processes...
+    Info [line 20]: Analyzing process <p1>...
+      Analyzing process <p1>...
+        Unrolling loop for <i> = {0,15}
+        Extracted 32 instructions in unrolled process block.
+    Info [line 32]: Analyzing process <p2>...
+      Analyzing process <p2>...
+        Unrolling loop for <i> = {1,16}
+        Extracted 32 instructions in unrolled process block.
+    Info [line 44]: Analyzing process <main>...
+      Analyzing process <main>...
+  Performing program graph transformations and optimization for module <A>...
+    in process <p1>...
+      Performing program transformations for process <p1>...
+      Resolving object dependencies for process <p1>...
+    in process <p2>...
+      Performing program transformations for process <p2>...
+      Resolving object dependencies for process <p2>...
+    in process <main>...
+      Performing program transformations for process <main>...
+      Resolving object dependencies for process <main>...
+  Resolving object dependencies for process <MOD_A>...
+  Found 14 primary toplevel symbols.
+  Found 3 processes.
+  Found 0 shared function blocks.
+Synthesizing main module <A>...
+  Optimizing and pre-scheduling, pass 1...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <A.p1>
+        Removed 0 instructions(s).
+      in process <A.p2>
+        Removed 0 instructions(s).
+      in process <A.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      [A.p1]: Removing process <p1> because never started nor called.
+      [A.p1]: Removing local object <n>.
+      [A.p1]: Removing local object <sum>.
+      [A.MOD_A]: Removing Register <A.PRO_p1_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <main> ...
+      [A.MOD_A]: Removing Register <A.PRO_p2_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      ... in process <p2> ...
+      [A.MOD_A]: Removing Register <A.PRO_main_EXCEPTION> with 0 reader(s) and 0 writer(s).
+      Removed 3 object(s).
+    Optimizer: folding constants in expressions...
+      in process <A.p2>
+        Removed 0 operand(s).
+      in process <A.main>
+        Removed 0 operand(s).
+    ... Progress of pass 1: 3.
+  Optimizing and pre-scheduling, pass 2...
+    Reference Stack Scheduler: Performing expression expansions...
+      in process <A.p2>
+        Removed 0 instructions(s).
+      in process <A.main>
+        Removed 0 instructions(s).
+    Optimizer: removing dead objects and instructions...
+      ... in process <main> ...
+      ... in process <p2> ...
+      Removed 0 object(s).
+    Optimizer: folding constants in expressions...
+      in process <A.p2>
+        Removed 0 operand(s).
+      in process <A.main>
+        Removed 0 operand(s).
+    ... Progress of pass 2: 0.
+  Resolving object guards...
+    Found 0 guard(s).
+  Resolving RAM blocks...
+    Found 0 RAM block(s).
+    Performing post-analysis transformations for process <p2>...
+    Performing post-analysis transformations for process <main>...
+  Synthesizing process instructions...
+    in process <A.p2>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <p2>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <p2>...
+        Found ALU: Size=16 bits, Type=int, Ops=[<*>]
+      Post type alignment of expressions for process <p2>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <p2>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <p2>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <p2>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <p2>...
+        52 states created.
+      Calculating block frame time estimations for process <p2>...
+    in process <A.main>...
+      Compacting MicroCode instructions...
+      Resolving boolean expressions for process <main>...
+      Binding MicroCode instructions...
+      Extracting ALU for process <main>...
+      Post type alignment of expressions for process <main>...
+        0 object references aligned.
+      Expression Scheduler: Performing ASAP time constrained scheduling for process <main>...
+        Scheduled 0 expression(s), expanded 0 time step(s).
+      Resolving temporary registers for process <main>...
+        Created 0 register(s):
+      Block Scheduler: Exploring concurrency in basic blocks for process <main>...
+        Parititioning major blocks...
+        Parititioning minor blocks...
+        Merging unconditional jumps...
+        Found 1 major (0 splitted, CDF=0,0,1) and 1 minor block(s) with 0 jump(s).
+        Created 0 bounded block(s).
+      Translating MicroCode to RTL in process <main>...
+        3 states created.
+      Calculating block frame time estimations for process <main>...
+  Creating entity <a_p2>...
+    Emitting state list for process <p2>...
+    Emitting state machine for process <p2>...
+    Port width: 36 bits
+  Creating entity <a_main>...
+    Emitting state list for process <main>...
+    Emitting state machine for process <main>...
+    Port width: 5 bits
+  Creating entity <a>...
+    Creating global register <d> [DT_int 16, scheduler=PRIOstat #rd=1 #wr=1]...
+  Emitting MicroCode for module A...
+  Emitting object file for module A...
+  Emitting MicroCode for process p2...
+  Emitting MicroCode for process main...
+  UCI <ucode.uci_out.p2>: emitting MicroCode for process <p2>.
+  UCI <ucode.uci_out.main>: emitting MicroCode for process <main>.
+Info : Emitting block frame informations in file <a.ft>...
+TDI [Tool xilinx9.root]#new_obj: creating object <a>...
+TDI [Tool xilinx9.a]#compile_all: Initializing tool ...
+  TDI [Tool xilinx9.a]: found #version 2.05...
+  TDI [Tool xilinx9.a]: compiling #parameter section...
+  TDI [Tool xilinx9.a]: compiling #parameter section...
+  TDI [Tool xilinx9.a]: compiling #parameter section...
+  TDI [Tool xilinx9.a]: compiling function <check>...
+  TDI [Tool xilinx9.a]: compiling function <init>...
+  TDI [Tool xilinx9.a]: compiling function <finish>...
+  TDI [Tool xilinx9.a]: compiling function <make_xst_runscript>...
+  TDI [Tool xilinx9.a]: compiling function <make_proj>...
+  TDI [Tool xilinx9.a]: compiling function <do_synth>...
+  TDI [Tool xilinx9.a]: compiling function <do_scram>...
+  TDI [Tool xilinx9.a]: compiling function <do_trans>...
+  TDI [Tool xilinx9.a]: compiling function <do_map>...
+  TDI [Tool xilinx9.a]: compiling function <do_place>...
+  TDI [Tool xilinx9.a]: compiling function <do_bitgen>...
+  TDI [Tool xilinx9.a]: compiling function <do_ucf>...
+  TDI [Tool xilinx9.a]: compiling function <do_prom>...
+  TDI [Tool xilinx9.a]: compiling function <do_fpga>...
+  TDI [Tool xilinx9.a]: compiling target <init>...
+  TDI [Tool xilinx9.a]: compiling target <vhdl>...
+  TDI [Tool xilinx9.a]: compiling target <synth>...
+  TDI [Tool xilinx9.a]: compiling target <tech>...
+  TDI [Tool xilinx9.a]: compiling target <svf>...
+  TDI [Tool xilinx9.a]: compiling target <ucf>...
+TDI [Tool xilinx9.a]#compiler_all: Compiling tool ...
+  TDI [Tool xilinx9.a]#emit: Creating build script <a.xilinx9.tool.sh>...
+    TDI [Tool xilinx9.a]: Environment is:
+      PROM=[get_opt()],
+      target_device=[|"xc3s1000",
+                      "xc18v04"|],
+      target_class=[|"xc3s",
+                     "unknown"|],
+      TOP=[("MOD_") + ($proj)],
+      LOG=[($proj) + (".log")],
+      SRCDIR=["."],
+      SCRAM=[$],
+      clock=["18500000"],
+      vhdl=[|"a",
+             "a_p2",
+             "a_main"|],
+      syn_synth_set=[|"fsm_extract YES",
+                      "fsm_encoding Sequential",
+                      "fsm_style lut",
+                      "mux_extract YES",
+                      "mux_style Auto",
+                      "ram_extract Yes",
+                      "ram_style Block",
+                      "rom_extract Yes",
+                      "rom_style Auto",
+                      "mult_style lut",
+                      "priority_extract Yes",
+                      "shreg_extract Yes",
+                      "decoder_extract Yes",
+                      "shift_extract Yes",
+                      "opt_mode speed",
+                      "opt_level 1",
+                      "iobuf YES",
+                      "iob Auto",
+                      "max_fanout 100",
+                      "xor_collapse Yes",
+                      "resource_sharing Yes",
+                      "slice_packing Yes",
+                      "slice_utilization_ratio 100",
+                      "slice_utilization_ratio_maxmargin 5",
+                      "bufg 4",
+                      "register_duplication Yes",
+                      "register_balancing No",
+                      "equivalent_register_removal Yes",
+                      "optimize_primitives No",
+                      "tristate2logic No",
+                      "glob_opt AllClockNets",
+                      "iuc NO"|],
+      VHDL=[|$|],
+      target_speed=[|"5"|],
+      syn_tech_set_par=[|"t 1"|],
+      BITGEN_CONF=[get_opt()],
+      target_library=[|"xis3",
+                       "unknown"|],
+      DUP=["tee"],
+      RECLEN=[get_opt()],
+      SYNSET=[$],
+      period=["54"],
+      DEVICE=[get_opt()],
+      SPEED=[get_opt()],
+      XILINX=[$],
+      target_package=[|"ft256"|],
+      syn_tech_set_map=[|"pr b",
+                         "k 4",
+                         "c 100",
+                         "tx off"|],
+      DESIGN=[$proj],
+      port=[|"d_RD:out:std_logic_vector:15 downto 0",
+             "CLK:in:std_logic",
+             "RESET:in:std_logic"|],
+      reclen=["1024"],
+      target=[|"xc3s1000-ft256-5",
+               "xc18v04"|],
+      MAPSET=[$],
+      target_family=[|"spartan3",
+                      "unknown"|],
+      proj=["a"],
+      PARSET=[$],
+      res=[$],
+      OBJDIR=["obj"],
+      bitgen_conf=["-g DebugBitstream:No -g Binary:no -g CclkPin:PullUp -g M0Pin:PullUp -g M1Pin:PullUp -g M2Pin:PullUp -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g StartUpClk:CClk -g DONE_cycle:4"],
+      simu_cycles=["50"]
+Total CPU time consumed: 0.9 seconds.
+Total time elapsed: 1.0 seconds.
+  
+  +---------------------------- SYNTHESIS SUMMARY ----------------------------+
+  +---------------------------------------------------------------------------+
+  | DESCRIPTION                                  VALUE                        |
+  +---------------------------------------------------------------------------+
+  | process                                      2                            |
+  | process.main                                                              |
+  |  -> port-width [bit]                         5                            |
+  |  -> states                                   3                            |
+  | process.p2                                                                |
+  |  -> port-width [bit]                         36                           |
+  |  -> register                                 2                            |
+  |  -> states                                   52                           |
+  | register-local                               2                            |
+  |  -> signed(15 downto 0)                      (2)                          |
+  | register-shared                              1                            |
+  |  -> signed(15 downto 0)                      (1)                          |
+  | synthesis time [sec]                         1                            |
+  +---------------------------------------------------------------------------+
+  
+Release 9.2i - xst J.36
+Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "a.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "a"
+Output Format                      : NGC
+Target Device                      : xc3s1000-ft256-5
+
+---- Source Options
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Sequential
+FSM Style                          : lut
+Mux Extraction                     : YES
+Mux Style                          : Auto
+RAM Extraction                     : Yes
+RAM Style                          : Block
+ROM Extraction                     : Yes
+ROM Style                          : Auto
+Multiplier Style                   : lut
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : Yes
+Decoder Extraction                 : Yes
+Logical Shifter Extraction         : Yes
+XOR Collapsing                     : Yes
+Resource Sharing                   : Yes
+Automatic Register Balancing       : No
+Top Module Name                    : MOD_a
+
+---- Target Options
+Add IO Buffers                     : YES
+Pack IO Registers into IOBs        : Auto
+Global Maximum Fanout              : 100
+Slice Packing                      : Yes
+Add Generic Clock Buffer(BUFG)     : 4
+Register Duplication               : Yes
+Equivalent register Removal        : Yes
+Optimize Instantiated Primitives   : No
+Convert Tristates To Logic         : No
+
+---- General Options
+Optimization Goal                  : speed
+Optimization Effort                : 1
+Slice Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+Global Optimization                : AllClockNets
+
+=========================================================================
+
+Setting FSM Encoding Algorithm to : SEQ
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "/home/sbosse/proj/conpro2/test/alu/out/a_p2.vhdl" in Library work.
+Entity <a_p2> compiled.
+Entity <a_p2> (Architecture <main>) compiled.
+Compiling vhdl file "/home/sbosse/proj/conpro2/test/alu/out/a_main.vhdl" in Library work.
+Entity <a_main> compiled.
+Entity <a_main> (Architecture <main>) compiled.
+Compiling vhdl file "/home/sbosse/proj/conpro2/test/alu/out/a.vhdl" in Library work.
+Entity <mod_a> compiled.
+Entity <mod_a> (Architecture <main>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <MOD_a> in library <work> (architecture <main>).
+
+Analyzing hierarchy for entity <a_p2> in library <work> (architecture <main>).
+
+Analyzing hierarchy for entity <a_main> in library <work> (architecture <main>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <MOD_a> in library <work> (Architecture <main>).
+INFO:Xst:2679 - Register <PRO_main_ENABLE> in unit <MOD_a> has a constant value of 1 during circuit operation. The register is replaced by logic.
+Entity <MOD_a> analyzed. Unit <MOD_a> generated.
+
+Analyzing Entity <a_p2> in library <work> (Architecture <main>).
+WARNING:Xst:819 - "/home/sbosse/proj/conpro2/test/alu/out/a_p2.vhdl" line 420: The following signals are missing in the process sensitivity list:
+   alu_1_reg, n.
+Entity <a_p2> analyzed. Unit <a_p2> generated.
+
+Analyzing Entity <a_main> in library <work> (Architecture <main>).
+Entity <a_main> analyzed. Unit <a_main> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <a_p2>.
+    Related source file is "/home/sbosse/proj/conpro2/test/alu/out/a_p2.vhdl".
+    Found finite state machine <FSM_0> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 52                                             |
+    | Transitions        | 52                                             |
+    | Inputs             | 0                                              |
+    | Outputs            | 53                                             |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | pro_state$or0000 (positive)                    |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_p2_start                                     |
+    | Power Up State     | s_p2_start                                     |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:643 - "/home/sbosse/proj/conpro2/test/alu/out/a_p2.vhdl" line 145: The result of a 16x16-bit multiplication is partially used. Only the 16 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 16-bit register for signal <alu_1_reg>.
+    Found 16-bit register for signal <n>.
+    Found 16-bit register for signal <prod>.
+    Found 16x16-bit multiplier for signal <res_1_Alu_mul$mult0000> created at line 145.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  48 D-type flip-flop(s).
+	inferred   1 Multiplier(s).
+Unit <a_p2> synthesized.
+
+
+Synthesizing Unit <a_main>.
+    Related source file is "/home/sbosse/proj/conpro2/test/alu/out/a_main.vhdl".
+    Found finite state machine <FSM_1> for signal <pro_state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 4                                              |
+    | Inputs             | 1                                              |
+    | Outputs            | 2                                              |
+    | Clock              | conpro_system_clk (rising_edge)                |
+    | Reset              | conpro_system_reset (negative)                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s_main_start                                   |
+    | Power Up State     | s_main_start                                   |
+    | Encoding           | sequential                                     |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
+Unit <a_main> synthesized.
+
+
+Synthesizing Unit <MOD_a>.
+    Related source file is "/home/sbosse/proj/conpro2/test/alu/out/a.vhdl".
+WARNING:Xst:646 - Signal <PRO_p2_END> is assigned but never used.
+WARNING:Xst:646 - Signal <PRO_main_END> is assigned but never used.
+    Found 1-bit register for signal <PRO_p2_ENABLE>.
+    Found 1-bit register for signal <PRO_p2_main_GD>.
+    Found 16-bit register for signal <REG_d>.
+    Summary:
+	inferred  18 D-type flip-flop(s).
+Unit <MOD_a> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 1
+ 16x16-bit multiplier                                  : 1
+# Registers                                            : 6
+ 1-bit register                                        : 2
+ 16-bit register                                       : 4
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Optimizing FSM <PRO_MAP_main/pro_state> on signal <pro_state[1:2]> with sequential encoding.
+--------------------------
+ State        | Encoding
+--------------------------
+ s_main_start | 00
+ s_i1_fun     | 01
+ s_main_end   | 10
+--------------------------
+Optimizing FSM <PRO_MAP_p2/pro_state> on signal <pro_state[1:6]> with sequential encoding.
+----------------------------
+ State          | Encoding
+----------------------------
+ s_p2_start     | 000000
+ s_i1_bind_to_2 | 000001
+ s_i3_assign    | 000010
+ s_i3_assign_1  | 000011
+ s_i4_assign    | 000100
+ s_i5_assign    | 000101
+ s_i5_assign_1  | 000110
+ s_i6_assign    | 000111
+ s_i7_assign    | 001000
+ s_i7_assign_1  | 001001
+ s_i8_assign    | 001010
+ s_i9_assign    | 001011
+ s_i9_assign_1  | 001100
+ s_i10_assign   | 001101
+ s_i11_assign   | 001110
+ s_i11_assign_1 | 001111
+ s_i12_assign   | 010000
+ s_i13_assign   | 010001
+ s_i13_assign_1 | 010010
+ s_i14_assign   | 010011
+ s_i15_assign   | 010100
+ s_i15_assign_1 | 010101
+ s_i16_assign   | 010110
+ s_i17_assign   | 010111
+ s_i17_assign_1 | 011000
+ s_i18_assign   | 011001
+ s_i19_assign   | 011010
+ s_i19_assign_1 | 011011
+ s_i20_assign   | 011100
+ s_i21_assign   | 011101
+ s_i21_assign_1 | 011110
+ s_i22_assign   | 011111
+ s_i23_assign   | 100000
+ s_i23_assign_1 | 100001
+ s_i24_assign   | 100010
+ s_i25_assign   | 100011
+ s_i25_assign_1 | 100100
+ s_i26_assign   | 100101
+ s_i27_assign   | 100110
+ s_i27_assign_1 | 100111
+ s_i28_assign   | 101000
+ s_i29_assign   | 101001
+ s_i29_assign_1 | 101010
+ s_i30_assign   | 101011
+ s_i31_assign   | 101100
+ s_i31_assign_1 | 101101
+ s_i32_assign   | 101110
+ s_i33_assign   | 101111
+ s_i33_assign_1 | 110000
+ s_i34_assign   | 110001
+ s_i35_assign   | 110010
+ s_p2_end       | 110011
+----------------------------
+Loading device for application Rf_Device from file '3s1000.nph' in environment /export/home/Xilinx92.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 2
+# Multipliers                                          : 1
+ 16x16-bit multiplier                                  : 1
+# Registers                                            : 74
+ Flip-Flops                                            : 74
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+no possible choice.
+
+Optimizing unit <MOD_a> ...
+
+Optimizing unit <a_p2> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block MOD_a, actual ratio is 2.
+FlipFlop PRO_MAP_p2/pro_state_FFd1 has been replicated 1 time(s)
+FlipFlop PRO_MAP_p2/pro_state_FFd2 has been replicated 1 time(s)
+FlipFlop PRO_MAP_p2/pro_state_FFd3 has been replicated 2 time(s)
+FlipFlop PRO_MAP_p2/pro_state_FFd4 has been replicated 2 time(s)
+FlipFlop PRO_MAP_p2/pro_state_FFd5 has been replicated 2 time(s)
+FlipFlop PRO_MAP_p2/pro_state_FFd6 has been replicated 2 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 84
+ Flip-Flops                                            : 84
+
+=========================================================================
+
+=========================================================================
+*                          Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+Top Level Output File Name         : a
+Output Format                      : NGC
+Optimization Goal                  : speed
+Keep Hierarchy                     : no
+
+Design Statistics
+# IOs                              : 18
+
+Cell Usage :
+# BELS                             : 702
+#      GND                         : 1
+#      INV                         : 12
+#      LUT2                        : 96
+#      LUT2_D                      : 4
+#      LUT2_L                      : 4
+#      LUT3                        : 66
+#      LUT3_D                      : 6
+#      LUT3_L                      : 3
+#      LUT4                        : 166
+#      LUT4_D                      : 12
+#      LUT4_L                      : 17
+#      MULT_AND                    : 48
+#      MUXCY                       : 121
+#      MUXF5                       : 22
+#      VCC                         : 1
+#      XORCY                       : 123
+# FlipFlops/Latches                : 84
+#      FDR                         : 46
+#      FDRE                        : 17
+#      FDRS                        : 20
+#      FDS                         : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 17
+#      IBUF                        : 1
+#      OBUF                        : 16
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1000ft256-5 
+
+ Number of Slices:                     204  out of   7680     2%  
+ Number of Slice Flip Flops:            84  out of  15360     0%  
+ Number of 4 input LUTs:               386  out of  15360     2%  
+ Number of IOs:                         18
+ Number of bonded IOBs:                 18  out of    173    10%  
+ Number of GCLKs:                        1  out of      8    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 84    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 22.975ns (Maximum Frequency: 43.526MHz)
+   Minimum input arrival time before clock: 4.603ns
+   Maximum output required time after clock: 6.280ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 22.975ns (frequency: 43.526MHz)
+  Total number of paths / destination ports: 165598123 / 136
+-------------------------------------------------------------------------
+Delay:               22.975ns (Levels of Logic = 30)
+  Source:            PRO_MAP_p2/pro_state_FFd2_1 (FF)
+  Destination:       PRO_MAP_p2/prod_15 (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: PRO_MAP_p2/pro_state_FFd2_1 to PRO_MAP_p2/prod_15
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              9   0.626   1.250  PRO_MAP_p2/pro_state_FFd2_1 (PRO_MAP_p2/pro_state_FFd2_1)
+     LUT3_D:I0->O          1   0.479   0.740  PRO_MAP_p2/pro_state_Out2011 (PRO_MAP_p2/N16)
+     LUT3:I2->O            3   0.479   0.941  PRO_MAP_p2/pro_state_Out291 (PRO_MAP_p2/pro_state_cmp_eq0029)
+     LUT3:I1->O            2   0.479   0.768  PRO_MAP_p2/alu_1_op1<0>21711_SW0 (N1009)
+     LUT4:I3->O           10   0.479   1.134  PRO_MAP_p2/alu_1_op1<0>247_1 (PRO_MAP_p2/alu_1_op1<0>247)
+     LUT3:I1->O           19   0.479   1.403  PRO_MAP_p2/alu_1_op1<0> (PRO_MAP_p2/alu_1_op1<0>)
+     LUT2:I1->O            1   0.479   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_alu_1_op1<0>_x_alu_1_op2<1>1 (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_alu_1_op1<0>_x_alu_1_op2<1>)
+     MUXCY:S->O            1   0.435   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<1> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<1>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<2> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<2>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<3> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<3>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<4> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<4>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<5> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<5>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<6> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<6>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<7> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<7>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<8> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<8>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<9> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<9>)
+     MUXCY:CI->O           1   0.056   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<10> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_cy<10>)
+     XORCY:CI->O           1   0.786   0.851  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd7_xor<11> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd_1111)
+     LUT2:I1->O            1   0.479   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd10_lut<11> (PRO_MAP_p2/N144)
+     MUXCY:S->O            1   0.435   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd10_cy<11> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd10_cy<11>)
+     XORCY:CI->O           1   0.786   0.681  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd10_xor<12> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd_1212)
+     INV:I->O              1   0.479   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd13_lut<12>_INV_0 (PRO_MAP_p2/N202)
+     MUXCY:S->O            1   0.435   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd13_cy<12> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd13_cy<12>)
+     XORCY:CI->O           1   0.786   0.851  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd13_xor<13> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd_1313)
+     LUT2:I1->O            1   0.479   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd14_lut<13> (PRO_MAP_p2/N228)
+     MUXCY:S->O            1   0.435   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd14_cy<13> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd14_cy<13>)
+     XORCY:CI->O           1   0.786   0.851  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd14_xor<14> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd_1414)
+     LUT2:I1->O            1   0.479   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd15_lut<14> (PRO_MAP_p2/N255)
+     MUXCY:S->O            0   0.435   0.000  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd15_cy<14> (PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd15_cy<14>)
+     XORCY:CI->O           3   0.786   0.830  PRO_MAP_p2/Mmult_res_1_Alu_mul_mult0000_Madd15_xor<15> (PRO_MAP_p2/res_1_Alu_mul<15>)
+     LUT3:I2->O            1   0.479   0.000  PRO_MAP_p2/prod_mux0000<15>101 (N916)
+     FDRS:D                    0.176          PRO_MAP_p2/prod_15
+    ----------------------------------------
+    Total                     22.975ns (12.675ns logic, 10.299ns route)
+                                       (55.2% logic, 44.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+  Total number of paths / destination ports: 84 / 84
+-------------------------------------------------------------------------
+Offset:              4.603ns (Levels of Logic = 2)
+  Source:            RESET (PAD)
+  Destination:       REG_d_0 (FF)
+  Destination Clock: CLK rising
+
+  Data Path: RESET to REG_d_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   0.715   0.771  RESET_IBUF (RESET_IBUF)
+     INV:I->O             67   0.479   1.746  PRO_MAP_p2/conpro_system_reset_inv1_INV_0 (PRO_MAP_main/pro_state_Rst_inv)
+     FDR:R                     0.892          PRO_MAP_main/pro_state_FFd2
+    ----------------------------------------
+    Total                      4.603ns (2.086ns logic, 2.517ns route)
+                                       (45.3% logic, 54.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+  Total number of paths / destination ports: 16 / 16
+-------------------------------------------------------------------------
+Offset:              6.280ns (Levels of Logic = 1)
+  Source:            REG_d_15 (FF)
+  Destination:       d_RD<15> (PAD)
+  Source Clock:      CLK rising
+
+  Data Path: REG_d_15 to d_RD<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.626   0.745  REG_d_15 (REG_d_15)
+     OBUF:I->O                 4.909          d_RD_15_OBUF (d_RD<15>)
+    ----------------------------------------
+    Total                      6.280ns (5.535ns logic, 0.745ns route)
+                                       (88.1% logic, 11.9% route)
+
+=========================================================================
+CPU : 31.15 / 31.26 s | Elapsed : 32.00 / 32.00 s
+ 
+--> 
+
+
+Total memory usage is 150688 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+
