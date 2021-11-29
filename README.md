@@ -113,15 +113,15 @@ There are conditional branches, both Boolean and multi-value branching, conditio
 The unconditional always-loop is used for request-based server loops (infinite loop). The wait-for statement is used usually with signals, checking the value of an expression of signals and optionally applies a statement (usually signal assignments) until the condition E changes to value true. Because signals are assigned a value to only as long as the assignment is active, a default value can be specified with the optional else-branch. Also time delays can be implemented with the wait-for statement. Is the clock frequency of the system is known, time can be specified in second units.
 
 
-Syntax | Statement | Description
-- | - | -
-`if E then A1 [else A2];` | Boolean Conditional Branch (false-branch optional) | If the boolean condition E is true, the instruction or instruction sequence A1 is executed, else A2 if present.
-`match E with begin when E1: A1;  when E2: A2; ... end;` | Multi-Value Conditional Branch | The expression E is compared with given values Ei associated with an instruction Ai (or instruction sequence) executed in the case E=Ei.
+| Syntax | Statement | Description |
+| - | - | - |
+| `if E then A1 [else A2];` | Boolean Conditional Branch (false-branch optional) | If the boolean condition E is true, the instruction or instruction sequence A1 is executed, else A2 if present. |
+| `match E with begin when E1: A1;  when E2: A2; ... end;` | Multi-Value Conditional Branch | The expression E is compared with given values Ei associated with an instruction Ai (or instruction sequence) executed in the case E=Ei. |
 
 [ Table 2:Available branch statements and impact on state change σ in control path Γ ]
 
 | Syntax | Statement |
-|-|-|-|
+|-|-|
 | `while E do A; always do A;` | Conditional and unconditional Loop  |
 | `for i = a to b do A;` |  Counting Loop (to or down-to direction) |
 | `waitfor E [with A1 else A2];` | Conditional Delay (E can be time condition) |
