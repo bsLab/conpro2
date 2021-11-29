@@ -1,10 +1,8 @@
-# conpro2
+# ConPro2
 
 *Concurrent Processing and  Programming of Digital Logic with High-level Synthesis*
 
 # Concurrent Programming and Processes
-
-[TOC]
 
 ## Overview
 
@@ -44,15 +42,15 @@ Figure 8: The multi-process model with request-based synchronization (IPC).
 
 Concurrency on control path level requires synchronization [AND00] . At least the access of shared resources must be protected using mutual exclusion locks (mutex). Access of all global objects is implicitly protected and serialized by a mutex scheduler. IPC and external communication objects are abstract object types, they can only be modified and accessed with a defined set of methods υ={υ1,υ2,…}, shown in table → Table 1. Queues and channels can be used in expressions and assignments like any other data storage object.
 
-IPC Object ℑ | Description | Methods υ
-- | - | -
-mutex | Mutual Exclusion Lock | lock, unlock
-semaphore | Counting Semaphore | init, up,down
-barrier | Counting Barrier | init, await
-event | Signal Event | init, await, wakeup
-timer | Periodic Timer Event | init, set, start, stop, await
-queue (*) | FIFO queue | read, write
-channel (*) | Handshaken Channel | read, write
+| IPC Object ℑ | Description | Methods υ |
+|-|-|-|
+| mutex | Mutual Exclusion Lock | lock, unlock |
+| semaphore | Counting Semaphore | init, up,down |
+| barrier | Counting Barrier | init, await |
+| event | Signal Event | init, await, wakeup |
+| timer | Periodic Timer Event | init, set, start, stop, await |
+| queue (*) | FIFO queue | read, write |
+| channel (*) | Handshaken Channel | read, write |
 
 [Table 1: Available IPC objects. Queues and channels belong both to the core and abstract object class, too, and can be used within expressions and assignments (*)]
 
@@ -122,12 +120,12 @@ Syntax | Statement | Description
 
 [ Table 2:Available branch statements and impact on state change σ in control path Γ ]
 
-Syntax | Statement
-- | - | -
-`while E do A; always do A;` | Conditional and unconditional Loop 
-`for i = a to b do A;` |  Counting Loop (to or down-to direction)
-`waitfor E [with A1 else A2];` | Conditional Delay (E can be time condition)
-`try A with begin when ε1: A1; when ε2: A2; ... end;` | Exception Catcher (A with raise ε statements)
+| Syntax | Statement |
+|-|-|-|
+| `while E do A; always do A;` | Conditional and unconditional Loop  |
+| `for i = a to b do A;` |  Counting Loop (to or down-to direction) |
+| `waitfor E [with A1 else A2];` | Conditional Delay (E can be time condition) |
+| `try A with begin when ε1: A1; when ε2: A2; ... end;` | Exception Catcher (A with raise ε statements) |
 
 [ Table 3:Available loop statements and impact on state change σ in control path Γ ]
 
@@ -249,8 +247,8 @@ end;
 ConPro
 : Version 2.1, Development Release D197,
 (Binaries for Windows, Linux, Solaris)<br>
-[ZIP](%base_url%/download/ConPro-2.1-D197.all.zip "Download Software, All Binaries")
+[ZIP](http://sblab.de/download/ConPro-2.1-D197.all.zip "Download Software, All Binaries")
 
 Example 1
 : Memo Game with Numato Lab Mima Board<br>
-[ZIP](%base_url%/download/cp_memo.zip "Download ConPro Example")
+[ZIP](http://sblab.de/download/cp_memo.zip "Download ConPro Example")
